@@ -1,0 +1,197 @@
+# Role family, seniority and remote-status classification rules.
+#
+# These are DATA, not code, so that improving a heuristic is a config change plus a
+# rebuild rather than a migration. Spec 3.5: raw capture is immutable and everything
+# derived is regenerable, so changing this file and re-running build.py reclassifies the
+# ENTIRE history and the time series stays continuous.
+#
+# Bump `version` on every substantive change. The version is stamped on classified rows,
+# so a change in the series can always be attributed to a rule change rather than the market.
+#
+# Matching is against the NORMALIZED title (lowercased, whitespace collapsed, en/em dashes
+# folded to hyphen). Patterns are Python regular expressions.
+#
+# Why title-driven: Himalayas `categories` turned out to be per-job generated slugs
+# ("Predictive-Modeler", "Risk-Analytics") rather than a controlled vocabulary, and
+# `parentCategories` is empty on ~58% of rows. There is no usable category taxonomy to
+# lean on from either source, so the title is the only field present and comparable
+# across every source.
+
+version: "2026-09-11.2"
+
+role_families:
+  # Evaluated IN ORDER; first match wins. Order is load-bearing: "Data Science Manager"
+  # contains "data scien", so ds_manager must be tested before product_ds.
+  #
+  # A family's `exclude` vetoes a match outright and falls through to the next family.
+
+  - name: ds_manager
+    # The single highest-value signal in the panel: a DS *manager* req is evidence of a
+    # real manager slot, which is the thing that is awkward to ask about in an interview.
+    #
+    # Deliberately scoped to data-science/analytics/insights leadership. An ML or data
+    # engineering manager is captured as its own family with seniority=manager instead,
+    # so this headline number stays a clean read on DS org growth rather than absorbing
+    # every adjacent engineering leadership req.
+    include:
+      - '\b(manager|head|director|vp|vice president|chief)\b.{0,30}\b(data scien\w*|data-scien\w*|analytics|analytic|insights|decision scien\w*|experimentation)\b'
+      - '\b(data scien\w*|data-scien\w*|analytics|analytic|insights|decision scien\w*|experimentation)\b.{0,30}\b(manager|leader|lead(ership)?|head|director|vp|vice president)\b'
+      - '\bhead of (data|analytics|insights|experimentation)\b'
+    exclude:
+      - '\b(engineering manager|manager, (software|platform|infrastructure))\b'
+      - '\b(product manager|program manager|project manager|account manager|marketing manager|sales manager|community manager)\b'
+      - '\b(clinical|medical|actuarial|regulatory|hr|people|finance) (science|scien)'
+
+  - name: ml_eng
+    include:
+      - '\b(machine learning|ml|deep learning|mlops)\b.{0,25}\b(engineer|engineering|scientist)\b'
+      - '\b(applied scientist|research scientist|ai engineer|ai/ml|genai engineer)\b'
+      - '\b(engineer|scientist)\b.{0,25}\b(machine learning|deep learning|ai)\b'
+      - '\bml (platform|infrastructure|systems)\b'
+      - '\b(machine learning|ml|ai)\b.{0,25}\b(specialist|architect)\b'
+    exclude:
+      # Backend/platform SWE roles that merely name an ML or analytics surface.
+      # Real example: "Senior Backend Engineer, Analytics Instrumentation (Golang)".
+      - '\b(backend|back-end|frontend|front-end|full ?stack|mobile|ios|android|security|devops|site reliability|qa) engineer\b'
+      - '\b(sales|solutions|support|customer|field|forward deployed) engineer\b'
+
+  - name: analytics_eng
+    include:
+      - '\banalytics engineer'
+      - '\b(dbt|looker|semantic layer) (developer|engineer)\b'
+    exclude: []
+
+  - name: data_eng
+    include:
+      - '\bdata engineer'
+      - '\b(data (platform|infrastructure|warehouse)) engineer\b'
+      - '\b(etl|elt|pipeline) (developer|engineer)\b'
+      - '\b(big data|spark|databricks) engineer\b'
+    exclude: []
+
+  - name: product_ds
+    # The archetype being searched for, plus the broader IC data-scientist population
+    # needed as its denominator.
+    include:
+      - '\bdata scientist\b'
+      - '\bdata science\b'
+      - '\b(product|decision|research) scientist\b'
+      - '\b(quantitative|quant) (analyst|researcher|scientist)\b'
+      - '\b(experimentation|causal inference|econometric)'
+      - '\bstatistician\b'
+      - '\b(advanced analytics|data insights)\b'
+    exclude:
+      # Domain-science titles that borrow the vocabulary but are a different labour market.
+      # Real examples seen in the feed: "Epidemiologist", "Principal Scientist, Project
+      # Toxicologist", "Sr. Manager, Clinical Science".
+      - '\b(clinical|medical|biostatis|epidemiolog|toxicolog|pharmaco|regulatory affairs|laboratory|materials|chemistry|physicist)\b'
+
+  - name: analyst
+    include:
+      - '\b(data|business|product|marketing|financial|operations|bi|business intelligence|reporting|insights|risk|credit|growth|revenue) analyst\b'
+      - '\banalyst\b'
+      - '\bbusiness intelligence\b'
+      - '\breporting (analyst|specialist)\b'
+    exclude:
+      - '\b(financial planning|fp&a|equity research|investment|portfolio|credit underwrit)\b'
+      - '\b(security|soc|threat|intelligence|policy|legal|compliance|hr|people) analyst\b'
+      - '\b(qa|quality) analyst\b'
+
+  # Anything unmatched falls through to `other`. `other` still lands in the event log —
+  # non-DS reqs supply the total-headcount denominator that makes DS share meaningful.
+
+seniority:
+  # A title carrying no seniority marker at all ("Data Scientist") reads as mid-level by
+  # convention. Recorded here rather than hidden in code because it is an assumption, and
+  # it is recomputable: flip to `unknown` and rebuild to see how much it moves the series.
+  default: mid
+
+  # Evaluated IN ORDER; first match wins. Most-senior first, because people-leadership
+  # dominates: "Senior Manager" is a manager, and "Senior Director" is a director.
+  #
+  # Applied uniformly across every source. Himalayas supplies its own seniority labels;
+  # those are stored verbatim in `seniority_source` but are NOT used for the headline
+  # series, because a consistent definition across sources matters more than accuracy
+  # on either source alone.
+  rules:
+    - name: director
+      patterns:
+        - '\b(director|vp|vice president|chief|cdo|cto|head of (data|analytics|insights|engineering))\b'
+    - name: manager
+      patterns:
+        - '\b(manager|head|people lead|team lead|engineering lead)\b'
+    - name: principal
+      patterns:
+        - '\bprincipal\b'
+        - '\b(distinguished|fellow)\b'
+    - name: staff
+      patterns:
+        - '\bstaff\b'
+    - name: senior
+      patterns:
+        - '\b(senior|sr\.?|snr)\b'
+        - '\blead\b'          # "Lead, Advanced Analytics" — IC lead, not people management
+        - '\b(iii|iv|v)\b'
+        - '\b(l[5-9]|e[5-9])\b'
+    - name: junior
+      patterns:
+        - '\b(intern|internship|co-?op|apprentice)\b'
+        - '\b(junior|jr\.?|entry.level|new ?grad|university|graduate|campus|early career|associate|trainee)\b'
+        - '\b(phd|ph\.d\.?) \(?20\d\d'   # "Data Scientist, Core Data - PhD (2026)" is a new-grad req
+        - '\b(i|ii)\b'
+
+
+remote_inference:
+  # Precedence is handled in classify.py, not here:
+  #   1. an explicit source field or ATS boolean   -> source_field / ats_flag
+  #   2. a board's custom "Workplace Type" metadata -> metadata_field
+  #   3. these patterns, against the location string -> location_string
+  #   4. nothing to go on                           -> unknown, is_remote = None
+  #
+  # Step 3 carries real error and is the dominant path in practice: the Greenhouse
+  # "Workplace Type" field exists on roughly 1 in 6 boards. Hence the tri-state below —
+  # an ambiguous location yields NULL, never False. Recording "we don't know" honestly is
+  # what keeps the remote-share denominator meaningful and the error rate measurable.
+
+  # A negative match VETOES a positive one: "Remote (Hybrid, 3 days in office)" is hybrid.
+  negative_patterns:
+    - '\bhybrid\b'
+    - '\bon-?site\b'
+    - '\bin-?office\b'
+    - '\bin-?person\b'
+    - '\b\d\+? days? (per week |a week |/week )?(in|at) (the )?office\b'
+    - '\brelocation (is )?required\b'
+    - '\bmust (be able to )?(relocate|commute)\b'
+
+  positive_patterns:
+    - '\bremote\b'
+    - '\banywhere\b'
+    - '\b(fully |100% )?distributed\b'
+    - '\bwork from home\b'
+    - '\bwfh\b'
+    - '\btelecommut'
+    - '\bvirtual\b'
+    - '\bhome-?based\b'
+
+  # Values of a board's custom "Workplace Type" metadata field, mapped to is_remote.
+  # Observed on Greenhouse: Remote / Hybrid / Onsite.
+  workplace_type_map:
+    remote: true
+    fully remote: true
+    remote - us: true
+    distributed: true
+    hybrid: false
+    onsite: false
+    on-site: false
+    in office: false
+    in-office: false
+
+  # Field names, lowercased, that a board may use for the workplace-type concept.
+  # Greenhouse metadata field names are per-company custom, so this is a best-effort list.
+  metadata_field_names:
+    - workplace type
+    - work type
+    - work location type
+    - remote status
+    - location type
+    - work arrangement

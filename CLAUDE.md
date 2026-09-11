@@ -244,3 +244,42 @@ forbidden). Each is additive or resolves a contradiction in the spec:
   justify itself" threshold. Flagged to Gabriel; he chose to keep it, since its real job is
   watchlist seeding, which Greenhouse structurally cannot do.
 - Day-1 vs steady-state event-log gzip footprint.
+
+### 2026-09-11 — contracts and classifier landed
+
+`src/normalize.py`, `src/models.py`, `src/classify.py`, `config/taxonomy.yaml`.
+
+**`RemoteFinding` added to the contracts.** A small frozen model pairing `is_remote` with
+`remote_source`, so the verdict and its provenance cannot be separated by accident.
+Correctness rule 5 is unenforceable if a function can return a bare bool.
+
+**`CollectionScope` added to the contracts.** Records what a run actually *looked at*
+(source, and company for ATS boards). A posting can only be a disappearance candidate if
+the run genuinely looked where it would have been. Without this the differ cannot tell
+"the company removed the req" from "we skipped that board today" — the most damaging
+silent failure available.
+
+**Remote inference is deliberately tri-state.** An ambiguous location yields `None`, never
+`False`. A bare `"United States"` says nothing about remote status, and guessing `False`
+would quietly inflate the onsite share and corrupt the remote denominator. Verified against
+real strings: `"Remote - USA"` → True, `"Remote (Hybrid - 3 days in office)"` → **False**
+(the negative veto beats the positive match, which is the point), `"United States"` → None.
+
+**Bug found and fixed in the taxonomy — it had silently broken the panel's headline signal.**
+The `ds_manager` rules matched on `\b(data scien|…)\b`. That trailing `\b` can *never* match
+"data science": after "scien" comes "c", a word character, so there is no boundary there.
+Result: **"Data Science Manager" classified as `product_ds`** — the DS-manager count, which
+is the single highest-value output of the whole panel, would have read **zero forever**, and
+looked entirely plausible while doing so. Fixed to `data scien\w*`. Two lesser fixes
+alongside: the actuarial veto was discarding "Actuarial Data Scientist" (a data scientist),
+and "Senior ML Specialist" fell through to `other`. Taxonomy now `2026-09-11.2`.
+
+**The lesson worth keeping:** this class of bug produces a *plausible* number, not an error.
+It was caught only by asserting expected classifications against real titles pulled from the
+live feeds. Every taxonomy change needs that same check — see `tests/test_classify.py`.
+
+**Design note — managers of adjacent families.** `ds_manager` is scoped to data
+science/analytics/insights leadership. An ML or data-engineering manager is classified into
+its own IC family with `seniority=manager` instead (e.g. "Director of Machine Learning
+Engineering" → `ml_eng` + `director`). This keeps the DS-manager headline a clean read on DS
+org growth, while "manager-level reqs in family X" stays answerable by querying seniority.
