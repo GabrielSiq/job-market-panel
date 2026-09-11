@@ -14,6 +14,8 @@ from __future__ import annotations
 import hashlib
 import re
 import unicodedata
+from html import unescape
+from html.parser import HTMLParser
 
 _WS = re.compile(r"\s+")
 _NON_SLUG = re.compile(r"[^a-z0-9]+")
@@ -89,3 +91,43 @@ def content_hash(value: str | None) -> str | None:
     if not value:
         return None
     return hashlib.sha256(value.encode("utf-8")).hexdigest()[:16]
+
+
+class _TagStripper(HTMLParser):
+    """Collects text content, discarding tags."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self._parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self._parts.append(data)
+
+    def handle_starttag(self, tag: str, attrs: object) -> None:
+        if tag in {"p", "br", "li", "div", "tr", "h1", "h2", "h3", "h4", "ul", "ol"}:
+            self._parts.append("\n")
+
+    @property
+    def text(self) -> str:
+        return "".join(self._parts)
+
+
+def strip_html(value: str | None) -> str | None:
+    """HTML job description -> plain text.
+
+    Himalayas returns `description` as sanitized HTML and Greenhouse returns `content` as
+    HTML-escaped markup. Both are stored as plain text: the panel analyses wording, and
+    markup would otherwise dominate the character budget and every token count downstream.
+    """
+    if not value:
+        return None
+    parser = _TagStripper()
+    try:
+        parser.feed(unescape(value))
+        parser.close()
+    except Exception:
+        return _WS.sub(" ", unescape(value)).strip() or None
+    text = parser.text
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n\s*\n\s*", "\n\n", text)
+    return text.strip() or None

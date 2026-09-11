@@ -323,3 +323,48 @@ watchlist writer now guarantees one entry per `(ats, token)`.
 **Result: 61 Greenhouse boards resolved, 60 parked as `ats: unknown`** for Phase 2's Lever /
 Ashby / Workable adapters. Acceptance criterion (≥40) met. The parked entries are not
 failures and must not be deleted — many are simply on another vendor.
+
+### 2026-09-11 — adapters and fixtures
+
+`src/sources/{base,himalayas,greenhouse}.py`, real captured fixtures, 71 tests passing.
+
+**`parse_epoch` accepts seconds or milliseconds.** Not defensive habit: the Himalayas spec
+documents millisecond timestamps and the live API sends seconds. Parsing as documented
+gives dates around the year 58000 — a perfectly valid `datetime` that would sail through
+validation and quietly poison every freshness metric.
+
+**Himalayas `is_remote` is `SOURCE_FIELD`, not an inference.** The board lists remote roles
+exclusively, so remote status is a property of the source. This is also exactly why it
+cannot supply a remote *share*: there is no non-remote denominator anywhere in it.
+
+**Greenhouse uses the watchlist's name and slug, never the board's echoed `company_name`.**
+The token was verified against the watchlist name at resolution time, and boards echo legal
+names or post-rebrand names ("intercom" reports as "Fin"). Trusting the echo would split
+one company's series in two mid-panel.
+
+**Greenhouse salary is deliberately not parsed.** No structured salary field exists; bands
+appear inside description prose where local law requires them. A bad regex would pollute
+the compensation series permanently, and the description is retained, so this can be
+parsed later from raw with no loss. Phase 3 decides.
+
+**An empty Greenhouse board is `EMPTY`, not `OK`.** A genuine hiring freeze is
+indistinguishable from a misconfigured token. Refusing to diff costs at most one day of
+disappearance events; guessing wrong corrupts the survival series permanently.
+
+**Measured: remote-status provenance across 1,316 live postings from 7 boards.**
+
+| `remote_source` | share | note |
+|---|---|---|
+| `unknown` | 59% | ambiguous location, recorded honestly as NULL |
+| `location_string` | 28% | inferred by pattern — carries real error |
+| `metadata_field` | 13% | all from a single board (Airbnb) |
+
+That 59% is the headline caveat for any remote-share metric built on the ATS panel, and it
+is the reason the remote denominator must be reported alongside the numerator rather than
+assumed. Item 22 (~100 hand-labelled postings) decides whether a "named city implies
+onsite" rule is worth adding; it is deliberately NOT assumed now, because reclassification
+from raw is free by design and a wrong guess baked in today would not be.
+
+**Live per-company isolation confirmed:** a deliberately broken token among 7 real boards
+produced `status=error`, zero rows, and exclusion from diffing, while the other 7 boards
+diffed normally.

@@ -1,0 +1,411 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/8184174?gh_jid=8184174",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3541546,
+   "location": {
+    "name": "London, United Kingdom"
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Hybrid",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 8184174,
+   "updated_at": "2026-09-09T04:35:19-04:00",
+   "requisition_id": "ONE",
+   "title": "Account Manager ",
+   "company_name": "Airbnb",
+   "first_published": "2026-09-09T04:35:19-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;The Community you will join:&lt;/strong",
+   "departments": [
+    {
+     "id": 247,
+     "name": "Business Development",
+     "child_ids": [],
+     "parent_id": 73691
+    }
+   ],
+   "offices": [
+    {
+     "id": 151,
+     "name": "London, United Kingdom",
+     "location": "London, United Kingdom",
+     "child_ids": [],
+     "parent_id": 64290
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/7995153?gh_jid=7995153",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3468206,
+   "location": {
+    "name": "Berlin, Germany "
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Hybrid",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 7995153,
+   "updated_at": "2026-07-31T07:59:51-04:00",
+   "requisition_id": "ONE",
+   "title": "Acquisition Manager",
+   "company_name": "Airbnb",
+   "first_published": "2026-06-10T08:50:56-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, helvetica, s",
+   "departments": [
+    {
+     "id": 57796,
+     "name": "Sales",
+     "child_ids": [],
+     "parent_id": 73691
+    }
+   ],
+   "offices": [
+    {
+     "id": 153,
+     "name": "Berlin, Germany",
+     "location": "Berlin, Germany",
+     "child_ids": [],
+     "parent_id": 64286
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/8154749?gh_jid=8154749",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3528964,
+   "location": {
+    "name": "Brazil"
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Remote",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 8154749,
+   "updated_at": "2026-08-24T15:41:54-04:00",
+   "requisition_id": "ONE",
+   "title": "Automation Engineer, Quality Engineering",
+   "company_name": "Airbnb",
+   "first_published": "2026-08-24T15:41:54-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;h2&gt;&lt;strong&gt;The Community You Will Join&lt;/strong",
+   "departments": [
+    {
+     "id": 77,
+     "name": "Software Engineering",
+     "child_ids": [],
+     "parent_id": 73703
+    }
+   ],
+   "offices": [
+    {
+     "id": 63869,
+     "name": "Brazil",
+     "location": null,
+     "child_ids": [
+      176
+     ],
+     "parent_id": 63606
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/7834481?gh_jid=7834481",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3417562,
+   "location": {
+    "name": "United States "
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Remote",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 7834481,
+   "updated_at": "2026-07-23T12:56:52-04:00",
+   "requisition_id": "MULTI",
+   "title": "Business Operations and Growth Lead",
+   "company_name": "Airbnb",
+   "first_published": "2026-04-21T19:15:15-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;The Community You Will Join:&amp;nbsp;&",
+   "departments": [
+    {
+     "id": 73685,
+     "name": "Business Operations/Analysis",
+     "child_ids": [],
+     "parent_id": 73697
+    }
+   ],
+   "offices": [
+    {
+     "id": 63868,
+     "name": "United States",
+     "location": null,
+     "child_ids": [
+      246412,
+      258081,
+      258082,
+      258083,
+      87306,
+      87309,
+      211524,
+      87312,
+      87316,
+      87315,
+      104152,
+      88158,
+      85791,
+      87313,
+      88161,
+      87308,
+      87311,
+      87307,
+      80804,
+      109320,
+      87314,
+      88160,
+      78632,
+      87310,
+      88159,
+      241531,
+      108489,
+      62810,
+      62444,
+      85003,
+      104153,
+      12964,
+      11235,
+      55,
+      4447,
+      5924,
+      1316,
+      162,
+      5925,
+      1086,
+      1355
+     ],
+     "parent_id": 17515
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/7587869?gh_jid=7587869",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3354312,
+   "location": {
+    "name": "Sydney, Australia"
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": false,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Onsite",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 7587869,
+   "updated_at": "2026-07-31T08:11:32-04:00",
+   "requisition_id": "MULTI",
+   "title": "Senior Market Manager, Hotels",
+   "company_name": "Airbnb",
+   "first_published": "2026-02-04T20:53:32-05:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, helvetica, s",
+   "departments": [
+    {
+     "id": 247,
+     "name": "Business Development",
+     "child_ids": [],
+     "parent_id": 73691
+    }
+   ],
+   "offices": [
+    {
+     "id": 149,
+     "name": "Sydney, Australia",
+     "location": "Sydney, New South Wales, Australia",
+     "child_ids": [],
+     "parent_id": 64277
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://careers.airbnb.com/positions/8194590?gh_jid=8194590",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 3545782,
+   "location": {
+    "name": "Gurugram, India"
+   },
+   "metadata": [
+    {
+     "id": 9245691,
+     "name": "Is this job part of ACC?",
+     "value": true,
+     "value_type": "yes_no"
+    },
+    {
+     "id": 10216612,
+     "name": "Workplace Type",
+     "value": "Onsite",
+     "value_type": "single_select"
+    }
+   ],
+   "id": 8194590,
+   "updated_at": "2026-09-11T02:00:01-04:00",
+   "requisition_id": "ONE",
+   "title": "Supervisor, Aircover",
+   "company_name": "Airbnb",
+   "first_published": "2026-09-11T02:00:01-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-family: helvetica, arial, sans-serif; font-size: 12pt;&quot;&gt;Airbnb was born in 2007 when two hosts welcomed three guests to their San Francisco home, and has since grown to over 5 million hosts who have welcomed over 2 billion guest arrivals in almost every country across the globe. Every day, hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;span style=&quot;font-family: arial, helvetica, s",
+   "departments": [
+    {
+     "id": 249,
+     "name": "Community Support",
+     "child_ids": [],
+     "parent_id": 73698
+    }
+   ],
+   "offices": [
+    {
+     "id": 75875,
+     "name": "Gurugram, India",
+     "location": null,
+     "child_ids": [],
+     "parent_id": 64272
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": null,
+   "ai_opt_out_request_url": null
+  }
+ ],
+ "meta": {
+  "total": 165
+ }
+}

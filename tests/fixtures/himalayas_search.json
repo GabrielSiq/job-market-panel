@@ -1,0 +1,320 @@
+{
+ "comments": "21/08/2026: Cursor pagination is now available and is the preferred way to page through the feed. Pass the nextCursor value from each response back as ?cursor=. It is faster than offset and will never return the same job twice. The offset parameter is deprecated and will be removed in a future release. 13/03/2026: The API has been updated to include the companySlug field in the response.",
+ "updatedAt": 1789083929,
+ "offset": 0,
+ "limit": 20,
+ "totalCount": 1200,
+ "jobs": [
+  {
+   "title": "Predictive Modeler / Pricing Modeler \u2013 Commercial Actuarial - Remote",
+   "excerpt": "As a team member in Finance at Nationwide, a Fortune 100 company with nearly $70 billion in annual sales, the opportunities are endless!",
+   "companyName": "Nationwide",
+   "companySlug": "nationwide",
+   "companyLogo": "https://cdn-images.himalayas.app/qebj51k9zkvrctvk5zy3n29sz4ro",
+   "employmentType": "Full Time",
+   "minSalary": 118000,
+   "maxSalary": 178000,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Mid-level"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Predictive-Modeler",
+    "Pricing-Actuary",
+    "Commercial-Actuarial",
+    "Risk-Analytics",
+    "Insurance-Analytics",
+    "Remote-Analytics-and-Forecasting-Actuary",
+    "Remote-Insurance-Data-Scientist",
+    "Property-And-Casualty-Actuarial-Analyst",
+    "P&C-Actuarial-Analyst",
+    "Remote-Pricing-Analyst"
+   ],
+   "parentCategories": [],
+   "description": "As a team member in Finance at <a href=\"https://himalayas.app/companies/nationwide\">Nationwide</a>, a Fortune 100 company with nearly $70 billion in annual sales, the opportunities are endless! Let <a href=\"https://himalayas.app/companies/nationwide\">Nationwide</a> help create your career journey! At <a href=\"https://himalayas.app/companies/nationwide\">Nationwide</a>\u00ae, \u201con your side\u201d goes beyond just words. Our customers are at the center of everything we do and we\u2019re looking for associates who are passionate about delivering extraordinary care.<p><a href=\"https://himalayas.app/companies/natio",
+   "pubDate": 1789083929,
+   "expiryDate": 1794267928,
+   "applicationLink": "https://himalayas.app/companies/nationwide/jobs/predictive-modeler-pricing-modeler-commercial-actuarial-remote-3073470462",
+   "guid": "https://himalayas.app/companies/nationwide/jobs/predictive-modeler-pricing-modeler-commercial-actuarial-remote-3073470462"
+  },
+  {
+   "title": "Senior Data Scientist | Drive Innovation Through Data | Remote Working Available",
+   "excerpt": "Senior Data Scientist | Drive Innovation Through Data | Remote Working AvailableLevel: Mid-Level Experience: Minimum 2 years' experience in a Data Scientist or similar analytical role About the RoleWe're partnering with an organisation delivering impactful healthcare programmes and are looking for a Senior Data Scientist to help shape data-driven decision-making across the business.",
+   "companyName": "_nology",
+   "companySlug": "_nology",
+   "companyLogo": "",
+   "employmentType": "Full Time",
+   "minSalary": null,
+   "maxSalary": null,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Senior"
+   ],
+   "currency": null,
+   "locationRestrictions": [
+    "United Kingdom"
+   ],
+   "timezoneRestrictions": [
+    0
+   ],
+   "categories": [
+    "Data-Scientist",
+    "Data-Science",
+    "Healthcare-Data-Science",
+    "Analytics",
+    "Remote-Senior-Data-Scientist",
+    "Senior-Data-Scientist-Lead",
+    "Senior-Data-Science",
+    "Senior-Machine-Learning-Data-Scientist",
+    "Senior-Data-Science-Engineer",
+    "Senior-Staff-Data-Scientist",
+    "Senior-Full-Stack-Data-Scientist",
+    "Senior-Data-Science-Engineering"
+   ],
+   "parentCategories": [
+    "Data Science"
+   ],
+   "description": "<h3><strong>Senior Data Scientist | Drive Innovation Through Data | Remote Working Available</strong></h3><p><strong>Level:</strong> Mid-Level <br><strong>Experience:</strong> Minimum 2 years' experience in a Data Scientist or similar analytical role</p><h3><strong>About the Role</strong></h3><p>We're partnering with an organisation delivering impactful healthcare programmes and are looking for a Senior Data Scientist to help shape data-driven decision-making across the business.</p><p>This is an exciting opportunity for a data professional who enjoys transforming complex datasets into meaning",
+   "pubDate": 1789082478,
+   "expiryDate": 1794266478,
+   "applicationLink": "https://himalayas.app/companies/_nology/jobs/senior-data-scientist-drive-innovation-through-data-remote-working-available",
+   "guid": "https://himalayas.app/companies/_nology/jobs/senior-data-scientist-drive-innovation-through-data-remote-working-available"
+  },
+  {
+   "title": "Lead Analyst, Credit Risk Strategy",
+   "excerpt": "Why USAA? At USAA, our mission is to empower our members to achieve financial security through highly competitive products, exceptional service and trusted advice.",
+   "companyName": "USAA",
+   "companySlug": "usaa",
+   "companyLogo": "https://cdn-images.himalayas.app/avhvqj7eeikdfppzcmkojvo6gdvl",
+   "employmentType": "Full Time",
+   "minSalary": 164780,
+   "maxSalary": 314960,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Senior"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Credit-Risk-Strategy",
+    "Credit-Risk-Analytics",
+    "Credit-Risk",
+    "Financial-Risk-Analysis",
+    "Credit-Portfolio-Management",
+    "Credit-Strategy-Analyst",
+    "Lead-Credit-Analyst",
+    "Credit-Risk-Analyst",
+    "Senior-Credit-Analyst",
+    "Credit-and-Enterprise-Risk-Analyst",
+    "Senior-Risk-Management-Analyst",
+    "Senior-Data-Scientist-Credit-Risk-Modeling",
+    "Data-Science"
+   ],
+   "parentCategories": [
+    "Finance"
+   ],
+   "description": "<h3>Why <a href=\"https://himalayas.app/companies/usaa\">USAA</a>?</h3><p>At <a href=\"https://himalayas.app/companies/usaa\">USAA</a>, our mission is to empower our members to achieve financial security through highly competitive products, exceptional service and trusted advice. We seek to be the #1 choice for the military community and their families.</p><p>Embrace a fulfilling career at <a href=\"https://himalayas.app/companies/usaa\">USAA</a>, where our core values \u2013 honesty, integrity, loyalty and service \u2013 define how we treat each other and our members. Be part of what truly makes us special a",
+   "pubDate": 1789076572,
+   "expiryDate": 1794260571,
+   "applicationLink": "https://himalayas.app/companies/usaa/jobs/lead-analyst-credit-risk-strategy-9264717628",
+   "guid": "https://himalayas.app/companies/usaa/jobs/lead-analyst-credit-risk-strategy-9264717628"
+  },
+  {
+   "title": "Senior Data Scientist",
+   "excerpt": "Senior Data ScientistLocation: Remote within the United States About DoximityDoximity is the leading clinical AI company with the largest network of U.",
+   "companyName": "Doximity",
+   "companySlug": "doximity",
+   "companyLogo": "https://cdn-images.himalayas.app/tib8lmbgdfzlrsewcwqv2jz92c49",
+   "employmentType": "Full Time",
+   "minSalary": 130000,
+   "maxSalary": 190000,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Senior"
+   ],
+   "currency": "USD",
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Data-Science",
+    "Data-Scientist",
+    "Machine-Learning",
+    "Product-Analytics",
+    "Senior-Data-Science",
+    "Senior-Staff-Data-Scientist",
+    "Senior-Machine-Learning-Data-Scientist",
+    "Senior-Data-Scientist-Jobs",
+    "Senior-Data-Science-Specialist",
+    "Senior-Data-Scientist-Lead",
+    "Senior-Staff-Data-Science"
+   ],
+   "parentCategories": [
+    "Data Science"
+   ],
+   "description": "<h3><strong>Senior Data Scientist</strong></h3><p><strong>Location:</strong> Remote within the United States</p><h3>About <a href=\"https://himalayas.app/companies/doximity\">Doximity</a>\n</h3><p><a href=\"https://himalayas.app/companies/doximity\">Doximity</a> is the leading clinical AI company with the largest network of U.S. clinicians. <a href=\"https://himalayas.app/companies/doximity\">Doximity</a>\u2019s AI-powered workflow platform is trusted by over 85% of U.S. physicians and 300+ health systems. <a href=\"https://himalayas.app/companies/doximity\">Doximity</a>'s mission is to help clinicians be m",
+   "pubDate": 1789073709,
+   "expiryDate": 1794257708,
+   "applicationLink": "https://himalayas.app/companies/doximity/jobs/senior-data-scientist",
+   "guid": "https://himalayas.app/companies/doximity/jobs/senior-data-scientist"
+  },
+  {
+   "title": "Intern - Data Scientist",
+   "excerpt": "Working on the Automotive team focusing on using data to better understand and connect with current and potential customers.",
+   "companyName": "Acxiom",
+   "companySlug": "acxiom",
+   "companyLogo": "https://cdn-images.himalayas.app/789iawka0po5fttbjqohjkrul5bx",
+   "employmentType": "Intern",
+   "minSalary": null,
+   "maxSalary": null,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Entry-level"
+   ],
+   "currency": null,
+   "locationRestrictions": [
+    "United States"
+   ],
+   "timezoneRestrictions": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    14
+   ],
+   "categories": [
+    "Data-Science",
+    "Marketing-Analytics",
+    "Business-Analysis",
+    "Data-Visualization",
+    "Market-Research",
+    "Data-Scientist-Intern",
+    "Data-Science-Intern",
+    "AI-Data-Science-Intern",
+    "Data-Science-Internships",
+    "Data-Scientist"
+   ],
+   "parentCategories": [
+    "Marketing",
+    "Data Science"
+   ],
+   "description": "Working on the Automotive team focusing on  using  data to better understand and connect with current and potential customers.  The Auto team seeks an intern working toward a master\u2019s degree in business administration (MBA) or similar graduate degree. As part of their studies, ideal candidates should be focused on marketing analytics, data science and visualization, business analysis and (but not limited to) statistics and market research. Familiarity with data platforms, analytics and visualization solutions like Google Cloud Platform, Google Analytics, Tableau and Looker is also preferred.<h",
+   "pubDate": 1789072139,
+   "expiryDate": 1794256138,
+   "applicationLink": "https://himalayas.app/companies/acxiom/jobs/intern-data-scientist",
+   "guid": "https://himalayas.app/companies/acxiom/jobs/intern-data-scientist"
+  },
+  {
+   "title": "Senior Quantitative Analyst/ Sports Betting Mathematician",
+   "excerpt": "GR8_TECH builds B2B iGaming platforms for operators who play to lead.",
+   "companyName": "GR8 Tech",
+   "companySlug": "gr8-tech",
+   "companyLogo": "https://cdn-images.himalayas.app/r301815n88asi42bdu4bjxppio7o",
+   "employmentType": "Full Time",
+   "minSalary": null,
+   "maxSalary": null,
+   "salaryPeriod": "annual",
+   "seniority": [
+    "Senior"
+   ],
+   "currency": null,
+   "locationRestrictions": [],
+   "timezoneRestrictions": [
+    -11,
+    -10,
+    -9.5,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    -4,
+    -3.5,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    3.5,
+    4,
+    4.5,
+    5,
+    5.5,
+    5.75,
+    6,
+    6.5,
+    7,
+    8,
+    8.75,
+    9,
+    9.5,
+    10,
+    10.5,
+    11,
+    12,
+    12.75,
+    13,
+    14
+   ],
+   "categories": [
+    "Quantitative-Analysis",
+    "Sports-Betting",
+    "Sports-Trading",
+    "Risk-Management",
+    "Sports-Mathematician",
+    "Sports-Betting-Analyst",
+    "Senior-Gaming-Analytics-Specialist",
+    "Senior-Quantitative-Researcher",
+    "Sports-Analytics-Specialist",
+    "Quantitative-Risk-Analyst",
+    "Sports-Betting-Analytics",
+    "Sports-Data-Scientist",
+    "Senior-Machine-Learning-Mathematician",
+    "Data-Science"
+   ],
+   "parentCategories": [],
+   "description": "<div class=\"content-intro\">\n<p><strong>GR8_TECH builds B2B iGaming platforms for operators who play to lead.</strong></p>\n<p>We deliver full-cycle, high-impact tech designed to scale \u2014 from seamless integrations and expert consulting to long-term operational support. Our platform powers millions of active players and drives real business growth. Call it what it is: the iGaming Platform for Champions.</p>\n<p>With 1000+ GR8 people across locations and time zones, we don\u2019t just ship technology \u2014 we help operators build success stories across brands, markets, and geos.</p>\n<h3>Our ambition drives ",
+   "pubDate": 1789070858,
+   "expiryDate": 1794254858,
+   "applicationLink": "https://himalayas.app/companies/gr8-tech/jobs/senior-quantitative-analyst-sports-betting-mathematician",
+   "guid": "https://himalayas.app/companies/gr8-tech/jobs/senior-quantitative-analyst-sports-betting-mathematician"
+  }
+ ]
+}
