@@ -1,0 +1,862 @@
+# The census universe: every company whose board is fetched daily.
+#
+# Companies that resolved to a Greenhouse board are collected from day one. Entries with
+# `ats: unknown` are parked DELIBERATELY - they are picked up in Phase 2 when the Lever,
+# Ashby and Workable adapters land. Do not delete them.
+#
+# Every token was verified against the board's self-reported `company_name`, which is the
+# only available check that a guessed slug belongs to the company we meant. That check
+# caught three wrong boards: 'carbon' (Carbon, Inc., not Carbon Health), 'wise' (an
+# unrelated sales board) and 'remote' (General Assembly). A wrong token would have
+# quietly attributed another company's hiring to this one for the life of the panel.
+#
+# Edit freely - this is config, not code. Adding a company takes effect on the next run.
+
+companies:
+  - name: "Affirm"
+    slug: affirm
+    ats: greenhouse
+    token: affirm
+    added: 2026-09-11
+    source: manual
+    notes: "207 open reqs at resolution"
+  - name: "Airbnb"
+    slug: airbnb
+    ats: greenhouse
+    token: airbnb
+    added: 2026-09-11
+    source: manual
+    notes: "165 open reqs at resolution"
+  - name: "Airtable"
+    slug: airtable
+    ats: greenhouse
+    token: airtable
+    added: 2026-09-11
+    source: manual
+    notes: "16 open reqs at resolution"
+  - name: "Alloy"
+    slug: alloy
+    ats: greenhouse
+    token: alloy
+    added: 2026-09-11
+    source: manual
+    notes: "25 open reqs at resolution"
+  - name: "Amplitude"
+    slug: amplitude
+    ats: greenhouse
+    token: amplitude
+    added: 2026-09-11
+    source: manual
+    notes: "38 open reqs at resolution"
+  - name: "Anthropic"
+    slug: anthropic
+    ats: greenhouse
+    token: anthropic
+    added: 2026-09-11
+    source: manual
+    notes: "599 open reqs at resolution"
+  - name: "Attentive"
+    slug: attentive
+    ats: greenhouse
+    token: attentive
+    added: 2026-09-11
+    source: manual
+    notes: "34 open reqs at resolution"
+  - name: "Betterment"
+    slug: betterment
+    ats: greenhouse
+    token: betterment
+    added: 2026-09-11
+    source: manual
+    notes: "24 open reqs at resolution"
+  - name: "Block"
+    slug: block
+    ats: greenhouse
+    token: block
+    added: 2026-09-11
+    source: manual
+    notes: "207 open reqs at resolution"
+  - name: "Braze"
+    slug: braze
+    ats: greenhouse
+    token: braze
+    added: 2026-09-11
+    source: manual
+    notes: "282 open reqs at resolution"
+  - name: "Brex"
+    slug: brex
+    ats: greenhouse
+    token: brex
+    added: 2026-09-11
+    source: manual
+    notes: "273 open reqs at resolution"
+  - name: "Calendly"
+    slug: calendly
+    ats: greenhouse
+    token: calendly
+    added: 2026-09-11
+    source: manual
+    notes: "11 open reqs at resolution"
+  - name: "Carta"
+    slug: carta
+    ats: greenhouse
+    token: carta
+    added: 2026-09-11
+    source: manual
+    notes: "64 open reqs at resolution"
+  - name: "Chime"
+    slug: chime
+    ats: greenhouse
+    token: chime
+    added: 2026-09-11
+    source: manual
+    notes: "70 open reqs at resolution; board self-reports legal name 'Chime Financial, Inc' - verified correct"
+  - name: "Cloudflare"
+    slug: cloudflare
+    ats: greenhouse
+    token: cloudflare
+    added: 2026-09-11
+    source: manual
+    notes: "358 open reqs at resolution"
+  - name: "Coinbase"
+    slug: coinbase
+    ats: greenhouse
+    token: coinbase
+    added: 2026-09-11
+    source: manual
+    notes: "219 open reqs at resolution"
+  - name: "Customer.io"
+    slug: customer-io
+    ats: greenhouse
+    token: customerio
+    added: 2026-09-11
+    source: manual
+    notes: "27 open reqs at resolution"
+  - name: "Databricks"
+    slug: databricks
+    ats: greenhouse
+    token: databricks
+    added: 2026-09-11
+    source: manual
+    notes: "886 open reqs at resolution"
+  - name: "Datadog"
+    slug: datadog
+    ats: greenhouse
+    token: datadog
+    added: 2026-09-11
+    source: manual
+    notes: "446 open reqs at resolution"
+  - name: "Discord"
+    slug: discord
+    ats: greenhouse
+    token: discord
+    added: 2026-09-11
+    source: manual
+    notes: "46 open reqs at resolution"
+  - name: "Doximity"
+    slug: doximity
+    ats: greenhouse
+    token: doximity
+    added: 2026-09-11
+    source: manual
+    notes: "14 open reqs at resolution"
+  - name: "Duolingo"
+    slug: duolingo
+    ats: greenhouse
+    token: duolingo
+    added: 2026-09-11
+    source: manual
+    notes: "80 open reqs at resolution"
+  - name: "Elastic"
+    slug: elastic
+    ats: greenhouse
+    token: elastic
+    added: 2026-09-11
+    source: manual
+    notes: "352 open reqs at resolution"
+  - name: "Faire"
+    slug: faire
+    ats: greenhouse
+    token: faire
+    added: 2026-09-11
+    source: manual
+    notes: "63 open reqs at resolution"
+  - name: "Figma"
+    slug: figma
+    ats: greenhouse
+    token: figma
+    added: 2026-09-11
+    source: manual
+    notes: "153 open reqs at resolution"
+  - name: "Fivetran"
+    slug: fivetran
+    ats: greenhouse
+    token: fivetran
+    added: 2026-09-11
+    source: manual
+    notes: "197 open reqs at resolution"
+  - name: "Flexport"
+    slug: flexport
+    ats: greenhouse
+    token: flexport
+    added: 2026-09-11
+    source: manual
+    notes: "179 open reqs at resolution"
+  - name: "Gemini"
+    slug: gemini
+    ats: greenhouse
+    token: gemini
+    added: 2026-09-11
+    source: manual
+    notes: "33 open reqs at resolution"
+  - name: "GitLab"
+    slug: gitlab
+    ats: greenhouse
+    token: gitlab
+    added: 2026-09-11
+    source: manual
+    notes: "226 open reqs at resolution"
+  - name: "GOAT Group"
+    slug: goat-group
+    ats: greenhouse
+    token: goatgroup
+    added: 2026-09-11
+    source: manual
+    notes: "3 open reqs at resolution"
+  - name: "Grafana Labs"
+    slug: grafana-labs
+    ats: greenhouse
+    token: grafanalabs
+    added: 2026-09-11
+    source: manual
+    notes: "116 open reqs at resolution"
+  - name: "Gusto"
+    slug: gusto
+    ats: greenhouse
+    token: gusto
+    added: 2026-09-11
+    source: manual
+    notes: "95 open reqs at resolution"
+  - name: "Hex Technologies"
+    slug: hex-technologies
+    ats: greenhouse
+    token: hextechnologies
+    added: 2026-09-11
+    source: manual
+    notes: "32 open reqs at resolution"
+  - name: "Instacart"
+    slug: instacart
+    ats: greenhouse
+    token: instacart
+    added: 2026-09-11
+    source: manual
+    notes: "106 open reqs at resolution"
+  - name: "Intercom"
+    slug: intercom
+    ats: greenhouse
+    token: intercom
+    added: 2026-09-11
+    source: manual
+    notes: "121 open reqs at resolution; board self-reports as 'Fin' (company rebrand) - verified correct"
+  - name: "Iterable"
+    slug: iterable
+    ats: greenhouse
+    token: iterable
+    added: 2026-09-11
+    source: manual
+    notes: "17 open reqs at resolution"
+  - name: "Klaviyo"
+    slug: klaviyo
+    ats: greenhouse
+    token: klaviyo
+    added: 2026-09-11
+    source: manual
+    notes: "137 open reqs at resolution"
+  - name: "LaunchDarkly"
+    slug: launchdarkly
+    ats: greenhouse
+    token: launchdarkly
+    added: 2026-09-11
+    source: manual
+    notes: "54 open reqs at resolution"
+  - name: "Lithic"
+    slug: lithic
+    ats: greenhouse
+    token: lithic
+    added: 2026-09-11
+    source: manual
+    notes: "10 open reqs at resolution"
+  - name: "Maven Clinic"
+    slug: maven-clinic
+    ats: greenhouse
+    token: mavenclinic
+    added: 2026-09-11
+    source: manual
+    notes: "34 open reqs at resolution"
+  - name: "Mercury"
+    slug: mercury
+    ats: greenhouse
+    token: mercury
+    added: 2026-09-11
+    source: manual
+    notes: "61 open reqs at resolution"
+  - name: "Mixpanel"
+    slug: mixpanel
+    ats: greenhouse
+    token: mixpanel
+    added: 2026-09-11
+    source: manual
+    notes: "84 open reqs at resolution"
+  - name: "Netlify"
+    slug: netlify
+    ats: greenhouse
+    token: netlify
+    added: 2026-09-11
+    source: manual
+    notes: "1 open reqs at resolution"
+  - name: "Omada Health"
+    slug: omada-health
+    ats: greenhouse
+    token: omadahealth
+    added: 2026-09-11
+    source: manual
+    notes: "17 open reqs at resolution"
+  - name: "Oscar Health"
+    slug: oscar-health
+    ats: greenhouse
+    token: oscar
+    added: 2026-09-11
+    source: manual
+    notes: "289 open reqs at resolution"
+  - name: "Payoneer"
+    slug: payoneer
+    ats: greenhouse
+    token: payoneer
+    added: 2026-09-11
+    source: manual
+    notes: "121 open reqs at resolution"
+  - name: "Pinterest"
+    slug: pinterest
+    ats: greenhouse
+    token: pinterest
+    added: 2026-09-11
+    source: manual
+    notes: "183 open reqs at resolution"
+  - name: "Reddit"
+    slug: reddit
+    ats: greenhouse
+    token: reddit
+    added: 2026-09-11
+    source: manual
+    notes: "148 open reqs at resolution"
+  - name: "Remote.com"
+    slug: remote-com
+    ats: greenhouse
+    token: remotecom
+    added: 2026-09-11
+    source: manual
+    notes: "175 open reqs at resolution; token 'remote' is General Assembly's board, not this one"
+  - name: "Robinhood"
+    slug: robinhood
+    ats: greenhouse
+    token: robinhood
+    added: 2026-09-11
+    source: manual
+    notes: "126 open reqs at resolution"
+  - name: "Samsara"
+    slug: samsara
+    ats: greenhouse
+    token: samsara
+    added: 2026-09-11
+    source: manual
+    notes: "261 open reqs at resolution"
+  - name: "Scale AI"
+    slug: scale-ai
+    ats: greenhouse
+    token: scaleai
+    added: 2026-09-11
+    source: manual
+    notes: "223 open reqs at resolution"
+  - name: "Sigma Computing"
+    slug: sigma-computing
+    ats: greenhouse
+    token: sigmacomputing
+    added: 2026-09-11
+    source: manual
+    notes: "64 open reqs at resolution"
+  - name: "StockX"
+    slug: stockx
+    ats: greenhouse
+    token: stockx
+    added: 2026-09-11
+    source: manual
+    notes: "33 open reqs at resolution"
+  - name: "Stripe"
+    slug: stripe
+    ats: greenhouse
+    token: stripe
+    added: 2026-09-11
+    source: manual
+    notes: "634 open reqs at resolution"
+  - name: "Toast"
+    slug: toast
+    ats: greenhouse
+    token: toast
+    added: 2026-09-11
+    source: manual
+    notes: "330 open reqs at resolution"
+  - name: "Upwork"
+    slug: upwork
+    ats: greenhouse
+    token: upwork
+    added: 2026-09-11
+    source: manual
+    notes: "6 open reqs at resolution"
+  - name: "Vercel"
+    slug: vercel
+    ats: greenhouse
+    token: vercel
+    added: 2026-09-11
+    source: manual
+    notes: "86 open reqs at resolution"
+  - name: "Verkada"
+    slug: verkada
+    ats: greenhouse
+    token: verkada
+    added: 2026-09-11
+    source: manual
+    notes: "294 open reqs at resolution"
+  - name: "Webflow"
+    slug: webflow
+    ats: greenhouse
+    token: webflow
+    added: 2026-09-11
+    source: manual
+    notes: "25 open reqs at resolution"
+  - name: "Zocdoc"
+    slug: zocdoc
+    ats: greenhouse
+    token: zocdoc
+    added: 2026-09-11
+    source: manual
+    notes: "54 open reqs at resolution"
+  - name: "Airbyte"
+    slug: airbyte
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Airwallex"
+    slug: airwallex
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Alma"
+    slug: alma
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Automattic"
+    slug: automattic
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Canva"
+    slug: canva
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Carbon Health"
+    slug: carbon-health
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "not on Greenhouse (token 'carbon' is Carbon, Inc., a different company); park for Phase 2"
+  - name: "Cedar"
+    slug: cedar
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Census"
+    slug: census
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Circle"
+    slug: circle
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Clari"
+    slug: clari
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Column"
+    slug: column
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Confluent"
+    slug: confluent
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "dbt Labs"
+    slug: dbt-labs
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Deel"
+    slug: deel
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Depop"
+    slug: depop
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "DoorDash"
+    slug: doordash
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Eppo"
+    slug: eppo
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Etsy"
+    slug: etsy
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Fiverr"
+    slug: fiverr
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Flywire"
+    slug: flywire
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Front"
+    slug: front
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Gong"
+    slug: gong
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "HashiCorp"
+    slug: hashicorp
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Headway"
+    slug: headway
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Hinge Health"
+    slug: hinge-health
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Hipcamp"
+    slug: hipcamp
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Included Health"
+    slug: included-health
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Kraken"
+    slug: kraken
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Linear"
+    slug: linear
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Loom"
+    slug: loom
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Marqeta"
+    slug: marqeta
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Middesk"
+    slug: middesk
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Miro"
+    slug: miro
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Modern Treasury"
+    slug: modern-treasury
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Navan"
+    slug: navan
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Notion"
+    slug: notion
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "OpenAI"
+    slug: openai
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Optimizely"
+    slug: optimizely
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Outreach"
+    slug: outreach
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Persona"
+    slug: persona
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Pilot"
+    slug: pilot
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Plaid"
+    slug: plaid
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Poshmark"
+    slug: poshmark
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Ramp"
+    slug: ramp
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Retool"
+    slug: retool
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Ro"
+    slug: ro
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Rover"
+    slug: rover
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Sardine"
+    slug: sardine
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Segment"
+    slug: segment
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Snowflake"
+    slug: snowflake
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Spring Health"
+    slug: spring-health
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Statsig"
+    slug: statsig
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Thumbtack"
+    slug: thumbtack
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Turo"
+    slug: turo
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Unit"
+    slug: unit
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Vinted"
+    slug: vinted
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Wealthfront"
+    slug: wealthfront
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Whatnot"
+    slug: whatnot
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"
+  - name: "Wise"
+    slug: wise
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "not on Greenhouse (token 'wise' is an unrelated field-sales board); park for Phase 2"
+  - name: "Zapier"
+    slug: zapier
+    ats: unknown
+    token: null
+    added: 2026-09-11
+    source: manual
+    notes: "no Greenhouse board found; park for Phase 2 vendor probing"

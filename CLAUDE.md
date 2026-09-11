@@ -283,3 +283,43 @@ science/analytics/insights leadership. An ML or data-engineering manager is clas
 its own IC family with `seniority=manager` instead (e.g. "Director of Machine Learning
 Engineering" → `ml_eng` + `director`). This keeps the DS-manager headline a clean read on DS
 org growth, while "manager-level reqs in family X" stays answerable by querying seniority.
+
+### 2026-09-11 — source config and watchlist (61 boards)
+
+**Himalayas query terms must be measured, never assumed.** Each candidate term was run
+against the live search endpoint and scored by how many *classified, tracked* rows it
+yielded. Several obvious terms are effectively dead: `q=analytics` returns **0 jobs**
+(while reporting `totalCount: 5000`), `q=data analyst` returns **0**, and `q=data engineer`
+returns **1**. Longer phrases work fine. A plausible-looking term can contribute nothing at
+all, so `config/sources.yaml` carries only terms verified to return results. Final set: 12
+terms, `query_set_version: 2026-09-11.1`.
+
+**Pagination budget.** `max_pages_per_query: 5` with `lookback_days: 4`: paging stops once
+a whole page predates the lookback window. Since `sort=recent` decays ~2–3 days per page,
+steady state is ~2 pages/query (~24 requests/day) and the 5-page budget only gets spent
+catching up after a missed run. Worst case 60 requests/day.
+
+**`tools/resolve_ats.py` verifies board identity, and that caught real errors.** Greenhouse
+echoes `company_name` on every posting, which is the only available check that a *guessed*
+token belongs to the company intended. Comparing it against the requested name flagged five
+mismatches, three of which were genuinely the wrong board:
+
+| Requested | Token guessed | Board actually belongs to | Outcome |
+|---|---|---|---|
+| Carbon Health | `carbon` | Carbon, Inc. (3D printing) | not on Greenhouse — parked |
+| Wise | `wise` | an unrelated field-sales board | not on Greenhouse — parked |
+| Remote.com | `remote` | General Assembly | corrected to `remotecom` (175 reqs) |
+| Chime | `chime` | "Chime Financial, Inc" | correct — legal name |
+| Intercom | `intercom` | "Fin" | correct — company rebrand |
+
+Without that check, three companies' hiring would have been silently attributed to the
+wrong employer **for the life of the panel**, and the org-growth signal for each would have
+been fiction. Any future watchlist addition must clear the same check.
+
+**Token-level dedupe added.** "Amplitude" and "Amplitude Analytics" both resolved to token
+`amplitude`, which would have fetched that board twice and doubled its req counts. The
+watchlist writer now guarantees one entry per `(ats, token)`.
+
+**Result: 61 Greenhouse boards resolved, 60 parked as `ats: unknown`** for Phase 2's Lever /
+Ashby / Workable adapters. Acceptance criterion (≥40) met. The parked entries are not
+failures and must not be deleted — many are simply on another vendor.

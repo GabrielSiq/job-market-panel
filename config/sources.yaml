@@ -1,0 +1,82 @@
+# Source configuration.
+#
+# The Himalayas query set is FIXED and VERSIONED. Changing it changes the series, so
+# `query_set_version` is stamped on every row it produces: a jump in volume can then be
+# attributed to a query change rather than mistaken for a market movement.
+
+http:
+  # These are public endpoints used as intended. Be a good citizen: modest concurrency,
+  # a real User-Agent with a contact URL, and no retry storms.
+  user_agent: "job-market-panel/0.1 (+https://github.com/GabrielSiq/job-market-panel)"
+  timeout_s: 30
+  max_retries: 3
+  backoff_base_s: 2.0
+
+sources:
+  himalayas:
+    enabled: true
+    role: discovery          # seeds the watchlist; NOT a market denominator
+    base_url: "https://himalayas.app"
+    search_path: "/jobs/api/search"
+
+    # Undocumented rate limit; the API's own 429 text says "wait 60 seconds".
+    # Requests are serial and spaced. The real ceiling is being measured in week one.
+    request_spacing_s: 0.8
+    rate_limit_sleep_s: 60
+    rate_limit_max_retries: 2
+
+    query_set_version: "2026-09-11.1"
+    query_set:
+      # Every term below was MEASURED to return results. That check is not optional:
+      # `q=analytics` returns totalCount 5000 with ZERO jobs, and `q=data analyst` and
+      # `q=data engineer` are similarly near-dead, while longer phrases work fine. A
+      # plausible-looking term can silently contribute nothing.
+      #
+      # Deliberately no `country` or `seniority` filter: classification happens locally
+      # and uniformly, so over-fetching and filtering here beats making the API decide.
+      # Search relevance is loose anyway (q="data scientist" returns actuaries and
+      # toxicologists), so most rows are discarded by the classifier regardless.
+      - "data scientist"
+      - "senior data scientist"
+      - "product data scientist"
+      - "data science"
+      - "data science manager"      # the DS-manager growth signal
+      - "decision scientist"
+      - "applied scientist"
+      - "machine learning engineer"
+      - "analytics engineer"
+      - "quantitative analyst"
+      - "product analyst"
+      - "business intelligence"
+
+    # Pagination. `sort=recent` decays roughly 2-3 days per page, so a daily run needs
+    # only the first page or two; the budget exists for catching up after a missed run.
+    #
+    # NEVER terminate on page size: /search ignores `limit` and returns 17-20 items per
+    # page while reporting `limit: 20`, so `while len(page) == limit` exits on page one.
+    # Terminate on an empty page, on the lookback cutoff, or on this budget.
+    sort: "recent"
+    max_pages_per_query: 5
+    lookback_days: 4          # stop paging once a whole page predates this
+    expected_page_size: 20    # advisory only — real pages run 17-20
+
+  greenhouse:
+    enabled: true
+    role: census              # the actual instrument: every open req at every watchlist company
+    base_url: "https://boards-api.greenhouse.io"
+    path_template: "/v1/boards/{token}/jobs?content=true"
+
+    # No auth on GET and not rate-limited, but stay polite.
+    concurrency: 8
+    request_spacing_s: 0.0
+
+    # A dead board is that company's problem alone: a 404 logs an error for that company
+    # and returns zero rows. It must never fail the run, and must never mark that
+    # company's jobs disappeared (correctness rule 1, per-company isolation).
+    per_company_isolation: true
+
+    # Capture ALL postings per watchlist company, not just DS ones. Non-DS reqs are the
+    # denominator for DS-share-of-total and total-headcount trend, and they cost nothing
+    # extra once the board is being fetched. Slim event rows only; descriptions are
+    # stored for tracked families only.
+    capture_all_families: true
