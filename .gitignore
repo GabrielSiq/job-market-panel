@@ -1,0 +1,19 @@
+# Derived analytical store — regenerable from the event log (spec 3.5)
+panel.duckdb
+panel.duckdb.wal
+
+# Never let the private spec land in the public repo (spec 0, 3.2)
+JOB_SEARCH_SYSTEM_SPEC.md
+bank.yaml
+criteria.yaml
+network.csv
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
