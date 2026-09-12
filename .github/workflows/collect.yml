@@ -1,0 +1,78 @@
+# The daily panel collection. This is the job that must not silently stop.
+#
+# Why a public repo: GitHub Actions minutes are free and unlimited on public repositories
+# using standard runners, and `schedule` reliably fires there. This job runs 365 days a
+# year, so it lives where minutes are free and nothing personal is stored.
+#
+# Two scheduling caveats that have bitten people, both handled here:
+#
+#  - Scheduled workflows are disabled after 60 days with NO repository activity, silently:
+#    no email, no log entry. The daily commit below is that activity, so the collector
+#    keeps itself alive. If a long stretch produces no changes, the "touch a heartbeat
+#    file" step still forces a commit.
+#  - Actions cron is not punctual. Runs are delayed under load and queued jobs can be
+#    dropped entirely. Nothing here depends on an exact minute, and the collector is
+#    idempotent, so a missed run is fixed by re-firing it manually with no duplicate data.
+#
+# 07:17 UTC is deliberately off the hour: top-of-hour slots are the most congested and the
+# most likely to be delayed or dropped.
+
+name: collect
+
+on:
+  schedule:
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Verify the contracts before touching live data
+        # The adapter fixtures and correctness-rule tests are the gate. If a vendor changed
+        # shape, fail here rather than writing a day of corrupt rows into an append-only log
+        # that is meant to be immutable.
+        run: uv run pytest
+
+      - name: Collect
+        run: uv run python -m src.collect
+
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date -u +%Y-%m-%dT%H:%M:%SZ > data/.last_run
+          git add data
+          if git diff --staged --quiet; then
+            echo "nothing to commit (unexpected - the heartbeat should always change)"
+          else
+            git commit -m "collect: $(date -u +%F)"
+            # Another run may have landed between checkout and here.
+            git pull --rebase --autostash origin main || true
+            git push
+          fi
+
+      - name: Healthcheck
+        # Runs AFTER the commit so a bad day's data is still captured for inspection, and
+        # fails the job so the run goes red. Silent failure is the main threat to this
+        # project: a collector that appears to run but writes nothing, noticed in December
+        # when the baseline it was supposed to build is already lost.
+        run: uv run python tools/healthcheck.py --days 10
