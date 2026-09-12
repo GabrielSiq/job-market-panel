@@ -81,12 +81,54 @@ silent. Never compute survival from Himalayas rows.
 
 ## Current status
 
-**Phase 1 — in progress (started 2026-09-11).** Two-source collector: Himalayas (discovery)
-+ Greenhouse (census). Goal is data flowing within days and the Section 6 contracts locked.
+**Phase 1 is built and collecting, as of 2026-09-12 (UTC). It is now in its observation
+week.** Two-source collector: Himalayas (discovery) + Greenhouse (census, 61 boards).
+Contracts locked, 107 tests passing, daily workflow verified green in CI.
 
-Phase 2+ (more ATS vendors, watchlist growth, analysis/reports, resume pipeline, daily brief)
-are **out of scope** until Phase 1 has run unattended for at least a few days. Do not start
-Phase N+1 in the session that finished Phase N — the observation period is part of the build.
+All Phase 1 acceptance criteria are met except one, which can only pass with time:
+
+| Criterion | Status |
+|---|---|
+| Both sources produce events, plausible counts | done — 9,821 postings, 62/62 scopes diffable |
+| Re-running twice in one day is idempotent | done — verified live, zero duplicate job_ids |
+| A broken source yields a failed run and **zero** disappearances | done — tested, and seen live |
+| A simulated 429 yields `partial` and **zero** disappearances | done — tested |
+| ≥40 companies on working Greenhouse tokens | done — 61 resolved and identity-verified |
+| **Seven consecutive unattended daily commits** | **pending — the observation week** |
+
+### What to do next session (do NOT start Phase 2 yet)
+
+The observation period is part of the build. Spec 11.3: silent failure is the main threat,
+and the first week is the risky one.
+
+1. `uv run python tools/healthcheck.py` — ten seconds, exits non-zero on a problem.
+2. **Day 2 is the real test.** Appearances must fall sharply from day 1's bulk load of
+   9,821. If day 2 reports the whole corpus as "appeared" again, `job_id` is not stable
+   and the survival dataset is fiction — the healthcheck flags this automatically.
+3. Confirm the first *scheduled* (not manually dispatched) run fires at 07:17 UTC.
+4. Watch the first disappearances arrive around day 3 — they need two consecutive misses.
+5. Record the steady-state daily footprint in the README (day 1 was 9.9 MB, inflated by
+   the bulk load; `data/latest/new_postings.jsonl` alone was 8.3 MB and should collapse to
+   a few hundred KB once "new" means new).
+
+Phase 2+ (more ATS vendors, watchlist growth to 150–250, analysis/reports, resume pipeline,
+daily brief) are **out of scope** until the above is clean. Do not start Phase N+1 in the
+session that finished Phase N.
+
+### Still open
+
+- **Himalayas' practical 429 ceiling is unmeasured.** The collector uses 44 requests/run
+  against a 60 worst case and has never been limited. Deliberately not probed for.
+- **The `unknown` remote bucket is still 35%** after the description pass. A "named city
+  implies onsite" rule would likely capture much of the rest — the hand-labelled sample
+  supports it — but it needs its own measurement before shipping.
+- **Cross-source dedupe is deferred to Phase 2** as an analysis-layer `dedupe_key`. A job
+  seen on both Himalayas and its company's Greenhouse board is currently two rows.
+- **The Himalayas `guid` is a title-slug URL**, so a *retitled* posting produces a false
+  disappear+appear pair. Same mitigation.
+- **Himalayas surfaced companies absent from the watchlist** (Liberty Mutual, Humana,
+  Westinghouse) on day one. Those are Phase 2 watchlist candidates — the discovery source
+  doing its job.
 
 ## Correctness rules (get these wrong and the dataset is worthless)
 
