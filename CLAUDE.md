@@ -368,3 +368,60 @@ from raw is free by design and a wrong guess baked in today would not be.
 **Live per-company isolation confirmed:** a deliberately broken token among 7 real boards
 produced `status=error`, zero rows, and exclusion from diffing, while the other 7 boards
 diffed normally.
+
+### 2026-09-12 (UTC) — collector live, first data collected
+
+`src/storage.py`, `src/collect.py`, `tools/healthcheck.py`. **First real collection:
+9,819 postings across 62 scopes in 72 seconds, 62/62 diffable.**
+
+| | count |
+|---|---|
+| Greenhouse (census, 61 boards) | 9,234 |
+| Himalayas (discovery, 44 requests) | 585 |
+| `product_ds` | 193 |
+| **`ds_manager` — the growth signal** | **58** |
+| `ml_eng` / `analyst` / `data_eng` / `analytics_eng` | 482 / 311 / 59 / 14 |
+| full records stored (tracked families) | 1,117 |
+| with a disclosed salary band | 263 (all Himalayas; Greenhouse has no salary field) |
+
+**Deliberate departure from correctness rule 4: `data/state/pending_misses.json`.** The
+two-miss rule must know whether a job was *also* absent on the previous run, and the event
+log records only transitions — never "seen today" — so that fact is genuinely not
+reconstructible from it. The rule's stated concern is git bloat from rewriting full state
+daily; this file holds only in-flight candidates (a few hundred rows against ~10k), so it
+is a few KB. Storing the full daily observed set instead would cost roughly 55 MB/year and
+blow the storage budget alone. Losing the file costs exactly one extra day of latency
+before a closure is recorded — the kind of failure spec principle 2 says to accept.
+
+**A failed scope must not advance the miss counter.** Subtle and nearly invisible: if it
+did, a two-day source outage would mature every open req into a confirmed disappearance
+the moment the source came back. Covered by a test that simulates five consecutive
+outage days and asserts the pending set stays empty.
+
+**Idempotency is structural, not defensive.** State is replayed from days *before* today,
+so a same-day re-run recomputes an identical event set instead of appending. Verified live:
+second run produced zero duplicate job_ids and zero disappearances. The files did change,
+for two legitimate reasons worth knowing: a company genuinely removed a req between the two
+runs (9,234 → 9,233), and `fetched_at` records *when we looked*, which is a fact about the
+observation and must not be frozen to make a checksum stable.
+
+**Consequence of that design, accepted:** a posting that appears and vanishes between two
+same-day runs leaves no trace at all, because the second run overwrites the day's file and
+never had it in prior state. That is the correct reading — we did not observe it at the end
+of the day — and it is the price of same-day idempotency.
+
+**Gzip output is content-deterministic** (`mtime=0`, empty filename in the header).
+Otherwise every re-run would rewrite the header and look like a change to git.
+
+**`healthcheck.py` uses the UTC date, matching the collector.** Using the local date made
+it report phantom gaps for part of every day — it claimed "no collection runs found" while
+the day's file sat on disk.
+
+**Descriptions are captured on first appearance only**, not re-stored when they change.
+Phase 4 scores a posting near its first sighting, and re-storing ~7 KB of description per
+posting per day would multiply the storage budget for almost no information. Revisit in
+Phase 3, where DuckDB makes a change-detection lookup cheap.
+
+**Discovery is already working:** Himalayas surfaced DS-manager reqs at companies absent
+from the watchlist (Liberty Mutual, Humana, Westinghouse). Those are Phase 2 watchlist
+candidates — exactly the job this source exists to do.
