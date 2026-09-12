@@ -91,6 +91,7 @@ class RemoteSource(StrEnum):
     ATS_FLAG = "ats_flag"  # a first-class boolean (Ashby isRemote)
     METADATA_FIELD = "metadata_field"  # a board's custom "Workplace Type" field
     LOCATION_STRING = "location_string"  # inferred by matching the location text
+    DESCRIPTION_TEXT = "description_text"  # inferred from work-location prose in the JD
     UNKNOWN = "unknown"
 
 

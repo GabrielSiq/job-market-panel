@@ -129,7 +129,10 @@ recency decaying roughly 2–3 days per page. Search relevance is loose — that
 actuaries, toxicologists and backend engineers — so the collector over-fetches broadly and
 classifies locally.
 
-*Practical 429 ceiling: to be measured in week one.*
+**Observed load:** the 12-term query set completes in 44 requests per run with the 4-day lookback
+cutoff, against a 60-request worst case. No 429 has been seen at that rate with requests spaced
+0.8s apart. *The practical ceiling remains unmeasured — the collector stays well beneath it rather
+than probing for it.*
 
 ### Greenhouse: remote status is mostly inferred, and that inference has real error
 
@@ -143,7 +146,30 @@ Location strings are inconsistent in ways that matter: `"United States"` and `"U
 remote shares ranging from 86% on one board to **0% of 153 postings** on another — the latter
 being a company that simply never writes "remote" in a location field.
 
-*Measured remote-inference error rate on a hand-labelled sample: to be recorded.*
+**Measured on a hand-labelled sample of 100 postings** (ground truth assigned by reading each
+posting's location field together with the work-location sentences in its description):
+
+| Evidence used | Share of sample | Accuracy |
+|---|---|---|
+| Board "Workplace Type" metadata field | 15% | **100%** |
+| Location string, where decisive | 40% | **97.5%** |
+| Work-location prose in the description | 25% | **100%** |
+| No determinable evidence — recorded as NULL | 20% | — |
+
+Overall **98.8%** accurate on the 80 postings it decides. The single error was a board whose
+location read `"Remote, USA"` while its description carried `#LI-Onsite`; the location is treated
+as the more specific field, and that ordering is worth one error for the cases it gets right.
+
+The description pass was added because of what the sample showed: **91% of postings with no
+determinable location were in fact onsite or hybrid, and said so plainly in their own text**.
+Leaving them NULL was honest but discarded recoverable signal on a majority of the panel. It runs
+at collection time by necessity — descriptions are stored only for tracked families, so for most
+postings the text is gone once the run ends, making the inference impossible rather than merely
+deferred. Across the full panel it cut NULLs from 59% to 35%.
+
+Bare `"remote"` is deliberately never treated as a signal. It appears in benefits boilerplate
+("Remote work, medical insurance, flexible time off…") on strictly onsite postings, and in
+"remote sensing", a real data-science domain. Every pattern requires a qualifier.
 
 Greenhouse does expose `first_published`, which is a better posting date than `updated_at`, and
 `departments`, which gives a usable denominator for DS share of hiring.

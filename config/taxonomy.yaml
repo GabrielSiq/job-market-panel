@@ -17,7 +17,7 @@
 # lean on from either source, so the title is the only field present and comparable
 # across every source.
 
-version: "2026-09-11.2"
+version: "2026-09-12.1"
 
 role_families:
   # Evaluated IN ORDER; first match wins. Order is load-bearing: "Data Science Manager"
@@ -172,6 +172,40 @@ remote_inference:
     - '\btelecommut'
     - '\bvirtual\b'
     - '\bhome-?based\b'
+
+  # Applied to the job description when neither the metadata field nor the location string
+  # is decisive. This recovers most of what would otherwise be permanently unknowable:
+  # a hand-labelled sample of 100 ATS postings found that 91% of rows with no determinable
+  # location were in fact onsite or hybrid, and said so plainly in their description.
+  #
+  # This MUST happen at collection time. Descriptions are only stored for tracked families,
+  # so for the other ~89% of postings the description is gone after the run - the inference
+  # is not merely deferred, it becomes impossible.
+  #
+  # Structured signals only. Bare "remote" is a trap: it appears in benefits boilerplate
+  # ("Remote work, medical insurance, flexible time off...") on postings that are strictly
+  # onsite, and in "remote sensing", a real data-science domain. Every pattern below
+  # requires a qualifier that pins the word to a work arrangement.
+  description_negative_patterns:
+    - '#li-?onsite'
+    - '#li-?hybrid'
+    - '\bhybrid\b[^.]{0,40}\b(work|working|role|position|policy|schedule|environment|model|employee|arrangement)\b'
+    - '\b(work|working|role|position|policy|schedule|employee)s?\b[^.]{0,40}\bhybrid\b'
+    - '\bin-?office\b'
+    - '\bin the office\b'
+    - '\bon-?site at\b'
+    - '\d\+? ?days? (a|per) week'
+    - '\bin (one of )?our offices? at least\b'
+    - '\bin-?person (attendance|collaboration) expected\b'
+
+  description_positive_patterns:
+    - '#li-?remote'
+    - '\b(fully|100%) remote\b'
+    - '\bremote-?first\b'
+    - '\bthis (is a|role is a?|position is a?|opportunity is a?) ?remote\b'
+    - '\bremote (position|role|opportunity)\b'
+    - '\bremote[- ]eligible\b'
+    - '\bwork from anywhere\b'
 
   # Values of a board's custom "Workplace Type" metadata field, mapped to is_remote.
   # Observed on Greenhouse: Remote / Hybrid / Onsite.

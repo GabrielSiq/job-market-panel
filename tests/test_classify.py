@@ -129,3 +129,90 @@ class TestRemoteInference:
         'Quota Coverage Type' that must not be read as a remote signal."""
         assert classifier.is_workplace_type_field("Workplace Type")
         assert not classifier.is_workplace_type_field("Quota Coverage Type")
+
+
+class TestRemoteFromDescription:
+    """Last-resort inference from work-location prose.
+
+    Measured on a hand-labelled sample of 100 ATS postings: this path raised the share of
+    postings carrying any verdict from 55% to 80%, at 100% accuracy on the rows it newly
+    decided. It MUST run at collection time - descriptions are stored only for tracked
+    families, so for most postings the text is gone once the run ends and the inference
+    becomes impossible rather than merely deferred.
+    """
+
+    @pytest.mark.parametrize(
+        "text",
+        [
+            "#LI-Hybrid",
+            "#LI-Onsite #LI-LB1",
+            "Fin has a hybrid working policy",
+            "This role requires that you be on-site at our HQ in San Mateo, CA 5 days a week",
+            "requiring a hybrid work schedule with 3 days of in-office work",
+            "we expect all staff to be in one of our offices at least 25% of the time",
+            "with four days a week in the office",
+        ],
+    )
+    def test_onsite_and_hybrid_prose(self, classifier, text):
+        finding = classifier.remote_from_description(text)
+        assert finding.is_remote is False
+        assert finding.remote_source is RemoteSource.DESCRIPTION_TEXT
+
+    @pytest.mark.parametrize(
+        "text",
+        [
+            "#LI-Remote",
+            "#LI-REMOTE",
+            "We are a 100% remote company with team members across 40+ countries",
+            "Coinbase is a remote-first, but not remote-only company",
+            "This is a remote position open to candidates residing in the US",
+            "This position is US - Remote Eligible",
+        ],
+    )
+    def test_remote_prose(self, classifier, text):
+        finding = classifier.remote_from_description(text)
+        assert finding.is_remote is True
+        assert finding.remote_source is RemoteSource.DESCRIPTION_TEXT
+
+    def test_benefits_boilerplate_is_not_a_remote_signal(self, classifier):
+        """The trap this cost real accuracy on. Two strictly-onsite postings carried
+        "Remote work, medical insurance, flexible time off..." in a benefits list; a bare
+        "remote" match would have flipped both to remote."""
+        text = (
+            "Remote work, medical insurance, flexible time off, retirement savings plans, "
+            "and modern family planning are just some of our benefits."
+        )
+        assert classifier.remote_from_description(text).is_remote is None
+
+    def test_remote_sensing_is_not_a_remote_signal(self, classifier):
+        """ "Remote sensing" is a real data-science domain and appears in JDs for strictly
+        onsite roles."""
+        assert (
+            classifier.remote_from_description(
+                "Build models over satellite and remote sensing imagery."
+            ).is_remote
+            is None
+        )
+
+    def test_hybrid_in_a_technical_sense_is_not_a_workplace_signal(self, classifier):
+        """ "Hybrid search", "hybrid model" and "hybrid cloud" are ordinary DS vocabulary."""
+        assert (
+            classifier.remote_from_description(
+                "Design hybrid search ranking combining lexical and vector retrieval."
+            ).is_remote
+            is None
+        )
+
+    def test_negative_beats_positive(self, classifier):
+        assert (
+            classifier.remote_from_description(
+                "#LI-Remote. Note: this team works hybrid, three days a week in the office."
+            ).is_remote
+            is False
+        )
+
+    def test_empty_description_is_unknown(self, classifier):
+        for text in (None, "", "   "):
+            finding = classifier.remote_from_description(text)
+            assert finding.is_remote is None
+            assert finding.remote_source is RemoteSource.UNKNOWN

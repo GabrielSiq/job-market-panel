@@ -425,3 +425,54 @@ Phase 3, where DuckDB makes a change-detection lookup cheap.
 **Discovery is already working:** Himalayas surfaced DS-manager reqs at companies absent
 from the watchlist (Liberty Mutual, Humana, Westinghouse). Those are Phase 2 watchlist
 candidates — exactly the job this source exists to do.
+
+### 2026-09-12 (UTC) — remote inference measured, then improved
+
+**Item 22 done: ~100 postings hand-labelled, error rate measured.** Ground truth assigned
+by reading each posting's location field together with the work-location sentences pulled
+from its description.
+
+| Evidence | n | accuracy |
+|---|---|---|
+| `metadata_field` ("Workplace Type") | 15 | **100%** |
+| `location_string`, where decisive | 40 | **97.5%** |
+| `unknown` (no prediction made) | 45 | — |
+
+**The finding that forced a change: the `unknown` bucket was not unknowable.** Of its 45
+postings, **41 (91%) were actually onsite or hybrid**, 2 were genuinely remote, and only 2
+were truly indeterminate. Nearly all of them stated their arrangement outright in the
+description — `#LI-Hybrid`, "four days a week in the office", "on-site at our HQ 5 days a
+week". 59% of the ATS panel was landing in that bucket.
+
+**Why this could not wait for Phase 3.** Descriptions are stored only for tracked families,
+so for ~89% of postings the text is discarded at the end of the run. Deferring the
+inference would not have deferred it — it would have made it **permanently impossible**.
+That is the opposite of the reprocessability principle, which holds only where the raw
+input survives. So the inference now runs at collection time and the *derived verdict*
+persists even where the description does not. There is a test asserting exactly that.
+
+**Result after adding the description pass** (taxonomy `2026-09-12.1`):
+
+| | before | after |
+|---|---|---|
+| sample accuracy | 97.5% / 100% | **98.8%** overall |
+| sample coverage (a verdict at all) | 55/100 | **80/100** |
+| full panel `remote_source: unknown` | 59% | **35%** |
+| full panel carrying a verdict | 41% | **65%** |
+
+Precedence is metadata → location → description → NULL. Location outranks description
+deliberately: it is the more specific field. That ordering causes the sample's single
+error (a board reading "Remote, USA" whose description carried `#LI-Onsite`) and is worth
+it for the cases it decides correctly.
+
+**Two false-positive traps, both real, both now tested:** bare "remote" appears in benefits
+boilerplate ("Remote work, medical insurance, flexible time off…") on strictly onsite
+postings, and "remote sensing" is an actual data-science domain. Likewise "hybrid search"
+and "hybrid model" are ordinary DS vocabulary. Every pattern requires a qualifier binding
+the word to a work arrangement, and only the first 6,000 characters are examined — benefits
+and EEO boilerplate cluster at the end.
+
+**A test caught a pattern the live data did not.** `\bin our offices? at least\b` never
+matched the real phrasing, "in **one of** our offices at least 25% of the time". It scored
+fine in the live sample only because those postings had a metadata field that won first.
+Fixed.

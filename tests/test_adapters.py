@@ -300,6 +300,53 @@ class TestGreenhouse:
         for posting in run(_fetch(source, config)).postings:
             assert bool(posting.description_text) == posting.is_tracked
 
+    def test_location_outranks_description(self, config, classifier, httpx_mock):
+        """The location is the more specific field. This ordering costs one known error
+        (a board reading "Remote, USA" whose description carried "#LI-Onsite") and is
+        worth it for the cases it decides correctly."""
+        payload = fixture("greenhouse_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["metadata"] = []
+        payload["jobs"][0]["location"] = {"name": "Remote - US"}
+        payload["jobs"][0]["content"] = "<p>#LI-Hybrid, three days a week in the office.</p>"
+        httpx_mock.add_response(url=GH_ANY, json=payload)
+        source = self._source(config, classifier, [self._company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.is_remote is True
+        assert posting.remote_source is RemoteSource.LOCATION_STRING
+
+    def test_description_decides_when_location_is_ambiguous(self, config, classifier, httpx_mock):
+        payload = fixture("greenhouse_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["metadata"] = []
+        payload["jobs"][0]["location"] = {"name": "Denver, CO"}
+        payload["jobs"][0]["content"] = "<p>Great role. #LI-Hybrid</p>"
+        httpx_mock.add_response(url=GH_ANY, json=payload)
+        source = self._source(config, classifier, [self._company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.is_remote is False
+        assert posting.remote_source is RemoteSource.DESCRIPTION_TEXT
+
+    def test_description_informs_remote_status_even_when_not_stored(
+        self, config, classifier, httpx_mock
+    ):
+        """The crux of doing this at collection time: an untracked family keeps NO
+        description, but must still carry the verdict derived from it. Otherwise the
+        signal is lost permanently rather than deferred."""
+        payload = fixture("greenhouse_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["metadata"] = []
+        payload["jobs"][0]["title"] = "Account Executive, Enterprise"  # -> role_family other
+        payload["jobs"][0]["location"] = {"name": "Denver, CO"}
+        payload["jobs"][0]["content"] = "<p>This is a remote position. #LI-Remote</p>"
+        httpx_mock.add_response(url=GH_ANY, json=payload)
+        source = self._source(config, classifier, [self._company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.is_tracked is False
+        assert posting.description_text is None, "untracked families store no description"
+        assert posting.is_remote is True, "but the verdict derived from it survives"
+        assert posting.remote_source is RemoteSource.DESCRIPTION_TEXT
+
     def test_network_error_is_contained(self, config, classifier, httpx_mock):
         httpx_mock.add_exception(httpx.ConnectTimeout("timed out"), url=GH_ANY)
         source = self._source(config, classifier, [self._company()])
