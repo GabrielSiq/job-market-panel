@@ -70,6 +70,8 @@ class Vendor:
         return None
 
 
+VENDOR_BY_NAME: dict[str, Vendor] = {}
+
 VENDORS = (
     Vendor(
         "greenhouse", "https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=false", None
@@ -85,6 +87,7 @@ VENDORS = (
         "https://jobs.lever.co/{token}",
     ),
 )
+VENDOR_BY_NAME.update({v.name: v for v in VENDORS})
 
 # Board tokens embedded in careers URLs - the reliable path when one is supplied, and the
 # only way to find tokens no name-derived guess produces (Front is on Ashby as
@@ -100,6 +103,79 @@ _URL_TOKEN_PATTERNS = (
     ("ashby", re.compile(r"jobs\.ashbyhq\.com/([a-z0-9_-]+)", re.I)),
     ("lever", re.compile(r"jobs\.lever\.co/([a-z0-9_-]+)", re.I)),
 )
+
+# --- careers-page fingerprinting ------------------------------------------------------
+# Stage two, for names that guessing cannot resolve. A company's own careers page links to
+# its board, which both FINDS tokens no name-derived guess produces (Front is on Ashby as
+# "frontcareers") and is the strongest possible verification: the company itself is
+# pointing at it.
+#
+# Vendors we cannot read are fingerprinted too, deliberately. Knowing that a company is on
+# Workday is far more useful than "unresolved" - it turns an unexplained gap into a
+# measured one, and tells us what a future adapter would buy.
+READABLE = {"greenhouse", "ashby", "lever"}
+
+CAREERS_FINGERPRINTS = (
+    (
+        "greenhouse",
+        re.compile(
+            r"(?:job-)?boards\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)", re.I
+        ),
+    ),
+    ("greenhouse", re.compile(r"boards-api\.greenhouse\.io/v1/boards/([a-z0-9_-]+)", re.I)),
+    ("ashby", re.compile(r"jobs\.ashbyhq\.com/([a-z0-9_-]+)", re.I)),
+    ("lever", re.compile(r"jobs\.lever\.co/([a-z0-9_-]+)", re.I)),
+    ("workday", re.compile(r"([a-z0-9-]+)\.wd\d+\.myworkdayjobs\.com", re.I)),
+    ("smartrecruiters", re.compile(r"careers\.smartrecruiters\.com/([a-z0-9_-]+)", re.I)),
+    ("workable", re.compile(r"apply\.workable\.com/([a-z0-9_-]+)", re.I)),
+    ("rippling", re.compile(r"ats\.rippling\.com/([a-z0-9_-]+)", re.I)),
+    ("teamtailor", re.compile(r"([a-z0-9_-]+)\.teamtailor\.com", re.I)),
+    ("bamboohr", re.compile(r"([a-z0-9_-]+)\.bamboohr\.com", re.I)),
+    ("icims", re.compile(r"([a-z0-9_-]+)\.icims\.com", re.I)),
+    ("successfactors", re.compile(r"([a-z0-9_-]+)\.successfactors\.com", re.I)),
+    ("taleo", re.compile(r"([a-z0-9_-]+)\.taleo\.net", re.I)),
+    ("jobvite", re.compile(r"jobs\.jobvite\.com/([a-z0-9_-]+)", re.I)),
+    ("pinpoint", re.compile(r"([a-z0-9_-]+)\.pinpointhq\.com", re.I)),
+    ("paylocity", re.compile(r"recruiting\.paylocity\.com/[^\"\']*?/([a-z0-9_-]+)", re.I)),
+)
+
+
+def domain_candidates(name: str) -> list[str]:
+    """Plausible careers URLs for a company name, cheapest first.
+
+    Domain guessing is genuinely unreliable - "dbt Labs" lives at getdbt.com - so this is a
+    best-effort second stage, not a guarantee. It costs a couple of requests and recovers
+    boards that would otherwise be invisible forever.
+    """
+    slug = company_slug(name)
+    flat = slug.replace("-", "")
+    urls: list[str] = []
+    for host in dict.fromkeys([flat, slug]):
+        for tld in ("com", "io", "ai", "co"):
+            urls.append(f"https://{host}.{tld}/careers")
+        urls.append(f"https://careers.{host}.com")
+        urls.append(f"https://{host}.com/jobs")
+    return urls[:6]
+
+
+async def fingerprint(client: httpx.AsyncClient, name: str) -> tuple[str, str | None] | None:
+    """(vendor, token) read from the company's own careers page, or None."""
+    for url in domain_candidates(name):
+        try:
+            response = await client.get(
+                url, headers={"User-Agent": BROWSER_UA}, timeout=12, follow_redirects=True
+            )
+        except httpx.HTTPError:
+            continue
+        if response.status_code >= 400:
+            continue
+        body = response.text[:400_000]
+        for vendor, pattern in CAREERS_FINGERPRINTS:
+            if match := pattern.search(body):
+                token = next((g for g in match.groups() if g), None)
+                return vendor, (token.lower() if token else None)
+    return None
+
 
 _TITLE = re.compile(r"<title[^>]*>(.*?)</title>", re.S | re.I)
 _OG_TITLE = re.compile(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)', re.I)
@@ -132,12 +208,34 @@ def token_candidates(name: str) -> list[tuple[str | None, str]]:
 
     slug = company_slug(name)  # legal suffixes stripped
     raw = slugify(name)  # suffixes retained
-    guesses = [slug.replace("-", ""), slug, raw.replace("-", ""), raw, slug.split("-")[0]]
+    flat = slug.replace("-", "")
+    guesses = [flat, slug, raw.replace("-", ""), raw, slug.split("-")[0]]
+    # Boards are routinely registered under a regional or boilerplate suffix. DoorDash is
+    # on Greenhouse as "doordashusa" with 456 open reqs - invisible to every name-derived
+    # guess above, and exactly the kind of major employer whose absence would quietly skew
+    # the panel toward smaller companies.
+    guesses += [
+        f"{flat}{suffix}"
+        for suffix in ("usa", "us", "inc", "global", "careers", "jobs", "hq", "corp", "team")
+    ]
     seen: list[tuple[str | None, str]] = []
     for guess in guesses:
         if guess and (None, guess) not in seen:
             seen.append((None, guess))
     return seen
+
+
+#: Suffixes a board may append to its own name without being a different company.
+#: Deliberately a closed list: "DoorDash" vs "DoorDash USA" is the same employer, while
+#: "Wise" vs "Wise Worksite Field Sales" is not, and only an explicit list separates them.
+_NAME_SUFFIXES = ("usa", "us", "global", "careers", "jobs", "hq", "team", "teams", "group")
+
+
+def _comparable(value: str) -> str:
+    parts = company_slug(value).split("-")
+    while len(parts) > 1 and parts[-1] in _NAME_SUFFIXES:
+        parts.pop()
+    return "-".join(parts)
 
 
 def names_match(requested: str, reported: str | None) -> bool:
@@ -150,7 +248,7 @@ def names_match(requested: str, reported: str | None) -> bool:
     """
     if not reported:
         return False
-    return company_slug(requested) == company_slug(_TRAILING.sub("", clean_text(reported) or ""))
+    return _comparable(requested) == _comparable(_TRAILING.sub("", clean_text(reported) or ""))
 
 
 async def _board_display_name(client: httpx.AsyncClient, vendor: Vendor, token: str) -> str | None:
@@ -236,7 +334,33 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
                 )
             return result
 
-    result.note = "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+    # Stage two: ask the company's own site which ATS it uses.
+    found = await fingerprint(client, name)
+    if found is None:
+        result.note = "no board found by guessing, and no careers page could be read"
+        return result
+
+    vendor, token = found
+    if vendor in READABLE and token:
+        async with sem:
+            probed = await _probe(client, VENDOR_BY_NAME[vendor], token)
+        if probed:
+            count, _ = probed
+            result.ats, result.token, result.job_count = vendor, token, count
+            # The company's own careers page points here. That is stronger evidence than
+            # any name comparison, so no further verification is needed.
+            result.status, result.verified_by = "verified", "careers_page"
+            result.note = f"{count} open reqs; found via careers-page fingerprint"
+            return result
+
+    # Reachable in principle, but not by an adapter we have. Recording the vendor turns an
+    # unexplained gap into a measured one.
+    result.ats = vendor
+    result.note = (
+        f"on {vendor}"
+        + (f" (token {token})" if token else "")
+        + " - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+    )
     return result
 
 

@@ -35,6 +35,7 @@ import sys
 import urllib.parse
 from datetime import date, timedelta
 from pathlib import Path
+from typing import Any
 
 import httpx
 import yaml
@@ -55,9 +56,66 @@ MUSE_CATEGORIES = ("Data and Analytics", "Science and Engineering")
 MUSE_LOCATIONS = ("United States", "Flexible / Remote")
 
 
-def existing_slugs(path: Path = WATCHLIST) -> set[str]:
+def load_watchlist(path: Path = WATCHLIST) -> list[dict[str, Any]]:
     doc = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    return {c["slug"] for c in doc.get("companies") or []}
+    return doc.get("companies") or []
+
+
+def existing_slugs(path: Path = WATCHLIST) -> set[str]:
+    return {c["slug"] for c in load_watchlist(path)}
+
+
+def update_watchlist(results: list[Resolution], path: Path = WATCHLIST) -> dict[str, int]:
+    """Rewrite entries in place for companies that now resolve.
+
+    Needed because the resolver keeps improving: expanding token guesses to regional
+    suffixes turned DoorDash from `unresolved` into a verified 456-req board, and every
+    such improvement should be replayable over the whole backlog rather than only helping
+    companies discovered afterwards.
+    """
+    companies = load_watchlist(path)
+    by_slug = {c["slug"]: c for c in companies}
+    today = date.today().isoformat()
+    counts: dict[str, int] = {}
+    for r in results:
+        entry = by_slug.get(company_slug(r.name))
+        if entry is None:
+            continue
+        if r.status == "unresolved":
+            # Fingerprinting may have identified a vendor we have no adapter for. Record
+            # it: "on Workday" is far more actionable than "unresolved", and it is how we
+            # size what building that adapter would actually buy.
+            if r.ats not in ("unknown", None) and entry.get("ats") in ("unknown", None):
+                entry.update(ats=r.ats, notes=r.note or entry.get("notes", ""))
+            continue
+        counts[r.status] = counts.get(r.status, 0) + 1
+        entry.update(
+            ats=r.ats,
+            token=r.token,
+            status=r.status,
+            verified_by=r.verified_by,
+            added=today,
+            source="auto_rediscovered",
+            notes=r.note or f"{r.job_count} open reqs at rediscovery",
+        )
+    order = {"verified": 0, "unverified": 1, "unresolved": 2}
+    companies.sort(key=lambda c: (order.get(c["status"], 3), c["name"].lower()))
+    header = path.read_text(encoding="utf-8").split("companies:")[0]
+    lines = [header.rstrip("\n"), "companies:"]
+    for c in companies:
+        lines += [
+            f"  - name: {json.dumps(c['name'])}",
+            f"    slug: {c['slug']}",
+            f"    ats: {c['ats']}",
+            f"    token: {c['token'] if c['token'] else 'null'}",
+            f"    status: {c['status']}",
+            f"    verified_by: {c.get('verified_by') or 'null'}",
+            f"    added: {c['added']}",
+            f"    source: {c['source']}",
+            f"    notes: {json.dumps(c.get('notes') or '')}",
+        ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return counts
 
 
 def candidates_from_event_log(days: int = 7) -> dict[str, str]:
@@ -156,7 +214,29 @@ def main() -> int:
     parser.add_argument("--muse-pages", type=int, default=6)
     parser.add_argument("--no-muse", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--retry-unresolved",
+        action="store_true",
+        help="re-probe companies previously marked unresolved, using the current resolver",
+    )
     args = parser.parse_args()
+
+    if args.retry_unresolved:
+        stale = [c["name"] for c in load_watchlist() if c["status"] == "unresolved"]
+        print(f"re-probing {len(stale)} previously-unresolved companies with the current resolver")
+        results = asyncio.run(resolve_all(stale))
+        gained = [r for r in results if r.status != "unresolved"]
+        for r in sorted(gained, key=lambda r: -r.job_count):
+            print(
+                f"  + {r.name[:30]:<32}{r.ats:<16}{str(r.token)[:22]:<24}"
+                f"{r.job_count:>5} reqs  [{r.status}]"
+            )
+        if args.dry_run:
+            print(f"\ndry run: {len(gained)} would be updated")
+        else:
+            counts = update_watchlist(results)
+            print(f"\nupdated: {counts}")
+        return 0
 
     known = existing_slugs()
     candidates = candidates_from_event_log(days=args.days)

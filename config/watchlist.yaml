@@ -17,6 +17,33 @@
 # and 'remote' General Assembly's. Each would have attributed another company's
 # hiring to the wrong employer for the life of the panel.
 companies:
+  - name: "66degrees"
+    slug: 66degrees
+    ats: greenhouse
+    token: 66degrees
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
+  - name: "Able"
+    slug: able
+    ats: greenhouse
+    token: able
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Adaptive Biotechnologies"
+    slug: adaptive-biotechnologies
+    ats: greenhouse
+    token: adaptivebiotechnologies
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "24 open reqs at discovery"
   - name: "Affirm"
     slug: affirm
     ats: greenhouse
@@ -26,6 +53,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "207 open reqs at resolution"
+  - name: "Afresh"
+    slug: afresh
+    ats: greenhouse
+    token: afresh
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
   - name: "Airbnb"
     slug: airbnb
     ats: greenhouse
@@ -89,6 +125,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "596 open reqs at resolution"
+  - name: "Arbital Health"
+    slug: arbital-health
+    ats: lever
+    token: arbitalhealth
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Array"
+    slug: array
+    ats: greenhouse
+    token: array
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
   - name: "Attentive"
     slug: attentive
     ats: greenhouse
@@ -98,6 +152,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "34 open reqs at resolution"
+  - name: "Automattic"
+    slug: automattic
+    ats: greenhouse
+    token: automatticcareers
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "18 open reqs at rediscovery"
+  - name: "BetterHelp"
+    slug: betterhelp
+    ats: greenhouse
+    token: betterhelp
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "160 open reqs at discovery"
   - name: "Betterment"
     slug: betterment
     ats: greenhouse
@@ -107,6 +179,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "24 open reqs at resolution"
+  - name: "BILL"
+    slug: bill
+    ats: greenhouse
+    token: billcom
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "48 open reqs; found via careers-page fingerprint"
+  - name: "Binance"
+    slug: binance
+    ats: lever
+    token: binance
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "290 open reqs at discovery"
   - name: "Block"
     slug: block
     ats: greenhouse
@@ -116,6 +206,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "207 open reqs at resolution"
+  - name: "Bloomreach"
+    slug: bloomreach
+    ats: greenhouse
+    token: bloomreach
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "78 open reqs at discovery"
   - name: "Braze"
     slug: braze
     ats: greenhouse
@@ -152,6 +251,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "64 open reqs at resolution"
+  - name: "CaseWare"
+    slug: caseware
+    ats: lever
+    token: caseware
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "60 open reqs at discovery"
   - name: "Cedar"
     slug: cedar
     ats: ashby
@@ -215,6 +323,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "21 open reqs at resolution"
+  - name: "Cresta"
+    slug: cresta
+    ats: greenhouse
+    token: cresta
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "94 open reqs at discovery"
   - name: "Customer.io"
     slug: customer-io
     ats: greenhouse
@@ -251,6 +368,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "46 open reqs at resolution"
+  - name: "DoorDash"
+    slug: doordash
+    ats: greenhouse
+    token: doordashusa
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "456 open reqs at rediscovery"
   - name: "Doximity"
     slug: doximity
     ats: greenhouse
@@ -278,6 +404,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "356 open reqs at resolution"
+  - name: "Empower Pharmacy"
+    slug: empower-pharmacy
+    ats: greenhouse
+    token: empowerpharmacy
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "50 open reqs at discovery"
   - name: "Faire"
     slug: faire
     ats: greenhouse
@@ -314,6 +449,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "179 open reqs at resolution"
+  - name: "Forbes"
+    slug: forbes
+    ats: greenhouse
+    token: forbes
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
   - name: "Front"
     slug: front
     ats: ashby
@@ -323,6 +467,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "found via careers-page fingerprint; no name-derived guess produces 'frontcareers'"
+  - name: "Gather AI"
+    slug: gather-ai
+    ats: greenhouse
+    token: gatherai
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "12 open reqs at discovery"
   - name: "Gemini"
     slug: gemini
     ats: greenhouse
@@ -350,6 +503,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "3 open reqs at resolution"
+  - name: "GR8 Tech"
+    slug: gr8-tech
+    ats: greenhouse
+    token: gr8tech
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
+  - name: "Gradient Labs"
+    slug: gradient-labs
+    ats: ashby
+    token: gradient-labs
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "6 open reqs at discovery"
   - name: "Grafana Labs"
     slug: grafana-labs
     ats: greenhouse
@@ -395,6 +566,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "70 open reqs at resolution"
+  - name: "Hire Hangar"
+    slug: hire-hangar
+    ats: ashby
+    token: hirehangar
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "105 open reqs at discovery"
+  - name: "Imagine Pediatrics"
+    slug: imagine-pediatrics
+    ats: greenhouse
+    token: imaginepediatrics
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "28 open reqs at discovery"
+  - name: "Impiricus"
+    slug: impiricus
+    ats: greenhouse
+    token: impiricus
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
   - name: "Included Health"
     slug: included-health
     ats: lever
@@ -404,6 +602,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "85 open reqs at resolution"
+  - name: "InMarket"
+    slug: inmarket
+    ats: greenhouse
+    token: inmarket
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
   - name: "Instacart"
     slug: instacart
     ats: greenhouse
@@ -431,6 +638,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "17 open reqs at resolution"
+  - name: "JumpCloud"
+    slug: jumpcloud
+    ats: lever
+    token: jumpcloud
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
+  - name: "Keyloop"
+    slug: keyloop
+    ats: lever
+    token: keyloop
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "58 open reqs at discovery"
   - name: "Klaviyo"
     slug: klaviyo
     ats: greenhouse
@@ -440,6 +665,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "137 open reqs at resolution"
+  - name: "Koalafi"
+    slug: koalafi
+    ats: greenhouse
+    token: koalafi
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "KoBold Metals"
+    slug: kobold-metals
+    ats: greenhouse
+    token: koboldmetals
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "36 open reqs at discovery"
   - name: "LaunchDarkly"
     slug: launchdarkly
     ats: greenhouse
@@ -449,6 +692,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "54 open reqs at resolution"
+  - name: "Life360"
+    slug: life360
+    ats: greenhouse
+    token: life360
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "16 open reqs at discovery"
+  - name: "Liftoff"
+    slug: liftoff
+    ats: greenhouse
+    token: liftoff
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "20 open reqs at discovery"
   - name: "Linear"
     slug: linear
     ats: ashby
@@ -458,6 +719,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "30 open reqs at resolution"
+  - name: "Lingaro"
+    slug: lingaro
+    ats: lever
+    token: lingarogroup
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "71 open reqs; found via careers-page fingerprint"
   - name: "Lithic"
     slug: lithic
     ats: greenhouse
@@ -467,6 +737,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "10 open reqs at resolution"
+  - name: "Loyal"
+    slug: loyal
+    ats: greenhouse
+    token: loyal36
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "6 open reqs; found via careers-page fingerprint"
   - name: "Maven Clinic"
     slug: maven-clinic
     ats: greenhouse
@@ -476,6 +755,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "35 open reqs at resolution"
+  - name: "mercor"
+    slug: mercor
+    ats: ashby
+    token: mercor
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "103 open reqs at discovery"
   - name: "Mercury"
     slug: mercury
     ats: greenhouse
@@ -503,6 +791,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "39 open reqs at resolution"
+  - name: "Mitratech"
+    slug: mitratech
+    ats: greenhouse
+    token: mitratech
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
   - name: "Mixpanel"
     slug: mixpanel
     ats: greenhouse
@@ -521,6 +818,42 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "9 open reqs at resolution"
+  - name: "Moniepoint"
+    slug: moniepoint
+    ats: greenhouse
+    token: moniepoint
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "209 open reqs at discovery"
+  - name: "Motional"
+    slug: motional
+    ats: greenhouse
+    token: motional
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "67 open reqs at discovery"
+  - name: "Natera"
+    slug: natera
+    ats: greenhouse
+    token: natera
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "220 open reqs at discovery"
+  - name: "Neon"
+    slug: neon
+    ats: ashby
+    token: neon
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "5 open reqs at discovery"
   - name: "Netlify"
     slug: netlify
     ats: greenhouse
@@ -557,6 +890,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "795 open reqs at resolution"
+  - name: "OpenX"
+    slug: openx
+    ats: lever
+    token: openx
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "7 open reqs at discovery"
   - name: "Oscar Health"
     slug: oscar-health
     ats: greenhouse
@@ -575,6 +917,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "30 open reqs at resolution"
+  - name: "PathAI"
+    slug: pathai
+    ats: greenhouse
+    token: pathai
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
   - name: "Payoneer"
     slug: payoneer
     ats: greenhouse
@@ -584,6 +935,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "122 open reqs at resolution"
+  - name: "Peek"
+    slug: peek
+    ats: ashby
+    token: peek
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
   - name: "Persona"
     slug: persona
     ats: ashby
@@ -593,6 +953,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "18 open reqs at resolution"
+  - name: "Pie Insurance"
+    slug: pie-insurance
+    ats: greenhouse
+    token: pieinsurance
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
   - name: "Pinterest"
     slug: pinterest
     ats: greenhouse
@@ -611,6 +980,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "110 open reqs at resolution"
+  - name: "Plooto"
+    slug: plooto
+    ats: greenhouse
+    token: plootocareers
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "9 open reqs at rediscovery"
   - name: "Poshmark"
     slug: poshmark
     ats: ashby
@@ -665,6 +1043,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "125 open reqs at resolution"
+  - name: "Root, Inc."
+    slug: root
+    ats: ashby
+    token: rootglobal
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "6 open reqs at rediscovery"
   - name: "Rover"
     slug: rover
     ats: lever
@@ -701,6 +1088,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "223 open reqs at resolution"
+  - name: "ShiftKey"
+    slug: shiftkey
+    ats: ashby
+    token: shiftkey
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
   - name: "Sigma Computing"
     slug: sigma-computing
     ats: greenhouse
@@ -710,6 +1106,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "64 open reqs at resolution"
+  - name: "Signifyd"
+    slug: signifyd
+    ats: greenhouse
+    token: signifyd95
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "13 open reqs; found via careers-page fingerprint"
   - name: "Snowflake"
     slug: snowflake
     ats: ashby
@@ -719,6 +1124,42 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "368 open reqs at resolution"
+  - name: "Sonatype"
+    slug: sonatype
+    ats: lever
+    token: sonatype
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "33 open reqs at discovery"
+  - name: "Soum"
+    slug: soum
+    ats: lever
+    token: soum
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
+  - name: "Spotify"
+    slug: spotify
+    ats: lever
+    token: spotify
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "72 open reqs at discovery"
+  - name: "SQUAD"
+    slug: squad
+    ats: greenhouse
+    token: squad
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "29 open reqs at discovery"
   - name: "StockX"
     slug: stockx
     ats: greenhouse
@@ -737,6 +1178,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "633 open reqs at resolution"
+  - name: "TELUS Digital"
+    slug: telus-digital
+    ats: ashby
+    token: telus-digital
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "80 open reqs at discovery"
   - name: "Thumbtack"
     slug: thumbtack
     ats: ashby
@@ -755,6 +1205,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "330 open reqs at resolution"
+  - name: "TreviPay"
+    slug: trevipay
+    ats: lever
+    token: trevipay
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
+  - name: "Typeform"
+    slug: typeform
+    ats: greenhouse
+    token: typeform
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "12 open reqs at discovery"
   - name: "Unit"
     slug: unit
     ats: ashby
@@ -809,6 +1277,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "25 open reqs at resolution"
+  - name: "WorkWave"
+    slug: workwave
+    ats: lever
+    token: workwave
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "13 open reqs at discovery"
   - name: "Zapier"
     slug: zapier
     ats: ashby
@@ -827,294 +1304,168 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "54 open reqs at resolution"
-  - name: "Alma"
-    slug: alma
-    ats: unknown
-    token: null
-    status: unresolved
+  - name: "Arch Global Services (Philippines) Inc."
+    slug: arch-global-services-philippines
+    ats: ashby
+    token: arch
+    status: unverified
     verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Automattic"
-    slug: automattic
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Canva"
-    slug: canva
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Carbon Health"
-    slug: carbon-health
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "token 'carbon' is Carbon, Inc. (3D printing) - NOT this company; not on greenhouse/ashby/lever"
-  - name: "Census"
-    slug: census
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Clari"
-    slug: clari
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "dbt Labs"
-    slug: dbt-labs
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Deel"
-    slug: deel
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Depop"
-    slug: depop
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "DoorDash"
-    slug: doordash
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Eppo"
-    slug: eppo
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Etsy"
-    slug: etsy
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Fiverr"
-    slug: fiverr
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Flywire"
-    slug: flywire
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Gong"
-    slug: gong
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "HashiCorp"
-    slug: hashicorp
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Hipcamp"
-    slug: hipcamp
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Kraken"
-    slug: kraken
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Loom"
-    slug: loom
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Marqeta"
-    slug: marqeta
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Navan"
-    slug: navan
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Optimizely"
-    slug: optimizely
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Pilot"
-    slug: pilot
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Retool"
-    slug: retool
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Segment"
-    slug: segment
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Spring Health"
-    slug: spring-health
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Statsig"
-    slug: statsig
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Turo"
-    slug: turo
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Vinted"
-    slug: vinted
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Whatnot"
-    slug: whatnot
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Wise"
-    slug: wise
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    notes: "token 'wise' is an unrelated field-sales board - NOT this company"
-  - name: "66degrees"
-    slug: 66degrees
-    ats: greenhouse
-    token: 66degrees
-    status: verified
-    verified_by: name_echo
     added: 2026-09-12
     source: auto_discovered
-    notes: "27 open reqs at discovery"
+    notes: "board reports 'Arch Jobs', expected 'Arch Global Services (Philippines) Inc.' - confirm before collecting"
+  - name: "AURA Technologies"
+    slug: aura-technologies
+    ats: greenhouse
+    token: aura
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Aura', expected 'AURA Technologies' - confirm before collecting"
+  - name: "Blue Acorn iCi"
+    slug: blue-acorn-ici
+    ats: lever
+    token: blue
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'BlueCloud Services, Inc. jobs', expected 'Blue Acorn iCi' - confirm before collecting"
+  - name: "Capital One"
+    slug: capital-one
+    ats: lever
+    token: capital
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'capital.com jobs', expected 'Capital One' - confirm before collecting"
+  - name: "Carbon Health"
+    slug: carbon-health
+    ats: greenhouse
+    token: carbon
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "board reports 'Carbon, Inc.', expected 'Carbon Health' - confirm before collecting"
+  - name: "CoStar Group"
+    slug: costar-group
+    ats: greenhouse
+    token: costar
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Co\u2013Star', expected 'CoStar Group' - confirm before collecting"
+  - name: "Doma"
+    slug: doma
+    ats: greenhouse
+    token: doma
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Doma Technology LLC', expected 'Doma' - confirm before collecting"
+  - name: "General Dynamics Information Technology"
+    slug: general-dynamics-information-technology
+    ats: greenhouse
+    token: general
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'General Interest ', expected 'General Dynamics Information Technology' - confirm before collecting"
+  - name: "General Motors"
+    slug: general-motors
+    ats: greenhouse
+    token: general
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'General Interest ', expected 'General Motors' - confirm before collecting"
+  - name: "Oura Health Ltd"
+    slug: oura-health
+    ats: greenhouse
+    token: oura
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports '\u014cura', expected 'Oura Health Ltd' - confirm before collecting"
+  - name: "Pilot"
+    slug: pilot
+    ats: greenhouse
+    token: pilothq
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "board reports 'Pilot.com', expected 'Pilot' - confirm before collecting"
+  - name: "SRM Technologies"
+    slug: srm-technologies
+    ats: greenhouse
+    token: srm
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'S-RM', expected 'SRM Technologies' - confirm before collecting"
+  - name: "Tiger Analytics"
+    slug: tiger-analytics
+    ats: ashby
+    token: tiger
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Tiger Jobs', expected 'Tiger Analytics' - confirm before collecting"
+  - name: "UX Woman"
+    slug: ux-woman
+    ats: lever
+    token: ux-woman
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "could not read a company name from the board - confirm before collecting"
+  - name: "Vantage Data Centers"
+    slug: vantage-data-centers
+    ats: ashby
+    token: vantage
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vantage Jobs', expected 'Vantage Data Centers' - confirm before collecting"
+  - name: "Vector Trading"
+    slug: vector-trading
+    ats: ashby
+    token: vector
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vector Jobs', expected 'Vector Trading' - confirm before collecting"
+  - name: "Vesta Software Group"
+    slug: vesta-software-group
+    ats: ashby
+    token: vesta
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vesta Innovations Inc. Jobs', expected 'Vesta Software Group' - confirm before collecting"
+  - name: "Wise"
+    slug: wise
+    ats: greenhouse
+    token: wise
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_rediscovered
+    notes: "board reports 'Wise Worksite Field Sales ', expected 'Wise' - confirm before collecting"
   - name: "_nology"
     slug: nology
     ats: unknown
@@ -1124,15 +1475,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Able"
-    slug: able
-    ats: greenhouse
-    token: able
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "8 open reqs at discovery"
   - name: "Acxiom"
     slug: acxiom
     ats: unknown
@@ -1142,24 +1484,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Adaptive Biotechnologies"
-    slug: adaptive-biotechnologies
-    ats: greenhouse
-    token: adaptivebiotechnologies
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "24 open reqs at discovery"
-  - name: "Afresh"
-    slug: afresh
-    ats: greenhouse
-    token: afresh
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "14 open reqs at discovery"
   - name: "Aimpoint Digital"
     slug: aimpoint-digital
     ats: unknown
@@ -1196,6 +1520,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Alma"
+    slug: alma
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Apollo"
     slug: apollo
     ats: unknown
@@ -1214,33 +1547,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Arbital Health"
-    slug: arbital-health
-    ats: lever
-    token: arbitalhealth
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "8 open reqs at discovery"
-  - name: "Arch Global Services (Philippines) Inc."
-    slug: arch-global-services-philippines
-    ats: ashby
-    token: arch
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Arch Jobs', expected 'Arch Global Services (Philippines) Inc.' - confirm before collecting"
-  - name: "Array"
-    slug: array
-    ats: greenhouse
-    token: array
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "14 open reqs at discovery"
   - name: "Asaas"
     slug: asaas
     ats: unknown
@@ -1259,26 +1565,8 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "AURA Technologies"
-    slug: aura-technologies
-    ats: greenhouse
-    token: aura
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Aura', expected 'AURA Technologies' - confirm before collecting"
-  - name: "BetterHelp"
-    slug: betterhelp
-    ats: greenhouse
-    token: betterhelp
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "160 open reqs at discovery"
-  - name: "BILL"
-    slug: bill
+  - name: "Autodesk"
+    slug: autodesk
     ats: unknown
     token: null
     status: unresolved
@@ -1286,15 +1574,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Binance"
-    slug: binance
-    ats: lever
-    token: binance
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "290 open reqs at discovery"
   - name: "Bjak"
     slug: bjak
     ats: unknown
@@ -1304,26 +1583,17 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Bloomreach"
-    slug: bloomreach
-    ats: greenhouse
-    token: bloomreach
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "78 open reqs at discovery"
-  - name: "Blue Acorn iCi"
-    slug: blue-acorn-ici
-    ats: lever
-    token: blue
-    status: unverified
+  - name: "Bodw\u00e9 Group"
+    slug: bodwe-group
+    ats: unknown
+    token: null
+    status: unresolved
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "board reports 'BlueCloud Services, Inc. jobs', expected 'Blue Acorn iCi' - confirm before collecting"
-  - name: "Bodw\u00e9 Group"
-    slug: bodwe-group
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Bond"
+    slug: bond
     ats: unknown
     token: null
     status: unresolved
@@ -1358,6 +1628,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Canva"
+    slug: canva
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Capgemini Technology Services"
     slug: capgemini-technology-services
     ats: unknown
@@ -1376,15 +1655,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "CaseWare"
-    slug: caseware
-    ats: lever
-    token: caseware
-    status: verified
-    verified_by: board_page
+  - name: "Census"
+    slug: census
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "60 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "CI&T"
     slug: ci-t
     ats: unknown
@@ -1411,6 +1690,15 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Clari"
+    slug: clari
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Colibri Digital"
     slug: colibri-digital
@@ -1439,15 +1727,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "CoStar Group"
-    slug: costar-group
-    ats: greenhouse
-    token: costar
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Co\u2013Star', expected 'CoStar Group' - confirm before collecting"
   - name: "Cotiviti"
     slug: cotiviti
     ats: unknown
@@ -1475,15 +1754,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Cresta"
-    slug: cresta
-    ats: greenhouse
-    token: cresta
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "94 open reqs at discovery"
   - name: "CrowdStrike"
     slug: crowdstrike
     ats: unknown
@@ -1502,6 +1772,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "dbt Labs"
+    slug: dbt-labs
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Decision Inc."
     slug: decision
     ats: unknown
@@ -1511,6 +1790,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Deel"
+    slug: deel
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Delan Associates"
     slug: delan-associates
     ats: unknown
@@ -1519,6 +1807,15 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Depop"
+    slug: depop
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Dev.Pro"
     slug: dev-pro
@@ -1538,15 +1835,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Doma"
-    slug: doma
-    ats: greenhouse
-    token: doma
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Doma Technology LLC', expected 'Doma' - confirm before collecting"
   - name: "DOTSOFT SA"
     slug: dotsoft
     ats: unknown
@@ -1592,15 +1880,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Empower Pharmacy"
-    slug: empower-pharmacy
-    ats: greenhouse
-    token: empowerpharmacy
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "50 open reqs at discovery"
   - name: "EngiFlex"
     slug: engiflex
     ats: unknown
@@ -1637,6 +1916,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Eppo"
+    slug: eppo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Equinix, Inc"
+    slug: equinix
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "ETHjuniors"
     slug: ethjuniors
     ats: unknown
@@ -1646,8 +1943,26 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Etsy"
+    slug: etsy
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Euromonitor"
     slug: euromonitor
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Experian"
+    slug: experian
     ats: unknown
     token: null
     status: unresolved
@@ -1691,6 +2006,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Fiverr"
+    slug: fiverr
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Flinks"
     slug: flinks
     ats: unknown
@@ -1700,15 +2024,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Forbes"
-    slug: forbes
-    ats: greenhouse
-    token: forbes
-    status: verified
-    verified_by: name_echo
+  - name: "Flywire"
+    slug: flywire
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "17 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Fortive"
     slug: fortive
     ats: unknown
@@ -1736,15 +2060,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Gather AI"
-    slug: gather-ai
-    ats: greenhouse
-    token: gatherai
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "12 open reqs at discovery"
   - name: "Geisinger"
     slug: geisinger
     ats: unknown
@@ -1754,24 +2069,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "General Dynamics Information Technology"
-    slug: general-dynamics-information-technology
-    ats: greenhouse
-    token: general
-    status: unverified
+  - name: "Gong"
+    slug: gong
+    ats: unknown
+    token: null
+    status: unresolved
     verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'General Interest ', expected 'General Dynamics Information Technology' - confirm before collecting"
-  - name: "General Motors"
-    slug: general-motors
-    ats: greenhouse
-    token: general
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'General Interest ', expected 'General Motors' - confirm before collecting"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "GoodRx"
     slug: goodrx
     ats: unknown
@@ -1781,26 +2087,35 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "GR8 Tech"
-    slug: gr8-tech
-    ats: greenhouse
-    token: gr8tech
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "21 open reqs at discovery"
-  - name: "Gradient Labs"
-    slug: gradient-labs
-    ats: ashby
-    token: gradient-labs
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "6 open reqs at discovery"
   - name: "GRID"
     slug: grid
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "HashiCorp"
+    slug: hashicorp
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Henry Schein"
+    slug: henry-schein
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Here Technologies"
+    slug: here-technologies
     ats: unknown
     token: null
     status: unresolved
@@ -1826,15 +2141,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Hire Hangar"
-    slug: hire-hangar
-    ats: ashby
-    token: hirehangar
-    status: verified
-    verified_by: board_page
+  - name: "Hipcamp"
+    slug: hipcamp
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "105 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Humana"
     slug: humana
     ats: unknown
@@ -1844,15 +2159,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Imagine Pediatrics"
-    slug: imagine-pediatrics
-    ats: greenhouse
-    token: imaginepediatrics
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "28 open reqs at discovery"
   - name: "Imnoo AG"
     slug: imnoo
     ats: unknown
@@ -1862,24 +2168,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Impiricus"
-    slug: impiricus
-    ats: greenhouse
-    token: impiricus
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "9 open reqs at discovery"
-  - name: "InMarket"
-    slug: inmarket
-    ats: greenhouse
-    token: inmarket
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "10 open reqs at discovery"
   - name: "Institute for Energy Economics and Financial Analysis"
     slug: institute-for-energy-economics-and-financial-analysis
     ats: unknown
@@ -1925,15 +2213,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "JumpCloud"
-    slug: jumpcloud
-    ats: lever
-    token: jumpcloud
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "21 open reqs at discovery"
   - name: "Kainos"
     slug: kainos
     ats: unknown
@@ -1945,6 +2224,15 @@ companies:
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Kard"
     slug: kard
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "KeepTruckin"
+    slug: keeptruckin
     ats: unknown
     token: null
     status: unresolved
@@ -1970,15 +2258,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Keyloop"
-    slug: keyloop
-    ats: lever
-    token: keyloop
-    status: verified
-    verified_by: board_page
+  - name: "KinderCare Learning Companies"
+    slug: kindercare-learning-companies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "58 open reqs at discovery"
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Knowable"
     slug: knowable
     ats: unknown
@@ -1997,15 +2285,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "KoBold Metals"
-    slug: kobold-metals
-    ats: greenhouse
-    token: koboldmetals
-    status: verified
-    verified_by: name_echo
+  - name: "Kraken"
+    slug: kraken
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "36 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Kyndryl"
     slug: kyndryl
     ats: unknown
@@ -2051,26 +2339,8 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Life360"
-    slug: life360
-    ats: greenhouse
-    token: life360
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "16 open reqs at discovery"
   - name: "Lifelancer"
     slug: lifelancer
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Lingaro"
-    slug: lingaro
     ats: unknown
     token: null
     status: unresolved
@@ -2087,14 +2357,14 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Loyal"
-    slug: loyal
+  - name: "Loom"
+    slug: loom
     ats: unknown
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
-    source: auto_discovered
+    source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Magpie Health Analytics"
     slug: magpie-health-analytics
@@ -2123,6 +2393,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Marqeta"
+    slug: marqeta
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Memorial Hermann Health System"
     slug: memorial-hermann-health-system
     ats: unknown
@@ -2132,15 +2411,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "mercor"
-    slug: mercor
-    ats: ashby
-    token: mercor
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "103 open reqs at discovery"
   - name: "micro1"
     slug: micro1
     ats: unknown
@@ -2177,15 +2447,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Mitratech"
-    slug: mitratech
-    ats: greenhouse
-    token: mitratech
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "21 open reqs at discovery"
   - name: "Modak Live"
     slug: modak-live
     ats: unknown
@@ -2204,24 +2465,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Moniepoint"
-    slug: moniepoint
-    ats: greenhouse
-    token: moniepoint
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "209 open reqs at discovery"
-  - name: "Motional"
-    slug: motional
-    ats: greenhouse
-    token: motional
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "67 open reqs at discovery"
   - name: "Murmuration"
     slug: murmuration
     ats: unknown
@@ -2240,15 +2483,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Natera"
-    slug: natera
-    ats: greenhouse
-    token: natera
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "220 open reqs at discovery"
   - name: "Nationwide"
     slug: nationwide
     ats: unknown
@@ -2258,15 +2492,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Neon"
-    slug: neon
-    ats: ashby
-    token: neon
-    status: verified
-    verified_by: board_page
+  - name: "Navan"
+    slug: navan
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "5 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Netrix Global"
     slug: netrix-global
     ats: unknown
@@ -2348,15 +2582,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "OpenX"
-    slug: openx
-    ats: lever
-    token: openx
-    status: verified
-    verified_by: board_page
+  - name: "Optimizely"
+    slug: optimizely
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "7 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Oracle"
     slug: oracle
     ats: unknown
@@ -2366,15 +2600,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Oura Health Ltd"
-    slug: oura-health
-    ats: greenhouse
-    token: oura
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports '\u014cura', expected 'Oura Health Ltd' - confirm before collecting"
   - name: "Oxford Instruments"
     slug: oxford-instruments
     ats: unknown
@@ -2393,15 +2618,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "PathAI"
-    slug: pathai
-    ats: greenhouse
-    token: pathai
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "8 open reqs at discovery"
   - name: "Pavago"
     slug: pavago
     ats: unknown
@@ -2411,15 +2627,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Peek"
-    slug: peek
-    ats: ashby
-    token: peek
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "10 open reqs at discovery"
   - name: "Penn Mutual"
     slug: penn-mutual
     ats: unknown
@@ -2438,17 +2645,8 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Pie Insurance"
-    slug: pie-insurance
-    ats: greenhouse
-    token: pieinsurance
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "27 open reqs at discovery"
-  - name: "PlayStation Global"
-    slug: playstation-global
+  - name: "PetMeds"
+    slug: petmeds
     ats: unknown
     token: null
     status: unresolved
@@ -2456,8 +2654,8 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Plooto"
-    slug: plooto
+  - name: "PlayStation Global"
+    slug: playstation-global
     ats: unknown
     token: null
     status: unresolved
@@ -2564,14 +2762,14 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Root, Inc."
-    slug: root
+  - name: "Retool"
+    slug: retool
     ats: unknown
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
-    source: auto_discovered
+    source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Ryder System, Inc."
     slug: ryder-system
@@ -2618,17 +2816,17 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Shaped"
-    slug: shaped
+  - name: "Segment"
+    slug: segment
     ats: unknown
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
-    source: auto_discovered
+    source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Signifyd"
-    slug: signifyd
+  - name: "Shaped"
+    slug: shaped
     ats: unknown
     token: null
     status: unresolved
@@ -2663,24 +2861,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Sonatype"
-    slug: sonatype
-    ats: lever
-    token: sonatype
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "33 open reqs at discovery"
-  - name: "Soum"
-    slug: soum
-    ats: lever
-    token: soum
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "17 open reqs at discovery"
   - name: "Sparq"
     slug: sparq
     ats: unknown
@@ -2699,33 +2879,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Spotify"
-    slug: spotify
-    ats: lever
-    token: spotify
-    status: verified
-    verified_by: board_page
+  - name: "Spring Health"
+    slug: spring-health
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "72 open reqs at discovery"
-  - name: "SQUAD"
-    slug: squad
-    ats: greenhouse
-    token: squad
-    status: verified
-    verified_by: name_echo
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Statsig"
+    slug: statsig
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "29 open reqs at discovery"
-  - name: "SRM Technologies"
-    slug: srm-technologies
-    ats: greenhouse
-    token: srm
-    status: unverified
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Surescripts"
+    slug: surescripts
+    ats: unknown
+    token: null
+    status: unresolved
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "board reports 'S-RM', expected 'SRM Technologies' - confirm before collecting"
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Sutherland"
     slug: sutherland
     ats: unknown
@@ -2753,15 +2933,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "TELUS Digital"
-    slug: telus-digital
-    ats: ashby
-    token: telus-digital
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "80 open reqs at discovery"
   - name: "TELUS International AI Inc"
     slug: telus-international-ai
     ats: unknown
@@ -2789,15 +2960,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Tiger Analytics"
-    slug: tiger-analytics
-    ats: ashby
-    token: tiger
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Tiger Jobs', expected 'Tiger Analytics' - confirm before collecting"
   - name: "TransUnion"
     slug: transunion
     ats: unknown
@@ -2807,24 +2969,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "TreviPay"
-    slug: trevipay
-    ats: lever
-    token: trevipay
-    status: verified
-    verified_by: board_page
+  - name: "Turo"
+    slug: turo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "UKG"
+    slug: ukg
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "11 open reqs at discovery"
-  - name: "Typeform"
-    slug: typeform
-    ats: greenhouse
-    token: typeform
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "12 open reqs at discovery"
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "University of Washington"
     slug: university-of-washington
     ats: unknown
@@ -2852,33 +3014,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "UX Woman"
-    slug: ux-woman
-    ats: lever
-    token: ux-woman
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "could not read a company name from the board - confirm before collecting"
-  - name: "Vantage Data Centers"
-    slug: vantage-data-centers
-    ats: ashby
-    token: vantage
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Vantage Jobs', expected 'Vantage Data Centers' - confirm before collecting"
-  - name: "Vector Trading"
-    slug: vector-trading
-    ats: ashby
-    token: vector
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'Vector Jobs', expected 'Vector Trading' - confirm before collecting"
   - name: "Velera"
     slug: velera
     ats: unknown
@@ -2906,17 +3041,26 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Vesta Software Group"
-    slug: vesta-software-group
-    ats: ashby
-    token: vesta
-    status: unverified
+  - name: "Vinted"
+    slug: vinted
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "virtual7 GmbH"
+    slug: virtual7
+    ats: unknown
+    token: null
+    status: unresolved
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "board reports 'Vesta Innovations Inc. Jobs', expected 'Vesta Software Group' - confirm before collecting"
-  - name: "virtual7 GmbH"
-    slug: virtual7
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Visa"
+    slug: visa
     ats: unknown
     token: null
     status: unresolved
@@ -2960,15 +3104,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "WorkWave"
-    slug: workwave
-    ats: lever
-    token: workwave
-    status: verified
-    verified_by: board_page
+  - name: "Whatnot"
+    slug: whatnot
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
     added: 2026-09-12
-    source: auto_discovered
-    notes: "13 open reqs at discovery"
+    source: manual
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "World Business Lenders"
     slug: world-business-lenders
     ats: unknown
@@ -3025,150 +3169,6 @@ companies:
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Zillow Group"
     slug: zillow-group
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Autodesk"
-    slug: autodesk
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Bond"
-    slug: bond
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Capital One"
-    slug: capital-one
-    ats: lever
-    token: capital
-    status: unverified
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "board reports 'capital.com jobs', expected 'Capital One' - confirm before collecting"
-  - name: "Equinix, Inc"
-    slug: equinix
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Experian"
-    slug: experian
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Henry Schein"
-    slug: henry-schein
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Here Technologies"
-    slug: here-technologies
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "KeepTruckin"
-    slug: keeptruckin
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "KinderCare Learning Companies"
-    slug: kindercare-learning-companies
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Koalafi"
-    slug: koalafi
-    ats: greenhouse
-    token: koalafi
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "14 open reqs at discovery"
-  - name: "Liftoff"
-    slug: liftoff
-    ats: greenhouse
-    token: liftoff
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "20 open reqs at discovery"
-  - name: "PetMeds"
-    slug: petmeds
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "ShiftKey"
-    slug: shiftkey
-    ats: ashby
-    token: shiftkey
-    status: verified
-    verified_by: board_page
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "9 open reqs at discovery"
-  - name: "Surescripts"
-    slug: surescripts
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "UKG"
-    slug: ukg
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Visa"
-    slug: visa
     ats: unknown
     token: null
     status: unresolved
