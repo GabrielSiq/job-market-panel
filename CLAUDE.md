@@ -102,8 +102,8 @@ unattended daily commits.
 
 | Phase 2 criterion (spec) | Status |
 |---|---|
-| ≥150 companies on a working ATS token | **135 verified**, climbing daily via `discover.py` |
-| Full daily run under ~5 minutes | done — 43s for 135 boards + Himalayas |
+| ≥150 companies on a working ATS token | **done — 382 verified boards** |
+| Full daily run under ~5 minutes | done — 47s for 382 boards + Himalayas |
 | Killing one company's endpoint does not affect the others | done — tested across and within vendors |
 | Cross-source duplicates deduplicated or clearly marked | done — `dedupe_key`, analysis-layer |
 
@@ -835,3 +835,54 @@ and the seniority rules already read it as senior. Removed. Taxonomy `2026-09-13
 
 **Still open:** ≥150 verified boards (at 135, climbing daily); Adzuna awaiting Gabriel's
 free API key; the `unknown` remote bucket is now ~20% of ATS rows.
+
+### 2026-09-13 — token harvesting: 143 → 382 boards
+
+Gabriel asked whether a public list of board tokens exists to borrow. Investigated, and
+the answer reshaped how the watchlist grows.
+
+**What does NOT exist:** no ATS publishes an index. `job-boards.greenhouse.io/sitemap.xml`
+and `jobs.lever.co/sitemap.xml` both 404; Ashby's returns its SPA shell. GitHub has no
+maintained open list — only Apify actors selling a ~4,600-board directory commercially,
+which the near-zero-cost constraint rules out.
+
+**What does: companies publish their own tokens in public forums.** Hacker News' monthly
+"Ask HN: Who is hiring?" threads are exactly that, and the Algolia HN API is free, keyless
+and documented. Twelve threads yielded **316 distinct board tokens, 253 live, 239 new**.
+
+`tools/harvest_tokens.py` does this, and it **inverts the usual direction**: everywhere else
+we start from a company name and guess a token; here the token is known and the *board*
+supplies the company name. That is both easier and better evidence — the company published
+the link and the board confirms whose it is (`verified_by: published_token`). It also
+reaches tokens no guesser would ever produce: `duck-duck-go`, `category-labs`, `runway-ml`,
+`andurilindustries`, `addepar1`, `archer56`.
+
+One gotcha that silently returned zero on the first attempt: **HN entity-encodes URLs**
+(`https:&#x2F;&#x2F;`), so comment text must be `html.unescape`d before matching.
+
+**Bias, and it is real:** the HN audience skews to startups, developer tools, and
+space/defense — the harvest brought in SpaceX (2,412 reqs), Anduril (2,293), Shield AI,
+Zoox, Relativity. Excellent for coverage, and **never a denominator**. Worth re-running
+monthly as new threads appear; it is not in the daily workflow.
+
+**Result:** 382 verified boards (148 Greenhouse, 189 Ashby, 45 Lever), **26,120 postings in
+47 seconds**, 383/383 scopes diffable. The spec's ≥150 criterion is comfortably met.
+
+**Watch the dilution:** across today's bulk load, disclosed salary fell to 19.6% and
+remote-known to 55.1%, down from 39% and 80%. That is composition, not regression — the
+harvest added many small Greenhouse boards, which carry no salary field and weaker remote
+signal. Report these rates per vendor rather than pooled.
+
+**Also fixed here:** `resolve_ats` now fetches careers pages (the stage Phase 2 shipped
+incomplete), and token guessing tries regional/boilerplate suffixes after **DoorDash turned
+out to be on Greenhouse as `doordashusa` with 456 open reqs** — invisible to every previous
+guess, and precisely the kind of major employer whose absence skews the panel small.
+`discover.py --retry-unresolved` replays resolver improvements over the whole backlog.
+
+**Workday reassessed — I was too quick to rule it out.** Etsy's endpoint returns a
+`remoteType` field (`"Partially Remote"` / `"Open to Remote"`) that Turo's did not. That
+makes Workday support **5 of the 6 spec metrics** — only compensation bands are missing,
+and the relative `"Posted Yesterday"` string barely matters since every survival metric
+uses `first_seen` by design. The remaining cost is three hand-discovered config values per
+company. **Recommendation: build it next, driven by a hand-maintained tenant list** for
+companies Gabriel names, rather than automatic discovery.

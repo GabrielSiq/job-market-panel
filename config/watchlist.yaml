@@ -3185,3 +3185,2154 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "SpaceX"
+    slug: spacex
+    ats: greenhouse
+    token: spacex
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2412 open reqs; token published by the company on HN"
+  - name: "Anduril Industries"
+    slug: anduril-industries
+    ats: greenhouse
+    token: andurilindustries
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2293 open reqs; token published by the company on HN"
+  - name: "Shield AI"
+    slug: shield-ai
+    ats: lever
+    token: shieldai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "473 open reqs; token published by the company on HN"
+  - name: "Relativity Space"
+    slug: relativity-space
+    ats: greenhouse
+    token: relativity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "338 open reqs; token published by the company on HN"
+  - name: "SpaceXAI"
+    slug: spacexai
+    ats: greenhouse
+    token: xai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "255 open reqs; token published by the company on HN"
+  - name: "Zoox"
+    slug: zoox
+    ats: lever
+    token: zoox
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "245 open reqs; token published by the company on HN"
+  - name: "Adyen"
+    slug: adyen
+    ats: greenhouse
+    token: adyen
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "227 open reqs; token published by the company on HN"
+  - name: "The New York Times"
+    slug: the-new-york-times
+    ats: greenhouse
+    token: thenewyorktimes
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "159 open reqs; token published by the company on HN"
+  - name: "Via"
+    slug: via
+    ats: greenhouse
+    token: via
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "158 open reqs; token published by the company on HN"
+  - name: "Legion Health"
+    slug: legion-health
+    ats: ashby
+    token: legionhealth
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "157 open reqs; token published by the company on HN"
+  - name: "Archer"
+    slug: archer
+    ats: greenhouse
+    token: archer56
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "154 open reqs; token published by the company on HN"
+  - name: "Addepar"
+    slug: addepar
+    ats: greenhouse
+    token: addepar1
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "102 open reqs; token published by the company on HN"
+  - name: "Pear VC"
+    slug: pear-vc
+    ats: ashby
+    token: pear-vc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "100 open reqs; token published by the company on HN"
+  - name: "IonQ"
+    slug: ionq
+    ats: greenhouse
+    token: ionq
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "99 open reqs; token published by the company on HN"
+  - name: "Justworks"
+    slug: justworks
+    ats: greenhouse
+    token: justworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "95 open reqs; token published by the company on HN"
+  - name: "Baseten"
+    slug: baseten
+    ats: ashby
+    token: baseten
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "94 open reqs; token published by the company on HN"
+  - name: "Hightouch"
+    slug: hightouch
+    ats: greenhouse
+    token: hightouch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "86 open reqs; token published by the company on HN"
+  - name: "Two Six Technologies"
+    slug: two-six-technologies
+    ats: greenhouse
+    token: twosixtechnologies
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "80 open reqs; token published by the company on HN"
+  - name: "Oklo"
+    slug: oklo
+    ats: greenhouse
+    token: oklo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "72 open reqs; token published by the company on HN"
+  - name: "Kong"
+    slug: kong
+    ats: ashby
+    token: kong
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "67 open reqs; token published by the company on HN"
+  - name: "Suno"
+    slug: suno
+    ats: ashby
+    token: suno
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "66 open reqs; token published by the company on HN"
+  - name: "Black Canyon Consulting"
+    slug: black-canyon-consulting
+    ats: greenhouse
+    token: blackcanyonconsulting
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "66 open reqs; token published by the company on HN"
+  - name: "Avride"
+    slug: avride
+    ats: greenhouse
+    token: avride
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "64 open reqs; token published by the company on HN"
+  - name: "DeepL"
+    slug: deepl
+    ats: ashby
+    token: deepl
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "60 open reqs; token published by the company on HN"
+  - name: "Supabase"
+    slug: supabase
+    ats: ashby
+    token: supabase
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "60 open reqs; token published by the company on HN"
+  - name: "Loft Orbital Solutions"
+    slug: loft-orbital-solutions
+    ats: lever
+    token: loftorbital
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "56 open reqs; token published by the company on HN"
+  - name: "SentiLink"
+    slug: sentilink
+    ats: ashby
+    token: sentilink
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "55 open reqs; token published by the company on HN"
+  - name: "Tailscale"
+    slug: tailscale
+    ats: greenhouse
+    token: tailscale
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "55 open reqs; token published by the company on HN"
+  - name: "Lightning AI"
+    slug: lightning-ai
+    ats: greenhouse
+    token: lightningai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "54 open reqs; token published by the company on HN"
+  - name: "Rho"
+    slug: rho
+    ats: ashby
+    token: rho
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "53 open reqs; token published by the company on HN"
+  - name: "Forus"
+    slug: forus
+    ats: ashby
+    token: forus
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "52 open reqs; token published by the company on HN"
+  - name: "HumanSignal"
+    slug: humansignal
+    ats: greenhouse
+    token: humansignal
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "52 open reqs; token published by the company on HN"
+  - name: "Mapbox"
+    slug: mapbox
+    ats: ashby
+    token: mapbox
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "50 open reqs; token published by the company on HN"
+  - name: "Proxima Fusion"
+    slug: proxima-fusion
+    ats: ashby
+    token: proxima-fusion
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "48 open reqs; token published by the company on HN"
+  - name: "Coram AI"
+    slug: coram-ai
+    ats: ashby
+    token: coram-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "44 open reqs; token published by the company on HN"
+  - name: "Prompt"
+    slug: prompt
+    ats: ashby
+    token: prompt
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "44 open reqs; token published by the company on HN"
+  - name: "PermitFlow"
+    slug: permitflow
+    ats: ashby
+    token: permitflow
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "42 open reqs; token published by the company on HN"
+  - name: "Reframe Systems"
+    slug: reframe-systems
+    ats: ashby
+    token: reframesystems
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "41 open reqs; token published by the company on HN"
+  - name: "Runway"
+    slug: runway
+    ats: ashby
+    token: runway-ml
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "40 open reqs; token published by the company on HN"
+  - name: "Censys"
+    slug: censys
+    ats: greenhouse
+    token: censys
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "37 open reqs; token published by the company on HN"
+  - name: "Emergent Labs"
+    slug: emergent-labs
+    ats: greenhouse
+    token: emergentlabsinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "34 open reqs; token published by the company on HN"
+  - name: "Confido"
+    slug: confido
+    ats: ashby
+    token: confido
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "33 open reqs; token published by the company on HN"
+  - name: "Giga"
+    slug: giga
+    ats: ashby
+    token: gigaml
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
+  - name: "Algolia"
+    slug: algolia
+    ats: greenhouse
+    token: algolia
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
+  - name: "Z\u016bm"
+    slug: zum
+    ats: lever
+    token: ridezum
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
+  - name: "Antithesis"
+    slug: antithesis
+    ats: ashby
+    token: antithesis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
+  - name: "LiveKit"
+    slug: livekit
+    ats: ashby
+    token: livekit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
+  - name: "Modal"
+    slug: modal
+    ats: ashby
+    token: modal
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
+  - name: "amo"
+    slug: amo
+    ats: ashby
+    token: amo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "commercetools"
+    slug: commercetools
+    ats: greenhouse
+    token: commercetools
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "Hudl"
+    slug: hudl
+    ats: greenhouse
+    token: hudl
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "Atom Computing"
+    slug: atom-computing
+    ats: lever
+    token: atomcomputing
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "28 open reqs; token published by the company on HN"
+  - name: "Solace"
+    slug: solace
+    ats: ashby
+    token: solace
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "27 open reqs; token published by the company on HN"
+  - name: "Atomic Machines"
+    slug: atomic-machines
+    ats: greenhouse
+    token: atomicmachines
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "27 open reqs; token published by the company on HN"
+  - name: "Protege"
+    slug: protege
+    ats: ashby
+    token: protege
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "25 open reqs; token published by the company on HN"
+  - name: "Nectar Social"
+    slug: nectar-social
+    ats: ashby
+    token: nectar-social
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Prior Labs"
+    slug: prior-labs
+    ats: ashby
+    token: prior-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Sesame"
+    slug: sesame
+    ats: ashby
+    token: sesame
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Socket"
+    slug: socket
+    ats: ashby
+    token: socket
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Obsidian Security"
+    slug: obsidian-security
+    ats: greenhouse
+    token: obsidiansecurity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "22 open reqs; token published by the company on HN"
+  - name: "The Allen Institute for Artificial Intelligence"
+    slug: the-allen-institute-for-artificial-intelligence
+    ats: greenhouse
+    token: thealleninstitute
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "22 open reqs; token published by the company on HN"
+  - name: "Back Market"
+    slug: back-market
+    ats: ashby
+    token: backmarket
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
+  - name: "Parallel Web Systems"
+    slug: parallel-web-systems
+    ats: ashby
+    token: parallel
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
+  - name: "Orkes"
+    slug: orkes
+    ats: greenhouse
+    token: orkes
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
+  - name: "Hiya"
+    slug: hiya
+    ats: ashby
+    token: hiya
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
+  - name: "LatchBio"
+    slug: latchbio
+    ats: ashby
+    token: latchbio
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
+  - name: "Oscilar"
+    slug: oscilar
+    ats: ashby
+    token: oscilar
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
+  - name: "Verisign"
+    slug: verisign
+    ats: greenhouse
+    token: verisign
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
+  - name: "Amperos"
+    slug: amperos
+    ats: ashby
+    token: amperos
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Artificial Analysis, Inc."
+    slug: artificial-analysis
+    ats: ashby
+    token: artificialanalysis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Langdock"
+    slug: langdock
+    ats: ashby
+    token: langdock
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Radical Numerics"
+    slug: radical-numerics
+    ats: ashby
+    token: radical-numerics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Shepherd"
+    slug: shepherd
+    ats: ashby
+    token: shepherd
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Metabase"
+    slug: metabase
+    ats: lever
+    token: metabase
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Aptura"
+    slug: aptura
+    ats: ashby
+    token: aptura
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Crux"
+    slug: crux
+    ats: ashby
+    token: cruxclimate
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Norm Ai"
+    slug: norm-ai
+    ats: ashby
+    token: norm-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "XDOF"
+    slug: xdof
+    ats: ashby
+    token: xdof
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Vestwell"
+    slug: vestwell
+    ats: greenhouse
+    token: vestwell
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Skyways"
+    slug: skyways
+    ats: lever
+    token: skyways
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Aurelius Systems"
+    slug: aurelius-systems
+    ats: ashby
+    token: aureliussystems
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "Ontic"
+    slug: ontic
+    ats: ashby
+    token: ontic
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "Prelude"
+    slug: prelude
+    ats: ashby
+    token: prelude
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "Wikimedia Foundation"
+    slug: wikimedia-foundation
+    ats: greenhouse
+    token: wikimedia
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "AirOps"
+    slug: airops
+    ats: ashby
+    token: airops
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "GrayMatter Robotics"
+    slug: graymatter-robotics
+    ats: ashby
+    token: graymatter-robotics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Higharc"
+    slug: higharc
+    ats: ashby
+    token: higharc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "SigNoz"
+    slug: signoz
+    ats: ashby
+    token: signoz
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Upvest"
+    slug: upvest
+    ats: ashby
+    token: upvest
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Brave"
+    slug: brave
+    ats: greenhouse
+    token: brave
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Coast"
+    slug: coast
+    ats: greenhouse
+    token: coast
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Hike Medical"
+    slug: hike-medical
+    ats: ashby
+    token: hike-medical
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Kombo"
+    slug: kombo
+    ats: ashby
+    token: kombo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Maincode"
+    slug: maincode
+    ats: ashby
+    token: maincode
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Oneleet"
+    slug: oneleet
+    ats: ashby
+    token: oneleet
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Charge Robotics"
+    slug: charge-robotics
+    ats: ashby
+    token: charge-robotics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Deeter Analytics"
+    slug: deeter-analytics
+    ats: ashby
+    token: deeter-analytics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Office Hours"
+    slug: office-hours
+    ats: ashby
+    token: office-hours
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Scribd, Inc."
+    slug: scribd
+    ats: ashby
+    token: scribdinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Apollo Research"
+    slug: apollo-research
+    ats: lever
+    token: apolloresearch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "DuckDuckGo"
+    slug: duckduckgo
+    ats: ashby
+    token: duck-duck-go
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Turquoise"
+    slug: turquoise
+    ats: ashby
+    token: turquoise-health
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Zippy"
+    slug: zippy
+    ats: ashby
+    token: zippymh
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Archera"
+    slug: archera
+    ats: greenhouse
+    token: archera
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "PlanetScale"
+    slug: planetscale
+    ats: greenhouse
+    token: planetscale
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Pickle Robot Company"
+    slug: pickle-robot-company
+    ats: lever
+    token: picklerobot
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Artificial Intelligence Underwriting Company"
+    slug: artificial-intelligence-underwriting-company
+    ats: ashby
+    token: aiuc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Axle Energy"
+    slug: axle-energy
+    ats: ashby
+    token: axle-careers
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Credit Genie"
+    slug: credit-genie
+    ats: ashby
+    token: creditgenie
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Dimensional"
+    slug: dimensional
+    ats: ashby
+    token: dimensional
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Pylon"
+    slug: pylon
+    ats: ashby
+    token: pylon
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Vitalize"
+    slug: vitalize
+    ats: ashby
+    token: vitalize
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "WorkWhile"
+    slug: workwhile
+    ats: ashby
+    token: workwhilejobs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Brightcore Energy"
+    slug: brightcore-energy
+    ats: greenhouse
+    token: brightcoreenergy
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Canopy Works"
+    slug: canopy-works
+    ats: greenhouse
+    token: canopyworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Mattermost"
+    slug: mattermost
+    ats: greenhouse
+    token: mattermost
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Adaptive"
+    slug: adaptive
+    ats: ashby
+    token: adaptive
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "coreflow"
+    slug: coreflow
+    ats: ashby
+    token: coreflow
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Nango"
+    slug: nango
+    ats: ashby
+    token: nango
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Neon Health"
+    slug: neon-health
+    ats: ashby
+    token: neon-health
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Notable"
+    slug: notable
+    ats: ashby
+    token: notable
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Prosper AI"
+    slug: prosper-ai
+    ats: ashby
+    token: prosper-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Finch"
+    slug: finch
+    ats: lever
+    token: finch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Alembic"
+    slug: alembic
+    ats: ashby
+    token: alembic
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Blueberry Pediatrics"
+    slug: blueberry-pediatrics
+    ats: ashby
+    token: blueberrypediatrics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Flux"
+    slug: flux
+    ats: ashby
+    token: flux
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Phoebe"
+    slug: phoebe
+    ats: ashby
+    token: phoebe-work
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Titan"
+    slug: titan
+    ats: ashby
+    token: titan
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Buildkite"
+    slug: buildkite
+    ats: greenhouse
+    token: buildkite
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Nova Credit"
+    slug: nova-credit
+    ats: greenhouse
+    token: novacredit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "9 Mothers"
+    slug: 9-mothers
+    ats: ashby
+    token: 9-mothers
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Akur8"
+    slug: akur8
+    ats: ashby
+    token: akur8
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Ditto"
+    slug: ditto
+    ats: ashby
+    token: ditto
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Extend"
+    slug: extend
+    ats: ashby
+    token: extend
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Kepler"
+    slug: kepler
+    ats: ashby
+    token: kepler-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Meticulous"
+    slug: meticulous
+    ats: ashby
+    token: meticulous
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Railway"
+    slug: railway
+    ats: ashby
+    token: railway
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Smarkets"
+    slug: smarkets
+    ats: ashby
+    token: smarkets
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Stream"
+    slug: stream
+    ats: ashby
+    token: stream
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Gauss Labs"
+    slug: gauss-labs
+    ats: lever
+    token: gausslabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "AllSpice"
+    slug: allspice
+    ats: ashby
+    token: allspice
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Close"
+    slug: close
+    ats: ashby
+    token: close
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Colonist"
+    slug: colonist
+    ats: ashby
+    token: colonist
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Langfuse"
+    slug: langfuse
+    ats: ashby
+    token: langfuse
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Parabola"
+    slug: parabola
+    ats: ashby
+    token: parabola-io
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "The San Francisco Compute Company"
+    slug: the-san-francisco-compute-company
+    ats: ashby
+    token: sfcompute
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Terra AI"
+    slug: terra-ai
+    ats: ashby
+    token: terraai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Baton (A Ryder Technology Lab)"
+    slug: baton-a-ryder-technology-lab
+    ats: greenhouse
+    token: baton
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Weave"
+    slug: weave
+    ats: greenhouse
+    token: weave
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Authorium"
+    slug: authorium
+    ats: ashby
+    token: authorium
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Bliro GmbH"
+    slug: bliro
+    ats: ashby
+    token: bliro
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Cradle"
+    slug: cradle
+    ats: ashby
+    token: cradlebio
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "HomeVision"
+    slug: homevision
+    ats: ashby
+    token: homevision
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Odyssey"
+    slug: odyssey
+    ats: ashby
+    token: odyssey
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "OpusClip"
+    slug: opusclip
+    ats: ashby
+    token: opusclip
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Two Dots"
+    slug: two-dots
+    ats: ashby
+    token: two-dots
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "WireScreen"
+    slug: wirescreen
+    ats: ashby
+    token: wirescreen
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Carefeed"
+    slug: carefeed
+    ats: greenhouse
+    token: carefeed
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Epic Kids Inc."
+    slug: epic-kids
+    ats: greenhouse
+    token: epickids
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Vivodyne"
+    slug: vivodyne
+    ats: greenhouse
+    token: vivodyne
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Resilinc"
+    slug: resilinc
+    ats: lever
+    token: resilinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Anterior"
+    slug: anterior
+    ats: ashby
+    token: anterior
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Castleton Tower"
+    slug: castleton-tower
+    ats: ashby
+    token: castletontower
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Chariot Claims"
+    slug: chariot-claims
+    ats: ashby
+    token: chariotclaims
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Comity"
+    slug: comity
+    ats: ashby
+    token: comity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "deepset"
+    slug: deepset
+    ats: ashby
+    token: deepsetai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Dryft"
+    slug: dryft
+    ats: ashby
+    token: dryft
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "GovSignals"
+    slug: govsignals
+    ats: ashby
+    token: govsignals
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "OpsMill"
+    slug: opsmill
+    ats: ashby
+    token: opsmill
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Spruce Systems, Inc."
+    slug: spruce-systems
+    ats: ashby
+    token: spruceid
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Stytch"
+    slug: stytch
+    ats: ashby
+    token: stytch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Zencastr"
+    slug: zencastr
+    ats: ashby
+    token: zencastr
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Outschool"
+    slug: outschool
+    ats: greenhouse
+    token: outschool
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "DISQO"
+    slug: disqo
+    ats: lever
+    token: disqo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Electric Twin"
+    slug: electric-twin
+    ats: lever
+    token: electric-twin
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Patrick J McGovern Foundation"
+    slug: patrick-j-mcgovern-foundation
+    ats: lever
+    token: mcgovern
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Project Healthy Minds"
+    slug: project-healthy-minds
+    ats: lever
+    token: project-healthy-minds
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Prolific Machines"
+    slug: prolific-machines
+    ats: lever
+    token: prolific-machines
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Robotics and AI Institute"
+    slug: robotics-and-ai-institute
+    ats: lever
+    token: rai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Category Labs"
+    slug: category-labs
+    ats: ashby
+    token: category-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Checkly"
+    slug: checkly
+    ats: ashby
+    token: checkly
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Chestnut"
+    slug: chestnut
+    ats: ashby
+    token: chestnut
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Dialogue AI"
+    slug: dialogue-ai
+    ats: ashby
+    token: dialogueai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Evervault"
+    slug: evervault
+    ats: ashby
+    token: evervault
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Firetiger"
+    slug: firetiger
+    ats: ashby
+    token: firetiger
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Griffin"
+    slug: griffin
+    ats: ashby
+    token: griffin
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Mechanize, Inc."
+    slug: mechanize
+    ats: ashby
+    token: mechanize
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "OneCrew"
+    slug: onecrew
+    ats: ashby
+    token: onecrew
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "pod.network"
+    slug: pod-network
+    ats: ashby
+    token: pod-network
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Poesis"
+    slug: poesis
+    ats: ashby
+    token: poesis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "River"
+    slug: river
+    ats: ashby
+    token: river
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "SalesJack"
+    slug: salesjack
+    ats: ashby
+    token: salesjack
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Findigs"
+    slug: findigs
+    ats: lever
+    token: findigs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Atomic Fi"
+    slug: atomic-fi
+    ats: ashby
+    token: atomic-financial
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Compa"
+    slug: compa
+    ats: ashby
+    token: compa
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Konvu"
+    slug: konvu
+    ats: ashby
+    token: konvu
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Mastra"
+    slug: mastra
+    ats: ashby
+    token: mastra
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Matterworks, Inc."
+    slug: matterworks
+    ats: ashby
+    token: matterworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Neo.Tax"
+    slug: neo-tax
+    ats: ashby
+    token: neo-tax
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Speckle"
+    slug: speckle
+    ats: ashby
+    token: speckle
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Unto Labs"
+    slug: unto-labs
+    ats: ashby
+    token: unto-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "daydream"
+    slug: daydream
+    ats: ashby
+    token: withdaydream
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Airtame"
+    slug: airtame
+    ats: greenhouse
+    token: airtamejobs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Mithril"
+    slug: mithril
+    ats: greenhouse
+    token: mithril
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "ProPublica"
+    slug: propublica
+    ats: greenhouse
+    token: propublica
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Sage Bionetworks"
+    slug: sage-bionetworks
+    ats: greenhouse
+    token: sagebionetworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Adora Technologies Inc"
+    slug: adora-technologies
+    ats: lever
+    token: adora
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Aquabyte"
+    slug: aquabyte
+    ats: lever
+    token: aquabyte
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Airgoods"
+    slug: airgoods
+    ats: ashby
+    token: airgoods
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Eagle"
+    slug: eagle
+    ats: ashby
+    token: eagle
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Everis"
+    slug: everis
+    ats: ashby
+    token: everis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Luxor Technology Corporation"
+    slug: luxor-technology
+    ats: ashby
+    token: luxor
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Noise Labs"
+    slug: noise-labs
+    ats: ashby
+    token: noise-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Pareto"
+    slug: pareto
+    ats: ashby
+    token: pareto-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Steel"
+    slug: steel
+    ats: ashby
+    token: steel
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Tetsuwan Scientific"
+    slug: tetsuwan-scientific
+    ats: ashby
+    token: tetsuwan
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Trace"
+    slug: trace
+    ats: ashby
+    token: tracelabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Char Network"
+    slug: char-network
+    ats: greenhouse
+    token: charnetwork
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Piramidal, Inc."
+    slug: piramidal
+    ats: greenhouse
+    token: piramidalinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Distru"
+    slug: distru
+    ats: lever
+    token: distru
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Eleos Technologies"
+    slug: eleos-technologies
+    ats: lever
+    token: eleostech
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Duranta"
+    slug: duranta
+    ats: lever
+    token: getduranta
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Cleric"
+    slug: cleric
+    ats: ashby
+    token: cleric
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Complement"
+    slug: complement
+    ats: ashby
+    token: complement
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Hyperspell"
+    slug: hyperspell
+    ats: ashby
+    token: hyperspell
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Kiloforge"
+    slug: kiloforge
+    ats: ashby
+    token: kiloforge
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Lago"
+    slug: lago
+    ats: ashby
+    token: lago
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Mubit"
+    slug: mubit
+    ats: ashby
+    token: mubit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Product Genius"
+    slug: product-genius
+    ats: ashby
+    token: productgenius
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Tonic AI"
+    slug: tonic-ai
+    ats: ashby
+    token: tonicai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Trigger.dev"
+    slug: trigger-dev
+    ats: ashby
+    token: triggerdev
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Chroma"
+    slug: chroma
+    ats: ashby
+    token: trychroma
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Verge Genomics"
+    slug: verge-genomics
+    ats: ashby
+    token: verge-genomics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Kinelo"
+    slug: kinelo
+    ats: greenhouse
+    token: kinelo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Updater"
+    slug: updater
+    ats: greenhouse
+    token: updater
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Meilisearch"
+    slug: meilisearch
+    ats: lever
+    token: meili
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Moonsong Labs"
+    slug: moonsong-labs
+    ats: lever
+    token: moonsong-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "StraighterLine"
+    slug: straighterline
+    ats: lever
+    token: straighterline
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Thalo Labs"
+    slug: thalo-labs
+    ats: lever
+    token: thalolabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
