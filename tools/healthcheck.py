@@ -100,20 +100,62 @@ def main() -> int:
         if age > 1:
             problems.append(f"no events written for {age} days - is the cron still firing?")
 
-        # ID stability: after day one, appearances should be a trickle, not the whole
-        # corpus. If every posting 'appears' again each day, job_id is not stable and the
+        # ID stability: after a company's first day, its postings should appear once and
+        # then stay quiet. If they 'appear' again every run, job_id is not stable and the
         # entire survival dataset is fiction - while looking perfectly healthy.
-        if len(files) >= 2:
-            counts = [
+        #
+        # Which companies count as "established" comes from the RUNS log, not the events
+        # log. Events only record changes, so a company with nothing new today is absent
+        # from today's file entirely - using events to decide who was tracked therefore
+        # self-selects for companies still producing appearances, which is precisely the
+        # population that cannot show decay. The runs log records every company actually
+        # collected, whether or not anything changed.
+        #
+        # Raw totals do not work either: adding 300 boards bulk-loads tens of thousands of
+        # genuinely-new postings, indistinguishable from broken IDs by volume alone. A
+        # healthcheck that fires on routine expansion gets ignored, and an ignored
+        # healthcheck is worse than none.
+        run_files = sorted(store.runs.glob("*.jsonl"))
+        if len(files) >= 2 and len(run_files) >= 2:
+            import json
+
+            def collected(path: Path) -> set[str]:
+                slugs = set()
+                for line in path.read_text(encoding="utf-8").splitlines():
+                    if line.strip() and (slug := json.loads(line).get("company_slug")):
+                        slugs.add(slug)
+                return slugs
+
+            def appearances(path: Path, among: set[str]) -> int:
+                return sum(
+                    1
+                    for r in store.read_jsonl_gz(path)
+                    if r.get("event") == "appeared" and r.get("company_slug") in among
+                )
+
+            established = collected(run_files[-2]) & collected(run_files[-1])
+            totals = [
                 sum(1 for r in store.read_jsonl_gz(f) if r.get("event") == "appeared")
                 for f in files[-2:]
             ]
-            if counts[0] and counts[1] > counts[0] * 0.8:
-                problems.append(
-                    f"appearances are not decaying ({counts[0]} then {counts[1]}) - "
-                    "job_id may not be stable across runs"
+            new_boards = len(collected(run_files[-1]) - collected(run_files[-2]))
+            print(
+                f"  appearances, last 2 days: {totals[0]:,} then {totals[1]:,}"
+                + (f" ({new_boards} boards added today)" if new_boards else "")
+            )
+
+            if established:
+                was = appearances(files[-2], established)
+                now = appearances(files[-1], established)
+                print(
+                    f"  at the {len(established)} companies tracked on both days: "
+                    f"{was:,} then {now:,} (this is the number that must decay)"
                 )
-            print(f"  appearances, last 2 days: {counts[0]} then {counts[1]}")
+                if was >= 50 and now > was * 0.8:
+                    problems.append(
+                        f"appearances are not decaying at established companies "
+                        f"({was} then {now}) - job_id may not be stable across runs"
+                    )
 
     pending = store.read_pending_misses()
     print(f"  postings pending a 2nd miss: {len(pending)}")

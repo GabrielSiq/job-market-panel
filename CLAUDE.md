@@ -1029,3 +1029,37 @@ remote share is stated both with and without `location_implied`.
 
 **Self-service is documented in the README** — schema, the two provenance fields that
 decide whether a number can be trusted, and five worked queries.
+
+### 2026-09-13 — healthcheck was crying wolf; fixed
+
+The first CI run after Phase 2.5 went red on `PROBLEM: appearances are not decaying
+(9816 then 16399) - job_id may not be stable`. **A false positive**, and worth recording
+because the failure mode is instructive.
+
+The check compared raw daily appearance totals. That works in steady state, but the
+watchlist grew from 61 boards to 382 the same day, and 321 new boards bulk-loading tens of
+thousands of genuinely-new postings is **indistinguishable from broken IDs by volume
+alone**. Data committed fine — the healthcheck deliberately runs after the commit — but a
+check that fires on routine expansion gets ignored, and an ignored healthcheck is worse
+than none. Silent failure is the exact threat it exists to catch (spec 11.3).
+
+**First fix attempt was also wrong, in an interesting way.** Restricting the comparison to
+companies with appearances on *both* days sounds right, but the event log only records
+*changes* — a company with nothing new today is absent from today's file entirely. So that
+population self-selects for companies still producing appearances, which is precisely the
+group that cannot show decay. It still failed.
+
+**The runs log is the right source.** It records every company actually collected, whether
+or not anything changed. Restricting to companies with a run row on both days gives the
+honest number:
+
+```
+appearances, last 2 days: 9,816 then 16,396 (321 boards added today)
+at the 61 companies tracked on both days: 9,261 then 7   <- the number that must decay
+```
+
+The general lesson: **"what changed" logs cannot answer "what was observed"**. That
+distinction is the same one behind correctness rule 1 — absence of an event is not evidence
+of absence — and it bit again here in a different disguise.
+
+Not unit-tested: the logic lives inside `main()`. Worth extracting if it is touched again.
