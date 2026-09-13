@@ -2,6 +2,15 @@
 
 **Read this file first. It is how context survives between sessions.**
 
+> **This file is the plan of record.** Everything decided, measured or ruled out lives
+> here or in the private repo's `CLAUDE.md` — not in a chat transcript, not in a scratch
+> plan file, not in anyone's head. It is committed and pushed, so it survives compaction,
+> a new session, or a new machine.
+>
+> **If a decision is made in conversation, it is not real until it is written here.**
+> Append to the dated log at the bottom, then update "Current status" near the top so the
+> next session reads the *conclusion* without having to replay the whole log.
+
 > **Privacy boundary — this repo is PUBLIC.**
 > Nothing personal goes here: no compensation targets, no search criteria, no resume
 > content, no contact lists, no company shortlists framed as personal preference.
@@ -96,10 +105,14 @@ All Phase 1 acceptance criteria are met except one, which can only pass with tim
 | ≥40 companies on working Greenhouse tokens | done — 61 resolved and identity-verified |
 | **Seven consecutive unattended daily commits** | **pending — the observation week** |
 
-### What to do next session (do NOT start Phase 2 yet)
+### What to do next session
 
-The observation period is part of the build. Spec 11.3: silent failure is the main threat,
-and the first week is the risky one.
+**Two things, in order. The Phase 2 plan was revised on 2026-09-12 — read
+"Phase 2 REPLANNED" at the bottom of this file before starting it, because the build order
+changed and the spec's ordering is now wrong.**
+
+**First: finish the observation week.** The observation period is part of the build.
+Spec 11.3: silent failure is the main threat, and the first week is the risky one.
 
 1. `uv run python tools/healthcheck.py` — ten seconds, exits non-zero on a problem.
 2. **Day 2 is the real test.** Appearances must fall sharply from day 1's bulk load of
@@ -111,9 +124,18 @@ and the first week is the risky one.
    the bulk load; `data/latest/new_postings.jsonl` alone was 8.3 MB and should collapse to
    a few hundred KB once "new" means new).
 
-Phase 2+ (more ATS vendors, watchlist growth to 150–250, analysis/reports, resume pipeline,
-daily brief) are **out of scope** until the above is clean. Do not start Phase N+1 in the
-session that finished Phase N.
+**Then: Phase 2, in this revised order** (full reasoning in "Phase 2 REPLANNED" below):
+
+1. **Ashby adapter** — 24 companies, ~2,600 reqs, structured salary. Do NOT use `isRemote`.
+2. **Lever adapter** — 5 companies. Bare array; title is `text`.
+3. **Auto-resolution pipeline** — grows the watchlist daily so Gabriel prunes rather than
+   researches. This is the real unlock, not the adapters.
+4. **A non-remote discovery feed** (Adzuna `top_companies` preferred) to correct the
+   Himalayas remote-only bias.
+5. Split the `analyst` family; drop Census/Loom/Segment from the watchlist.
+
+Phases 3–5 (analysis/reports, resume pipeline, daily brief) stay out of scope until Phase 2
+is running. Do not start Phase N+1 in the session that finished Phase N.
 
 ### Still open
 
@@ -666,3 +688,59 @@ Spec Section 2 is a **placeholder** and should not be treated as binding. Actual
 - **Manager roles: keep measuring, not a personal target.** Unchanged.
 - **Do not restrict to remote.** Already true at collection; make sure it stays true, and
   do not let the 35%-unknown remote field become an implicit filter downstream.
+
+### 2026-09-12 — operational findings not previously written down
+
+Recorded because they were established in conversation and would otherwise be lost.
+
+**Actions cron ran 4h19m late on its first scheduled run.** Scheduled `17 7 * * *` UTC
+(03:17 ET), actually started 11:36 UTC (07:36 ET). Succeeded, committed normally. This is
+the spec Section 8 warning ("Actions cron is not punctual") measured rather than assumed.
+
+Harmless for the collector — nothing depends on the minute and re-runs are idempotent.
+**But it is a real constraint on Phase 5.** The brief is meant to arrive before Gabriel
+wakes, and the spec imagines "runs at 06:30, read at 08:00". A delay of this size breaks
+that. **When building the brief, set its cron several hours earlier than the time the brief
+is actually wanted**, and treat any "runs at X" reasoning in the spec as a floor, not a
+schedule.
+
+**Spec Section 9 Q4 is provisionally answered: `schedule` DOES fire on the private repo.**
+The canary fired on 2026-09-12 at 11:39 UTC (see `schedule_canary.log` in the private repo).
+One data point; it keeps accumulating until December. If it holds, no GitHub Pro is needed.
+
+**Actions minutes are NOT a reason to keep the panel public.** Measured from real runs:
+collector 79s/run → 2 billed min/day. Projected total if *everything* were private —
+collector 60 + weekly report 12 + weekday brief 66 + canary 30 = **168 min/month against
+the 2,000 free private allowance, about 8%**. Even at Phase 2's ~250 companies it stays
+near 12%. Spec Section 3.2's first rationale for the public/private split does not bind at
+this scale.
+
+**What DOES still argue for the current split:** going private breaks the cross-repo
+interface. The Phase 5 brief fetches `data/latest/new_postings.jsonl` from
+`raw.githubusercontent.com` with no authentication (spec 3.2 chose it precisely to avoid
+tokens). Making the panel private 404s that URL, so it is a design change — add a
+cross-repo PAT, or collapse into one private repo — not a visibility toggle.
+
+**A concern the spec did not anticipate: the public repo republishes source content.**
+Spec Section 5/Phase 1 says Himalayas' terms ask for attribution if you republish and ask
+their listings not be submitted to third-party job sites, then concludes *"neither applies
+to a private analysis panel, but do not build anything public-facing on this data without
+honouring both."* **It was built public.** ~276 Himalayas postings with full ~6,500-char
+descriptions are committed publicly each day. Attribution is in the README and a git repo
+is not a job board, so it is defensible — but the spec's reasoning assumed private.
+Two cheap fixes when this is revisited: stop committing Himalayas `description_text`, or
+go private (which also resolves it). **Decision deferred to December**, together with the
+visibility decision, at Gabriel's direction.
+
+**Repo size is the real GitHub-side risk, not blocking.** Request volume is ~105/day
+across all sources — negligible, and a block degrades safely (a 429 or 403 yields
+`status != ok`, hence zero disappearance events). But the repo was 8.5 MB with 15 MB of git
+history after ONE day, inflated by the day-1 bulk load; `data/latest/new_postings.jsonl`
+alone was 8.3 MB and is rewritten every run. GitHub gets uncomfortable around 5 GB.
+**Measure the steady-state daily growth once a few days exist**, and if the trajectory is
+bad, stop committing the uncompressed `new_postings.jsonl` or prune its history.
+
+**On ToS generally:** three of the four ATS endpoints are documented public APIs (Himalayas
+publishes an OpenAPI spec). No HTML scraping, no auth bypass, no robots.txt issue. Workable's
+is the undocumented widget endpoint and is being skipped anyway. LinkedIn is nowhere in the
+system and must stay that way.
