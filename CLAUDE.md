@@ -90,20 +90,30 @@ silent. Never compute survival from Himalayas rows.
 
 ## Current status
 
-**Phase 1 is built and collecting, as of 2026-09-12 (UTC). It is now in its observation
-week.** Two-source collector: Himalayas (discovery) + Greenhouse (census, 61 boards).
-Contracts locked, 107 tests passing, daily workflow verified green in CI.
+**Phase 2 is built and collecting, as of 2026-09-13 (UTC).** Four sources: Himalayas
+(discovery) plus a census over **135 verified boards** across Greenhouse, Ashby and Lever,
+with automated daily discovery growing the watchlist. 139 tests passing.
 
-All Phase 1 acceptance criteria are met except one, which can only pass with time:
+**Phase 1's gate passed along the way.** The first post-Phase-1 run produced only **27
+genuinely new postings on previously-tracked boards** rather than re-reporting all 9,821 -
+so `job_id` is stable and the survival dataset is sound. 92 postings entered the two-miss
+queue as designed. The remaining Phase 1 criterion is calendar time: seven consecutive
+unattended daily commits.
 
-| Criterion | Status |
+| Phase 2 criterion (spec) | Status |
 |---|---|
-| Both sources produce events, plausible counts | done — 9,821 postings, 62/62 scopes diffable |
-| Re-running twice in one day is idempotent | done — verified live, zero duplicate job_ids |
-| A broken source yields a failed run and **zero** disappearances | done — tested, and seen live |
-| A simulated 429 yields `partial` and **zero** disappearances | done — tested |
-| ≥40 companies on working Greenhouse tokens | done — 61 resolved and identity-verified |
-| **Seven consecutive unattended daily commits** | **pending — the observation week** |
+| ≥150 companies on a working ATS token | **135 verified**, climbing daily via `discover.py` |
+| Full daily run under ~5 minutes | done — 43s for 135 boards + Himalayas |
+| Killing one company's endpoint does not affect the others | done — tested across and within vendors |
+| Cross-source duplicates deduplicated or clearly marked | done — `dedupe_key`, analysis-layer |
+
+| Phase 1 criterion | Status |
+|---|---|
+| Idempotent same-day re-runs | done — verified live |
+| Broken source → failed run, **zero** disappearances | done |
+| 429 → `partial`, **zero** disappearances | done |
+| **`job_id` stable (appearances decay on day 2)** | **done — 27 new vs 9,821** |
+| **Seven consecutive unattended daily commits** | **pending — calendar time only** |
 
 ### What to do next session
 
@@ -744,3 +754,84 @@ bad, stop committing the uncompressed `new_postings.jsonl` or prune its history.
 publishes an OpenAPI spec). No HTML scraping, no auth bypass, no robots.txt issue. Workable's
 is the undocumented widget endpoint and is being skipped anyway. LinkedIn is nowhere in the
 system and must stay that way.
+
+### 2026-09-13 — Phase 2 shipped: three ATS vendors, 135 boards, automated discovery
+
+Built in one session at Gabriel's direction, with Phase 1's observation week running in
+parallel (nothing here touches the differ or the event-log format).
+
+**`PerCompanyBoardSource` (`src/sources/board.py`) — the refactor that came first.**
+Greenhouse held ~60 lines of failure-isolation logic that is entirely vendor-independent.
+Three hand-maintained copies of correctness rule 1 is precisely where a silent divergence
+appears, so it now lives once: a subclass supplies a URL, a jobs extractor and a field
+mapping, and **cannot get the isolation rules wrong because it does not implement them**.
+Greenhouse was refactored onto it with its 23 tests passing unchanged.
+
+One distinction the base preserves: `_extract_jobs` returning `None` means *malformed*
+(→ `ERROR`); returning `[]` means *genuinely empty* (→ `EMPTY`). Neither permits diffing,
+but conflating them would lose the difference in the health log.
+
+**Ashby — the large win, and the phase's worst trap.**
+30 boards, ~2,900 reqs. **64% of its postings carry a structured salary band**, where
+Greenhouse exposes none at all. Across the whole ATS census this took salary disclosure
+from **0% to 39%**.
+
+Two rules, both tested:
+- **`isRemote` is ignored.** 293 of 422 sampled postings report `isRemote: true` while
+  `workplaceType` says `Hybrid`, one located at "San Francisco HQ". It means "some remote
+  permitted", not "this is a remote role". `RemoteSource.ATS_FLAG` stays unused.
+- **Only the `Salary` component of a compensation tier is read.** Tiers also carry
+  `EquityCashValue`, `Commission` and `Bonus`; pooling any of them into base pay would
+  silently inflate the entire compensation series.
+
+`secondaryLocations` ("Remote (US)") feeds remote inference. Overall **remote-known rose
+from 65% to 80%**.
+
+**Lever** — 16 boards. Returns a **bare array**; a test guards the `payload.get("jobs")`
+bug. Salary prose in `additionalPlain` is deliberately unparsed.
+
+**Verification became universal, and that changed the auto-add design.**
+Ashby and Lever echo no company name in their APIs — but their **public board pages carry
+it in the `<title>`/`og:title`** (`jobs.ashbyhq.com/frontcareers` → "Front"). So every
+vendor can be identity-checked, at one extra request.
+
+Verification demands an **exact** normalized match. This is deliberate: a fuzzy matcher
+cannot separate "Chime" / "Chime Financial, Inc" (right company, legal name) from "Wise" /
+"Wise Worksite Field Sales" (wrong company entirely) — they are structurally identical.
+Near misses become `status: unverified`, are **not collected**, and record the name the
+board actually reports so a human decides in one glance. Four were confirmed by hand
+(Chime, Intercom→"Fin", Remote.com, Rover→"Rover.com"); Carbon Health and Wise were
+confirmed **wrong** and demoted.
+
+**`tools/discover.py` — the actual unlock.** Candidates come from the event log's
+aggregator rows plus The Muse, are filtered to companies posting a *tracked* role, then
+resolved and verified. Only `verified` boards are collected; unresolved ones are recorded
+too, so the same dead names are not re-probed every day forever. Runs daily in CI before
+collection (`continue-on-error` — discovery is an enhancement, collection is the critical
+path). Seeded immediately: **+45 companies**, including Spotify, Binance, TELUS Digital,
+Typeform, Life360, PathAI.
+
+The Muse saturates fast — 25 pages yielded only ~35 more candidates than 6 — so it is a
+supplement, not an engine. Its bias is the opposite of Himalayas' (paid employer branding,
+large enterprises) which is exactly why both are used, and why **neither is ever a
+denominator**.
+
+**Contract additions (additive):**
+- `RoleFamily.PRODUCT_ANALYST` — strong product/growth/experimentation analytics, split
+  from `analyst`. Gabriel wants these surfaced; one bucket made them unfindable. Evaluated
+  *after* `product_ds` deliberately, so that at companies where "Advanced Analytics" *is*
+  the product-DS function those reqs stay `product_ds`.
+- `dedupe_key` (`company_slug:title_normalized`) on `JobPosting` and `PostingEvent`.
+  A grouping hint for the analysis layer, **never an identity** — it merges genuinely
+  distinct same-titled reqs (common for multi-location postings; 347 such groups on day
+  one). Both observations are always kept; nothing is dropped at collection.
+
+**A Phase 1 inconsistency fixed while splitting the taxonomy.** `ds_manager` matched a bare
+"lead", so "Analytics Lead" became a manager req while "Lead, Advanced Analytics" did not —
+the same job classified two ways depending on word order. "Lead" is an IC seniority marker
+and the seniority rules already read it as senior. Removed. Taxonomy `2026-09-13.1`.
+
+**Live:** 14,724 postings, 136/136 scopes diffable, **43 seconds**.
+
+**Still open:** ≥150 verified boards (at 135, climbing daily); Adzuna awaiting Gabriel's
+free API key; the `unknown` remote bucket is now ~20% of ATS rows.

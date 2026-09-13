@@ -1106,3 +1106,2082 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "token 'wise' is an unrelated field-sales board - NOT this company"
+  - name: "66degrees"
+    slug: 66degrees
+    ats: greenhouse
+    token: 66degrees
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
+  - name: "_nology"
+    slug: nology
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Able"
+    slug: able
+    ats: greenhouse
+    token: able
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Acxiom"
+    slug: acxiom
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Adaptive Biotechnologies"
+    slug: adaptive-biotechnologies
+    ats: greenhouse
+    token: adaptivebiotechnologies
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "24 open reqs at discovery"
+  - name: "Afresh"
+    slug: afresh
+    ats: greenhouse
+    token: afresh
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "Aimpoint Digital"
+    slug: aimpoint-digital
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Alcor"
+    slug: alcor
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Alight Solutions LLC"
+    slug: alight-solutions
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Allstate"
+    slug: allstate
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Apollo"
+    slug: apollo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Applaudo"
+    slug: applaudo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Arbital Health"
+    slug: arbital-health
+    ats: lever
+    token: arbitalhealth
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Arch Global Services (Philippines) Inc."
+    slug: arch-global-services-philippines
+    ats: ashby
+    token: arch
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Arch Jobs', expected 'Arch Global Services (Philippines) Inc.' - confirm before collecting"
+  - name: "Array"
+    slug: array
+    ats: greenhouse
+    token: array
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "Asaas"
+    slug: asaas
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Atlassian"
+    slug: atlassian
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "AURA Technologies"
+    slug: aura-technologies
+    ats: greenhouse
+    token: aura
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Aura', expected 'AURA Technologies' - confirm before collecting"
+  - name: "BetterHelp"
+    slug: betterhelp
+    ats: greenhouse
+    token: betterhelp
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "160 open reqs at discovery"
+  - name: "BILL"
+    slug: bill
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Binance"
+    slug: binance
+    ats: lever
+    token: binance
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "290 open reqs at discovery"
+  - name: "Bjak"
+    slug: bjak
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Bloomreach"
+    slug: bloomreach
+    ats: greenhouse
+    token: bloomreach
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "78 open reqs at discovery"
+  - name: "Blue Acorn iCi"
+    slug: blue-acorn-ici
+    ats: lever
+    token: blue
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'BlueCloud Services, Inc. jobs', expected 'Blue Acorn iCi' - confirm before collecting"
+  - name: "Bodw\u00e9 Group"
+    slug: bodwe-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Borrowell"
+    slug: borrowell
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Bright Vision Technologies"
+    slug: bright-vision-technologies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Canadascout"
+    slug: canadascout
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Capgemini Technology Services"
+    slug: capgemini-technology-services
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Capitex"
+    slug: capitex
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "CaseWare"
+    slug: caseware
+    ats: lever
+    token: caseware
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "60 open reqs at discovery"
+  - name: "CI&T"
+    slug: ci-t
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Cimpress/Vista"
+    slug: cimpress-vista
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Circular Action Alliance"
+    slug: circular-action-alliance
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Colibri Digital"
+    slug: colibri-digital
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Collage Group"
+    slug: collage-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Collectiv"
+    slug: collectiv
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "CoStar Group"
+    slug: costar-group
+    ats: greenhouse
+    token: costar
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Co\u2013Star', expected 'CoStar Group' - confirm before collecting"
+  - name: "Cotiviti"
+    slug: cotiviti
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "CoverGo"
+    slug: covergo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "CoverMyMeds"
+    slug: covermymeds
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Cresta"
+    slug: cresta
+    ats: greenhouse
+    token: cresta
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "94 open reqs at discovery"
+  - name: "CrowdStrike"
+    slug: crowdstrike
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Danaher"
+    slug: danaher
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Decision Inc."
+    slug: decision
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Delan Associates"
+    slug: delan-associates
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Dev.Pro"
+    slug: dev-pro
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Dexcom"
+    slug: dexcom
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Doma"
+    slug: doma
+    ats: greenhouse
+    token: doma
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Doma Technology LLC', expected 'Doma' - confirm before collecting"
+  - name: "DOTSOFT SA"
+    slug: dotsoft
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Dura Digital"
+    slug: dura-digital
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Dynatron Software"
+    slug: dynatron-software
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "eHealth, Inc."
+    slug: ehealth
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Embrace Software Inc"
+    slug: embrace-software
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Empower Pharmacy"
+    slug: empower-pharmacy
+    ats: greenhouse
+    token: empowerpharmacy
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "50 open reqs at discovery"
+  - name: "EngiFlex"
+    slug: engiflex
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Enterprise Mobility"
+    slug: enterprise-mobility
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Entrada AI"
+    slug: entrada-ai
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Epic Insurance Brokers and Consultants"
+    slug: epic-insurance-brokers-and-consultants
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "ETHjuniors"
+    slug: ethjuniors
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Euromonitor"
+    slug: euromonitor
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "FairMoney"
+    slug: fairmoney
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Fannie Mae"
+    slug: fannie-mae
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "FICO"
+    slug: fico
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Fifth Third Bank"
+    slug: fifth-third-bank
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Flinks"
+    slug: flinks
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Forbes"
+    slug: forbes
+    ats: greenhouse
+    token: forbes
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
+  - name: "Fortive"
+    slug: fortive
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Fractal River"
+    slug: fractal-river
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Fusion Consulting"
+    slug: fusion-consulting
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Gather AI"
+    slug: gather-ai
+    ats: greenhouse
+    token: gatherai
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "12 open reqs at discovery"
+  - name: "Geisinger"
+    slug: geisinger
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "General Dynamics Information Technology"
+    slug: general-dynamics-information-technology
+    ats: greenhouse
+    token: general
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'General Interest ', expected 'General Dynamics Information Technology' - confirm before collecting"
+  - name: "General Motors"
+    slug: general-motors
+    ats: greenhouse
+    token: general
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'General Interest ', expected 'General Motors' - confirm before collecting"
+  - name: "GoodRx"
+    slug: goodrx
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "GR8 Tech"
+    slug: gr8-tech
+    ats: greenhouse
+    token: gr8tech
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
+  - name: "Gradient Labs"
+    slug: gradient-labs
+    ats: ashby
+    token: gradient-labs
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "6 open reqs at discovery"
+  - name: "GRID"
+    slug: grid
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Hillenbrand"
+    slug: hillenbrand
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "hims & hers"
+    slug: hims-hers
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Hire Hangar"
+    slug: hire-hangar
+    ats: ashby
+    token: hirehangar
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "105 open reqs at discovery"
+  - name: "Humana"
+    slug: humana
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Imagine Pediatrics"
+    slug: imagine-pediatrics
+    ats: greenhouse
+    token: imaginepediatrics
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "28 open reqs at discovery"
+  - name: "Imnoo AG"
+    slug: imnoo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Impiricus"
+    slug: impiricus
+    ats: greenhouse
+    token: impiricus
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
+  - name: "InMarket"
+    slug: inmarket
+    ats: greenhouse
+    token: inmarket
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
+  - name: "Institute for Energy Economics and Financial Analysis"
+    slug: institute-for-energy-economics-and-financial-analysis
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Intellectsoft"
+    slug: intellectsoft
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Intuition Machines"
+    slug: intuition-machines
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "iwoca"
+    slug: iwoca
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Jabil"
+    slug: jabil
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "JumpCloud"
+    slug: jumpcloud
+    ats: lever
+    token: jumpcloud
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
+  - name: "Kainos"
+    slug: kainos
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Kard"
+    slug: kard
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Keller Executive Search"
+    slug: keller-executive-search
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Key Cyber Solutions"
+    slug: key-cyber-solutions
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Keyloop"
+    slug: keyloop
+    ats: lever
+    token: keyloop
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "58 open reqs at discovery"
+  - name: "Knowable"
+    slug: knowable
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "KnowFully Learning Group"
+    slug: knowfully-learning-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "KoBold Metals"
+    slug: kobold-metals
+    ats: greenhouse
+    token: koboldmetals
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "36 open reqs at discovery"
+  - name: "Kyndryl"
+    slug: kyndryl
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Leidos"
+    slug: leidos
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "LexisNexis"
+    slug: lexisnexis
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Liberty Mutual"
+    slug: liberty-mutual
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Liberty Mutual Insurance"
+    slug: liberty-mutual-insurance
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Life360"
+    slug: life360
+    ats: greenhouse
+    token: life360
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "16 open reqs at discovery"
+  - name: "Lifelancer"
+    slug: lifelancer
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Lingaro"
+    slug: lingaro
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Lonza"
+    slug: lonza
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Loyal"
+    slug: loyal
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Magpie Health Analytics"
+    slug: magpie-health-analytics
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Makersite"
+    slug: makersite
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "MarcoPolo Learning"
+    slug: marcopolo-learning
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Memorial Hermann Health System"
+    slug: memorial-hermann-health-system
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "mercor"
+    slug: mercor
+    ats: ashby
+    token: mercor
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "103 open reqs at discovery"
+  - name: "micro1"
+    slug: micro1
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Mindera"
+    slug: mindera
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "MineHub"
+    slug: minehub
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Mirantis"
+    slug: mirantis
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Mitratech"
+    slug: mitratech
+    ats: greenhouse
+    token: mitratech
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "21 open reqs at discovery"
+  - name: "Modak Live"
+    slug: modak-live
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Molina Healthcare"
+    slug: molina-healthcare
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Moniepoint"
+    slug: moniepoint
+    ats: greenhouse
+    token: moniepoint
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "209 open reqs at discovery"
+  - name: "Motional"
+    slug: motional
+    ats: greenhouse
+    token: motional
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "67 open reqs at discovery"
+  - name: "Murmuration"
+    slug: murmuration
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Mutual Of Omaha"
+    slug: mutual-of-omaha
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Natera"
+    slug: natera
+    ats: greenhouse
+    token: natera
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "220 open reqs at discovery"
+  - name: "Nationwide"
+    slug: nationwide
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Neon"
+    slug: neon
+    ats: ashby
+    token: neon
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "5 open reqs at discovery"
+  - name: "Netrix Global"
+    slug: netrix-global
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Newfire Global Partners"
+    slug: newfire-global-partners
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "NewRocket"
+    slug: newrocket
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Next Step Systems"
+    slug: next-step-systems
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Niche"
+    slug: niche
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "NUVIEW"
+    slug: nuview
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "NVIDIA"
+    slug: nvidia
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "OGC Global"
+    slug: ogc-global
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "OLX"
+    slug: olx
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "OpenX"
+    slug: openx
+    ats: lever
+    token: openx
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "7 open reqs at discovery"
+  - name: "Oracle"
+    slug: oracle
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Oura Health Ltd"
+    slug: oura-health
+    ats: greenhouse
+    token: oura
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports '\u014cura', expected 'Oura Health Ltd' - confirm before collecting"
+  - name: "Oxford Instruments"
+    slug: oxford-instruments
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Parexel"
+    slug: parexel
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "PathAI"
+    slug: pathai
+    ats: greenhouse
+    token: pathai
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Pavago"
+    slug: pavago
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Peek"
+    slug: peek
+    ats: ashby
+    token: peek
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
+  - name: "Penn Mutual"
+    slug: penn-mutual
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "PeoplePartners Inc."
+    slug: peoplepartners
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Pie Insurance"
+    slug: pie-insurance
+    ats: greenhouse
+    token: pieinsurance
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
+  - name: "PlayStation Global"
+    slug: playstation-global
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Plooto"
+    slug: plooto
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Precision for Medicine"
+    slug: precision-for-medicine
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Premera Blue Cross"
+    slug: premera-blue-cross
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Progressive Leasing"
+    slug: progressive-leasing
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Prudential Financial"
+    slug: prudential-financial
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Pyrovio"
+    slug: pyrovio
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Quartile"
+    slug: quartile
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Reface"
+    slug: reface
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "RELX"
+    slug: relx
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Renmoney"
+    slug: renmoney
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Rentokil Terminix"
+    slug: rentokil-terminix
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "ResMed"
+    slug: resmed
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Root, Inc."
+    slug: root
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Ryder System, Inc."
+    slug: ryder-system
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Ryz Labs"
+    slug: ryz-labs
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Sand Technologies"
+    slug: sand-technologies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Sandisk"
+    slug: sandisk
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Seagate Technology, LLC"
+    slug: seagate-technology
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Shaped"
+    slug: shaped
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Signifyd"
+    slug: signifyd
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "SmartLight Analytics"
+    slug: smartlight-analytics
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Software Mind"
+    slug: software-mind
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Sonatafy Technology"
+    slug: sonatafy-technology
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Sonatype"
+    slug: sonatype
+    ats: lever
+    token: sonatype
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "33 open reqs at discovery"
+  - name: "Soum"
+    slug: soum
+    ats: lever
+    token: soum
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
+  - name: "Sparq"
+    slug: sparq
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Spokeo"
+    slug: spokeo
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Spotify"
+    slug: spotify
+    ats: lever
+    token: spotify
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "72 open reqs at discovery"
+  - name: "SQUAD"
+    slug: squad
+    ats: greenhouse
+    token: squad
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "29 open reqs at discovery"
+  - name: "SRM Technologies"
+    slug: srm-technologies
+    ats: greenhouse
+    token: srm
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'S-RM', expected 'SRM Technologies' - confirm before collecting"
+  - name: "Sutherland"
+    slug: sutherland
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Talan"
+    slug: talan
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "TechBiz Global"
+    slug: techbiz-global
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "TELUS Digital"
+    slug: telus-digital
+    ats: ashby
+    token: telus-digital
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "80 open reqs at discovery"
+  - name: "TELUS International AI Inc"
+    slug: telus-international-ai
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "The Hanover Insurance Group"
+    slug: the-hanover-insurance-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "The Kraft Heinz Company"
+    slug: the-kraft-heinz-company
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Tiger Analytics"
+    slug: tiger-analytics
+    ats: ashby
+    token: tiger
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Tiger Jobs', expected 'Tiger Analytics' - confirm before collecting"
+  - name: "TransUnion"
+    slug: transunion
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "TreviPay"
+    slug: trevipay
+    ats: lever
+    token: trevipay
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
+  - name: "Typeform"
+    slug: typeform
+    ats: greenhouse
+    token: typeform
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "12 open reqs at discovery"
+  - name: "University of Washington"
+    slug: university-of-washington
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "USAA"
+    slug: usaa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "uvation"
+    slug: uvation
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "UX Woman"
+    slug: ux-woman
+    ats: lever
+    token: ux-woman
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "could not read a company name from the board - confirm before collecting"
+  - name: "Vantage Data Centers"
+    slug: vantage-data-centers
+    ats: ashby
+    token: vantage
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vantage Jobs', expected 'Vantage Data Centers' - confirm before collecting"
+  - name: "Vector Trading"
+    slug: vector-trading
+    ats: ashby
+    token: vector
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vector Jobs', expected 'Vector Trading' - confirm before collecting"
+  - name: "Velera"
+    slug: velera
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Velsera"
+    slug: velsera
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Veracity Insurance"
+    slug: veracity-insurance
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Vesta Software Group"
+    slug: vesta-software-group
+    ats: ashby
+    token: vesta
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'Vesta Innovations Inc. Jobs', expected 'Vesta Software Group' - confirm before collecting"
+  - name: "virtual7 GmbH"
+    slug: virtual7
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Vistra Corporate Services (Sea) Pte. Ltd"
+    slug: vistra-corporate-services-sea
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Vosyn"
+    slug: vosyn
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "We Assist.io"
+    slug: we-assist-io
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Westinghouse Electric Company"
+    slug: westinghouse-electric-company
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "WorkWave"
+    slug: workwave
+    ats: lever
+    token: workwave
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "13 open reqs at discovery"
+  - name: "World Business Lenders"
+    slug: world-business-lenders
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Worldpay"
+    slug: worldpay
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Xideral"
+    slug: xideral
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Yassir"
+    slug: yassir
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Zantech"
+    slug: zantech
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Zillow"
+    slug: zillow
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Zillow Group"
+    slug: zillow-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Autodesk"
+    slug: autodesk
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Bond"
+    slug: bond
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Capital One"
+    slug: capital-one
+    ats: lever
+    token: capital
+    status: unverified
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "board reports 'capital.com jobs', expected 'Capital One' - confirm before collecting"
+  - name: "Equinix, Inc"
+    slug: equinix
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Experian"
+    slug: experian
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Henry Schein"
+    slug: henry-schein
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Here Technologies"
+    slug: here-technologies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "KeepTruckin"
+    slug: keeptruckin
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "KinderCare Learning Companies"
+    slug: kindercare-learning-companies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Koalafi"
+    slug: koalafi
+    ats: greenhouse
+    token: koalafi
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "Liftoff"
+    slug: liftoff
+    ats: greenhouse
+    token: liftoff
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "20 open reqs at discovery"
+  - name: "PetMeds"
+    slug: petmeds
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "ShiftKey"
+    slug: shiftkey
+    ats: ashby
+    token: shiftkey
+    status: verified
+    verified_by: board_page
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
+  - name: "Surescripts"
+    slug: surescripts
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "UKG"
+    slug: ukg
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Visa"
+    slug: visa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Zoom"
+    slug: zoom
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-12
+    source: auto_discovered
+    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"

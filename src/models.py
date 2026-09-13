@@ -46,6 +46,10 @@ class RoleFamily(StrEnum):
     ML_ENG = "ml_eng"
     ANALYTICS_ENG = "analytics_eng"
     DATA_ENG = "data_eng"
+    #: Product/growth/experimentation analytics - the strong end of the analyst market.
+    #: Split out from ANALYST because the two are different jobs competing for different
+    #: people, and lumping them made the good ones unfindable.
+    PRODUCT_ANALYST = "product_analyst"
     ANALYST = "analyst"
     OTHER = "other"
 
@@ -62,6 +66,7 @@ TRACKED_FAMILIES: frozenset[RoleFamily] = frozenset(
         RoleFamily.ML_ENG,
         RoleFamily.ANALYTICS_ENG,
         RoleFamily.DATA_ENG,
+        RoleFamily.PRODUCT_ANALYST,
         RoleFamily.ANALYST,
     }
 )
@@ -220,6 +225,23 @@ class JobPosting(BaseModel):
 
     @computed_field  # type: ignore[prop-decorator]
     @property
+    def dedupe_key(self) -> str:
+        """Groups observations of what is probably one requisition, across sources.
+
+        A job can be seen on both an aggregator and its company's own ATS board. Both
+        observations are kept - raw capture is immutable, and they are genuinely two
+        different facts about our own looking. This key lets the analysis layer collapse
+        them without anything being dropped at collection time.
+
+        Deliberately coarse: company plus normalized title. It will merge two genuinely
+        distinct reqs with identical titles at one company (real, and common for
+        multi-location postings), so it is a grouping hint for analysis, never an identity.
+        `job_id` remains the only identity.
+        """
+        return f"{self.company_slug}:{self.title_normalized}"
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
     def is_tracked(self) -> bool:
         """Whether the full record (with description) is stored. Spec storage policy."""
         return self.role_family in TRACKED_FAMILIES
@@ -280,6 +302,8 @@ class PostingEvent(BaseModel):
     salary_is_estimated: bool = False
     posted_at: datetime | None = None
     apply_url: str
+    #: Analysis-layer grouping hint for cross-source duplicates; see JobPosting.dedupe_key.
+    dedupe_key: str | None = None
 
     @classmethod
     def from_posting(cls, posting: JobPosting, event: EventType, on: date) -> PostingEvent:
@@ -302,6 +326,7 @@ class PostingEvent(BaseModel):
             salary_is_estimated=posting.salary_is_estimated,
             posted_at=posting.posted_at,
             apply_url=posting.apply_url,
+            dedupe_key=posting.dedupe_key,
         )
 
 

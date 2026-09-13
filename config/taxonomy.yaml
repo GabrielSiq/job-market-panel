@@ -17,7 +17,7 @@
 # lean on from either source, so the title is the only field present and comparable
 # across every source.
 
-version: "2026-09-12.1"
+version: "2026-09-13.1"
 
 role_families:
   # Evaluated IN ORDER; first match wins. Order is load-bearing: "Data Science Manager"
@@ -35,7 +35,7 @@ role_families:
     # every adjacent engineering leadership req.
     include:
       - '\b(manager|head|director|vp|vice president|chief)\b.{0,30}\b(data scien\w*|data-scien\w*|analytics|analytic|insights|decision scien\w*|experimentation)\b'
-      - '\b(data scien\w*|data-scien\w*|analytics|analytic|insights|decision scien\w*|experimentation)\b.{0,30}\b(manager|leader|lead(ership)?|head|director|vp|vice president)\b'
+      - '\b(data scien\w*|data-scien\w*|analytics|analytic|insights|decision scien\w*|experimentation)\b.{0,30}\b(manager|head|director|vp|vice president)\b'
       - '\bhead of (data|analytics|insights|experimentation)\b'
     exclude:
       - '\b(engineering manager|manager, (software|platform|infrastructure))\b'
@@ -85,6 +85,26 @@ role_families:
       # Real examples seen in the feed: "Epidemiologist", "Principal Scientist, Project
       # Toxicologist", "Sr. Manager, Clinical Science".
       - '\b(clinical|medical|biostatis|epidemiolog|toxicolog|pharmaco|regulatory affairs|laboratory|materials|chemistry|physicist)\b'
+
+  - name: product_analyst
+    # The strong end of the analyst market: analytics embedded in product, growth or
+    # experimentation. Evaluated BEFORE `analyst` so these do not fall into the general
+    # bucket. Gabriel wants these surfaced; a junior reporting analyst is a different job
+    # competing for different people, and lumping them made the good ones unfindable.
+    #
+    # Deliberately conservative - it matches on the *subject* of the analytics, not on
+    # seniority. Seniority is already its own field, so "Senior Data Analyst" is findable
+    # as analyst+senior without widening this family.
+    include:
+      - '\b(product|growth|user|customer|monetization|marketplace|pricing|engagement|retention|acquisition)\b.{0,20}\b(analyst|analytics)\b'
+      - '\b(analyst|analytics)\b.{0,20}\b(product|growth|user|customer|monetization|marketplace|engagement|retention|acquisition)\b'
+      - '\binsights\b.{0,20}\b(lead|analyst|manager|partner)\b'
+      - '\b(experimentation|a/b test|ab test)\b.{0,25}\b(analyst|analytics)\b'
+      - '\bproduct analytics\b'
+    exclude:
+      # Operational and systems roles that borrow the vocabulary.
+      - '\b(business systems|systems|reporting|operations|ops|payroll|procurement) analyst\b'
+      - '\b(product manager|product marketing|product designer|product owner)\b'
 
   - name: analyst
     include:

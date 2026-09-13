@@ -52,6 +52,17 @@ jobs:
         # that is meant to be immutable.
         run: uv run pytest
 
+      - name: Discover new companies
+        # Grows the watchlist so it is a byproduct rather than a bottleneck: no ATS offers
+        # enumeration, so any company we cannot name is invisible. Runs BEFORE collection
+        # so a board found today is collected today.
+        #
+        # continue-on-error because discovery is an enhancement and collection is the
+        # critical path - a day without new companies costs coverage, a day without
+        # collection costs baseline that cannot be recovered.
+        continue-on-error: true
+        run: uv run python tools/discover.py --limit 80
+
       - name: Collect
         run: uv run python -m src.collect
 
@@ -60,7 +71,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           date -u +%Y-%m-%dT%H:%M:%SZ > data/.last_run
-          git add data
+          git add data config/watchlist.yaml
           if git diff --staged --quiet; then
             echo "nothing to commit (unexpected - the heartbeat should always change)"
           else

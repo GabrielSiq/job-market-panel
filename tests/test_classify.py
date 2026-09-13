@@ -53,6 +53,22 @@ REAL_TITLES = [
     ("Sr. Manager, Clinical Science", "other", "manager"),
     ("Product Manager, Growth", "other", "manager"),
     ("Predictive Modeler / Pricing Modeler - Commercial Actuarial", "other", "mid"),
+    # The product_analyst split. Gabriel wants strong product analytics surfaced; a junior
+    # reporting analyst is a different job competing for different people, and one bucket
+    # made the good ones unfindable.
+    ("Product Analyst", "product_analyst", "mid"),
+    ("Senior Product Analyst", "product_analyst", "senior"),
+    ("Growth Analyst", "product_analyst", "mid"),
+    ("Senior Analyst, Growth & Retention", "product_analyst", "senior"),
+    ("Analytics Lead, Customer Experience", "product_analyst", "senior"),
+    ("Insights Lead, Instacart Business", "product_analyst", "senior"),
+    # ...and what must stay in the general bucket.
+    ("Data Analyst II", "analyst", "junior"),
+    ("Reporting Analyst", "analyst", "mid"),
+    ("Business Systems Analyst, Finance Systems", "analyst", "mid"),
+    ("Senior Business Analyst, TPRM", "analyst", "senior"),
+    # A people-management analytics req is the org-growth signal, not an IC analyst role.
+    ("Product Analytics Manager", "ds_manager", "manager"),
     # Junior detection, so entry-level reqs do not inflate the senior series.
     ("Intern - Data Scientist", "product_ds", "junior"),
     ("Data Scientist, Core Data -  PhD (2026)", "product_ds", "junior"),
@@ -216,3 +232,24 @@ class TestRemoteFromDescription:
             finding = classifier.remote_from_description(text)
             assert finding.is_remote is None
             assert finding.remote_source is RemoteSource.UNKNOWN
+
+
+def test_lead_does_not_decide_family_by_word_order(classifier):
+    """A Phase 1 inconsistency, fixed with the product_analyst split.
+
+    `ds_manager` matched a bare "lead", so "Analytics Lead" became a manager req while
+    "Lead, Advanced Analytics" did not - the same job classified two ways depending on
+    which word came first. "Lead" is an IC seniority marker; the seniority rules already
+    read it as senior.
+    """
+    assert classifier.role_family("Analytics Lead, Customer Experience").value != "ds_manager"
+    assert classifier.seniority("Analytics Lead, Customer Experience").value == "senior"
+    assert classifier.role_family("Lead, Advanced Analytics, Acquisition").value == "product_ds"
+
+
+def test_product_analyst_does_not_steal_from_product_ds(classifier):
+    """product_analyst is evaluated AFTER product_ds deliberately. At companies where
+    "Advanced Analytics" IS the product-DS function, those reqs must stay product_ds."""
+    assert classifier.role_family("Lead, Advanced Analytics, Acquisition").value == "product_ds"
+    assert classifier.role_family("Senior Product Data Scientist").value == "product_ds"
+    assert classifier.role_family("Experimentation Analyst").value == "product_ds"

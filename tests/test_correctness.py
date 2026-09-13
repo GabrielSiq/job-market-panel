@@ -269,3 +269,37 @@ def _open(job_id: str, source: str = "greenhouse", company: str = "acme"):
     from src.collect import OpenPosting
 
     return OpenPosting(job_id=job_id, source=source, company_slug=company, first_seen=DAY1)
+
+
+class TestDedupeKey:
+    """Cross-source duplicates are grouped for analysis, never dropped at collection.
+
+    A job seen on both an aggregator and its company's own ATS board is two genuine
+    observations of our own looking. Raw capture stays immutable; the key lets the analysis
+    layer collapse them.
+    """
+
+    def test_same_req_across_sources_shares_a_key(self):
+        ats = posting("gh-1", source=Source.GREENHOUSE, company="acme")
+        aggregator = posting("him-1", source=Source.HIMALAYAS, company="acme")
+        assert ats.job_id != aggregator.job_id, "identity stays per-source"
+        assert ats.dedupe_key == aggregator.dedupe_key == "acme:senior data scientist"
+
+    def test_key_survives_dirty_titles(self):
+        """Greenhouse emits 'Senior Data Scientist ' and 'Senior Data Scientist' as
+        separate values on one board; they must not become two groups."""
+        a = posting("1")
+        b = posting("2")
+        b.title = "Senior Data Scientist "
+        assert a.dedupe_key == posting("2").dedupe_key
+
+    def test_key_reaches_the_event_log(self):
+        event = PostingEvent.from_posting(posting("1"), EventType.APPEARED, DAY1)
+        assert event.dedupe_key == "acme:senior data scientist"
+
+    def test_key_is_a_grouping_hint_not_an_identity(self):
+        """Two genuinely distinct reqs with the same title at one company share a key -
+        common for multi-location postings. job_id remains the only identity."""
+        a, b = posting("1"), posting("2")
+        assert a.dedupe_key == b.dedupe_key
+        assert a.job_id != b.job_id
