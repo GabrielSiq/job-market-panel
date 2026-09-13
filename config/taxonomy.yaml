@@ -17,7 +17,7 @@
 # lean on from either source, so the title is the only field present and comparable
 # across every source.
 
-version: "2026-09-13.1"
+version: "2026-09-13.2"
 
 role_families:
   # Evaluated IN ORDER; first match wins. Order is load-bearing: "Data Science Manager"
@@ -85,6 +85,12 @@ role_families:
       # Real examples seen in the feed: "Epidemiologist", "Principal Scientist, Project
       # Toxicologist", "Sr. Manager, Clinical Science".
       - '\b(clinical|medical|biostatis|epidemiolog|toxicolog|pharmaco|regulatory affairs|laboratory|materials|chemistry|physicist)\b'
+      # Engineers who BUILD the experimentation platform rather than use it. Real examples
+      # from OpenAI's board: "Software Engineer, Full-Stack - Core Experimentation",
+      # "Engineering Manager, Core Experimentation". These were landing in product_ds and
+      # inflating the target-family count with roles Gabriel is not looking for.
+      - '\b(software|backend|back-end|frontend|front-end|full ?stack|platform|infrastructure|systems|mobile|ios|android|devops|site reliability|security) engineer\b'
+      - '\bengineering manager\b'
 
   - name: product_analyst
     # The strong end of the analyst market: analytics embedded in product, growth or

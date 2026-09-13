@@ -3,6 +3,7 @@ name = "job-market-panel"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+    "duckdb>=1.5.5",
     "httpx>=0.28.1",
     "pydantic>=2.13.5",
     "pyyaml>=6.0.3",
@@ -29,6 +30,11 @@ ignore = ["E501"]
 # characters are exactly what the parser has to cope with, so normalizing them away
 # would defeat the test.
 "tests/test_salary.py" = ["RUF001"]
+# report.py writes user-facing prose: en dashes in "$150k-200k" and "Median low-high" are
+# deliberate typography, not accidental lookalikes.
+"src/report.py" = ["RUF001"]
+# Asserts on that same display typography.
+"tests/test_build_report.py" = ["RUF001"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -109,7 +109,13 @@ calendar time — seven consecutive unattended daily commits.
 
 ### What to do next session
 
-**Phase 3 — analysis and reporting.** The collector is sound and widening on its own; the
+**Phase 3 — the time-series metrics.** Phase 2.5 shipped the snapshot layer
+(`panel.duckdb`, `reports/latest.md`). What remains needs history rather than code:
+survival / time-to-close with censoring, per-company growth trends, the new-posting-rate
+baseline, title-mix over time, and Adzuna macro context. `job_spans` already has the shape
+survival needs.
+
+**Superseded — kept for the constraints it records:** The collector is sound and widening on its own; the
 panel now needs to answer questions rather than just accumulate. Build `build.py`
 (event log → DuckDB), the five metrics, and the weekly report.
 
@@ -963,3 +969,63 @@ separable precisely so that choice stays available.
 method — valid Python, ruff-clean, and every posting then failed to parse. The adapter
 tests caught it because log-and-skip turned it into an `EMPTY` board rather than a crash.
 That is the failure mode this project is built around, working as intended.
+
+### 2026-09-13 — Phase 2.5: the panel became readable
+
+Gabriel wanted something to glance at daily, explicitly not a notification system. Two
+outputs: `panel.duckdb` (queryable, gitignored, rebuilt in **0.64s**) and
+`reports/latest.md` (regenerated and committed on every run).
+
+**Format: markdown, and the reasoning is worth keeping.** Gabriel pushed for HTML —
+reasonably, since his objection was "a wall of text makes things hard". Two facts settled
+it: **GitHub does not render `.html` in the repo view** (it shows source), and Pages
+**requires a public repo on the Free plan** while a Pages site is **public even when its
+source repo is private**. That would have made this a publicly-accessible job-search
+dashboard, colliding with the December visibility decision.
+
+The wall-of-text problem is a **layout** problem, and markdown can solve it. Every technique
+used was verified against GitHub's own renderer via `POST /markdown` before being relied
+on — alerts, `<details>` collapsibles, tables and Unicode block bars all survive
+sanitisation. Mermaid survives as a `highlight-source-mermaid` block but GitHub draws it
+client-side, so the API cannot confirm the diagram paints; it is therefore **not used**.
+The page opens as a glance and folds five detail sections.
+
+**DuckDB reads the gzipped JSONL globs natively — measured, not assumed.** The plan said to
+load rows through `Storage.read_jsonl_gz` because the docs were inconclusive. Once duckdb
+was installed the question was settleable: **0.14s vs 53s** for row-by-row inserts, with
+correct type inference. `build.py` uses the direct read.
+
+**`role_family` and `seniority` are recomputed at build time, not trusted from the log.**
+This is the correction that made Phase 2.5 worth more than a report. The event log stores
+the classification made at collection, so a taxonomy fix would only ever affect postings
+collected afterwards and the series would carry a **silent step change on the day the rules
+changed** — exactly the artifact spec 3.5 exists to prevent. Titles are retained precisely
+so this is possible; the original values survive as `role_family_logged` /
+`seniority_logged` so any reclassification is auditable. It immediately corrected 64 event
+rows and 62 posting rows.
+
+**A classifier bug the report surfaced, which no test would have.** Reading actual output
+showed "Software Engineer, Full-Stack - Core Experimentation" and "Engineering Manager,
+Core Experimentation" sitting in the target-family list. `ml_eng` excluded
+platform-engineering titles; `product_ds` did not, so engineers who *build* the
+experimentation platform were being counted as product data scientists. Fixed in taxonomy
+`2026-09-13.2` — and because of the reclassification above, the fix reached the existing
+history rather than only future collections.
+
+**Two smaller traps, both now guarded:**
+
+- A column that is **entirely null** in the files DuckDB reads is inferred as JSON, and
+  every later `coalesce(col, 'year')` against it fails. This depends on what the data
+  looked like that day, so it would appear without warning on some rebuilds. `build.py`
+  casts JSON columns to VARCHAR.
+- Job titles contain pipes — "Senior Data Scientist | Drive Innovation Through Data |
+  Remote" is a real posting here — and one unescaped pipe shatters a markdown table row.
+  `cell()` escapes them; a test asserts it.
+
+**The report carries its own caveats**, because a caveat living in this file is not on
+screen when the report is read on a phone: no trends yet; rates must be read per vendor;
+the panel is not a market denominator; disclosed and parsed pay bands are never pooled; and
+remote share is stated both with and without `location_implied`.
+
+**Self-service is documented in the README** — schema, the two provenance fields that
+decide whether a number can be trusted, and five worked queries.

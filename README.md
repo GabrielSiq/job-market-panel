@@ -84,11 +84,92 @@ data/
 ```bash
 uv sync                                  # Python is pinned in .python-version
 uv run python -m src.collect             # one collection pass
+uv run python -m src.report --rebuild    # rebuild panel.duckdb and render the report
 uv run python tools/healthcheck.py       # counts by source and day
 uv run pytest                            # adapter fixtures + correctness rules
 ```
 
+The current state of the panel is always in **[`reports/latest.md`](reports/latest.md)**,
+regenerated on every run.
+
 The collector runs itself daily via `.github/workflows/collect.yml` and commits its output.
+
+## Querying the panel yourself
+
+The report answers the questions I thought to ask. `panel.duckdb` answers yours.
+
+```bash
+uv run python -m src.build          # rebuild from the raw log (~1s)
+uv run python -m src.report         # regenerate reports/latest.md
+duckdb panel.duckdb                 # or query it directly
+```
+
+The database is **gitignored and disposable** — it is rebuilt from the event log every
+run, so deleting it loses nothing. The log is the only thing that matters.
+
+| Object | What it is |
+|---|---|
+| `events` | Every `appeared` / `disappeared` row, all days. The raw series. |
+| `open_postings` | **Currently open**, by replaying the log: the latest event per `job_id`, kept when that event is `appeared`. Matches the collector's own definition exactly. |
+| `job_spans` | One row per posting with `first_seen`, `disappeared_on`, `is_closed`. The input to survival analysis once there is enough history. |
+| `postings` | Full records including description text, for data-family roles. |
+| `runs` | Per-source, per-company collection health. |
+
+**`role_family` and `seniority` are recomputed at build time** from the stored title, under
+the current `config/taxonomy.yaml`. The values recorded when the posting was collected are
+kept alongside as `role_family_logged` / `seniority_logged`. This is what lets a
+classification fix apply to the whole history instead of creating a step change on the day
+the rule changed.
+
+Two things to know before trusting a number:
+
+- **`salary_source` matters.** `posting_disclosed` came from a structured vendor field;
+  `description_parsed` was extracted from the job text by a regex. Both are
+  employer-published, but they are not equally reliable — do not pool them.
+- **`remote_source` matters.** `location_implied` means "the location names a specific
+  workplace and nothing said remote", which measures around 95% accurate but is the
+  weakest inference here. Filter it out when you want only strong evidence.
+
+### Worked examples
+
+```sql
+-- Senior+ product-DS roles with a disclosed band clearing $250k
+SELECT company_name, title, salary_min, salary_max, country
+FROM open_postings
+WHERE role_family = 'product_ds'
+  AND seniority IN ('senior', 'staff', 'principal')
+  AND salary_max >= 250000
+ORDER BY salary_max DESC;
+
+-- Companies building out a DS org: several IC reqs AND a manager req
+SELECT company_name,
+       count(*) FILTER (WHERE role_family = 'product_ds')  AS ic_reqs,
+       count(*) FILTER (WHERE role_family = 'ds_manager')  AS manager_reqs
+FROM open_postings
+WHERE role_family IN ('product_ds', 'ds_manager')
+GROUP BY 1 HAVING manager_reqs > 0 AND ic_reqs >= 2
+ORDER BY ic_reqs DESC;
+
+-- Remote US roles, strong evidence only
+SELECT company_name, title, seniority, salary_max
+FROM open_postings
+WHERE is_remote AND country = 'US'
+  AND remote_source <> 'location_implied'
+  AND role_family IN ('product_ds', 'ds_manager', 'product_analyst');
+
+-- What closed, and how long it stayed open (needs more history to be meaningful)
+SELECT company_name, title, first_seen, disappeared_on,
+       disappeared_on - first_seen AS days_open
+FROM job_spans
+WHERE is_closed AND role_family = 'product_ds'
+ORDER BY days_open;
+
+-- Where a classification changed when the taxonomy was fixed
+SELECT title, role_family_logged, role_family, count(*)
+FROM events
+WHERE role_family IS DISTINCT FROM role_family_logged
+GROUP BY 1, 2, 3 ORDER BY 4 DESC;
+```
 
 ## Measured findings
 

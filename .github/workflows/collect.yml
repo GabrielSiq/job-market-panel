@@ -66,12 +66,22 @@ jobs:
       - name: Collect
         run: uv run python -m src.collect
 
+      - name: Build the analytics database and render the report
+        # Rebuilt from the raw log every run, so a taxonomy change applies to the whole
+        # history rather than only to postings collected afterwards.
+        #
+        # continue-on-error for the same reason as discovery: the report is an
+        # enhancement, collection is the critical path. A lost day of report is
+        # recoverable on the next run; a lost day of baseline never is.
+        continue-on-error: true
+        run: uv run python -m src.report --rebuild
+
       - name: Commit
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           date -u +%Y-%m-%dT%H:%M:%SZ > data/.last_run
-          git add data config/watchlist.yaml
+          git add data config/watchlist.yaml reports
           if git diff --staged --quiet; then
             echo "nothing to commit (unexpected - the heartbeat should always change)"
           else
