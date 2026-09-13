@@ -26,8 +26,10 @@ from src.models import (
     Source,
 )
 from src.normalize import clean_text
+from src.salary import parse_salary
 from src.sources.base import parse_iso
 from src.sources.board import PerCompanyBoardSource
+from src.sources.greenhouse import _salary_fields
 
 logger = logging.getLogger(__name__)
 
@@ -154,7 +156,9 @@ class AshbySource(PerCompanyBoardSource):
             remote_source=remote.remote_source,
             employment_type=clean_text(raw.get("employmentType")),
             department=clean_text(raw.get("department")) or clean_text(raw.get("team")),
-            **self._salary(raw),
+            # Structured compensation always wins; prose is only a fallback for the ~40%
+            # of Ashby postings that publish no tier.
+            **(self._salary(raw) or _salary_fields(parse_salary(description))),
             salary_is_estimated=False,
             description_text=description if role_family in TRACKED_FAMILIES else None,
             apply_url=clean_text(raw.get("jobUrl")) or clean_text(raw.get("applyUrl")) or "",

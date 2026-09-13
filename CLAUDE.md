@@ -886,3 +886,55 @@ and the relative `"Posted Yesterday"` string barely matters since every survival
 uses `first_seen` by design. The remaining cost is three hand-discovered config values per
 company. **Recommendation: build it next, driven by a hand-maintained tenant list** for
 companies Gabriel names, rather than automatic discovery.
+
+### 2026-09-13 — salary parsed from description prose: 19.6% → 57.1% coverage
+
+Gabriel pushed back on the low salary coverage, correctly: employers print the band in the
+job text even when the ATS exposes no field for it. Measured before building anything.
+
+**The measurement.** Of 1,192 stored descriptions, **392 (33%) contained a pay range we
+were recording as "no salary"**. A fresh 20-board sample across *all* role families (3,594
+postings, not just the tracked ones we retain text for) put the recoverable rate at
+**45.3%**. Median band $137k–$192k; **zero implausible or inverted values** in the whole
+set, which is what made parsing defensible rather than reckless.
+
+**Result after wiring `src/salary.py` into all three adapters:**
+
+| Vendor | Postings with a band |
+|---|---|
+| Greenhouse | **62.5%** (was 0% — no salary field exists) |
+| Ashby | **64.9%** (structured tiers plus prose fallback) |
+| Lever | 7.5% |
+| **ATS census overall** | **57.1%**, up from 19.6% |
+
+Core target families (`product_ds` + `ds_manager` + `product_analyst`) now carry a band on
+57.4% of postings, median **$180,000–$250,000**.
+
+**Why this was deferred until now, and what makes it safe.** A bad parse pollutes the
+compensation series permanently and silently. Three properties:
+
+1. **`SalarySource.DESCRIPTION_PARSED`** — never pooled with `POSTING_DISCLOSED`. Both are
+   employer-disclosed; the difference is that one arrived in a vendor field and the other
+   through a regex, and only the first is above suspicion. **Report them as separate
+   series.** Note it is NOT `salary_is_estimated` — the employer published this figure; it
+   is not a prediction like Adzuna's.
+2. **Implausible results are discarded, not stored.** Bounds reject signing bonuses,
+   funding amounts, per-share equity and inverted ranges. Returning nothing beats returning
+   a number nobody will re-examine.
+3. **Reprocessable** — descriptions are retained for tracked families, so improving the
+   parser and rebuilding reclassifies the history.
+
+**Multi-range postings (~19% of matches).** Employers list several bands: geographic tiers
+(Zillow states different bands for DC and Virginia) or internal levels (DoorDash I4/I5/I6).
+The stored band spans all of them — the honest reading, since the role genuinely is open
+across those tiers — and `range_count` records the ambiguity so analysis can restrict to
+`== 1` for tight estimates.
+
+**A bug the fresh sample caught, which the stored data could not.** Lever scored **zero**
+until I noticed its pay band lives in `additionalPlain`, not the description. The parser
+had been pointed at the wrong field entirely, and would have quietly reported Lever as
+publishing no compensation at all. It is still only 7.5% — most Lever boards genuinely do
+not publish — but that is now a fact rather than an artifact.
+
+**Structured always wins.** Ashby's compensation tiers take precedence over its own prose;
+parsing only fills a gap.

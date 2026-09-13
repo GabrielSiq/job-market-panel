@@ -131,6 +131,11 @@ class SalaryPeriod(StrEnum):
 
 class SalarySource(StrEnum):
     POSTING_DISCLOSED = "posting_disclosed"
+    #: Employer-disclosed, but printed in the description rather than a structured field
+    #: and extracted by src/salary.py. Genuinely disclosed - the employer published it -
+    #: but it passed through a parser, so it is kept separable from the fields a vendor
+    #: handed us. Report the two as distinct series.
+    DESCRIPTION_PARSED = "description_parsed"
     SOURCE_ESTIMATE = "source_estimate"  # Adzuna predictions — never pool with disclosed
 
 

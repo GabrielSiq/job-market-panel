@@ -17,7 +17,7 @@ from datetime import UTC, datetime
 
 import httpx
 
-from src.models import RemoteSource, RunStatus, SalaryPeriod
+from src.models import RemoteSource, RunStatus, SalaryPeriod, SalarySource
 from src.sources.ashby import AshbySource
 from src.sources.base import build_client, parse_epoch
 from src.sources.greenhouse import GreenhouseSource
@@ -542,15 +542,20 @@ class TestLever:
         assert posting.is_remote is True
         assert posting.remote_source is RemoteSource.METADATA_FIELD
 
-    def test_salary_prose_is_not_parsed(self, config, classifier, httpx_mock):
-        """`additionalPlain` carries "Estimated annual salary range: $150,000 - $189,000".
-        Deliberately unparsed - a bad regex pollutes the compensation series permanently."""
+    def test_salary_is_read_from_additional_plain(self, config, classifier, httpx_mock):
+        """Lever keeps the band in `additionalPlain`, NOT the description.
+
+        A fresh 20-board sample scored **zero** on Lever until this was noticed - the
+        parser was pointed at the wrong field entirely, and would have quietly reported
+        Lever as publishing no compensation at all.
+        """
         payload = fixture("lever_board.json")[:1]
         payload[0]["additionalPlain"] = "Estimated annual salary range: $150,000 - $189,000"
         httpx_mock.add_response(url=LEVER_ANY, json=payload)
         source = LeverSource(config, classifier, [self._company()])
         posting = run(_fetch(source, config)).postings[0]
-        assert posting.salary_min is None and posting.salary_max is None
+        assert (posting.salary_min, posting.salary_max) == (150_000, 189_000)
+        assert posting.salary_source is SalarySource.DESCRIPTION_PARSED
 
 
 class TestUnverifiedBoardsAreNotCollected:
@@ -652,3 +657,51 @@ class TestCrossVendorIsolation:
         assert by_slug["ramp"].status is RunStatus.OK
         assert ("ashby", "ramp") in result.diffable_scopes
         assert ("ashby", "dead-co") not in result.diffable_scopes
+
+
+class TestParsedSalaryNeverMasqueradesAsStructured:
+    """Both kinds are employer-disclosed, but one came from a vendor field and the other
+    through a regex. Pooling them would hide the difference in reliability."""
+
+    def test_ashby_structured_wins_over_prose(self, config, classifier, httpx_mock):
+        payload = fixture("ashby_board.json")
+        payload["jobs"] = [
+            j for j in payload["jobs"] if (j.get("compensation") or {}).get("compensationTiers")
+        ][:1]
+        payload["jobs"][0]["compensation"]["compensationTiers"] = [
+            {
+                "components": [
+                    {
+                        "compensationType": "Salary",
+                        "minValue": 211_400,
+                        "maxValue": 290_600,
+                        "currencyCode": "USD",
+                        "interval": "1 YEAR",
+                    }
+                ]
+            }
+        ]
+        payload["jobs"][0]["descriptionPlain"] = "Salary Range: $10,000 - $20,000"
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        posting = run(_fetch(AshbySource(config, classifier, [_company()]), config)).postings[0]
+        assert (posting.salary_min, posting.salary_max) == (211_400, 290_600)
+        assert posting.salary_source is SalarySource.POSTING_DISCLOSED
+
+    def test_greenhouse_prose_is_labelled_parsed(self, config, classifier, httpx_mock):
+        payload = fixture("greenhouse_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["content"] = "<p>US Salary Range $112,000&#8212;$149,000 USD</p>"
+        httpx_mock.add_response(url=GH_ANY, json=payload)
+        watch = [
+            {
+                "name": "Airbnb",
+                "slug": "airbnb",
+                "ats": "greenhouse",
+                "token": "airbnb",
+                "status": "verified",
+            }
+        ]
+        posting = run(_fetch(GreenhouseSource(config, classifier, watch), config)).postings[0]
+        assert (posting.salary_min, posting.salary_max) == (112_000, 149_000)
+        assert posting.salary_source is SalarySource.DESCRIPTION_PARSED
+        assert posting.salary_is_estimated is False, "disclosed by the employer, not predicted"

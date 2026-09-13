@@ -20,8 +20,10 @@ from src.models import (
     Source,
 )
 from src.normalize import clean_text
+from src.salary import parse_salary
 from src.sources.base import parse_epoch
 from src.sources.board import PerCompanyBoardSource
+from src.sources.greenhouse import _salary_fields
 
 logger = logging.getLogger(__name__)
 
@@ -98,12 +100,10 @@ class LeverSource(PerCompanyBoardSource):
             employment_type=clean_text(categories.get("commitment")),
             department=clean_text(categories.get("department"))
             or clean_text(categories.get("team")),
-            # No structured salary. Bands appear as prose in `additionalPlain`
-            # ("Estimated annual salary range: $150,000 - $189,000"). Deliberately not
-            # parsed: a bad regex would pollute the compensation series permanently, and
-            # the description is retained so it can be parsed later from raw.
-            salary_min=None,
-            salary_max=None,
+            # Lever keeps the pay band in `additionalPlain`, NOT in the description.
+            # A fresh sample scored zero on Lever until that was noticed - the parser was
+            # reading the wrong field entirely.
+            **_salary_fields(parse_salary(clean_text(raw.get("additionalPlain")) or description)),
             salary_is_estimated=False,
             description_text=description if role_family in TRACKED_FAMILIES else None,
             apply_url=clean_text(raw.get("hostedUrl")) or clean_text(raw.get("applyUrl")) or "",
