@@ -518,3 +518,79 @@ and EEO boilerplate cluster at the end.
 matched the real phrasing, "in **one of** our offices at least 25% of the time". It scored
 fine in the live sample only because those postings had a metadata field that won first.
 Fixed.
+
+### 2026-09-12 — Phase 2 vendor reconnaissance (research only, nothing built)
+
+Probed every remaining vendor against live endpoints to size the porting work before
+opening Phase 2. **No adapters written; Phase 1 is still in its observation week.**
+
+**Coverage available today**, probing the 60 parked companies plus careers-page fingerprints:
+
+| Vendor | Companies reachable | Open reqs | Verdict |
+|---|---|---|---|
+| **Ashby** | 24 | ~2,600 | **Build first — 92% of the win** |
+| Lever | 5 | 214 | Build second |
+| Workable | **0** | 0 | **Skip entirely** |
+| Workday | ~up to 30 | many | Defer; document the bias |
+
+This **reverses the spec's implied ordering** (Greenhouse → Lever → Ashby → Workable).
+Ashby is the single highest-value adapter by a wide margin and brings the best targets:
+Plaid, Ramp, Notion, Snowflake, Airwallex, Modern Treasury, Column, Persona, Sardine.
+
+**Trap: Ashby's `isRemote` is NOT a remote flag — do not use it.** Across 422 live postings
+from 4 boards:
+
+| `isRemote` | `workplaceType` | n |
+|---|---|---|
+| `true` | **Hybrid** | **293** |
+| `true` | Remote | 65 |
+| `false` | OnSite | 20 |
+| `null` | `null` | 44 |
+
+69% claim `isRemote: true` while saying `Hybrid`, including a job located at "San Francisco
+HQ". It evidently means "some remote permitted", not "this is a remote role". **Use
+`workplaceType`; ignore `isRemote`.** `RemoteSource.ATS_FLAG` exists in the contract
+precisely for this field on the spec's guidance — leave it unused, or the remote share for
+a quarter of the panel becomes fiction.
+
+**Bonus: Ashby has structured compensation on 58% of postings** — Greenhouse has none.
+`{compensationType: "Salary", interval: "1 YEAR", currencyCode: "USD", minValue, maxValue}`.
+This lets Phase 3's compensation metric draw disclosed bands from the *census*, not only
+from Himalayas. **Take only the `Salary` component** — tiers also carry `EquityCashValue`,
+`Commission` and `Bonus`, and pooling those into base pay would silently inflate the series.
+
+**Lever:** returns a **bare array** (the spec's warning is accurate). Title is `text`,
+location is `categories.location`, `workplaceType` is lowercase (already matches the
+taxonomy map), `createdAt` is epoch **milliseconds** — already handled by `parse_epoch`.
+No structured salary, only prose (`"Estimated annual salary range: $150,000 - $189,000"`);
+do not parse it, for the same reason Greenhouse salary is not parsed.
+
+**Workable: skip.** Zero of 60 target companies had a live board with jobs. It is the
+undocumented widget endpoint. It 404s on a clearly bogus token, but short tokens collide
+with unrelated accounts (`gong` returns an account named "GONG!" with zero jobs) and there
+is no company-identity field to verify against when a board is empty — so the verification
+trick that saved the Greenhouse watchlist does not work here.
+
+**Workday: technically reachable, but degraded and high-maintenance.** The unofficial CXS
+endpoint works — `POST {tenant}.wd{N}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs`
+returned 28 reqs for Turo. But the payload carries only
+`title, externalPath, locationsText, postedOn, bulletFields`:
+
+- **no description** — so remote inference loses the description pass and falls back to
+  location text alone, which is the weakest signal we measured
+- **no department, no salary**
+- `postedOn` is a *relative human string* ("Posted Yesterday", "Posted 30+ Days Ago").
+  Less damaging than it looks, since all survival metrics use `first_seen` by design —
+  but `posted_at` would be unusable
+- each company needs **three config values discovered by hand** (tenant, `wd` number, site
+  name) from a mostly JS-rendered careers page
+
+Keeping it out of scope remains right. Document the bias instead.
+
+**Watchlist hygiene found along the way — three entries are no longer independent
+companies:** Census now redirects to Fivetran (already tracked), Loom to Atlassian, and
+Segment to Twilio. Remove or merge them in Phase 2.
+
+**Also: token-guessing has a real miss rate.** Careers-page fingerprinting found Front on
+Ashby under `frontcareers`, which no name-derived guess would produce. Worth running the
+fingerprint pass as a second stage in `resolve_ats.py` for anything that fails to resolve.
