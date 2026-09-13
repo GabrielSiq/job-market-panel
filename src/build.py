@@ -25,6 +25,7 @@ from pathlib import Path
 import duckdb
 
 from src.classify import load_classifier
+from src.location import parse_location
 from src.storage import Storage
 
 logger = logging.getLogger(__name__)
@@ -161,6 +162,58 @@ def reclassify(con: duckdb.DuckDBPyConnection, table: str) -> int:
     return changed
 
 
+def reparse_locations(con: duckdb.DuckDBPyConnection, table: str) -> int:
+    """Recompute `country` and `region` from the stored `location_raw`.
+
+    Same reasoning as `reclassify`, and the same principle (spec 3.5): the inputs are in
+    the log, so the derived values should be recomputed rather than frozen at whatever the
+    collector knew at the time.
+
+    It matters concretely here. Location parsing did not exist when the first day was
+    collected, so those rows carry `country = NULL` — a gap that looks exactly like "this
+    posting has no determinable country" but is really "the parser had not been written
+    yet". Left alone it would be a permanent discontinuity in the series at the date the
+    feature shipped.
+
+    `is_remote` is deliberately NOT recomputed: its strongest inputs (a vendor's workplace
+    field, the description text) are not retained for most postings, so recomputing from
+    the location alone would *downgrade* rows that were decided on better evidence.
+    """
+    columns = {c[1] for c in con.execute(f"PRAGMA table_info('{table}')").fetchall()}
+    if "location_raw" not in columns:
+        return 0
+
+    values = [
+        r[0]
+        for r in con.execute(
+            f"SELECT DISTINCT location_raw FROM {table} WHERE location_raw IS NOT NULL"
+        ).fetchall()
+    ]
+    if not values:
+        return 0
+
+    mapping = []
+    for raw in values:
+        place = parse_location(raw)
+        mapping.append((raw, place.country, place.region))
+    con.execute("CREATE OR REPLACE TEMP TABLE _loc (location_raw VARCHAR, c VARCHAR, r VARCHAR)")
+    con.executemany("INSERT INTO _loc VALUES (?, ?, ?)", mapping)
+
+    for field in ("country", "region"):
+        if field in columns:
+            con.execute(f'ALTER TABLE {table} RENAME "{field}" TO "{field}_logged"')
+    con.execute(
+        f"""
+        CREATE OR REPLACE TABLE {table} AS
+        SELECT t.*, l.c AS country, l.r AS region
+        FROM {table} t LEFT JOIN _loc l USING (location_raw)
+        """
+    )
+    return con.execute(
+        f"SELECT count(*) FROM {table} WHERE country IS DISTINCT FROM country_logged"
+    ).fetchone()[0]
+
+
 def build(db_path: Path = DB_PATH, storage: Storage | None = None) -> dict[str, int]:
     store = storage or Storage()
     db_path.unlink(missing_ok=True)
@@ -177,6 +230,8 @@ def build(db_path: Path = DB_PATH, storage: Storage | None = None) -> dict[str, 
     # Reclassify BEFORE the views are defined, so everything downstream sees current rules.
     counts["reclassified_events"] = reclassify(con, "events")
     counts["reclassified_postings"] = reclassify(con, "postings")
+    counts["relocated_events"] = reparse_locations(con, "events")
+    counts["relocated_postings"] = reparse_locations(con, "postings")
 
     con.execute(OPEN_POSTINGS_SQL)
     con.execute(JOB_SPANS_SQL)
@@ -206,6 +261,12 @@ def main() -> int:
         counts["runs"],
         counts["open_postings"],
     )
+    if counts.get("relocated_events"):
+        logger.info(
+            "recomputed country/region on %s event rows from the stored location text "
+            "(previous values kept as country_logged / region_logged)",
+            counts["relocated_events"],
+        )
     if counts.get("reclassified_events"):
         logger.info(
             "reclassified %s event rows and %s posting rows under the current taxonomy "

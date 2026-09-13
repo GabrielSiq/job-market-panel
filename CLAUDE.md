@@ -39,14 +39,24 @@ how that is trending.
 ## Architecture in one screen
 
 ```
-Himalayas API  ──►  collect.py ──► normalize ──► classify ──► diff vs. replayed state
-Greenhouse ATS ──►       │                                          │
-                         ▼                                          ▼
-                   data/runs/*.jsonl                      data/events/*.jsonl.gz
-                   (health log; gates diffing)            data/postings/*.jsonl.gz
-                                                          data/latest/new_postings.jsonl
-                         │
-                         └──► build.py ──► panel.duckdb ──► reports/YYYY-WW.md
+ Himalayas  (discovery, remote-only)  ─┐
+ Greenhouse ─┐                         │
+ Ashby      ─┼─ census, 382 boards ────┼──►  collect.py
+ Lever      ─┘                         │      │  normalize → classify → parse pay/location
+                                       │      │  → diff vs. state replayed from the log
+ The Muse ──► tools/discover.py ───────┘      │
+ HN threads ► tools/harvest_tokens.py         ▼
+   (both grow config/watchlist.yaml)     data/events/*.jsonl.gz     ← append-only truth
+                                         data/postings/*.jsonl.gz   ← full records
+                                         data/runs/*.jsonl          ← health; gates diffing
+                                         data/latest/new_postings.jsonl ← Phase 5 reads this
+                                              │
+                     build.py ────────────────┘   reclassifies + reparses from raw
+                        │
+                        ▼
+                  panel.duckdb  ──► report.py ──► reports/latest.md
+                  (derived, gitignored,          (committed; the daily glance)
+                   rebuilt in ~1s)
 ```
 
 Two repos, by design:
@@ -90,53 +100,79 @@ silent. Never compute survival from Himalayas rows.
 
 ## Current status
 
-**Phases 1 and 2 are built and collecting** (last updated 2026-09-13). Four sources:
-Himalayas for discovery, plus a daily census over **382 verified company boards** across
-Greenhouse, Ashby and Lever. Discovery runs itself. 195 tests passing, workflow green in CI.
+**Phases 1, 2 and 2.5 are built and collecting** (last updated 2026-09-13). Four sources,
+a census over **382 verified boards**, discovery that runs itself, and an analytics layer.
+**229 tests passing**, workflow green in CI.
 
 | | |
 |---|---|
 | Boards collected daily | **382** (148 Greenhouse, 189 Ashby, 45 Lever) |
 | Watchlist entries | 591 (382 verified, 18 quarantined, 191 no readable board) |
-| Postings per run | ~26,000, in **47 seconds** |
-| Pay band known | **57.1%** |
-| Country known | **63.5%** |
-| Remote status, strong evidence | 55.1% (98.7% including the weakest inference) |
+| Open postings tracked | ~26,000, collected in **under a minute** |
+| In-band target roles open | ~400 |
+| Pay band known | 36.5% overall (57% on days collected since the parser shipped) |
+| Country known | 66.5% |
+| Remote, strong evidence | 58.6% (86% including `location_implied`) |
+| Days of history | **2** |
 
-Phase 1's `job_id` stability gate passed: the first follow-up run produced 27 genuinely new
-postings rather than re-reporting all 9,821. The only criterion still outstanding is
-calendar time — seven consecutive unattended daily commits.
+**All Phase 1 and Phase 2 acceptance criteria are met** except one that can only pass with
+time: seven consecutive unattended daily commits. `job_id` stability was confirmed — at the
+61 companies tracked on two consecutive days, appearances went 9,261 → 7.
 
-### What to do next session
+> [!NOTE]
+> **Day one predates several features.** Salary parsing, location parsing and the
+> `product_analyst` / `senior_staff` / `senior_manager` levels all shipped after the first
+> collection. `build.py` recomputes everything whose inputs survive in the log — role
+> family, seniority, country, region — so those are continuous. **Parsed pay is not
+> recoverable for day one**, because descriptions are only retained for tracked families.
+> Expect a visible step up in pay coverage at 2026-09-13; it is an artifact, not a market
+> move.
 
-**Phase 3 — the time-series metrics.** Phase 2.5 shipped the snapshot layer
-(`panel.duckdb`, `reports/latest.md`). What remains needs history rather than code:
-survival / time-to-close with censoring, per-company growth trends, the new-posting-rate
-baseline, title-mix over time, and Adzuna macro context. `job_spans` already has the shape
-survival needs.
+### What to do next
 
-**Superseded — kept for the constraints it records:** The collector is sound and widening on its own; the
-panel now needs to answer questions rather than just accumulate. Build `build.py`
-(event log → DuckDB), the five metrics, and the weekly report.
+**Phase 3 is gated on calendar, not code.** Survival and time-to-close with censoring,
+per-company growth trends, the new-posting-rate baseline, title-mix over time, and Adzuna
+macro context all need weeks of history to say anything true. `job_spans` already has the
+shape survival needs. Building them now would produce charts of noise.
 
-Three things Phase 3 must get right, all recorded in the log below:
+Three conventions Phase 2.5 established that Phase 3 must preserve — they are already
+honoured in `reports/latest.md`:
 
-1. **Report `posting_disclosed` and `description_parsed` pay bands as separate series.**
-   Both are employer-disclosed, but one arrived in a vendor field and the other through a
-   regex. Never pool them.
-2. **Report remote share both ways** — with and without `location_implied`, which covers
-   7,131 of 16,376 rows at ~95% accuracy. Publishing only the 98.7% figure would flatter it.
-3. **Report rates per vendor, not pooled.** Greenhouse boards carry no salary field, so a
-   change in vendor mix looks exactly like a change in the market.
+1. **Never pool `posting_disclosed` with `description_parsed` pay.** Both are
+   employer-published, but one arrived in a vendor field and the other through a regex.
+2. **Report remote share both ways** — with and without `location_implied`, which covers a
+   large share of determinations at roughly 95% accuracy.
+3. **Report rates per vendor.** Greenhouse boards carry no salary field, so a change in
+   vendor mix looks exactly like a change in the market.
 
-**Optional, and genuinely useful:** a Workday adapter. Reassessed and viable — see the log.
-Would close the Etsy/Canva/Deel-shaped hole. Needs a hand-maintained tenant list.
+And one Phase 2.5 added:
 
-**Waiting on Gabriel:** a free Adzuna API key, whenever convenient. It is the only feed
-that sees Workday companies without per-company setup.
+4. **Compute pay in-band only.** Director, Senior Manager, Principal and Senior Staff reqs
+   sit well above the band being searched and skew the distribution upward. The band is
+   `seniority.target_band` in `config/taxonomy.yaml`.
 
-**Re-run `tools/harvest_tokens.py` monthly** as new "Who is hiring" threads appear. It is
-deliberately not in the daily workflow.
+**Worth doing whenever, roughly in value order:**
+
+- **A Workday adapter.** The last real coverage hole — Etsy, Canva, Deel and others are
+  invisible. Reassessed as viable (see the log): Etsy's endpoint carries `remoteType`, so
+  Workday supports 5 of the 6 metrics; only compensation is missing. Needs a
+  hand-maintained tenant list, so it works best when Gabriel names the companies.
+- **Re-run `tools/harvest_tokens.py` monthly** as new "Who is hiring" threads appear.
+  Deliberately not in the daily workflow.
+- **Extract the healthcheck's ID-stability logic** out of `main()` if it is touched again;
+  it is the project's main defence against silent failure and is currently untested.
+
+**Waiting on Gabriel, neither urgent:**
+
+- A free **Adzuna API key** — the only feed that sees Workday companies without per-company
+  setup.
+- The **December repo-visibility decision**, which now has two reasons behind it: Actions
+  minutes do not justify the public/private split at this scale, and the public repo
+  republishes Himalayas description text.
+- **Pruning the watchlist** whenever he likes. 382 boards, largely seeded automatically.
+
+**Phase 4 (private repo) needs him directly** — the `bank.yaml` evidence fields are his to
+write, and the three resume corrections must happen before the bank is built from it.
 
 ## Correctness rules (get these wrong and the dataset is worthless)
 
@@ -1145,3 +1181,25 @@ precisely the distinction the taxonomy previously could not make.
 were updated. Worth noting as a pattern: a test can pin wrong behaviour just as firmly as
 right behaviour, so a failing test after a deliberate fix deserves reading rather than
 reflexively re-greening.
+
+### 2026-09-13 — `country` and `region` now recomputed at build time
+
+Found while writing accurate numbers into this file, which is a good argument for writing
+them down: `country` coverage read 40.6%, well below the 63.5% measured when location
+parsing shipped. The cause was that **day one was collected before the parser existed**, so
+those 7,536 rows carried `country = NULL` — a gap indistinguishable from "this posting has
+no determinable country", and a permanent discontinuity at the date the feature landed.
+
+`build.py` now recomputes `country` and `region` from the stored `location_raw`, the same
+way it already reclassified `role_family` and `seniority`. Coverage went **40.6% → 66.5%**.
+Previous values are preserved as `country_logged` / `region_logged`.
+
+**`is_remote` is deliberately NOT recomputed.** Its strongest inputs — a vendor's workplace
+field, the description text — are not retained for most postings, so recomputing from the
+location alone would *downgrade* rows that were decided on better evidence. The rule is:
+recompute a derived field only when **all** of its inputs survive in the log.
+
+**Parsed pay is the one thing day one cannot recover**, because descriptions are kept only
+for tracked families. Expect a visible step up in pay coverage at 2026-09-13. It is an
+artifact of the feature shipping, not a market movement, and it is flagged in the status
+section above so nobody reads it as signal later.

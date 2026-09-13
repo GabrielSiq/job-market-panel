@@ -61,22 +61,37 @@ the failure is silent.** Each metric names its permitted source, and that bindin
 
 ```
 src/
-  models.py       JobPosting, PostingEvent, SourceRun  — the stable contracts
-  classify.py     role family + seniority + remote inference, driven by config
+  models.py       JobPosting, PostingEvent, SourceRun — the stable contracts
+  classify.py     role family, seniority and remote inference, driven by config
+  location.py     free-text location -> country, US state, and whether it names a place
+  salary.py       pay bands extracted from job-description prose
+  normalize.py    text normalization shared by every adapter and the analysis layer
   collect.py      fetch -> normalize -> classify -> diff -> append
-  sources/        one adapter per vendor, all conforming to one protocol
+  storage.py      the on-disk panel: one file per day, append-only
+  build.py        event log -> panel.duckdb, reclassifying and reparsing from raw
+  report.py       panel.duckdb -> reports/latest.md
+  sources/
+    board.py      shared per-company ATS machinery: failure isolation lives here once
+    greenhouse.py ashby.py lever.py    census adapters
+    himalayas.py  discovery adapter
 config/
   sources.yaml    source config, incl. the versioned query set
-  taxonomy.yaml   classification rules as data, so reclassification is a config change
-  watchlist.yaml  the census universe
+  taxonomy.yaml   classification rules AND the target seniority band, as data
+  watchlist.yaml  the census universe, with a verification status per board
 tools/
-  resolve_ats.py  company name or careers URL -> ATS vendor + board token
-  healthcheck.py  event counts by source and day — the daily ten-second sanity check
+  resolve_ats.py     company name or careers URL -> ATS vendor + verified board token
+  discover.py        grows the watchlist daily from discovery feeds
+  harvest_tokens.py  board tokens companies published themselves (run monthly)
+  healthcheck.py     the daily ten-second sanity check
 data/
   events/         YYYY-MM-DD.jsonl.gz   appeared/disappeared, slim rows, every posting
-  postings/       YYYY-MM-DD.jsonl.gz   full records incl. description, data-family roles only
+  postings/       YYYY-MM-DD.jsonl.gz   full records incl. description, data-family roles
   runs/           YYYY-MM-DD.jsonl      per-source health log; the diff step reads this
   latest/         new_postings.jsonl    stable path for downstream consumers
+  state/          pending_misses.json   in-flight disappearance candidates
+reports/
+  latest.md       the current state of the panel, regenerated every run
+panel.duckdb      derived, gitignored, rebuilt from the event log in about a second
 ```
 
 ## Running it
