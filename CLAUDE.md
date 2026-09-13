@@ -594,3 +594,75 @@ Segment to Twilio. Remove or merge them in Phase 2.
 **Also: token-guessing has a real miss rate.** Careers-page fingerprinting found Front on
 Ashby under `frontcareers`, which no name-derived guess would produce. Worth running the
 fingerprint pass as a second stage in `resolve_ats.py` for anything that fails to resolve.
+
+### 2026-09-12 — Phase 2 REPLANNED: connectors first, watchlist becomes a byproduct
+
+Gabriel corrected the framing, and it changes Phase 2's shape. Recorded here because the
+spec's Section 2 does not say this.
+
+**The watchlist was built wrong — as a target list.** It was assembled from an inferred
+profile (200–1,000 headcount, remote-friendly, fintech/marketplace). That was my instinct,
+not a requirement. Gabriel wants **the widest net that is still relevant**, and intends to
+build his own shortlist later, from the data. So the watchlist must become **the universe**,
+not a filter, and he curates it by *deleting*, never by having to add.
+
+**The mechanical constraint that makes this non-obvious.** Verified against live endpoints:
+
+| Enumeration attempt | Result |
+|---|---|
+| `boards-api.greenhouse.io/v1/boards` | **404** |
+| `api.ashbyhq.com/posting-api/job-board` | **401** |
+| `api.lever.co/v0/postings` | **404** |
+
+**There is no "get everything" endpoint on any ATS.** A board is readable only if you
+already know its token. The watchlist is therefore a *technical* requirement, not a
+preference — which is exactly why the spec pairs a discovery source with the census. Every
+company we cannot name is invisible, permanently, for that day.
+
+**What is NOT a constraint — nothing is being filtered out at collection.** Confirmed
+against the live census (9,245 postings, 61 boards): all role families, all seniorities
+(820 staff, 190 principal, 430 director), and all remote statuses are already captured.
+`capture_all_families: true`. The panel is already as broad as Gabriel wants it. **The only
+thing narrowing it is which companies we can see.**
+
+**Discovery is therefore the whole game, and today it is remote-biased.** Himalayas is a
+*remote-only* board by construction, so every company discovered through it is a company
+that posts remote roles. That is a real selection bias against Gabriel's stated intent.
+Measured for scale: Himalayas surfaced **360 distinct companies in one day**, 67 of them
+posting DS-family roles, of which only 5 were on the watchlist.
+
+#### Revised Phase 2 — build in this order
+
+1. **Ashby adapter.** 24 companies, ~2,600 reqs, and structured compensation on 58% of
+   postings. 92% of the available coverage win. **Do not use `isRemote`** — see the
+   reconnaissance note above.
+2. **Lever adapter.** 5 companies, 214 reqs. Bare array; title is `text`.
+3. **Auto-resolution pipeline — the actual unlock.** Run daily: take every company name
+   seen in any discovery feed that is not yet on the watchlist, resolve it against all
+   three vendors, and auto-append whatever resolves with `source: auto_discovered`. This
+   inverts the bottleneck: the watchlist grows by itself and Gabriel prunes rather than
+   researches. Add careers-page fingerprinting as a second stage — token-guessing misses
+   real boards (Front is on Ashby as `frontcareers`, which no name-derived guess produces).
+4. **A non-remote discovery feed**, to correct the Himalayas bias. Candidates measured:
+   - **Adzuna `top_companies`** — already planned for Phase 3, free tier ~1,000 calls/mo,
+     US, not remote-restricted, and the endpoint literally answers "which employers
+     advertise most for this query". Needs a free API key from Gabriel. **Best fit.**
+   - **The Muse** — keyless, 412k jobs indexed, a "Data and Analytics" category, US
+     filter, not remote-restricted. But it is an employer-branding site companies *pay* to
+     appear on, so it skews to large enterprises with branding budgets (TELUS Digital,
+     Kyndryl, GE Vernova dominated the sample). Same commercially-determined-coverage
+     caveat as Himalayas, different direction. Useful as a second feed, never a denominator.
+5. **Watchlist hygiene:** drop Census (now Fivetran), Loom (Atlassian), Segment (Twilio).
+
+#### Taxonomy changes to follow (Gabriel's stated preferences, superseding spec Section 2)
+
+Spec Section 2 is a **placeholder** and should not be treated as binding. Actual intent:
+
+- **Staff is in scope**, not a dealbreaker. Spec Section 2.4 lists "Titled Staff/Principal
+  IC" as a score-zero dealbreaker — that is wrong and must not be carried into Phase 4.
+- **Strong product analytics roles are in scope** where the company is growing and comp is
+  there. The current `analyst` family lumps a strong product-analytics req together with a
+  junior reporting analyst. **Worth splitting** so the good ones are findable.
+- **Manager roles: keep measuring, not a personal target.** Unchanged.
+- **Do not restrict to remote.** Already true at collection; make sure it stays true, and
+  do not let the 35%-unknown remote field become an implicit filter downstream.
