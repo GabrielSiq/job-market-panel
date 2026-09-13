@@ -90,77 +90,47 @@ silent. Never compute survival from Himalayas rows.
 
 ## Current status
 
-**Phase 2 is built and collecting, as of 2026-09-13 (UTC).** Four sources: Himalayas
-(discovery) plus a census over **135 verified boards** across Greenhouse, Ashby and Lever,
-with automated daily discovery growing the watchlist. 139 tests passing.
+**Phases 1 and 2 are built and collecting** (last updated 2026-09-13). Four sources:
+Himalayas for discovery, plus a daily census over **382 verified company boards** across
+Greenhouse, Ashby and Lever. Discovery runs itself. 195 tests passing, workflow green in CI.
 
-**Phase 1's gate passed along the way.** The first post-Phase-1 run produced only **27
-genuinely new postings on previously-tracked boards** rather than re-reporting all 9,821 -
-so `job_id` is stable and the survival dataset is sound. 92 postings entered the two-miss
-queue as designed. The remaining Phase 1 criterion is calendar time: seven consecutive
-unattended daily commits.
-
-| Phase 2 criterion (spec) | Status |
+| | |
 |---|---|
-| ≥150 companies on a working ATS token | **done — 382 verified boards** |
-| Full daily run under ~5 minutes | done — 47s for 382 boards + Himalayas |
-| Killing one company's endpoint does not affect the others | done — tested across and within vendors |
-| Cross-source duplicates deduplicated or clearly marked | done — `dedupe_key`, analysis-layer |
+| Boards collected daily | **382** (148 Greenhouse, 189 Ashby, 45 Lever) |
+| Watchlist entries | 591 (382 verified, 18 quarantined, 191 no readable board) |
+| Postings per run | ~26,000, in **47 seconds** |
+| Pay band known | **57.1%** |
+| Country known | **63.5%** |
+| Remote status, strong evidence | 55.1% (98.7% including the weakest inference) |
 
-| Phase 1 criterion | Status |
-|---|---|
-| Idempotent same-day re-runs | done — verified live |
-| Broken source → failed run, **zero** disappearances | done |
-| 429 → `partial`, **zero** disappearances | done |
-| **`job_id` stable (appearances decay on day 2)** | **done — 27 new vs 9,821** |
-| **Seven consecutive unattended daily commits** | **pending — calendar time only** |
+Phase 1's `job_id` stability gate passed: the first follow-up run produced 27 genuinely new
+postings rather than re-reporting all 9,821. The only criterion still outstanding is
+calendar time — seven consecutive unattended daily commits.
 
 ### What to do next session
 
-**Two things, in order. The Phase 2 plan was revised on 2026-09-12 — read
-"Phase 2 REPLANNED" at the bottom of this file before starting it, because the build order
-changed and the spec's ordering is now wrong.**
+**Phase 3 — analysis and reporting.** The collector is sound and widening on its own; the
+panel now needs to answer questions rather than just accumulate. Build `build.py`
+(event log → DuckDB), the five metrics, and the weekly report.
 
-**First: finish the observation week.** The observation period is part of the build.
-Spec 11.3: silent failure is the main threat, and the first week is the risky one.
+Three things Phase 3 must get right, all recorded in the log below:
 
-1. `uv run python tools/healthcheck.py` — ten seconds, exits non-zero on a problem.
-2. **Day 2 is the real test.** Appearances must fall sharply from day 1's bulk load of
-   9,821. If day 2 reports the whole corpus as "appeared" again, `job_id` is not stable
-   and the survival dataset is fiction — the healthcheck flags this automatically.
-3. Confirm the first *scheduled* (not manually dispatched) run fires at 07:17 UTC.
-4. Watch the first disappearances arrive around day 3 — they need two consecutive misses.
-5. Record the steady-state daily footprint in the README (day 1 was 9.9 MB, inflated by
-   the bulk load; `data/latest/new_postings.jsonl` alone was 8.3 MB and should collapse to
-   a few hundred KB once "new" means new).
+1. **Report `posting_disclosed` and `description_parsed` pay bands as separate series.**
+   Both are employer-disclosed, but one arrived in a vendor field and the other through a
+   regex. Never pool them.
+2. **Report remote share both ways** — with and without `location_implied`, which covers
+   7,131 of 16,376 rows at ~95% accuracy. Publishing only the 98.7% figure would flatter it.
+3. **Report rates per vendor, not pooled.** Greenhouse boards carry no salary field, so a
+   change in vendor mix looks exactly like a change in the market.
 
-**Then: Phase 2, in this revised order** (full reasoning in "Phase 2 REPLANNED" below):
+**Optional, and genuinely useful:** a Workday adapter. Reassessed and viable — see the log.
+Would close the Etsy/Canva/Deel-shaped hole. Needs a hand-maintained tenant list.
 
-1. **Ashby adapter** — 24 companies, ~2,600 reqs, structured salary. Do NOT use `isRemote`.
-2. **Lever adapter** — 5 companies. Bare array; title is `text`.
-3. **Auto-resolution pipeline** — grows the watchlist daily so Gabriel prunes rather than
-   researches. This is the real unlock, not the adapters.
-4. **A non-remote discovery feed** (Adzuna `top_companies` preferred) to correct the
-   Himalayas remote-only bias.
-5. Split the `analyst` family; drop Census/Loom/Segment from the watchlist.
+**Waiting on Gabriel:** a free Adzuna API key, whenever convenient. It is the only feed
+that sees Workday companies without per-company setup.
 
-Phases 3–5 (analysis/reports, resume pipeline, daily brief) stay out of scope until Phase 2
-is running. Do not start Phase N+1 in the session that finished Phase N.
-
-### Still open
-
-- **Himalayas' practical 429 ceiling is unmeasured.** The collector uses 44 requests/run
-  against a 60 worst case and has never been limited. Deliberately not probed for.
-- **The `unknown` remote bucket is still 35%** after the description pass. A "named city
-  implies onsite" rule would likely capture much of the rest — the hand-labelled sample
-  supports it — but it needs its own measurement before shipping.
-- **Cross-source dedupe is deferred to Phase 2** as an analysis-layer `dedupe_key`. A job
-  seen on both Himalayas and its company's Greenhouse board is currently two rows.
-- **The Himalayas `guid` is a title-slug URL**, so a *retitled* posting produces a false
-  disappear+appear pair. Same mitigation.
-- **Himalayas surfaced companies absent from the watchlist** (Liberty Mutual, Humana,
-  Westinghouse) on day one. Those are Phase 2 watchlist candidates — the discovery source
-  doing its job.
+**Re-run `tools/harvest_tokens.py` monthly** as new "Who is hiring" threads appear. It is
+deliberately not in the daily workflow.
 
 ## Correctness rules (get these wrong and the dataset is worthless)
 
