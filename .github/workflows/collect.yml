@@ -78,18 +78,38 @@ jobs:
 
       - name: Commit
         run: |
+          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           date -u +%Y-%m-%dT%H:%M:%SZ > data/.last_run
           git add data config/watchlist.yaml reports
+
           if git diff --staged --quiet; then
             echo "nothing to commit (unexpected - the heartbeat should always change)"
-          else
-            git commit -m "collect: $(date -u +%F)"
-            # Another run may have landed between checkout and here.
-            git pull --rebase --autostash origin main || true
-            git push
+            exit 0
           fi
+          git commit -m "collect: $(date -u +%F)"
+
+          # Every artifact here is REGENERATED wholesale, never edited incrementally:
+          # a day's event file, the report and the watchlist are rewritten from scratch on
+          # each run. So there is no meaningful merge between two versions of them - the
+          # newer run's output simply supersedes the older.
+          #
+          # `--rebase` was wrong for exactly that reason. It tries to replay one run's
+          # output on top of another's and conflicts on every shared file, then leaves the
+          # repo on a detached HEAD. `-X ours` keeps this run's freshly generated files
+          # while still accepting anything the other side added that we do not have.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected; reconciling with origin (attempt $attempt)"
+            git fetch origin main
+            git merge origin/main -X ours --no-edit
+          done
+          echo "could not push after 3 attempts"
+          exit 1
 
       - name: Healthcheck
         # Runs AFTER the commit so a bad day's data is still captured for inspection, and
