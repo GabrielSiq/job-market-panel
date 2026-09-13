@@ -1,14 +1,30 @@
-"""Resolve a company name or careers URL to an ATS vendor and board token.
+"""Resolve a company name or careers URL to an ATS vendor and board token, and verify it.
 
-Phase 1 probes Greenhouse only. Phase 2 extends this to Lever, Ashby and Workable, at
-which point the ambiguity risk becomes real: a slug that exists on two vendors' boards
-will match whichever is probed first, so every attempt is recorded rather than just the
-winner, and ambiguous hits are flagged for manual review.
+Probes Greenhouse, Ashby and Lever. Workable and Workday are deliberately excluded - see
+the Phase 2 reconnaissance notes in CLAUDE.md.
+
+**Verification is the point of this tool, not resolution.** A guessed token that happens to
+exist is a real board belonging to *somebody*; collecting it would attribute another
+company's hiring to this one for the life of the panel. That already nearly happened three
+times in Phase 1: `carbon` is Carbon Inc. rather than Carbon Health, `wise` an unrelated
+field-sales board, `remote` General Assembly's.
+
+Every vendor can be checked, though each in a different place:
+
+- **Greenhouse** echoes `company_name` on every posting.
+- **Ashby** and **Lever** echo nothing in their APIs, but their public board pages
+  (`jobs.ashbyhq.com/{token}`, `jobs.lever.co/{token}`) carry the company's display name in
+  the `<title>` and `og:title`.
+
+A board is marked `verified` only on an **exact** normalized-name match. Anything else is
+`unverified`: the board is recorded with the name it actually reports, and the collector
+skips it until a human confirms. This is deliberately strict - "Chime" vs "Chime Financial,
+Inc" is a legitimate legal name, and "Wise" vs "Wise Worksite Field Sales" is the wrong
+company, and the two are structurally identical to a fuzzy matcher.
 
 Usage:
-    uv run python tools/resolve_ats.py --names "Stripe" "Figma"
+    uv run python tools/resolve_ats.py --names "Stripe" "Plaid"
     uv run python tools/resolve_ats.py --file companies.txt --out config/watchlist.yaml
-    uv run python tools/resolve_ats.py --names "Acme" --json
 """
 
 from __future__ import annotations
@@ -21,22 +37,75 @@ import sys
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.normalize import company_slug, slugify
+from src.normalize import clean_text, company_slug, slugify
 
-GREENHOUSE_URL = "https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=false"
 USER_AGENT = "job-market-panel/0.1 (+https://github.com/GabrielSiq/job-market-panel)"
+BROWSER_UA = "Mozilla/5.0 (compatible; job-market-panel/0.1; +https://github.com/GabrielSiq)"
 
-# Board tokens embedded in careers URLs, which is the reliable path when it is available.
-_URL_TOKEN_PATTERNS = (
-    re.compile(r"(?:job-)?boards\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)", re.I),
-    re.compile(r"boards-api\.greenhouse\.io/v1/boards/([a-z0-9_-]+)", re.I),
-    re.compile(r"greenhouse\.io/embed/job_board\?for=([a-z0-9_-]+)", re.I),
+
+@dataclass(frozen=True)
+class Vendor:
+    name: str
+    api: str  # job listing endpoint, {token} substituted
+    board_page: str | None  # public board page carrying the company's display name
+
+    def jobs(self, payload: Any) -> list[Any] | None:
+        if isinstance(payload, list):  # Lever returns a bare array
+            return payload
+        jobs = payload.get("jobs") if isinstance(payload, dict) else None
+        return jobs if isinstance(jobs, list) else None
+
+    def echoed_name(self, payload: Any) -> str | None:
+        """A company name the API itself reports, where one exists (Greenhouse only)."""
+        jobs = self.jobs(payload) or []
+        for job in jobs:
+            if isinstance(job, dict) and job.get("company_name"):
+                return str(job["company_name"])
+        return None
+
+
+VENDORS = (
+    Vendor(
+        "greenhouse", "https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=false", None
+    ),
+    Vendor(
+        "ashby",
+        "https://api.ashbyhq.com/posting-api/job-board/{token}",
+        "https://jobs.ashbyhq.com/{token}",
+    ),
+    Vendor(
+        "lever",
+        "https://api.lever.co/v0/postings/{token}?mode=json",
+        "https://jobs.lever.co/{token}",
+    ),
 )
+
+# Board tokens embedded in careers URLs - the reliable path when one is supplied, and the
+# only way to find tokens no name-derived guess produces (Front is on Ashby as
+# "frontcareers").
+_URL_TOKEN_PATTERNS = (
+    (
+        "greenhouse",
+        re.compile(
+            r"(?:job-)?boards\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)", re.I
+        ),
+    ),
+    ("greenhouse", re.compile(r"boards-api\.greenhouse\.io/v1/boards/([a-z0-9_-]+)", re.I)),
+    ("ashby", re.compile(r"jobs\.ashbyhq\.com/([a-z0-9_-]+)", re.I)),
+    ("lever", re.compile(r"jobs\.lever\.co/([a-z0-9_-]+)", re.I)),
+)
+
+_TITLE = re.compile(r"<title[^>]*>(.*?)</title>", re.S | re.I)
+_OG_TITLE = re.compile(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)', re.I)
+# Board titles read "Plaid Jobs", "Wealthfront jobs", "Acme - Careers"; strip that suffix
+# before comparing names. \u2013 is an en dash, spelled out to keep the literal unambiguous.
+_TRAILING = re.compile("\\s*[-|\u2013]?\\s*(jobs|careers|job board|open roles|openings)\\s*$", re.I)
 
 
 @dataclass
@@ -45,108 +114,146 @@ class Resolution:
     ats: str = "unknown"
     token: str | None = None
     job_count: int = 0
-    board_company: str | None = None
+    status: str = "unresolved"  # verified | unverified | unresolved
+    verified_by: str | None = None  # name_echo | board_page | careers_url
+    board_name: str | None = None
     tried: list[str] = field(default_factory=list)
-    ambiguous: list[str] = field(default_factory=list)
     note: str = ""
 
 
-def token_candidates(name: str) -> list[str]:
-    """Plausible Greenhouse tokens for a company name, most likely first.
+def token_candidates(name: str) -> list[tuple[str | None, str]]:
+    """(vendor_hint, token) pairs to try, most likely first.
 
-    Greenhouse tokens are usually the company name lowercased with separators removed
-    ("Acme Corp" -> "acmecorp"), sometimes hyphenated, sometimes just the first word.
+    A careers URL pins both vendor and token exactly, so it short-circuits guessing.
     """
-    for pattern in _URL_TOKEN_PATTERNS:
+    for vendor, pattern in _URL_TOKEN_PATTERNS:
         if match := pattern.search(name):
-            return [match.group(1).lower()]
+            return [(vendor, match.group(1).lower())]
 
-    slug = company_slug(name)  # legal suffixes already stripped
+    slug = company_slug(name)  # legal suffixes stripped
     raw = slugify(name)  # suffixes retained
-    candidates = [
-        slug.replace("-", ""),
-        slug,
-        raw.replace("-", ""),
-        raw,
-        slug.split("-")[0],
-    ]
-    seen: list[str] = []
-    for candidate in candidates:
-        if candidate and candidate not in seen:
-            seen.append(candidate)
+    guesses = [slug.replace("-", ""), slug, raw.replace("-", ""), raw, slug.split("-")[0]]
+    seen: list[tuple[str | None, str]] = []
+    for guess in guesses:
+        if guess and (None, guess) not in seen:
+            seen.append((None, guess))
     return seen
 
 
-async def _probe(client: httpx.AsyncClient, token: str) -> tuple[int, str | None] | None:
-    """Return (job_count, board_company_name), or None if there is no such board.
+def names_match(requested: str, reported: str | None) -> bool:
+    """Exact normalized match only.
 
-    A bad or empty token returns a clean 404, which makes this unambiguous. An empty
-    board (0 jobs) is treated as *not a match*, since it is indistinguishable from a
-    coincidental slug collision and would otherwise park a wrong token in the config.
+    Deliberately strict. A fuzzy matcher cannot separate "Chime" / "Chime Financial, Inc"
+    (right company, legal name) from "Wise" / "Wise Worksite Field Sales" (wrong company
+    entirely) - they are the same shape. Near-misses become `unverified` and carry the
+    reported name so a human decides in one glance.
+    """
+    if not reported:
+        return False
+    return company_slug(requested) == company_slug(_TRAILING.sub("", clean_text(reported) or ""))
 
-    Greenhouse echoes `company_name` on each posting. That is the only available check
-    that a guessed token belongs to the company we meant: "gemini" or "remote" are live
-    boards regardless of whose they are, and a wrong one would quietly attribute another
-    company's hiring to this one for the life of the panel.
+
+async def _board_display_name(client: httpx.AsyncClient, vendor: Vendor, token: str) -> str | None:
+    """The company name a vendor's public board page advertises."""
+    if not vendor.board_page:
+        return None
+    try:
+        response = await client.get(
+            vendor.board_page.format(token=token), headers={"User-Agent": BROWSER_UA}
+        )
+    except httpx.HTTPError:
+        return None
+    if response.status_code != 200:
+        return None
+    body = response.text[:200_000]
+    for pattern in (_OG_TITLE, _TITLE):
+        if match := pattern.search(body):
+            return clean_text(match.group(1))
+    return None
+
+
+async def _probe(
+    client: httpx.AsyncClient, vendor: Vendor, token: str
+) -> tuple[int, str | None] | None:
+    """(job_count, api_echoed_name) if this board exists and has jobs, else None.
+
+    An empty board counts as no match: it is indistinguishable from a slug collision, and
+    would otherwise park a wrong token in the config.
     """
     try:
-        response = await client.get(GREENHOUSE_URL.format(token=token))
+        response = await client.get(vendor.api.format(token=token))
     except httpx.HTTPError:
         return None
     if response.status_code != 200:
         return None
     try:
-        jobs = response.json().get("jobs")
+        payload = response.json()
     except ValueError:
         return None
-    if not isinstance(jobs, list) or not jobs:
+    jobs = vendor.jobs(payload)
+    if not jobs:
         return None
-    board_company = None
-    for job in jobs:
-        if isinstance(job, dict) and job.get("company_name"):
-            board_company = str(job["company_name"])
-            break
-    return len(jobs), board_company
+    return len(jobs), vendor.echoed_name(payload)
 
 
 async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semaphore) -> Resolution:
     result = Resolution(name=name)
-    for candidate in token_candidates(name):
-        result.tried.append(candidate)
-        async with sem:
-            probed = await _probe(client, candidate)
-        if probed:
-            count, board_company = probed
-            if result.token is None:
-                result.ats, result.token, result.job_count = "greenhouse", candidate, count
-                result.board_company = board_company
+    from_url = bool(_URL_TOKEN_PATTERNS) and any(p.search(name) for _, p in _URL_TOKEN_PATTERNS)
+
+    for hint, token in token_candidates(name):
+        for vendor in VENDORS:
+            if hint and vendor.name != hint:
+                continue
+            result.tried.append(f"{vendor.name}:{token}")
+            async with sem:
+                probed = await _probe(client, vendor, token)
+            if not probed:
+                continue
+
+            count, echoed = probed
+            reported = echoed
+            verified_by = "name_echo" if echoed else None
+            if reported is None:
+                async with sem:
+                    reported = await _board_display_name(client, vendor, token)
+                verified_by = "board_page" if reported else None
+
+            result.ats, result.token, result.job_count = vendor.name, token, count
+            result.board_name = reported
+
+            if from_url:
+                # The company's own careers page pointed here; that is stronger evidence
+                # than any name comparison.
+                result.status, result.verified_by = "verified", "careers_url"
+            elif names_match(name, reported):
+                result.status, result.verified_by = "verified", verified_by
             else:
-                # Two live boards for one name: record it rather than silently picking.
-                result.ambiguous.append(candidate)
-    if result.token is None:
-        result.note = "no Greenhouse board found; park for Phase 2 vendor probing"
-    elif result.board_company and company_slug(result.board_company) != company_slug(name):
-        result.note = f"VERIFY: board self-reports as {result.board_company!r}, expected {name!r}"
-    elif result.ambiguous:
-        result.note = f"AMBIGUOUS: also live: {', '.join(result.ambiguous)} - verify by hand"
+                result.status = "unverified"
+                result.note = (
+                    f"board reports {reported!r}, expected {name!r} - confirm before collecting"
+                    if reported
+                    else "could not read a company name from the board - confirm before collecting"
+                )
+            return result
+
+    result.note = "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
     return result
 
 
 async def resolve_all(names: list[str], concurrency: int = 8) -> list[Resolution]:
     sem = asyncio.Semaphore(concurrency)
     async with httpx.AsyncClient(
-        timeout=20, headers={"User-Agent": USER_AGENT}, follow_redirects=True
+        timeout=25, headers={"User-Agent": USER_AGENT}, follow_redirects=True
     ) as client:
         return await asyncio.gather(*(resolve_one(client, n, sem) for n in names))
 
 
-def to_watchlist_yaml(results: list[Resolution], source: str = "manual") -> str:
-    """Emit config/watchlist.yaml. Spec Section 6.5."""
+def render_watchlist(results: list[Resolution], source: str = "manual") -> str:
+    """Emit config/watchlist.yaml. Spec Section 6.5, plus status/verified_by."""
     today = date.today().isoformat()
 
-    # One board must appear exactly once. Two spellings of a company resolving to the same
-    # token would otherwise double-count its open reqs and corrupt its growth signal --
-    # which is the headline metric this whole panel exists to produce.
+    # One board must appear exactly once. Two spellings resolving to the same token would
+    # fetch it twice and double that company's open-req counts.
     deduped: list[Resolution] = []
     claimed: dict[tuple[str, str], Resolution] = {}
     for r in results:
@@ -158,29 +265,44 @@ def to_watchlist_yaml(results: list[Resolution], source: str = "manual") -> str:
             claimed[key] = r
             deduped.append(r)
         elif len(r.name) < len(winner.name):
-            winner.name = r.name  # keep the shorter, more canonical spelling
-    results = deduped
+            winner.name = r.name
+
     lines = [
         "# The census universe: every company whose board is fetched daily.",
         "#",
-        "# Companies that resolved to a Greenhouse board are collected from day one.",
-        "# Entries with `ats: unknown` are parked deliberately - they are picked up in",
-        "# Phase 2 when Lever, Ashby and Workable adapters land. Do not delete them.",
+        "# This is NOT a target list. It is the widest set of companies we can resolve and",
+        "# verify; narrowing happens later, at scoring time, never at collection time.",
         "#",
-        "# Edit freely: this is config, not code. Adding a company takes effect on the",
-        "# next run and requires no rebuild.",
+        "# `status` governs collection:",
+        "#   verified   - the board's own reported company name matched exactly, or the",
+        "#                company's careers page links to it. Collected daily.",
+        "#   unverified - a live board was found by guessing a token, but its reported name",
+        "#                does not match. NOT collected. `notes` carries the name it reports",
+        "#                so a human can confirm or correct it in one glance.",
+        "#   unresolved - no board found on Greenhouse, Ashby or Lever. Kept deliberately:",
+        "#                many are on Workday or a custom site. Do not delete.",
+        "#",
+        "# Verification is not paranoia. In Phase 1 it caught three wrong boards: 'carbon'",
+        "# is Carbon Inc rather than Carbon Health, 'wise' an unrelated field-sales board,",
+        "# and 'remote' General Assembly's. Each would have attributed another company's",
+        "# hiring to the wrong employer for the life of the panel.",
         "",
         "companies:",
     ]
-    for r in sorted(results, key=lambda r: (r.ats == "unknown", r.name.lower())):
-        lines.append(f"  - name: {json.dumps(r.name)}")
-        lines.append(f"    slug: {company_slug(r.name)}")
-        lines.append(f"    ats: {r.ats}")
-        lines.append(f"    token: {r.token if r.token else 'null'}")
-        lines.append(f"    added: {today}")
-        lines.append(f"    source: {source}")
+    order = {"verified": 0, "unverified": 1, "unresolved": 2}
+    for r in sorted(deduped, key=lambda r: (order.get(r.status, 3), r.name.lower())):
         note = r.note or (f"{r.job_count} open reqs at resolution" if r.token else "")
-        lines.append(f"    notes: {json.dumps(note)}")
+        lines += [
+            f"  - name: {json.dumps(r.name)}",
+            f"    slug: {company_slug(r.name)}",
+            f"    ats: {r.ats}",
+            f"    token: {r.token if r.token else 'null'}",
+            f"    status: {r.status}",
+            f"    verified_by: {r.verified_by or 'null'}",
+            f"    added: {today}",
+            f"    source: {source}",
+            f"    notes: {json.dumps(note)}",
+        ]
     return "\n".join(lines) + "\n"
 
 
@@ -189,7 +311,7 @@ def main() -> int:
     parser.add_argument("--names", nargs="*", default=[])
     parser.add_argument("--file", type=Path, help="one company name or careers URL per line")
     parser.add_argument("--out", type=Path, help="write watchlist YAML here")
-    parser.add_argument("--source", default="manual", help="provenance for watchlist entries")
+    parser.add_argument("--source", default="manual")
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--concurrency", type=int, default=8)
     args = parser.parse_args()
@@ -214,17 +336,24 @@ def main() -> int:
     if args.json:
         print(json.dumps([r.__dict__ for r in results], indent=2))
     else:
-        resolved = [r for r in results if r.token]
-        print(f"{'company':<32}{'ats':<12}{'token':<26}{'reqs':>6}")
-        print("-" * 78)
-        for r in sorted(results, key=lambda r: (r.ats == "unknown", r.name.lower())):
-            print(f"{r.name[:30]:<32}{r.ats:<12}{r.token or '-'!s:<26}{r.job_count or '-':>6}")
-            if r.ambiguous:
+        print(f"{'company':<28}{'ats':<12}{'token':<24}{'status':<12}{'reqs':>6}")
+        print("-" * 84)
+        order = {"verified": 0, "unverified": 1, "unresolved": 2}
+        for r in sorted(results, key=lambda r: (order.get(r.status, 3), r.name.lower())):
+            print(
+                f"{r.name[:26]:<28}{r.ats:<12}{r.token or '-'!s:<24}"
+                f"{r.status:<12}{r.job_count or '-':>6}"
+            )
+            if r.status == "unverified":
                 print(f"    ^ {r.note}")
-        print(f"\nresolved {len(resolved)}/{len(results)} to a Greenhouse board")
+        counts = {s: sum(1 for r in results if r.status == s) for s in order}
+        print(
+            f"\nverified {counts['verified']} | unverified {counts['unverified']} "
+            f"| unresolved {counts['unresolved']} (of {len(results)})"
+        )
 
     if args.out:
-        args.out.write_text(to_watchlist_yaml(results, source=args.source), encoding="utf-8")
+        args.out.write_text(render_watchlist(results, source=args.source), encoding="utf-8")
         print(f"wrote {args.out}")
     return 0
 

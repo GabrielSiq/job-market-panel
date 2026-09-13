@@ -1,4 +1,4 @@
-"""Greenhouse adapter — the CENSUS source, and the panel's actual instrument.
+"""Greenhouse adapter — the CENSUS source, and the panel's original instrument.
 
 Unlike an aggregator, this is a census over a defined universe: every open requisition at
 every watchlist company. No sampling, no moderation queue, no expiry semantics. A posting
@@ -6,57 +6,36 @@ vanishes when the company removes it, which is precisely the event of interest. 
 carries non-remote and non-DS roles, which supply the denominators an aggregator
 structurally cannot provide.
 
-**Per-company isolation is the critical property here.** One dead board must log an error
-for that company alone and return zero rows: it must not fail the run, and above all must
-not mark that company's jobs as disappeared (spec correctness rule 1). A bad token returns
-a clean 404, which makes this unambiguous.
+Failure isolation, status rules and concurrency live in `PerCompanyBoardSource`; this file
+is only the Greenhouse field mapping.
 
-Remote status is harder here than the spec anticipated. The "Workplace Type" metadata
-field turned out to exist on roughly one board in six; the rest fall through to matching
-against a messy location string. Hence `remote_source` on every row, and a tri-state
-`is_remote` that records "unknown" rather than guessing.
+Remote status is harder here than the spec anticipated. The "Workplace Type" metadata field
+turned out to exist on roughly one board in six; the rest fall through to the location
+string and then to the description.
 """
 
 from __future__ import annotations
 
-import asyncio
 import logging
-import time
+from datetime import date, datetime
 from typing import Any
 
-import httpx
-
-from src.classify import Classifier
 from src.models import (
     TRACKED_FAMILIES,
     JobPosting,
     RemoteFinding,
-    RunStatus,
     Source,
-    SourceRun,
 )
 from src.normalize import clean_text, strip_html
-from src.sources.base import FetchResult, parse_iso, utc_now
+from src.sources.base import parse_iso
+from src.sources.board import PerCompanyBoardSource
 
 logger = logging.getLogger(__name__)
 
 
-class GreenhouseSource:
+class GreenhouseSource(PerCompanyBoardSource):
     name = "greenhouse"
-
-    def __init__(
-        self,
-        config: dict[str, Any],
-        classifier: Classifier,
-        watchlist: list[dict[str, Any]],
-    ) -> None:
-        self.cfg = config["sources"]["greenhouse"]
-        self.classifier = classifier
-        self.companies = [
-            entry for entry in watchlist if entry.get("ats") == "greenhouse" and entry.get("token")
-        ]
-        self._base = self.cfg["base_url"].rstrip("/")
-        self._template = self.cfg.get("path_template", "/v1/boards/{token}/jobs?content=true")
+    source = Source.GREENHOUSE
 
     # ------------------------------------------------------------------ normalization
 
@@ -95,7 +74,11 @@ class GreenhouseSource:
         return self.classifier.remote_from_description(description)
 
     def _to_posting(
-        self, raw: dict[str, Any], company: dict[str, Any], today: Any, fetched_at: Any
+        self,
+        raw: dict[str, Any],
+        company: dict[str, Any],
+        today: date,
+        fetched_at: datetime,
     ) -> JobPosting | None:
         title = clean_text(raw.get("title"))
         job_id = raw.get("id")
@@ -138,8 +121,8 @@ class GreenhouseSource:
             employment_type=None,
             department=departments[0] if departments else None,
             # Greenhouse exposes no structured salary; bands appear inside the description
-            # where local law requires them. Parsing those is deliberately out of scope for
-            # Phase 1 - a bad parse would pollute the compensation series, and the
+            # where local law requires them. Parsing those is deliberately out of scope -
+            # a bad parse would pollute the compensation series permanently, and the
             # description is retained so it can be parsed later from raw.
             salary_min=None,
             salary_max=None,
@@ -154,104 +137,3 @@ class GreenhouseSource:
             last_seen=today,
             fetched_at=fetched_at,
         )
-
-    # ------------------------------------------------------------------------- fetching
-
-    async def _fetch_company(
-        self,
-        client: httpx.AsyncClient,
-        company: dict[str, Any],
-        sem: asyncio.Semaphore,
-        today: Any,
-        fetched_at: Any,
-    ) -> FetchResult:
-        """Fetch one board. Every failure is contained to this company.
-
-        Returning `status != ok` here removes only this company from diffing, leaving the
-        other boards to diff normally - which is the whole point of per-company isolation.
-        """
-        url = f"{self._base}{self._template.format(token=company['token'])}"
-        started = time.monotonic()
-        postings: list[JobPosting] = []
-        status = RunStatus.OK
-        error: str | None = None
-
-        try:
-            async with sem:
-                response = await client.get(url)
-            if response.status_code == 404:
-                # The board moved, was renamed, or the token is wrong. NOT evidence that
-                # the company closed every requisition.
-                status, error = RunStatus.ERROR, "404 - board not found"
-            else:
-                response.raise_for_status()
-                payload = response.json()
-                jobs = payload.get("jobs") if isinstance(payload, dict) else None
-                if not isinstance(jobs, list):
-                    status, error = RunStatus.ERROR, "malformed response: no jobs array"
-                else:
-                    for raw in jobs:
-                        if not isinstance(raw, dict):
-                            continue
-                        try:
-                            posting = self._to_posting(raw, company, today, fetched_at)
-                        except Exception as exc:
-                            logger.warning(
-                                "greenhouse[%s]: invalid record skipped: %s",
-                                company["slug"],
-                                exc,
-                            )
-                            continue
-                        if posting is not None:
-                            postings.append(posting)
-                    if not postings:
-                        # An empty board is ambiguous - a real hiring freeze looks exactly
-                        # like a misconfigured token. Refusing to diff costs at most a
-                        # day's disappearance events; guessing wrong corrupts the series.
-                        status = RunStatus.EMPTY
-        except httpx.HTTPError as exc:
-            status, error = RunStatus.ERROR, str(exc)[:200]
-
-        if status is not RunStatus.OK:
-            logger.warning(
-                "greenhouse[%s]: status=%s %s", company["slug"], status.value, error or ""
-            )
-
-        run = SourceRun(
-            date=today,
-            source=Source.GREENHOUSE,
-            status=status,
-            company_slug=company["slug"],
-            records_fetched=len(postings),
-            duration_s=round(time.monotonic() - started, 2),
-            error_message=error,
-            pages_fetched=1,
-            requests_made=1,
-        )
-        return FetchResult(postings=postings, runs=[run])
-
-    async def fetch(self, client: httpx.AsyncClient) -> FetchResult:
-        today = utc_now().date()
-        fetched_at = utc_now()
-        sem = asyncio.Semaphore(int(self.cfg.get("concurrency", 8)))
-
-        results = await asyncio.gather(
-            *(
-                self._fetch_company(client, company, sem, today, fetched_at)
-                for company in self.companies
-            )
-        )
-
-        combined = FetchResult()
-        for result in results:
-            combined.extend(result)
-
-        ok = sum(1 for r in combined.runs if r.allows_diffing)
-        logger.info(
-            "greenhouse: %s postings from %s/%s boards diffable (%s not ok)",
-            len(combined.postings),
-            ok,
-            len(combined.runs),
-            len(combined.runs) - ok,
-        )
-        return combined

@@ -18,9 +18,11 @@ from datetime import UTC, datetime
 import httpx
 
 from src.models import RemoteSource, RunStatus, SalaryPeriod
+from src.sources.ashby import AshbySource
 from src.sources.base import build_client, parse_epoch
 from src.sources.greenhouse import GreenhouseSource
 from src.sources.himalayas import HimalayasSource
+from src.sources.lever import LeverSource
 from tests.conftest import fixture
 
 # pytest-httpx matches `url` as a str, re.Pattern or httpx.URL - query strings vary per
@@ -353,3 +355,300 @@ class TestGreenhouse:
         result = run(_fetch(source, config))
         assert result.runs[0].status is RunStatus.ERROR
         assert result.diffable_scopes == set()
+
+
+ASHBY_ANY = re.compile(r"^https://api\.ashbyhq\.com/")
+LEVER_ANY = re.compile(r"^https://api\.lever\.co/")
+
+
+def _company(slug="ramp", token="ramp", name="Ramp"):
+    return {"name": name, "slug": slug, "ats": "ashby", "token": token, "status": "verified"}
+
+
+class TestAshby:
+    """Ashby is the largest Phase 2 coverage win, and carries the phase's worst trap."""
+
+    @staticmethod
+    def _source(config, classifier, companies):
+        return AshbySource(config, classifier, companies)
+
+    def test_isremote_is_ignored_in_favour_of_workplacetype(self, config, classifier, httpx_mock):
+        """**The trap.** Measured across 422 live postings: 293 report `isRemote: true`
+        while `workplaceType` says `Hybrid`, one of them located at "San Francisco HQ".
+        `isRemote` evidently means "some remote permitted", not "this is a remote role".
+        Trusting it marks roughly a quarter of the panel remote when it is not - and the
+        resulting number looks entirely plausible."""
+        payload = fixture("ashby_board.json")
+        contradictory = [
+            j
+            for j in payload["jobs"]
+            if j.get("isRemote") is True and j.get("workplaceType") == "Hybrid"
+        ]
+        assert contradictory, "fixture must contain the contradiction this test guards"
+        payload["jobs"] = contradictory
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        for posting in run(_fetch(source, config)).postings:
+            assert posting.is_remote is False, "workplaceType Hybrid must win over isRemote"
+            assert posting.remote_source is RemoteSource.METADATA_FIELD
+
+    def test_structured_salary_takes_only_the_salary_component(
+        self, config, classifier, httpx_mock
+    ):
+        """Tiers also carry EquityCashValue, Commission and Bonus. Pooling any of those
+        into base pay would silently inflate the compensation series."""
+        payload = fixture("ashby_board.json")
+        payload["jobs"] = [
+            j for j in payload["jobs"] if (j.get("compensation") or {}).get("compensationTiers")
+        ][:1]
+        job = payload["jobs"][0]
+        job["compensation"]["compensationTiers"] = [
+            {
+                "components": [
+                    {
+                        "compensationType": "EquityCashValue",
+                        "minValue": 999_999,
+                        "maxValue": 999_999,
+                        "currencyCode": "USD",
+                        "interval": "1 YEAR",
+                    },
+                    {
+                        "compensationType": "Salary",
+                        "minValue": 211_400,
+                        "maxValue": 290_600,
+                        "currencyCode": "USD",
+                        "interval": "1 YEAR",
+                    },
+                    {
+                        "compensationType": "Bonus",
+                        "minValue": 50_000,
+                        "maxValue": 50_000,
+                        "currencyCode": "USD",
+                        "interval": "1 YEAR",
+                    },
+                ]
+            }
+        ]
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert (posting.salary_min, posting.salary_max) == (211_400, 290_600)
+        assert posting.salary_period is SalaryPeriod.YEAR
+        assert posting.salary_period_raw == "1 YEAR"
+        assert posting.salary_currency == "USD"
+
+    def test_unknown_salary_interval_degrades_to_none(self, config, classifier, httpx_mock):
+        payload = fixture("ashby_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["compensation"] = {
+            "compensationTiers": [
+                {
+                    "components": [
+                        {
+                            "compensationType": "Salary",
+                            "minValue": 1,
+                            "maxValue": 2,
+                            "currencyCode": "USD",
+                            "interval": "PER SPRINT",
+                        }
+                    ]
+                }
+            ]
+        }
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.salary_period is None, "an unseen interval must not be guessed"
+        assert posting.salary_period_raw == "PER SPRINT", "but the raw token is kept"
+
+    def test_unlisted_postings_are_skipped(self, config, classifier, httpx_mock):
+        """An unlisted posting is not public. Collecting it would record an appearance no
+        observer could have seen, and a disappearance when it is merely re-hidden."""
+        payload = fixture("ashby_board.json")
+        for job in payload["jobs"]:
+            job["isListed"] = False
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        result = run(_fetch(source, config))
+        assert result.postings == []
+        assert result.runs[0].status is RunStatus.EMPTY
+        assert result.diffable_scopes == set()
+
+    def test_secondary_locations_inform_remote(self, config, classifier, httpx_mock):
+        payload = fixture("ashby_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0].update(
+            workplaceType=None,
+            isRemote=None,
+            location="New York",
+            secondaryLocations=[{"location": "Remote (US)"}],
+            descriptionPlain="",
+        )
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.is_remote is True
+        assert "Remote (US)" in posting.location_raw
+
+    def test_uses_published_at(self, config, classifier, httpx_mock):
+        payload = fixture("ashby_board.json")
+        payload["jobs"] = payload["jobs"][:1]
+        payload["jobs"][0]["publishedAt"] = "2026-06-03T18:24:47.526+00:00"
+        httpx_mock.add_response(url=ASHBY_ANY, json=payload)
+        source = self._source(config, classifier, [_company()])
+        assert run(_fetch(source, config)).postings[0].posted_at == datetime(
+            2026, 6, 3, 18, 24, 47, 526000, tzinfo=UTC
+        )
+
+
+class TestLever:
+    @staticmethod
+    def _company(slug="wealthfront", token="wealthfront", name="Wealthfront"):
+        return {"name": name, "slug": slug, "ats": "lever", "token": token, "status": "verified"}
+
+    def test_bare_array_yields_rows(self, config, classifier, httpx_mock):
+        """Lever returns a bare array, not {"jobs": [...]}. The classic
+        `payload.get("jobs") or []` bug yields zero rows without raising - which under this
+        project's rules degrades to EMPTY and costs a day of data, silently, forever."""
+        payload = fixture("lever_board.json")
+        assert isinstance(payload, list), "fixture must stay a bare array"
+        httpx_mock.add_response(url=LEVER_ANY, json=payload)
+        source = LeverSource(config, classifier, [self._company()])
+        result = run(_fetch(source, config))
+        assert len(result.postings) == len(payload)
+        assert result.runs[0].status is RunStatus.OK
+
+    def test_title_comes_from_text_field(self, config, classifier, httpx_mock):
+        payload = fixture("lever_board.json")
+        httpx_mock.add_response(url=LEVER_ANY, json=payload)
+        source = LeverSource(config, classifier, [self._company()])
+        titles = {p.title for p in run(_fetch(source, config)).postings}
+        assert titles == {p["text"] for p in payload}
+
+    def test_created_at_milliseconds(self, config, classifier, httpx_mock):
+        payload = fixture("lever_board.json")[:1]
+        payload[0]["createdAt"] = 1694463796009
+        httpx_mock.add_response(url=LEVER_ANY, json=payload)
+        source = LeverSource(config, classifier, [self._company()])
+        posted = run(_fetch(source, config)).postings[0].posted_at
+        assert posted is not None and 2020 < posted.year < 2100
+
+    def test_lowercase_workplace_type(self, config, classifier, httpx_mock):
+        payload = fixture("lever_board.json")[:1]
+        payload[0]["workplaceType"] = "remote"
+        httpx_mock.add_response(url=LEVER_ANY, json=payload)
+        source = LeverSource(config, classifier, [self._company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.is_remote is True
+        assert posting.remote_source is RemoteSource.METADATA_FIELD
+
+    def test_salary_prose_is_not_parsed(self, config, classifier, httpx_mock):
+        """`additionalPlain` carries "Estimated annual salary range: $150,000 - $189,000".
+        Deliberately unparsed - a bad regex pollutes the compensation series permanently."""
+        payload = fixture("lever_board.json")[:1]
+        payload[0]["additionalPlain"] = "Estimated annual salary range: $150,000 - $189,000"
+        httpx_mock.add_response(url=LEVER_ANY, json=payload)
+        source = LeverSource(config, classifier, [self._company()])
+        posting = run(_fetch(source, config)).postings[0]
+        assert posting.salary_min is None and posting.salary_max is None
+
+
+class TestUnverifiedBoardsAreNotCollected:
+    """Ashby and Lever echo no company name in their APIs, so a guessed token that happens
+    to exist cannot be checked there. An unverified board is a real board belonging to
+    somebody; collecting it attributes their hiring to the wrong company permanently."""
+
+    def test_unverified_company_is_excluded(self, config, classifier):
+        watchlist = [
+            {
+                "name": "Good Co",
+                "slug": "good-co",
+                "ats": "ashby",
+                "token": "goodco",
+                "status": "verified",
+            },
+            {
+                "name": "Maybe Co",
+                "slug": "maybe-co",
+                "ats": "ashby",
+                "token": "maybeco",
+                "status": "unverified",
+            },
+            {
+                "name": "Old Co",
+                "slug": "old-co",
+                "ats": "ashby",
+                "token": "oldco",
+            },  # no status = legacy
+        ]
+        source = AshbySource(config, classifier, watchlist)
+        assert {c["slug"] for c in source.companies} == {"good-co", "old-co"}
+
+    def test_each_vendor_only_claims_its_own(self, config, classifier):
+        watchlist = [
+            {"name": "A", "slug": "a", "ats": "ashby", "token": "a", "status": "verified"},
+            {"name": "L", "slug": "l", "ats": "lever", "token": "l", "status": "verified"},
+            {"name": "G", "slug": "g", "ats": "greenhouse", "token": "g", "status": "verified"},
+        ]
+        assert [c["slug"] for c in AshbySource(config, classifier, watchlist).companies] == ["a"]
+        assert [c["slug"] for c in LeverSource(config, classifier, watchlist).companies] == ["l"]
+
+
+class TestCrossVendorIsolation:
+    """Correctness rule 1 now spans three vendors sharing one implementation.
+
+    The isolation logic lives once, in PerCompanyBoardSource, precisely so it cannot
+    diverge between adapters. This asserts the shared path still contains a failure to the
+    single company that suffered it.
+    """
+
+    def test_dead_board_in_one_vendor_does_not_affect_another(self, config, classifier, httpx_mock):
+        httpx_mock.add_response(url=ASHBY_ANY, status_code=404)
+        httpx_mock.add_response(url=GH_ANY, json=fixture("greenhouse_board.json"))
+
+        gh_watch = [
+            {
+                "name": "Airbnb",
+                "slug": "airbnb",
+                "ats": "greenhouse",
+                "token": "airbnb",
+                "status": "verified",
+            }
+        ]
+        ashby_watch = [
+            {"name": "Ramp", "slug": "ramp", "ats": "ashby", "token": "ramp", "status": "verified"}
+        ]
+
+        ashby = run(_fetch(AshbySource(config, classifier, ashby_watch), config))
+        greenhouse = run(_fetch(GreenhouseSource(config, classifier, gh_watch), config))
+
+        assert ashby.runs[0].status is RunStatus.ERROR
+        assert ashby.diffable_scopes == set(), "the dead board must not be diffed"
+        assert greenhouse.runs[0].status is RunStatus.OK
+        assert ("greenhouse", "airbnb") in greenhouse.diffable_scopes
+
+    def test_one_dead_ashby_board_does_not_affect_its_siblings(
+        self, config, classifier, httpx_mock
+    ):
+        httpx_mock.add_response(
+            url=re.compile(r"^https://api\.ashbyhq\.com/posting-api/job-board/deadco"),
+            status_code=404,
+        )
+        httpx_mock.add_response(url=ASHBY_ANY, json=fixture("ashby_board.json"))
+        watchlist = [
+            {
+                "name": "Dead Co",
+                "slug": "dead-co",
+                "ats": "ashby",
+                "token": "deadco",
+                "status": "verified",
+            },
+            {"name": "Ramp", "slug": "ramp", "ats": "ashby", "token": "ramp", "status": "verified"},
+        ]
+        result = run(_fetch(AshbySource(config, classifier, watchlist), config))
+        by_slug = {r.company_slug: r for r in result.runs}
+        assert by_slug["dead-co"].status is RunStatus.ERROR
+        assert by_slug["dead-co"].records_fetched == 0
+        assert by_slug["ramp"].status is RunStatus.OK
+        assert ("ashby", "ramp") in result.diffable_scopes
+        assert ("ashby", "dead-co") not in result.diffable_scopes

@@ -37,9 +37,11 @@ from src.models import (
     PostingEvent,
     SourceRun,
 )
+from src.sources.ashby import AshbySource
 from src.sources.base import FetchResult, build_client, utc_now
 from src.sources.greenhouse import GreenhouseSource
 from src.sources.himalayas import HimalayasSource
+from src.sources.lever import LeverSource
 from src.storage import Storage
 
 logger = logging.getLogger(__name__)
@@ -170,12 +172,19 @@ def diff(
     return outcome
 
 
+#: Per-company ATS adapters. All share PerCompanyBoardSource, so adding a vendor is a
+#: field mapping plus an entry here - the failure-isolation rules cannot diverge between
+#: them because no adapter implements them.
+BOARD_SOURCES = (GreenhouseSource, AshbySource, LeverSource)
+
+
 def build_sources(config: dict[str, Any], watchlist: list[dict[str, Any]], classifier):
-    sources = []
+    sources: list[Any] = []
     if config["sources"].get("himalayas", {}).get("enabled", True):
         sources.append(HimalayasSource(config, classifier))
-    if config["sources"].get("greenhouse", {}).get("enabled", True):
-        sources.append(GreenhouseSource(config, classifier, watchlist))
+    for cls in BOARD_SOURCES:
+        if config["sources"].get(cls.name, {}).get("enabled", True):
+            sources.append(cls(config, classifier, watchlist))
     return sources
 
 

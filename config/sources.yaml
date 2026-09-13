@@ -60,6 +60,27 @@ sources:
     lookback_days: 4          # stop paging once a whole page predates this
     expected_page_size: 20    # advisory only — real pages run 17-20
 
+  ashby:
+    enabled: true
+    role: census
+    base_url: "https://api.ashbyhq.com"
+    # includeCompensation gives structured salary tiers where published - the only ATS
+    # here that exposes them at all.
+    path_template: "/posting-api/job-board/{token}?includeCompensation=true"
+    concurrency: 8
+    per_company_isolation: true
+    capture_all_families: true
+
+  lever:
+    enabled: true
+    role: census
+    base_url: "https://api.lever.co"
+    # Returns a BARE ARRAY, not a {"jobs": [...]} wrapper. Handled in the adapter.
+    path_template: "/v0/postings/{token}?mode=json"
+    concurrency: 8
+    per_company_isolation: true
+    capture_all_families: true
+
   greenhouse:
     enabled: true
     role: census              # the actual instrument: every open req at every watchlist company
