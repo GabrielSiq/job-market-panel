@@ -1,6 +1,6 @@
 # Job market panel
 
-**26,212** open postings across **699** companies · **490** in target families · 2 days of history (2026-09-12 → 2026-09-13) · generated 2026-09-12
+**26,215** open postings across **698** companies · **490** in target families · 2 days of history (2026-09-12 → 2026-09-13) · generated 2026-09-13
 
 > [!NOTE]
 > **How to read this.** Only 2 days of history, so there are no trends here yet — time-to-close, org growth and hiring-rate baselines need weeks and arrive in a later phase.
@@ -12,19 +12,19 @@
 | Company | Role | Level | Pay | Where | Remote |
 |---|---|---|---|:--:|:--:|
 | OpenAI | [Applied Data Science & Insights Leader - GTM Intelligence ](https://jobs.ashbyhq.com/openai/93f558c1-c944-4ddc-b102-addc9446de3d) | mid | $441k–$515k | San Francisco | no |
-| OpenAI | [Data Scientist, Ads Demand](https://jobs.ashbyhq.com/openai/1eb32675-b1a0-4c0a-9b57-19ceab07e9e0) | mid | $293k–$515k | San Francisco | no |
 | OpenAI | [Data Scientist, Cybersecurity](https://jobs.ashbyhq.com/openai/894ce80d-c587-4ef0-92d2-b16deb9a06b9) | mid | $263k–$515k | US | yes |
+| OpenAI | [Data Scientist, Ads Demand](https://jobs.ashbyhq.com/openai/1eb32675-b1a0-4c0a-9b57-19ceab07e9e0) | mid | $293k–$515k | San Francisco | no |
 | coreflow | [Data Scientist (Product)](https://jobs.ashbyhq.com/coreflow/4b0f76ad-881b-4553-a398-0645ce73e432) | mid | $200k–$500k | Sydney | no |
 | mercor | [Data Scientist](https://jobs.ashbyhq.com/mercor/982a0751-e9eb-4b96-ac93-a1fd1d2f9152) | mid | $130k–$500k | San Francisco | no |
-| DoorDash | [Director, Analytics, New Verticals Consumer](https://job-boards.greenhouse.io/doordashusa/jobs/8052254) | director | $255k–$375k | US | no |
 | DoorDash | [Director, Analytics, Commerce Platform](https://job-boards.greenhouse.io/doordashusa/jobs/7822599) | director | $255k–$375k | US | no |
+| DoorDash | [Director, Analytics, New Verticals Consumer](https://job-boards.greenhouse.io/doordashusa/jobs/8052254) | director | $255k–$375k | US | no |
 | Life360 | [Senior Director, Analytics and Data Science, Core Product ](https://job-boards.greenhouse.io/life360/jobs/8750960002) | director | $247k–$366k | CA | yes |
 | Plaid | [Data Science Manager - Fraud](https://jobs.ashbyhq.com/plaid/55eacfa6-71e0-42ac-8788-04dc1e5fd694) | manager | $216k–$329k | New York City Offi | no |
 | Snowflake | [Senior Manager, Product Data Science](https://jobs.ashbyhq.com/snowflake/117e5dc0-6191-43f2-8e05-863d405da289) | manager | $227k–$327k | US-CA-Menlo Park | no |
 | DoorDash | [Lead Data Scientist](https://job-boards.greenhouse.io/doordashusa/jobs/7380096) | senior | $220k–$323k | US | no |
 | Airwallex | [Director of AI Analytics & CEO Office](https://jobs.ashbyhq.com/airwallex/5f17444c-fea7-4394-8bab-6284b46f1a1c) | director | $300k–$320k | US - San Francisco | no |
-| Suno | [Senior / Staff Data Scientist, Growth Monetization](https://jobs.ashbyhq.com/suno/5444295f-78b1-490e-a9a1-f93120d06f77) | staff | $220k–$320k | NYC | no |
 | Suno | [Senior / Staff Data Scientist, Growth Product](https://jobs.ashbyhq.com/suno/7b81d3fa-8a84-4d3a-b681-a6b06974e01e) | staff | $220k–$320k | NYC | no |
+| Suno | [Senior / Staff Data Scientist, Growth Monetization](https://jobs.ashbyhq.com/suno/5444295f-78b1-490e-a9a1-f93120d06f77) | staff | $220k–$320k | NYC | no |
 | Suno | [Senior / Staff Data Scientist, Trust & Safety](https://jobs.ashbyhq.com/suno/2058717a-ac2a-4092-9c83-dc7f3241e789) | staff | $220k–$320k | San Francisco | no |
 | Airwallex | [Staff Data Scientist, Growth Analytics](https://jobs.ashbyhq.com/airwallex/d028d728-2474-41f9-a48f-f9c65ae207a1) | staff | $180k–$300k | US - San Francisco | no |
 | Confido | [Senior Data Scientist](https://jobs.ashbyhq.com/confido/c6a2eb44-6f4f-4e71-9e4c-b4bd33fbe691) | senior | $250k–$300k | NYC Office | no |
@@ -37,15 +37,15 @@
 | Headway | [Senior Manager, Data Science, Provider Experience](https://jobs.ashbyhq.com/headway/df7c40e9-a84f-4d15-87b9-844bbde7a3a4) | manager | $212k–$265k | New York City, San | no |
 | Headway | [Staff Data Scientist - GTM](https://jobs.ashbyhq.com/headway/89f0d2b3-f4ff-407f-abae-82b4d0de099f) | staff | $212k–$265k | Remote, San Franci | no |
 | Headway | [Staff Data Scientist - Product Analytics](https://jobs.ashbyhq.com/headway/d6456594-a596-4bea-b698-784d9faf0baa) | staff | $212k–$265k | US | no |
-| Snowflake | [GTM Staff Data Scientist](https://jobs.ashbyhq.com/snowflake/c80ed4e9-d840-47bc-ad8c-64ed1ff97826) | staff | $184k–$264k | US-CA-Menlo Park | no |
 | Snowflake | [Staff Data Scientist, Finance](https://jobs.ashbyhq.com/snowflake/5be9023b-1277-4f22-8483-d9aedac2371f) | staff | $184k–$264k | US-CA-Menlo Park,  | no |
-| Plaid | [Senior Data Scientist - Network Value (Credit)](https://jobs.ashbyhq.com/plaid/172bb8e8-7dc8-4fdc-ae20-525456989ff4) | senior | $191k–$263k | San Francisco HQ,  | no |
+| Snowflake | [GTM Staff Data Scientist](https://jobs.ashbyhq.com/snowflake/c80ed4e9-d840-47bc-ad8c-64ed1ff97826) | staff | $184k–$264k | US-CA-Menlo Park | no |
 | Plaid | [Senior Data Scientist - Embedded Insights](https://jobs.ashbyhq.com/plaid/c85370cf-7391-4307-9757-42f2ee25b98a) | senior | $191k–$263k | San Francisco HQ,  | no |
+| Plaid | [Senior Data Scientist - Network Value (Credit)](https://jobs.ashbyhq.com/plaid/172bb8e8-7dc8-4fdc-ae20-525456989ff4) | senior | $191k–$263k | San Francisco HQ,  | no |
 | Zapier | [Manager, GTM Analytics](https://jobs.ashbyhq.com/zapier/7dd68291-3696-4fd0-a5d0-24ab73d22fff) | manager | $174k–$261k | NAMER | yes |
 | Baseten | [Data Scientist (Analytics)](https://jobs.ashbyhq.com/baseten/f160637f-b6bf-4f69-a8bd-862a3a3a8b0d) | mid | $185k–$260k | San Francisco | no |
 | KoBold Metals | [Data Scientist - (Global)](https://job-boards.greenhouse.io/koboldmetals/jobs/4305917005) | mid | $140k–$260k | Remote | yes |
-| SentiLink | [Head of Solutions Strategy & Analytics](https://jobs.ashbyhq.com/sentilink/f95a04d7-8c34-43d9-a250-cfb1a5be8b79) | manager | $200k–$260k | US | yes |
 | SentiLink | [Data Science Manager](https://jobs.ashbyhq.com/sentilink/9555becf-b44b-4c7d-8425-4987b16bf17a) | manager | $210k–$260k | US | yes |
+| SentiLink | [Head of Solutions Strategy & Analytics](https://jobs.ashbyhq.com/sentilink/f95a04d7-8c34-43d9-a250-cfb1a5be8b79) | manager | $200k–$260k | US | yes |
 | Natera | [Director of Data Science and Bioinformatics](https://job-boards.greenhouse.io/natera/jobs/6142472004) | director | $205k–$256k | US | no |
 | Natera | [Director of Operations, Data Analytics for Production Supp](https://job-boards.greenhouse.io/natera/jobs/6147249004) | director | $205k–$256k | US | no |
 | Airwallex | [Senior Data Scientist, Growth Analytics](https://jobs.ashbyhq.com/airwallex/0c33f286-3f00-4b2b-8f8b-70e1fd7ff7ff) | senior | $160k–$250k | US - San Francisco | no |
@@ -140,7 +140,7 @@ Top of the advertised band:
 
 **Remote share, reported two ways.**
 
-- On strong evidence only (vendor flag, location text, or an explicit statement in the job text): **6,584 of 15,594** (`████░░░░░░` 42%).
+- On strong evidence only (vendor flag, location text, or an explicit statement in the job text): **6,587 of 15,597** (`████░░░░░░` 42%).
 - A further **7,131** postings are inferred onsite purely because the location names a specific workplace, with nothing anywhere saying remote or hybrid. That inference measures around 95% accurate, but it is the weakest one here. **3,487** remain genuinely undetermined.
 
 </details>
@@ -155,7 +155,7 @@ Coverage differs sharply by vendor, so read any rate above with this in mind. A 
 | `greenhouse` | 18,347 | `███░░░░░░░` 31% | `████░░░░░░` 43% | `████████░░` 81% |
 | `ashby` | 5,426 | `██████░░░░` 65% | `███░░░░░░░` 25% | `██████████` 100% |
 | `lever` | 1,848 | `█░░░░░░░░░` 7% | `██████░░░░` 61% | `██████████` 100% |
-| `himalayas` | 591 | `████░░░░░░` 44% | `░░░░░░░░░░` 3% | `██████████` 100% |
+| `himalayas` | 594 | `████░░░░░░` 44% | `░░░░░░░░░░` 4% | `██████████` 100% |
 
 Last collection run: `ok` 383.
 
