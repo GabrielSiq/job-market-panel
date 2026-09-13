@@ -27,7 +27,7 @@ from src.models import (
     Seniority,
     Source,
 )
-from src.report import bar, cell, money, render
+from src.report import bar, cell, money, remote_flag, render
 from src.storage import Storage
 
 DAY1, DAY2, DAY3 = date(2026, 9, 10), date(2026, 9, 11), date(2026, 9, 12)
@@ -256,3 +256,39 @@ class TestBandFiltering:
         text = render(con)
         con.close()
         assert "**In-band levels only.**" in text
+
+
+class TestRemoteFlagKeepsItsProvenance:
+    """A bare yes/no launders the weakest inference into the strongest-looking answer.
+
+    `location_implied` means "the location names a specific workplace and nothing anywhere
+    said remote or hybrid" — roughly 95% accurate, and covering a large share of rows.
+    Rendering it as a flat "no" makes it indistinguishable from a vendor's explicit
+    workplace flag, in the one table read every day. The provenance field exists precisely
+    so that distinction survives.
+    """
+
+    def test_weak_inference_is_marked(self):
+        assert remote_flag(False, "location_implied") == "likely no"
+
+    @pytest.mark.parametrize(
+        "source", ["metadata_field", "location_string", "description_text", "source_field"]
+    )
+    def test_strong_evidence_is_unqualified(self, source):
+        assert remote_flag(False, source) == "no"
+        assert remote_flag(True, source) == "yes"
+
+    def test_unknown_stays_unknown(self):
+        assert remote_flag(None, "unknown") == "?"
+
+    def test_implied_never_claims_remote(self):
+        """`remote_implied_by_place` only ever concludes *not* remote, so a positive claim
+        can never rest on it."""
+        assert remote_flag(True, "location_implied") == "yes"
+
+    def test_the_table_explains_the_qualifier(self, panel):
+        db, _ = panel
+        con = connect(db)
+        text = render(con)
+        con.close()
+        assert "`likely no` means" in text

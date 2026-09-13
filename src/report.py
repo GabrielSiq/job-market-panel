@@ -83,6 +83,22 @@ def cell(value: Any) -> str:
     return str(value).replace("|", "\\|").replace("\n", " ").strip() or "—"
 
 
+def remote_flag(is_remote: Any, source: Any) -> str:
+    """Render remote status *with its confidence*, not as a bare boolean.
+
+    A flat yes/no launders `location_implied` — inferred purely because the location names
+    a place and nothing said otherwise, roughly 95% accurate — into something that reads
+    exactly like a vendor's explicit workplace flag. That provenance field exists so the
+    weak inference stays separable; collapsing it here would undo that in the one table
+    read most often.
+    """
+    if is_remote is None:
+        return "?"
+    if is_remote is False and source == "location_implied":
+        return "likely no"
+    return "yes" if is_remote else "no"
+
+
 def money(low: Any, high: Any) -> str:
     if low is None and high is None:
         return "—"
@@ -161,7 +177,7 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
         f"""
         WITH ranked AS (
             SELECT company_name, title, seniority, salary_min, salary_max,
-                   location_raw, is_remote, country, apply_url, role_family,
+                   location_raw, is_remote, remote_source, country, apply_url, role_family,
                    ROW_NUMBER() OVER (
                        PARTITION BY company_slug
                        ORDER BY salary_max DESC NULLS LAST, title
@@ -182,13 +198,20 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
         shown = new_rows[:40]
         out.append("| Company | Role | Level | Pay | Where | Remote |")
         out.append("|---|---|---|---|:--:|:--:|")
-        for co, title, sen, lo, hi, loc, remote, country, url, _fam in shown:
+        for co, title, sen, lo, hi, loc, remote, remote_src, country, url, _fam in shown:
             link = f"[{cell(title)[:58]}]({url})" if url else cell(title)[:58]
             where = cell(country or loc)[:18]
-            flag = {True: "yes", False: "no", None: "?"}[remote]
+            flag = remote_flag(remote, remote_src)
             out.append(
                 f"| {cell(co)[:22]} | {link} | {cell(sen)} | {money(lo, hi)} | {where} | {flag} |"
             )
+        out.append("")
+        out.append(
+            "_`likely no` means the location names a specific workplace and nothing "
+            "anywhere said remote or hybrid — about 95% accurate, and the weakest "
+            "inference here. `yes` and `no` rest on a vendor field, the location text, or "
+            "an explicit statement in the job description._"
+        )
         if len(new_rows) > len(shown):
             out.append("")
             out.append(

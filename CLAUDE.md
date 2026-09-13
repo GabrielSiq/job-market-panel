@@ -1203,3 +1203,33 @@ recompute a derived field only when **all** of its inputs survive in the log.
 for tracked families. Expect a visible step up in pay coverage at 2026-09-13. It is an
 artifact of the feature shipping, not a market movement, and it is flagged in the status
 section above so nobody reads it as signal later.
+
+### 2026-09-13 — the report's Remote column was laundering a weak inference
+
+Gabriel asked where the boolean `Remote` column in the first table comes from. Tracing it
+turned up a flaw I had introduced: it rendered `is_remote` as a flat `yes` / `no` / `?`
+**with no provenance at all**.
+
+| Column showed | Actual provenance | Rows |
+|---|---|---|
+| `no` | `metadata_field` | 39 |
+| `yes` | `metadata_field` | 25 |
+| **`no`** | **`location_implied`** | **21** |
+| `yes` | `location_string` | 19 |
+| `yes` / `no` | `description_text` | 10 |
+
+So **21 of 120 rows showed a confident "no" that was really `location_implied`** — inferred
+purely because the location names a specific workplace and nothing anywhere said remote,
+roughly 95% accurate. `RemoteSource.LOCATION_IMPLIED` was added *specifically* so that
+inference would stay separable, and the report's own caveats say remote must be reported
+both ways — and then the headline table collapsed it into something indistinguishable from
+a vendor's explicit workplace flag, in the table read most often.
+
+Now rendered as **`likely no`**, with a one-line note under the table. `remote_flag()` is
+unit-tested per provenance value.
+
+**The general lesson, which applies well beyond this column:** a derived value and its
+confidence have to travel together all the way to the surface. Aggregate sections had the
+caveat; the row-level view silently dropped it, and row-level is where a decision actually
+gets made. Worth checking any future surface — the Phase 5 brief especially — for the same
+mistake.
