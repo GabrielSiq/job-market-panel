@@ -31,6 +31,7 @@ from typing import Any
 import duckdb
 
 from src.build import DB_PATH, build, connect
+from src.classify import load_classifier
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,25 @@ REPORT_PATH = ROOT / "reports" / "latest.md"
 #: separately, for context rather than as targets.
 CORE = ("product_ds", "ds_manager", "product_analyst")
 ADJACENT = ("ml_eng", "analytics_eng", "data_eng", "analyst")
+
+#: Seniorities Gabriel is plausibly a candidate for, from config/taxonomy.yaml. Out-of-band
+#: levels (senior_staff, principal, senior_manager, director and above) are still collected
+#: and still queryable, but they are kept out of the headline lists and — critically — out
+#: of the pay statistics, because a Director band skews the distribution badly upward and
+#: makes the market look unlike the one being searched.
+TARGET_BAND = tuple(sorted(s.value for s in load_classifier().target_band))
+#: Displayed in the order a career runs, not alphabetically.
+BAND_ORDER = (
+    "junior",
+    "mid",
+    "senior",
+    "staff",
+    "senior_staff",
+    "principal",
+    "manager",
+    "senior_manager",
+    "director",
+)
 
 _BAR_FULL, _BAR_EMPTY = "\u2588", "\u2591"
 
@@ -88,6 +108,10 @@ def _families_sql(families: tuple[str, ...]) -> str:
     return ", ".join(f"'{f}'" for f in families)
 
 
+def _band_sql() -> str:
+    return ", ".join(f"'{s}'" for s in TARGET_BAND)
+
+
 def render(con: duckdb.DuckDBPyConnection) -> str:
     out: list[str] = []
     core = _families_sql(CORE)
@@ -131,6 +155,7 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
     # Capped at a few per company. Sorting purely by pay lets one generous employer
     # flood the entire list - OpenAI alone filled 20 of the first 25 rows - which buries
     # the variety that makes a daily scan worth doing.
+    band = _band_sql()
     new_rows = _q(
         con,
         f"""
@@ -144,6 +169,7 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
             FROM events
             WHERE date = (SELECT max(date) FROM events)
               AND event = 'appeared' AND role_family IN ({core})
+              AND seniority IN ({band})
         )
         SELECT * EXCLUDE (per_company) FROM ranked
         WHERE per_company <= 3
@@ -175,24 +201,28 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
     # --- current state -------------------------------------------------------------
     out.append("## Open now, target families")
     out.append("")
-    out.append("| Family | Junior | Mid | Senior | Staff/Principal | Manager+ | Total |")
-    out.append("|---|--:|--:|--:|--:|--:|--:|")
+    out.append(
+        "Levels **in bold** are the ones in band. The rest are shown for context only — "
+        "they are excluded from the list above and from every pay figure below."
+    )
+    out.append("")
+    header = " | ".join(
+        f"**{lvl.replace('_', ' ')}**" if lvl in TARGET_BAND else lvl.replace("_", " ")
+        for lvl in BAND_ORDER
+    )
+    out.append(f"| Family | {header} | In band |")
+    out.append("|---|" + "--:|" * (len(BAND_ORDER) + 1))
     for fam in CORE:
-        row = _q(
-            con,
-            """
-            SELECT
-              count(*) FILTER (WHERE seniority = 'junior'),
-              count(*) FILTER (WHERE seniority = 'mid'),
-              count(*) FILTER (WHERE seniority = 'senior'),
-              count(*) FILTER (WHERE seniority IN ('staff','principal')),
-              count(*) FILTER (WHERE seniority IN ('manager','director')),
-              count(*)
-            FROM open_postings WHERE role_family = ?
-            """,
-            [fam],
-        )[0]
-        out.append(f"| `{fam}` | " + " | ".join(f"{v:,}" for v in row) + " |")
+        counts = dict(
+            _q(
+                con,
+                "SELECT seniority, count(*) FROM open_postings WHERE role_family = ? GROUP BY 1",
+                [fam],
+            )
+        )
+        cells = " | ".join(f"{counts.get(lvl, 0):,}" for lvl in BAND_ORDER)
+        in_band = sum(n for lvl, n in counts.items() if lvl in TARGET_BAND)
+        out.append(f"| `{fam}` | {cells} | **{in_band:,}** |")
     out.append("")
 
     # --- folded detail -------------------------------------------------------------
@@ -200,6 +230,7 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
     out.append(_pay_section(con, core))
     out.append(_location_section(con))
     out.append(_quality_section(con))
+    out.append(_out_of_band_section(con, core))
     out.append(_adjacent_section(con, adjacent))
 
     out.append("---")
@@ -219,6 +250,7 @@ def _details(title: str, body: list[str]) -> str:
 
 
 def _companies_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
+    band = _band_sql()
     body: list[str] = []
     top = _q(
         con,
@@ -227,7 +259,8 @@ def _companies_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
                count(*) AS n,
                count(*) FILTER (WHERE role_family = 'ds_manager') AS mgrs,
                count(*) FILTER (WHERE is_remote) AS remote
-        FROM open_postings WHERE role_family IN ({core})
+        FROM open_postings
+        WHERE role_family IN ({core}) AND seniority IN ({band})
         GROUP BY company_name ORDER BY n DESC, company_name LIMIT 30
         """,
     )
@@ -243,7 +276,18 @@ def _companies_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
 
 
 def _pay_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
+    band = _band_sql()
     body: list[str] = []
+    if not _has_column(con, "postings", "role_family"):
+        # No full records stored yet — on a fresh checkout, or a day when nothing in a
+        # tracked family was collected. A missing section beats a crashed report.
+        return _details("Pay", ["_No stored posting records yet._"])
+    body.append(
+        "**In-band levels only.** Director, Senior Manager, Principal and Senior Staff "
+        "reqs pay far above the band being searched, and including them made the "
+        "distribution describe a market other than this one."
+    )
+    body.append("")
     body.append(
         "Employer-published either way, but kept apart on purpose: one came from a "
         "structured vendor field, the other was extracted from the job text by a parser. "
@@ -260,6 +304,7 @@ def _pay_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
                quantile_cont(p.salary_max, 0.9)
         FROM postings p
         WHERE p.role_family IN ({core}) AND p.salary_min IS NOT NULL
+              AND p.seniority IN ({band})
               AND coalesce(p.salary_period, 'year') = 'year'
         GROUP BY 1 ORDER BY 2 DESC
         """,
@@ -286,6 +331,7 @@ def _pay_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
                count(*)
         FROM postings
         WHERE role_family IN ({core}) AND salary_max IS NOT NULL
+              AND seniority IN ({band})
               AND coalesce(salary_period, 'year') = 'year'
         GROUP BY 1
         """,
@@ -387,6 +433,54 @@ def _quality_section(con: duckdb.DuckDBPyConnection) -> str:
                 "Last collection run: " + ", ".join(f"`{status}` {n}" for status, n in runs) + ".",
             ]
     return _details("Data quality", body)
+
+
+def _out_of_band_section(con: duckdb.DuckDBPyConnection, core: str) -> str:
+    """What the band filter removed, and what it was doing to the numbers.
+
+    Shown rather than silently dropped: these levels are real market signal, they are just
+    not roles Gabriel is a candidate for. Seeing the pay gap is also the justification for
+    excluding them from every figure above.
+    """
+    band = _band_sql()
+    rows = _q(
+        con,
+        f"""
+        SELECT seniority, count(*),
+               count(*) FILTER (WHERE salary_max IS NOT NULL) AS with_pay,
+               quantile_cont(salary_max, 0.5) FILTER (WHERE salary_max IS NOT NULL)
+        FROM open_postings
+        WHERE role_family IN ({core}) AND seniority NOT IN ({band})
+        GROUP BY 1 ORDER BY 2 DESC
+        """,
+    )
+    in_band_median = _q(
+        con,
+        f"""
+        SELECT quantile_cont(salary_max, 0.5)
+        FROM open_postings
+        WHERE role_family IN ({core}) AND seniority IN ({band}) AND salary_max IS NOT NULL
+        """,
+    )[0][0]
+
+    body = [
+        "Excluded from every figure above. Still collected, still in `panel.duckdb` — "
+        "these are real market signal, just not roles to apply for.",
+        "",
+        "| Level | Open | With pay | Median top of band |",
+        "|---|--:|--:|--:|",
+    ]
+    for level, n, with_pay, median in rows:
+        shown = f"${median:,.0f}" if median else "—"
+        body.append(f"| {cell(level).replace('_', ' ')} | {n:,} | {with_pay:,} | {shown} |")
+    if in_band_median:
+        body += [
+            "",
+            f"For comparison, the median top-of-band **in** band is "
+            f"**${in_band_median:,.0f}**. That gap is why these are excluded rather than "
+            "merely flagged — pooled in, they describe a market other than this one.",
+        ]
+    return _details("Out of band (director, principal, senior manager, senior staff)", body)
 
 
 def _adjacent_section(con: duckdb.DuckDBPyConnection, adjacent: str) -> str:

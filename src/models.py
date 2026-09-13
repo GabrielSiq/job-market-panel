@@ -73,12 +73,22 @@ TRACKED_FAMILIES: frozenset[RoleFamily] = frozenset(
 
 
 class Seniority(StrEnum):
+    """IC and management levels, fine-grained enough to separate adjacent bands.
+
+    `senior_staff` and `senior_manager` exist because collapsing them into `staff` and
+    `manager` conflated levels that are a full step apart in scope and pay. That is a
+    measurement error before it is a filtering one: it inflated the pay distribution for
+    the two bands Gabriel is actually a candidate for.
+    """
+
     JUNIOR = "junior"
     MID = "mid"
     SENIOR = "senior"
     STAFF = "staff"
+    SENIOR_STAFF = "senior_staff"
     PRINCIPAL = "principal"
     MANAGER = "manager"
+    SENIOR_MANAGER = "senior_manager"
     DIRECTOR = "director"
     UNKNOWN = "unknown"
 

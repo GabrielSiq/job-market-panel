@@ -1091,3 +1091,57 @@ Both failures landed in steps *after* collection, which is where failures should
 data was written and committed in every case.
 
 Verified green end to end afterwards, all steps including Commit and Healthcheck.
+
+### 2026-09-13 — seniority bands: Gabriel's levels, and a measurement error behind them
+
+Gabriel read the first report and flagged roles that should not be in it: Director, Senior
+Director, VP, Senior Manager, Senior Staff and Principal. His words: *"these inflate pay"*.
+
+**He was reporting a filtering problem, but the cause was a measurement error.** The
+taxonomy could not express the distinction at all:
+
+| Title | Was classified | Should be |
+|---|---|---|
+| `Senior Staff Data Scientist` | **`staff`** | `senior_staff` |
+| `Senior Manager, Product Data Science` | **`manager`** | `senior_manager` |
+
+So a level above the band was being counted *inside* the two bands he is actually a
+candidate for, and dragging their pay statistics up with it. No amount of report filtering
+could have fixed that — the information was not in the data.
+
+**`Seniority` gains `SENIOR_STAFF` and `SENIOR_MANAGER`**, with rules ordered so
+`senior_manager` is tested before `manager` and `senior_staff` before `staff`. Ordering is
+load-bearing here exactly as it is for role families: the more specific rule must run first
+or it can never match. Taxonomy `2026-09-13.3`. The reclassification step applies this to
+all existing history.
+
+**The band is config, not code** — `seniority.target_band` in `config/taxonomy.yaml`:
+
+```yaml
+target_band: [mid, senior, staff, manager, unknown]
+```
+
+Out: `junior`, `senior_staff`, `principal`, `senior_manager`, `director` and above. Gabriel
+can widen or narrow it in one line, and it re-reads on the next build.
+
+**Out of band means out of the report, not out of the panel.** Everything is still
+collected and still in `panel.duckdb` — that is his standing instruction, and these levels
+are real market signal. What changed is that the headline list, the company rankings and
+**every pay figure** are computed in-band only, and a folded section shows what was excluded
+alongside the gap that justifies excluding it:
+
+| Level | Open | Median top of band |
+|---|--:|--:|
+| senior staff | 10 | $320,000 |
+| senior manager | 19 | $270,000 |
+| director | 30 | $243,800 |
+| **in band** | — | **$211,500** |
+
+**Manager stays in band deliberately.** Gabriel wants to move into a first-line manager role
+before long, so those reqs are useful visibility — but only the first-line ones, which is
+precisely the distinction the taxonomy previously could not make.
+
+**Two old tests encoded the bug** (`Senior Manager, Data Science` asserted as `manager`) and
+were updated. Worth noting as a pattern: a test can pin wrong behaviour just as firmly as
+right behaviour, so a failing test after a deliberate fix deserves reading rather than
+reflexively re-greening.

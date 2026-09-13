@@ -21,7 +21,7 @@ REAL_TITLES = [
     # The growth signal. These are the ones that must never regress.
     ("Data Science Manager", "ds_manager", "manager"),
     ("Manager, Data Science", "ds_manager", "manager"),
-    ("Senior Manager, Data Science", "ds_manager", "manager"),
+    ("Senior Manager, Data Science", "ds_manager", "senior_manager"),
     ("Head of Data Science", "ds_manager", "director"),
     ("Director, Data Science", "ds_manager", "director"),
     ("Senior Director, Revenue Analytics", "ds_manager", "director"),
@@ -50,7 +50,7 @@ REAL_TITLES = [
     ("Senior Backend Engineer, Analytics Instrumentation (Golang)", "other", "senior"),
     ("Epidemiologist, Internal Medicine, Inflammation & Immunology", "other", "mid"),
     ("Principal Scientist, Project Toxicologist", "other", "principal"),
-    ("Sr. Manager, Clinical Science", "other", "manager"),
+    ("Sr. Manager, Clinical Science", "other", "senior_manager"),
     ("Product Manager, Growth", "other", "manager"),
     ("Predictive Modeler / Pricing Modeler - Commercial Actuarial", "other", "mid"),
     # The product_analyst split. Gabriel wants strong product analytics surfaced; a junior
@@ -69,6 +69,17 @@ REAL_TITLES = [
     ("Senior Business Analyst, TPRM", "analyst", "senior"),
     # A people-management analytics req is the org-growth signal, not an IC analyst role.
     ("Product Analytics Manager", "ds_manager", "manager"),
+    # Levels a step above the band being searched. These were previously collapsed into
+    # `staff` and `manager`, which inflated the pay distribution for exactly the two bands
+    # Gabriel IS a candidate for — a measurement error before a filtering one.
+    ("Senior Staff Data Scientist", "product_ds", "senior_staff"),
+    ("Sr. Staff Data Scientist", "product_ds", "senior_staff"),
+    ("Senior Manager, Product Data Science", "ds_manager", "senior_manager"),
+    ("Sr. Manager, Analytics", "ds_manager", "senior_manager"),
+    ("Group Manager, Data Science", "ds_manager", "senior_manager"),
+    # ...and the levels they must no longer swallow.
+    ("Staff Data Scientist", "product_ds", "staff"),
+    ("Data Science Manager", "ds_manager", "manager"),
     # Junior detection, so entry-level reqs do not inflate the senior series.
     ("Intern - Data Scientist", "product_ds", "junior"),
     ("Data Scientist, Core Data -  PhD (2026)", "product_ds", "junior"),
@@ -253,3 +264,42 @@ def test_product_analyst_does_not_steal_from_product_ds(classifier):
     assert classifier.role_family("Lead, Advanced Analytics, Acquisition").value == "product_ds"
     assert classifier.role_family("Senior Product Data Scientist").value == "product_ds"
     assert classifier.role_family("Experimentation Analyst").value == "product_ds"
+
+
+class TestSeniorityBands:
+    """Adjacent levels must not collapse into each other.
+
+    "Senior Staff" is a step above "Staff", and "Senior Manager" a step above a first-line
+    manager, in both scope and pay. Collapsing them understated nothing and overstated the
+    two bands actually being searched.
+    """
+
+    @pytest.mark.parametrize(
+        ("title", "expected"),
+        [
+            ("Senior Staff Data Scientist", "senior_staff"),
+            ("Staff Data Scientist", "staff"),
+            ("Senior Manager, Data Science", "senior_manager"),
+            ("Data Science Manager", "manager"),
+            ("Manager, Data Science", "manager"),
+            ("Principal Data Scientist", "principal"),
+            ("Senior Data Scientist", "senior"),
+        ],
+    )
+    def test_adjacent_levels_stay_distinct(self, classifier, title, expected):
+        assert classifier.seniority(title).value == expected
+
+    @pytest.mark.parametrize(
+        "title",
+        ["Senior Director, Analytics", "VP of Data Science", "Head of Data Science"],
+    )
+    def test_director_and_above_never_fall_through(self, classifier, title):
+        """Director runs first precisely so "Senior Director" is never read as a manager
+        or, worse, as a senior IC."""
+        assert classifier.seniority(title).value == "director"
+
+    def test_target_band_comes_from_config(self, classifier):
+        """The band is data, not code, so Gabriel can widen or narrow it in one line."""
+        band = {s.value for s in classifier.target_band}
+        assert {"mid", "senior", "staff", "manager"} <= band
+        assert not band & {"senior_staff", "principal", "senior_manager", "director"}

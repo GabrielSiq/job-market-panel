@@ -60,6 +60,13 @@ class Classifier:
 
         seniority_cfg = config["seniority"]
         self._seniority_default = Seniority(seniority_cfg.get("default", "unknown"))
+        #: Levels Gabriel is plausibly a candidate for. Everything outside it is still
+        #: collected and still queryable — the panel stays broad — but the report leads
+        #: with these, and pay statistics are computed over them, because out-of-band
+        #: levels skew the distribution badly upward.
+        self.target_band: frozenset[Seniority] = frozenset(
+            Seniority(level) for level in seniority_cfg.get("target_band", [])
+        )
         self._seniority = tuple(
             _SeniorityRule(level=Seniority(entry["name"]), patterns=_compile(entry["patterns"]))
             for entry in seniority_cfg["rules"]

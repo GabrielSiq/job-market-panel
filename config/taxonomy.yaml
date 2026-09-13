@@ -17,7 +17,7 @@
 # lean on from either source, so the title is the only field present and comparable
 # across every source.
 
-version: "2026-09-13.2"
+version: "2026-09-13.3"
 
 role_families:
   # Evaluated IN ORDER; first match wins. Order is load-bearing: "Data Science Manager"
@@ -132,6 +132,16 @@ seniority:
   # it is recomputable: flip to `unknown` and rebuild to see how much it moves the series.
   default: mid
 
+  # The levels Gabriel is plausibly a candidate for. Everything else is still COLLECTED and
+  # still queryable - the panel stays broad - but the report leads with these, and pay
+  # statistics are computed over them, because out-of-band levels skew the distribution
+  # badly upward.
+  #
+  # His framing: Senior is the median and Staff is reachable; Manager is worth seeing
+  # because he wants to move into one before long. Senior Staff, Principal, Senior Manager,
+  # Director and above are out of reach and inflate pay.
+  target_band: [mid, senior, staff, manager, unknown]
+
   # Evaluated IN ORDER; first match wins. Most-senior first, because people-leadership
   # dominates: "Senior Manager" is a manager, and "Senior Director" is a director.
   #
@@ -140,9 +150,17 @@ seniority:
   # series, because a consistent definition across sources matters more than accuracy
   # on either source alone.
   rules:
+    # Director runs first so "Senior Director" and "VP" never fall through to a lower band.
     - name: director
       patterns:
         - '\b(director|vp|vice president|chief|cdo|cto|head of (data|analytics|insights|engineering))\b'
+    # "Senior Manager" is a step above a first-line manager in both scope and pay, so it
+    # must be caught BEFORE the bare `manager` rule or the two collapse together.
+    - name: senior_manager
+      patterns:
+        - '\b(senior|sr\.?|snr)\b[^,]{0,15}\bmanager\b'
+        - '\bgroup manager\b'
+
     - name: manager
       patterns:
         - '\b(manager|head|people lead|team lead|engineering lead)\b'
@@ -150,6 +168,11 @@ seniority:
       patterns:
         - '\bprincipal\b'
         - '\b(distinguished|fellow)\b'
+    # Same reasoning as senior_manager: "Senior Staff" is a level above "Staff".
+    - name: senior_staff
+      patterns:
+        - '\b(senior|sr\.?|snr)\b[^,]{0,15}\bstaff\b'
+
     - name: staff
       patterns:
         - '\bstaff\b'

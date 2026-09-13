@@ -206,3 +206,53 @@ class TestReport:
         text = render(con)
         con.close()
         assert "Do not pool them." in text
+
+
+class TestBandFiltering:
+    """Out-of-band levels are excluded from the headline and from every pay figure.
+
+    Gabriel's objection was that Director and Senior Manager reqs "inflate pay" — and they
+    do: the median top-of-band out of band runs well above the band being searched, so
+    pooling them describes a different market.
+    """
+
+    def test_out_of_band_roles_are_kept_out_of_the_headline(self, tmp_path):
+        store = Storage(tmp_path / "data")
+        events = [
+            PostingEvent.from_posting(
+                posting("in", title="Senior Data Scientist"), EventType.APPEARED, DAY1
+            ),
+            PostingEvent.from_posting(
+                posting("out", title="Senior Director, Data Science"),
+                EventType.APPEARED,
+                DAY1,
+            ),
+        ]
+        store.write_events(DAY1, events)
+        store.write_postings(DAY1, [])
+        db = tmp_path / "panel.duckdb"
+        build(db, storage=store)
+        con = connect(db)
+        text = render(con)
+        con.close()
+
+        headline = text.split("## Open now")[0]
+        assert "Senior Data Scientist" in headline
+        assert "Senior Director" not in headline, "director reqs must not reach the headline"
+
+    def test_the_excluded_band_is_shown_not_hidden(self, panel):
+        """Excluded is not the same as deleted — these are real market signal, and the
+        pay gap is the justification for excluding them."""
+        db, _ = panel
+        con = connect(db)
+        text = render(con)
+        con.close()
+        assert "Out of band" in text
+        assert "Still collected, still in `panel.duckdb`" in text
+
+    def test_pay_section_states_it_is_band_limited(self, panel):
+        db, _ = panel
+        con = connect(db)
+        text = render(con)
+        con.close()
+        assert "**In-band levels only.**" in text
