@@ -1063,3 +1063,31 @@ distinction is the same one behind correctness rule 1 — absence of an event is
 of absence — and it bit again here in a different disguise.
 
 Not unit-tested: the logic lives inside `main()`. Worth extracting if it is touched again.
+
+### 2026-09-13 — the workflow's commit step: merge, never rebase
+
+Second failure of the same afternoon, different cause, and a latent bug rather than a
+one-off: `git pull --rebase` in the commit step left the runner on a **detached HEAD** when
+two runs touched the same UTC day, and a `|| true` swallowed the real error so it surfaced
+as a confusing push rejection instead.
+
+**Rebase was the wrong strategy from the start.** Every artifact this workflow commits — a
+day's event file, `reports/latest.md`, `config/watchlist.yaml` — is **regenerated wholesale
+on each run, never edited incrementally**. There is therefore no meaningful merge between
+two versions of one: the newer run's output simply supersedes the older. Rebase instead
+replays one run's output on top of another's and conflicts on every shared file, every time.
+
+Now: `git merge origin/main -X ours --no-edit`, which keeps this run's freshly generated
+files while still accepting anything the other side added, with up to three push attempts.
+Also `set -euo pipefail` and no `|| true`, so a broken commit step fails loudly rather than
+quietly leaving a day's collection uncommitted.
+
+**Why it had not bitten before:** in normal daily operation there is one run and no race.
+It only appeared because a session was pushing by hand while a run was in flight — which
+means it would otherwise have sat dormant until some future session did the same thing, and
+then silently cost a day.
+
+Both failures landed in steps *after* collection, which is where failures should land: the
+data was written and committed in every case.
+
+Verified green end to end afterwards, all steps including Commit and Healthcheck.
