@@ -97,6 +97,10 @@ class RemoteSource(StrEnum):
     METADATA_FIELD = "metadata_field"  # a board's custom "Workplace Type" field
     LOCATION_STRING = "location_string"  # inferred by matching the location text
     DESCRIPTION_TEXT = "description_text"  # inferred from work-location prose in the JD
+    #: Last resort: the location names a specific workplace ("Hawthorne, CA",
+    #: "Starbase, TX") and nothing anywhere said remote or hybrid. Measured ~95% correct,
+    #: but weaker than the others, so it gets its own value and analysis can exclude it.
+    LOCATION_IMPLIED = "location_implied"
     UNKNOWN = "unknown"
 
 
@@ -184,6 +188,9 @@ class JobPosting(BaseModel):
 
     location_raw: str | None = None
     country: str | None = None
+    #: US state code where determinable. Derived from `location_raw`, which is always
+    #: retained, so both can be recomputed.
+    region: str | None = None
     is_remote: bool | None = None
     remote_source: RemoteSource = RemoteSource.UNKNOWN
 
@@ -301,6 +308,8 @@ class PostingEvent(BaseModel):
     is_remote: bool | None = None
     remote_source: RemoteSource = RemoteSource.UNKNOWN
     location_raw: str | None = None
+    country: str | None = None
+    region: str | None = None
     salary_min: float | None = None
     salary_max: float | None = None
     salary_period: SalaryPeriod | None = None
@@ -325,6 +334,8 @@ class PostingEvent(BaseModel):
             is_remote=posting.is_remote,
             remote_source=posting.remote_source,
             location_raw=posting.location_raw,
+            country=posting.country,
+            region=posting.region,
             salary_min=posting.salary_min,
             salary_max=posting.salary_max,
             salary_period=posting.salary_period,

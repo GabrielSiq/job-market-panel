@@ -17,6 +17,7 @@ import logging
 from datetime import date, datetime
 from typing import Any
 
+from src.location import parse_location
 from src.models import (
     TRACKED_FAMILIES,
     JobPosting,
@@ -107,7 +108,10 @@ class AshbySource(PerCompanyBoardSource):
         by_location = self.classifier.remote_from_location(raw.get("location"), *secondary)
         if by_location.is_remote is not None:
             return by_location
-        return self.classifier.remote_from_description(description)
+        by_description = self.classifier.remote_from_description(description)
+        if by_description.is_remote is not None:
+            return by_description
+        return self.classifier.remote_implied_by_place(raw.get("location"), *secondary)
 
     def _to_posting(
         self,
@@ -138,6 +142,7 @@ class AshbySource(PerCompanyBoardSource):
             if isinstance(entry, dict)
         ]
         location_raw = ", ".join(dict.fromkeys(loc for loc in locations if loc)) or None
+        place = parse_location(clean_text(raw.get("location")) or location_raw)
 
         return JobPosting(
             source=Source.ASHBY,
@@ -151,7 +156,8 @@ class AshbySource(PerCompanyBoardSource):
             seniority=self.classifier.seniority(title),
             seniority_source=None,
             location_raw=location_raw,
-            country=None,
+            country=place.country,
+            region=place.region,
             is_remote=remote.is_remote,
             remote_source=remote.remote_source,
             employment_type=clean_text(raw.get("employmentType")),

@@ -13,6 +13,7 @@ import logging
 from datetime import date, datetime
 from typing import Any
 
+from src.location import parse_location
 from src.models import (
     TRACKED_FAMILIES,
     JobPosting,
@@ -58,7 +59,10 @@ class LeverSource(PerCompanyBoardSource):
         by_location = self.classifier.remote_from_location(*locations)
         if by_location.is_remote is not None:
             return by_location
-        return self.classifier.remote_from_description(description)
+        by_description = self.classifier.remote_from_description(description)
+        if by_description.is_remote is not None:
+            return by_description
+        return self.classifier.remote_implied_by_place(*locations)
 
     def _to_posting(
         self,
@@ -83,6 +87,7 @@ class LeverSource(PerCompanyBoardSource):
             clean_text(entry) for entry in categories.get("allLocations") or []
         ]
         location_raw = ", ".join(dict.fromkeys(loc for loc in locations if loc)) or None
+        place = parse_location(clean_text(categories.get("location")) or location_raw)
 
         return JobPosting(
             source=Source.LEVER,
@@ -94,7 +99,8 @@ class LeverSource(PerCompanyBoardSource):
             seniority=self.classifier.seniority(title),
             seniority_source=None,
             location_raw=location_raw,
-            country=None,
+            country=place.country,
+            region=place.region,
             is_remote=remote.is_remote,
             remote_source=remote.remote_source,
             employment_type=clean_text(categories.get("commitment")),

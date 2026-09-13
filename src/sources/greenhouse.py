@@ -20,6 +20,7 @@ import logging
 from datetime import date, datetime
 from typing import Any
 
+from src.location import parse_location
 from src.models import (
     TRACKED_FAMILIES,
     JobPosting,
@@ -72,7 +73,11 @@ class GreenhouseSource(PerCompanyBoardSource):
         by_location = self.classifier.remote_from_location(location)
         if by_location.is_remote is not None:
             return by_location
-        return self.classifier.remote_from_description(description)
+        by_description = self.classifier.remote_from_description(description)
+        if by_description.is_remote is not None:
+            return by_description
+        # Nothing said remote or hybrid anywhere, and the location names a real workplace.
+        return self.classifier.remote_implied_by_place(location)
 
     def _to_posting(
         self,
@@ -96,6 +101,7 @@ class GreenhouseSource(PerCompanyBoardSource):
         # improvement and a permanent hole in the data.
         description = strip_html(raw.get("content"))
         remote = self._remote(raw, location, description)
+        place = parse_location(location)
 
         departments = [
             clean_text(d.get("name"))
@@ -116,7 +122,8 @@ class GreenhouseSource(PerCompanyBoardSource):
             seniority=self.classifier.seniority(title),
             seniority_source=None,  # Greenhouse has no seniority concept
             location_raw=location,
-            country=None,
+            country=place.country,
+            region=place.region,
             is_remote=remote.is_remote,
             remote_source=remote.remote_source,
             employment_type=None,

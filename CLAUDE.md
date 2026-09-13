@@ -938,3 +938,58 @@ not publish — but that is now a fact rather than an artifact.
 
 **Structured always wins.** Ashby's compensation tiers take precedence over its own prose;
 parsing only fills a gap.
+
+### 2026-09-13 — location parsing and implied-onsite: country 0% → 63.5%
+
+Same question as salary, applied to location. Two gaps, and the second mattered more.
+
+**Gap 1 — `country` was NEVER populated for any ATS row.** Only the aggregator set it. So
+"how many of these are open to US candidates" was unanswerable, despite US-eligibility
+being one of the few genuinely hard filters in this search. `src/location.py` now parses
+`location_raw` into `country` and a US `region` (state).
+
+It parses **right-to-left**, because location strings are right-anchored (city → region →
+country). Reading left-to-right breaks on "Washington, District of Columbia": the leading
+token is the *city* Washington, but a naive scan matches the *state* Washington and lands
+on the wrong side of the country.
+
+| | before | after |
+|---|---|---|
+| `country` populated | **0%** | **63.5%** |
+| US state where applicable | 0% | 51.3% |
+| **US-based ATS postings** | unanswerable | **8,968 (54.8%)** |
+
+**Gap 2 — 45% of postings had no determinable remote status, and their locations were
+overwhelmingly specific places**: "Costa Mesa, California", "Hawthorne, CA", "Bastrop, TX",
+"Starbase, TX". A rocket facility is not a remote job. `remote_implied_by_place` treats a
+named settlement, with no remote or hybrid signal anywhere, as onsite.
+
+**Measured twice before shipping.** The Phase 1 hand-labelled sample found 91% of
+undetermined rows were in fact onsite. A second check on the current corpus searched the
+descriptions of named-place unknowns for any remote-ish word: a third contained one, but
+nearly all were false alarms —
+
+- "distributed systems" (an engineering term, not a work arrangement)
+- "remote and underserved areas" (Starlink describing its *product*)
+- "remote work options are not available" (agreeing with the rule)
+- anti-recruitment-scam boilerplate warning about fake "remote interviews"
+
+Roughly 1 in 8 was a genuine signal, putting the rule near 95%.
+
+**It gets its own `RemoteSource.LOCATION_IMPLIED` provenance, and that matters when
+reading the headline number:**
+
+| | share |
+|---|---|
+| remote status determinable | **98.7%** (was 55.1%) |
+| **determinable on strong evidence only** (excluding `location_implied`) | **55.1%** |
+
+So 98.7% is real but leans on the weakest inference for 7,131 of 16,376 rows. **Any
+remote-share metric should report both, or exclude `location_implied` and say so.** It is
+separable precisely so that choice stays available.
+
+**Bug worth remembering:** the new classifier method was appended to the end of
+`classify.py` and silently became a *nested function inside another function* rather than a
+method — valid Python, ruff-clean, and every posting then failed to parse. The adapter
+tests caught it because log-and-skip turned it into an `EMPTY` board rather than a crash.
+That is the failure mode this project is built around, working as intended.

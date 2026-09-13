@@ -19,6 +19,7 @@ from typing import Any
 
 import yaml
 
+from src.location import parse_location
 from src.models import RemoteFinding, RemoteSource, RoleFamily, Seniority
 from src.normalize import clean_text, normalize_title
 
@@ -163,6 +164,31 @@ class Classifier:
             return RemoteFinding(is_remote=False, remote_source=RemoteSource.DESCRIPTION_TEXT)
         if any(p.search(haystack) for p in self._desc_positive):
             return RemoteFinding(is_remote=True, remote_source=RemoteSource.DESCRIPTION_TEXT)
+        return RemoteFinding(is_remote=None, remote_source=RemoteSource.UNKNOWN)
+
+    def remote_implied_by_place(self, *parts: str | None) -> RemoteFinding:
+        """Last resort: a location naming a specific workplace implies an onsite role.
+
+        Applied only after the metadata field, the location patterns and the description
+        have all declined to decide. 45% of ATS postings were reaching that point, and
+        their locations were overwhelmingly specific: "Costa Mesa, California",
+        "Hawthorne, CA", "Starbase, TX". A rocket facility is not a remote job.
+
+        Measured twice. A hand-labelled sample of 100 postings found 91% of undetermined
+        rows were in fact onsite. A second check on the current corpus looked for any
+        remote-ish word in the descriptions of named-place unknowns: a third contained
+        one, but nearly all were false alarms - "distributed systems" (an engineering
+        term), "remote and underserved areas" (Starlink describing its product), "remote
+        work options are not available" (agreeing with the rule), and anti-recruitment-
+        scam boilerplate about "remote interviews". Roughly 1 in 8 was a real signal,
+        putting the rule around 95%.
+
+        It carries its own `LOCATION_IMPLIED` provenance because it is the weakest
+        inference here, and a remote-share metric should be able to exclude it.
+        """
+        for part in parts:
+            if part and parse_location(part).names_a_place:
+                return RemoteFinding(is_remote=False, remote_source=RemoteSource.LOCATION_IMPLIED)
         return RemoteFinding(is_remote=None, remote_source=RemoteSource.UNKNOWN)
 
 
