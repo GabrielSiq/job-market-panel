@@ -379,6 +379,18 @@ class SourceRun(BaseModel):
     #: suppress diffing for the other 249, nor mark its own jobs closed.
     company_slug: str | None = None
 
+    #: Whether this source observes a CENSUS (every open req in a fixed universe) or a
+    #: moving SAMPLE. Only a census may produce disappearance events.
+    #:
+    #: An aggregator is queried with a fixed query set sorted by recency and paged only a
+    #: few pages deep, so its observation window slides forward every day. A posting that
+    #: falls out of that window has not closed - it aged past where we look. Diffing it
+    #: manufactures a closure on a fixed delay after posting, forever, for every row.
+    #:
+    #: This is correctness rule 1 generalized: "we did not look there" is not evidence of
+    #: absence, whether the reason is an outage or a window that moved.
+    is_census: bool = True
+
     #: Which query set produced this run, so a change is visible in the data.
     query_set_version: str | None = None
 

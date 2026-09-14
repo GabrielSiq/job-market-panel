@@ -303,3 +303,63 @@ class TestDedupeKey:
         a, b = posting("1"), posting("2")
         assert a.dedupe_key == b.dedupe_key
         assert a.job_id != b.job_id
+
+
+class TestOnlyACensusMayCloseAPosting:
+    """Correctness rule 1, generalized beyond outages.
+
+    An aggregator is queried with a fixed query set sorted by recency and paged only a few
+    pages deep, so its observation window slides forward every day. A posting that falls
+    out of that window has not closed — it aged past where we look.
+
+    Measured on real data before this was fixed: 217 of 223 closures came from the
+    aggregator, and their ages clustered at exactly `lookback_days` after posting (84 at
+    four days, 39 at five). Those listings live about 60 days. The panel was manufacturing
+    a closure on a fixed delay after posting, for every row, forever.
+    """
+
+    @staticmethod
+    def _run(source: Source, is_census: bool, company: str | None = None) -> SourceRun:
+        return SourceRun(
+            date=DAY2,
+            source=source,
+            status=RunStatus.OK,
+            company_slug=company,
+            is_census=is_census,
+            records_fetched=1,
+        )
+
+    def test_a_moving_window_never_closes_anything(self):
+        open_now = {"himalayas:1": _open("himalayas:1", source="himalayas", company="acme")}
+        outcome = diff(
+            postings=[],
+            runs=[self._run(Source.HIMALAYAS, is_census=False)],
+            open_postings=open_now,
+            pending_misses={"himalayas:1": DAY1.isoformat()},  # already missed once
+            today=DAY2,
+        )
+        assert outcome.disappeared == 0, "an aggregator may never record a closure"
+        assert outcome.skipped_scopes == 1
+
+    def test_a_census_still_closes_normally(self):
+        open_now = {"greenhouse:1": _open("greenhouse:1")}
+        outcome = diff(
+            postings=[],
+            runs=[self._run(Source.GREENHOUSE, is_census=True, company="acme")],
+            open_postings=open_now,
+            pending_misses={"greenhouse:1": DAY1.isoformat()},
+            today=DAY2,
+        )
+        assert outcome.disappeared == 1
+
+    def test_queued_misses_are_dropped_not_left_to_linger(self):
+        """A miss queued against a never-diffable source can never mature, so keeping it
+        would grow the pending file forever with entries that do nothing."""
+        outcome = diff(
+            postings=[],
+            runs=[self._run(Source.HIMALAYAS, is_census=False)],
+            open_postings={"himalayas:1": _open("himalayas:1", source="himalayas")},
+            pending_misses={"himalayas:1": DAY1.isoformat()},
+            today=DAY2,
+        )
+        assert outcome.pending_misses == {}

@@ -168,6 +168,8 @@ class PerCompanyBoardSource:
             records_fetched=len(postings),
             duration_s=round(time.monotonic() - started, 2),
             error_message=error,
+            # A board fetch is a census: every open req at that company, no sampling.
+            is_census=self.cfg.get("role", "census") == "census",
             pages_fetched=1,
             requests_made=1,
         )

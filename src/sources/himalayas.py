@@ -249,6 +249,12 @@ class HimalayasSource:
             records_fetched=len(postings),
             duration_s=round(time.monotonic() - started, 2),
             error_message="; ".join(errors)[:500] or None,
+            # Discovery, not census: the query set is sorted by recency and paged only a
+            # few pages deep, so the window slides forward daily. Measured: closures
+            # generated from this source clustered at exactly `lookback_days` after
+            # posting - 84 at 4 days, 39 at 5 - which is the window moving, not reqs
+            # closing. These listings live ~60 days.
+            is_census=False,
             query_set_version=self.query_set_version,
             feed_updated_at=feed_updated_at,
             api_notice=api_notice,

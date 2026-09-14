@@ -1233,3 +1233,57 @@ confidence have to travel together all the way to the surface. Aggregate section
 caveat; the row-level view silently dropped it, and row-level is where a decision actually
 gets made. Worth checking any future surface — the Phase 5 brief especially — for the same
 mistake.
+
+### 2026-09-14 — the first closures were mostly fake. Only a census may close a posting.
+
+Day three produced the panel's first disappearance events: **223 closures, 217 of them from
+Himalayas.** That split was the tell, and it was worth checking rather than celebrating.
+
+**The ages gave it away.** Grouping the "closed" aggregator rows by how long after posting
+they vanished:
+
+| Posted N days before vanishing | Count |
+|---|---|
+| 3 | 8 |
+| **4** | **84** |
+| **5** | **39** |
+| 6–9 | 74 |
+
+`lookback_days` is **4**. Those listings did not close — they **aged out of our sampling
+window**. The aggregator is queried with a fixed query set sorted by recency and paged only
+a few pages deep, so the window slides forward every day, and a posting that falls behind it
+simply stops being looked at. Himalayas listings live about **60 days**; essentially all 217
+were still open.
+
+Left alone, this manufactures a closure on a **fixed delay after posting, for every
+aggregator row, forever** — and time-to-close would have converged on "4 days" with
+beautiful consistency.
+
+**The rule this establishes, which is broader than the spec's version.** Spec Section 5
+says "never compute survival from Himalayas rows", which addresses the *metrics* layer. The
+real problem is upstream: **a source whose observation window moves must not produce
+disappearance events at all.** That is correctness rule 1 generalized —
+
+> "We did not look there" is not evidence of absence, whether the reason is an outage, a
+> truncated run, **or a window that moved.**
+
+`SourceRun` now carries `is_census`, set from the `role:` field that was already in
+`config/sources.yaml` but never wired to anything. A scope is diffable only when the run
+completed cleanly **and** the source observes a census. Appearances are unaffected — those
+come from observation, not from diffing.
+
+**Two implementations of the same rule had drifted, and a test caught it.**
+`FetchResult.diffable_scopes` and `diff()` each built their own diffable set; patching one
+left the other wrong, and the new test failed on exactly that. The fix is applied in both
+with a comment pointing at the other. Worth remembering as a pattern: this project already
+learned the lesson once with `open_postings` vs `replay_open_postings`, where the
+duplication was deliberate and tested. Here it was accidental.
+
+**Cost of regenerating today's file:** the 6 legitimate Greenhouse closures were queued
+again rather than emitted, because the earlier run had already consumed their pending-miss
+entries. They close tomorrow instead. Same-day re-runs are idempotent for *events* but not
+for the pending-miss queue — a wart worth knowing before re-running mid-day.
+
+**Also fixed:** a miss queued against a never-diffable scope is now dropped rather than
+left in `pending_misses` forever, where it could never mature and would grow the file
+without bound.

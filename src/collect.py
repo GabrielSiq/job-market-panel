@@ -118,10 +118,14 @@ def diff(
     today: date,
 ) -> DiffOutcome:
     per_company_sources = {r.source.value for r in runs if r.company_slug is not None}
+    # Two conditions, both meaning "we cannot conclude absence here":
+    #   - the run did not complete cleanly (status != ok), or
+    #   - the source samples a moving window rather than observing a census.
+    # `FetchResult.diffable_scopes` applies the same rule; they must stay in step.
     diffable: set[ScopeKey] = {
         scope_key(r.source.value, r.company_slug, per_company_sources)
         for r in runs
-        if r.allows_diffing
+        if r.allows_diffing and r.is_census
     }
 
     observed: dict[str, JobPosting] = {p.job_id: p for p in postings}
@@ -144,6 +148,12 @@ def diff(
             # We did not look here today. Absence is not evidence of closure, and the
             # pending-miss counter must NOT advance either: a week-long source outage
             # would otherwise silently mature every open req into a disappearance.
+            #
+            # Any miss already queued for this job is dropped rather than left to linger.
+            # For a source that is never diffable at all - an aggregator sampling a moving
+            # window - a queued miss can never mature, so keeping it would grow the
+            # pending file forever with entries that do nothing.
+            outcome.pending_misses.pop(job_id, None)
             outcome.skipped_scopes += 1
             continue
 

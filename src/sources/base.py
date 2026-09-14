@@ -44,15 +44,19 @@ class FetchResult:
 
     @property
     def diffable_scopes(self) -> set[tuple[str, str | None]]:
-        """Scopes this run is entitled to diff — i.e. where we genuinely looked.
+        """Scopes this run is entitled to diff — i.e. where we genuinely looked, over a
+        universe that does not move.
 
-        Everything else means "we did not look", which is emphatically not the same as
-        "it was not there" (spec correctness rules 1 and 2).
+        Two ways to fail that test, and both mean "we did not look" rather than "it was
+        not there" (spec correctness rules 1 and 2):
+
+        - the run did not complete cleanly (`status != ok`), or
+        - the source observes a moving sample rather than a census (`is_census` false).
         """
         return {
             CollectionScope(source=r.source, company_slug=r.company_slug).key()
             for r in self.runs
-            if r.allows_diffing
+            if r.allows_diffing and r.is_census
         }
 
     def extend(self, other: FetchResult) -> None:
