@@ -5336,3 +5336,642 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "1 open reqs; token published by the company on HN"
+  - name: "Academic Partnerships"
+    slug: academic-partnerships
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Accenture"
+    slug: accenture
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workday (token accenture) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Accesa & RaRo"
+    slug: accesa-raro
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Acquia"
+    slug: acquia
+    ats: greenhouse
+    token: acquia
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
+  - name: "Action1"
+    slug: action1
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Actionstep"
+    slug: actionstep
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workable (token actionstep) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Agilent Technologies"
+    slug: agilent-technologies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Alteryx"
+    slug: alteryx
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "AmerisourceBergen"
+    slug: amerisourcebergen
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "BCD Travel"
+    slug: bcd-travel
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "BetMGM"
+    slug: betmgm
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "BIC"
+    slug: bic
+    ats: successfactors
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on successfactors (token rmkcdn) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Boston Medical Center"
+    slug: boston-medical-center
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "CDW"
+    slug: cdw
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Chainguard"
+    slug: chainguard
+    ats: greenhouse
+    token: chainguard
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "81 open reqs at discovery"
+  - name: "Circular Materials"
+    slug: circular-materials
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Cityblock Health"
+    slug: cityblock-health
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Cloudera"
+    slug: cloudera
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workday (token cloudera) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Compass Group USA"
+    slug: compass-group-usa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Corsearch"
+    slug: corsearch
+    ats: teamtailor
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on teamtailor (token www) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Creatio"
+    slug: creatio
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "DoiT International"
+    slug: doit-international
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Duncan & Ross"
+    slug: duncan-ross
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Dutchie"
+    slug: dutchie
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "ecoATM Gazelle"
+    slug: ecoatm-gazelle
+    ats: greenhouse
+    token: ecoatmgazelle
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
+  - name: "EQT Corporation"
+    slug: eqt
+    ats: greenhouse
+    token: eqtcorporation
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "39 open reqs at discovery"
+  - name: "EWOR GmbH"
+    slug: ewor
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "ExtraHop Networks"
+    slug: extrahop-networks
+    ats: greenhouse
+    token: extrahopnetworks
+    status: unverified
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "board reports 'ExtraHop', expected 'ExtraHop Networks' - confirm before collecting"
+  - name: "First American"
+    slug: first-american
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Fleetio"
+    slug: fleetio
+    ats: greenhouse
+    token: fleetio
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "22 open reqs at discovery"
+  - name: "Foodsmart"
+    slug: foodsmart
+    ats: lever
+    token: foodsmart
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
+  - name: "Fullscript"
+    slug: fullscript
+    ats: lever
+    token: fullscript
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "24 open reqs at discovery"
+  - name: "Hand Talk"
+    slug: hand-talk
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Henry Schein One"
+    slug: henry-schein-one
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "HR Ways"
+    slug: hr-ways
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "IFS"
+    slug: ifs
+    ats: smartrecruiters
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on smartrecruiters (token ifs1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "IntegriChain"
+    slug: integrichain
+    ats: smartrecruiters
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on smartrecruiters (token integrichain1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Intermedia Intelligent Communications"
+    slug: intermedia-intelligent-communications
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Irth"
+    slug: irth
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workable (token irth-solutions) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "J.D. Power"
+    slug: j-d-power
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "JobGet"
+    slug: jobget
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Loadsmart"
+    slug: loadsmart
+    ats: lever
+    token: loadsmart
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "Lyric, Inc."
+    slug: lyric
+    ats: ashby
+    token: lyric
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "15 open reqs at discovery"
+  - name: "Moderna"
+    slug: moderna
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Monzo"
+    slug: monzo
+    ats: greenhouse
+    token: monzo
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "65 open reqs at discovery"
+  - name: "MSQ DX"
+    slug: msq-dx
+    ats: greenhouse
+    token: arke
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "12 open reqs; found via careers-page fingerprint"
+  - name: "Mutt Data"
+    slug: mutt-data
+    ats: lever
+    token: muttdata
+    status: unverified
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "board reports 'Muttdata jobs', expected 'Mutt Data' - confirm before collecting"
+  - name: "Netomi"
+    slug: netomi
+    ats: lever
+    token: netomi
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "23 open reqs at discovery"
+  - name: "Nexer Group"
+    slug: nexer-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "NightOwl Consulting"
+    slug: nightowl-consulting
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "NinjaHoldings"
+    slug: ninjaholdings
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Nova 401(k) Associates"
+    slug: nova-401-k-associates
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "PatientPoint"
+    slug: patientpoint
+    ats: greenhouse
+    token: patientpoint
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "33 open reqs at discovery"
+  - name: "Redcare Pharmacy"
+    slug: redcare-pharmacy
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "REDICA Systems"
+    slug: redica-systems
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Redpin"
+    slug: redpin
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "ServiceNow"
+    slug: servicenow
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Sophos"
+    slug: sophos
+    ats: lever
+    token: sophos
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "113 open reqs at discovery"
+  - name: "Sourcegraph"
+    slug: sourcegraph
+    ats: greenhouse
+    token: sourcegraph91
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "8 open reqs; found via careers-page fingerprint"
+  - name: "Southern Illinois Healthcare"
+    slug: southern-illinois-healthcare
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Symetra"
+    slug: symetra
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "TaskUs"
+    slug: taskus
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Teaching Strategies, LLC"
+    slug: teaching-strategies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "The Honest Company"
+    slug: the-honest-company
+    ats: greenhouse
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on greenhouse (token embed) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Trinetix"
+    slug: trinetix
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Very LLC"
+    slug: very
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Viseven"
+    slug: viseven
+    ats: lever
+    token: viseven
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "46 open reqs at discovery"
+  - name: "Voyager Technologies, Inc."
+    slug: voyager-technologies
+    ats: greenhouse
+    token: voyagertechnologiesinc
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "154 open reqs at discovery"
+  - name: "Working Solutions"
+    slug: working-solutions
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Zabota LLC"
+    slug: zabota
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "\u00c4hdus Technology"
+    slug: ahdus-technology
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
