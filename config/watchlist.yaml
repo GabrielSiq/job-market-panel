@@ -26,6 +26,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "27 open reqs at discovery"
+  - name: "9 Mothers"
+    slug: 9-mothers
+    ats: ashby
+    token: 9-mothers
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Able"
     slug: able
     ats: greenhouse
@@ -35,6 +44,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "8 open reqs at discovery"
+  - name: "Acquia"
+    slug: acquia
+    ats: greenhouse
+    token: acquia
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
+  - name: "Adaptive"
+    slug: adaptive
+    ats: ashby
+    token: adaptive
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
   - name: "Adaptive Biotechnologies"
     slug: adaptive-biotechnologies
     ats: greenhouse
@@ -44,6 +71,34 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "24 open reqs at discovery"
+  - name: "Addepar"
+    slug: addepar
+    ats: greenhouse
+    token: addepar1
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "102 open reqs; token published by the company on HN"
+  - name: "Adora Technologies Inc"
+    slug: adora-technologies
+    ats: lever
+    token: adora
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Adyen"
+    slug: adyen
+    ats: greenhouse
+    token: adyen
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    target_list: true
+    notes: "227 open reqs; token published by the company on HN"
   - name: "Affirm"
     slug: affirm
     ats: greenhouse
@@ -52,6 +107,7 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "207 open reqs at resolution"
   - name: "Afresh"
     slug: afresh
@@ -80,6 +136,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "13 open reqs at resolution"
+  - name: "Airgoods"
+    slug: airgoods
+    ats: ashby
+    token: airgoods
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "AirOps"
+    slug: airops
+    ats: ashby
+    token: airops
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
   - name: "Airtable"
     slug: airtable
     ats: greenhouse
@@ -89,6 +163,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "16 open reqs at resolution"
+  - name: "Airtame"
+    slug: airtame
+    ats: greenhouse
+    token: airtamejobs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Airwallex"
     slug: airwallex
     ats: ashby
@@ -97,7 +180,35 @@ companies:
     verified_by: board_page
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "584 open reqs at resolution"
+  - name: "Akur8"
+    slug: akur8
+    ats: ashby
+    token: akur8
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "Alembic"
+    slug: alembic
+    ats: ashby
+    token: alembic
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Algolia"
+    slug: algolia
+    ats: greenhouse
+    token: algolia
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
   - name: "Alloy"
     slug: alloy
     ats: greenhouse
@@ -107,6 +218,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "25 open reqs at resolution"
+  - name: "AllSpice"
+    slug: allspice
+    ats: ashby
+    token: allspice
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "amo"
+    slug: amo
+    ats: ashby
+    token: amo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "Amperos"
+    slug: amperos
+    ats: ashby
+    token: amperos
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
   - name: "Amplitude"
     slug: amplitude
     ats: greenhouse
@@ -116,6 +254,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "38 open reqs at resolution"
+  - name: "Anduril Industries"
+    slug: anduril-industries
+    ats: greenhouse
+    token: andurilindustries
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2293 open reqs; token published by the company on HN"
+  - name: "Anterior"
+    slug: anterior
+    ats: ashby
+    token: anterior
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
   - name: "Anthropic"
     slug: anthropic
     ats: greenhouse
@@ -125,6 +281,42 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "596 open reqs at resolution"
+  - name: "Antithesis"
+    slug: antithesis
+    ats: ashby
+    token: antithesis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
+  - name: "Apollo Research"
+    slug: apollo-research
+    ats: lever
+    token: apolloresearch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Aptura"
+    slug: aptura
+    ats: ashby
+    token: aptura
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Aquabyte"
+    slug: aquabyte
+    ats: lever
+    token: aquabyte
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Arbital Health"
     slug: arbital-health
     ats: lever
@@ -134,6 +326,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "8 open reqs at discovery"
+  - name: "Archer"
+    slug: archer
+    ats: greenhouse
+    token: archer56
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "154 open reqs; token published by the company on HN"
+  - name: "Archera"
+    slug: archera
+    ats: greenhouse
+    token: archera
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
   - name: "Array"
     slug: array
     ats: greenhouse
@@ -143,6 +353,51 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "14 open reqs at discovery"
+  - name: "Artificial Analysis, Inc."
+    slug: artificial-analysis
+    ats: ashby
+    token: artificialanalysis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Artificial Intelligence Underwriting Company"
+    slug: artificial-intelligence-underwriting-company
+    ats: ashby
+    token: aiuc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Atom Computing"
+    slug: atom-computing
+    ats: lever
+    token: atomcomputing
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "28 open reqs; token published by the company on HN"
+  - name: "Atomic Fi"
+    slug: atomic-fi
+    ats: ashby
+    token: atomic-financial
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Atomic Machines"
+    slug: atomic-machines
+    ats: greenhouse
+    token: atomicmachines
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "27 open reqs; token published by the company on HN"
   - name: "Attentive"
     slug: attentive
     ats: greenhouse
@@ -152,6 +407,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "34 open reqs at resolution"
+  - name: "Aurelius Systems"
+    slug: aurelius-systems
+    ats: ashby
+    token: aureliussystems
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "Authorium"
+    slug: authorium
+    ats: ashby
+    token: authorium
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
   - name: "Automattic"
     slug: automattic
     ats: greenhouse
@@ -161,6 +434,51 @@ companies:
     added: 2026-09-12
     source: auto_rediscovered
     notes: "18 open reqs at rediscovery"
+  - name: "Avride"
+    slug: avride
+    ats: greenhouse
+    token: avride
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "64 open reqs; token published by the company on HN"
+  - name: "Axle Energy"
+    slug: axle-energy
+    ats: ashby
+    token: axle-careers
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Back Market"
+    slug: back-market
+    ats: ashby
+    token: backmarket
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
+  - name: "Baseten"
+    slug: baseten
+    ats: ashby
+    token: baseten
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "94 open reqs; token published by the company on HN"
+  - name: "Baton (A Ryder Technology Lab)"
+    slug: baton-a-ryder-technology-lab
+    ats: greenhouse
+    token: baton
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
   - name: "BetterHelp"
     slug: betterhelp
     ats: greenhouse
@@ -197,6 +515,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "290 open reqs at discovery"
+  - name: "Black Canyon Consulting"
+    slug: black-canyon-consulting
+    ats: greenhouse
+    token: blackcanyonconsulting
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "66 open reqs; token published by the company on HN"
+  - name: "Bliro GmbH"
+    slug: bliro
+    ats: ashby
+    token: bliro
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
   - name: "Block"
     slug: block
     ats: greenhouse
@@ -215,6 +551,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "78 open reqs at discovery"
+  - name: "Blueberry Pediatrics"
+    slug: blueberry-pediatrics
+    ats: ashby
+    token: blueberrypediatrics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Brave"
+    slug: brave
+    ats: greenhouse
+    token: brave
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
   - name: "Braze"
     slug: braze
     ats: greenhouse
@@ -233,6 +587,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "272 open reqs at resolution"
+  - name: "Brightcore Energy"
+    slug: brightcore-energy
+    ats: greenhouse
+    token: brightcoreenergy
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Buildkite"
+    slug: buildkite
+    ats: greenhouse
+    token: buildkite
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
   - name: "Calendly"
     slug: calendly
     ats: greenhouse
@@ -242,6 +614,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "11 open reqs at resolution"
+  - name: "Canopy Works"
+    slug: canopy-works
+    ats: greenhouse
+    token: canopyworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Carefeed"
+    slug: carefeed
+    ats: greenhouse
+    token: carefeed
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
   - name: "Carta"
     slug: carta
     ats: greenhouse
@@ -260,6 +650,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "60 open reqs at discovery"
+  - name: "Castleton Tower"
+    slug: castleton-tower
+    ats: ashby
+    token: castletontower
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Category Labs"
+    slug: category-labs
+    ats: ashby
+    token: category-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Cedar"
     slug: cedar
     ats: ashby
@@ -269,6 +677,69 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "3 open reqs at resolution"
+  - name: "Censys"
+    slug: censys
+    ats: greenhouse
+    token: censys
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "37 open reqs; token published by the company on HN"
+  - name: "Chainguard"
+    slug: chainguard
+    ats: greenhouse
+    token: chainguard
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "81 open reqs at discovery"
+  - name: "Char Network"
+    slug: char-network
+    ats: greenhouse
+    token: charnetwork
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Charge Robotics"
+    slug: charge-robotics
+    ats: ashby
+    token: charge-robotics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Chariot Claims"
+    slug: chariot-claims
+    ats: ashby
+    token: chariotclaims
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Checkly"
+    slug: checkly
+    ats: ashby
+    token: checkly
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Chestnut"
+    slug: chestnut
+    ats: ashby
+    token: chestnut
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Chime"
     slug: chime
     ats: greenhouse
@@ -277,7 +748,17 @@ companies:
     verified_by: manual
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "board reports legal name 'Chime Financial, Inc' - confirmed correct"
+  - name: "Chroma"
+    slug: chroma
+    ats: ashby
+    token: trychroma
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
   - name: "Circle"
     slug: circle
     ats: ashby
@@ -287,6 +768,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "10 open reqs at resolution"
+  - name: "Cleric"
+    slug: cleric
+    ats: ashby
+    token: cleric
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Close"
+    slug: close
+    ats: ashby
+    token: close
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
   - name: "Cloudflare"
     slug: cloudflare
     ats: greenhouse
@@ -296,6 +795,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "358 open reqs at resolution"
+  - name: "Coast"
+    slug: coast
+    ats: greenhouse
+    token: coast
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
   - name: "Coinbase"
     slug: coinbase
     ats: greenhouse
@@ -305,6 +813,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "218 open reqs at resolution"
+  - name: "Colonist"
+    slug: colonist
+    ats: ashby
+    token: colonist
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
   - name: "Column"
     slug: column
     ats: ashby
@@ -314,6 +831,51 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "18 open reqs at resolution"
+  - name: "Comity"
+    slug: comity
+    ats: ashby
+    token: comity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "commercetools"
+    slug: commercetools
+    ats: greenhouse
+    token: commercetools
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "Compa"
+    slug: compa
+    ats: ashby
+    token: compa
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Complement"
+    slug: complement
+    ats: ashby
+    token: complement
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Confido"
+    slug: confido
+    ats: ashby
+    token: confido
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "33 open reqs; token published by the company on HN"
   - name: "Confluent"
     slug: confluent
     ats: ashby
@@ -323,6 +885,42 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "21 open reqs at resolution"
+  - name: "Coram AI"
+    slug: coram-ai
+    ats: ashby
+    token: coram-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "44 open reqs; token published by the company on HN"
+  - name: "coreflow"
+    slug: coreflow
+    ats: ashby
+    token: coreflow
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Cradle"
+    slug: cradle
+    ats: ashby
+    token: cradlebio
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Credit Genie"
+    slug: credit-genie
+    ats: ashby
+    token: creditgenie
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
   - name: "Cresta"
     slug: cresta
     ats: greenhouse
@@ -332,6 +930,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "94 open reqs at discovery"
+  - name: "Crux"
+    slug: crux
+    ats: ashby
+    token: cruxclimate
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
   - name: "Customer.io"
     slug: customer-io
     ats: greenhouse
@@ -341,6 +948,16 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "27 open reqs at resolution"
+  - name: "DailyPay"
+    slug: dailypay
+    ats: ashby
+    token: dailypay
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "19 open reqs at resolution"
   - name: "Databricks"
     slug: databricks
     ats: greenhouse
@@ -359,6 +976,60 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "446 open reqs at resolution"
+  - name: "daydream"
+    slug: daydream
+    ats: ashby
+    token: withdaydream
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "DeepL"
+    slug: deepl
+    ats: ashby
+    token: deepl
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "60 open reqs; token published by the company on HN"
+  - name: "deepset"
+    slug: deepset
+    ats: ashby
+    token: deepsetai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Deeter Analytics"
+    slug: deeter-analytics
+    ats: ashby
+    token: deeter-analytics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Dialogue AI"
+    slug: dialogue-ai
+    ats: ashby
+    token: dialogueai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Dimensional"
+    slug: dimensional
+    ats: ashby
+    token: dimensional
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
   - name: "Discord"
     slug: discord
     ats: greenhouse
@@ -368,6 +1039,43 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "46 open reqs at resolution"
+  - name: "DISQO"
+    slug: disqo
+    ats: lever
+    token: disqo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Distru"
+    slug: distru
+    ats: lever
+    token: distru
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Ditto"
+    slug: ditto
+    ats: ashby
+    token: ditto
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
+  - name: "dLocal"
+    slug: dlocal
+    ats: lever
+    token: dlocal
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "56 open reqs at resolution"
   - name: "DoorDash"
     slug: doordash
     ats: greenhouse
@@ -376,6 +1084,7 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: auto_rediscovered
+    target_list: true
     notes: "456 open reqs at rediscovery"
   - name: "Doximity"
     slug: doximity
@@ -386,6 +1095,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "14 open reqs at resolution"
+  - name: "Dryft"
+    slug: dryft
+    ats: ashby
+    token: dryft
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "DuckDuckGo"
+    slug: duckduckgo
+    ats: ashby
+    token: duck-duck-go
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
   - name: "Duolingo"
     slug: duolingo
     ats: greenhouse
@@ -395,6 +1122,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "80 open reqs at resolution"
+  - name: "Duranta"
+    slug: duranta
+    ats: lever
+    token: getduranta
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Eagle"
+    slug: eagle
+    ats: ashby
+    token: eagle
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "ecoATM Gazelle"
+    slug: ecoatm-gazelle
+    ats: greenhouse
+    token: ecoatmgazelle
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "11 open reqs at discovery"
   - name: "Elastic"
     slug: elastic
     ats: greenhouse
@@ -404,6 +1158,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "356 open reqs at resolution"
+  - name: "Electric Twin"
+    slug: electric-twin
+    ats: lever
+    token: electric-twin
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Eleos Technologies"
+    slug: eleos-technologies
+    ats: lever
+    token: eleostech
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Emergent Labs"
+    slug: emergent-labs
+    ats: greenhouse
+    token: emergentlabsinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "34 open reqs; token published by the company on HN"
   - name: "Empower Pharmacy"
     slug: empower-pharmacy
     ats: greenhouse
@@ -413,6 +1194,51 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "50 open reqs at discovery"
+  - name: "Epic Kids Inc."
+    slug: epic-kids
+    ats: greenhouse
+    token: epickids
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "EQT Corporation"
+    slug: eqt
+    ats: greenhouse
+    token: eqtcorporation
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "39 open reqs at discovery"
+  - name: "Everis"
+    slug: everis
+    ats: ashby
+    token: everis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Evervault"
+    slug: evervault
+    ats: ashby
+    token: evervault
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Extend"
+    slug: extend
+    ats: ashby
+    token: extend
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Faire"
     slug: faire
     ats: greenhouse
@@ -422,6 +1248,16 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "67 open reqs at resolution"
+  - name: "FanDuel"
+    slug: fanduel
+    ats: greenhouse
+    token: fanduel
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "94 open reqs at resolution"
   - name: "Figma"
     slug: figma
     ats: greenhouse
@@ -431,6 +1267,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "153 open reqs at resolution"
+  - name: "Finch"
+    slug: finch
+    ats: lever
+    token: finch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Findigs"
+    slug: findigs
+    ats: lever
+    token: findigs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Firetiger"
+    slug: firetiger
+    ats: ashby
+    token: firetiger
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Fivetran"
     slug: fivetran
     ats: greenhouse
@@ -440,6 +1303,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "197 open reqs at resolution"
+  - name: "Fleetio"
+    slug: fleetio
+    ats: greenhouse
+    token: fleetio
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "22 open reqs at discovery"
   - name: "Flexport"
     slug: flexport
     ats: greenhouse
@@ -449,6 +1321,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "179 open reqs at resolution"
+  - name: "Flux"
+    slug: flux
+    ats: ashby
+    token: flux
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Foodsmart"
+    slug: foodsmart
+    ats: lever
+    token: foodsmart
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "17 open reqs at discovery"
   - name: "Forbes"
     slug: forbes
     ats: greenhouse
@@ -458,6 +1348,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "17 open reqs at discovery"
+  - name: "Forus"
+    slug: forus
+    ats: ashby
+    token: forus
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "52 open reqs; token published by the company on HN"
   - name: "Front"
     slug: front
     ats: ashby
@@ -467,6 +1366,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "found via careers-page fingerprint; no name-derived guess produces 'frontcareers'"
+  - name: "Fullscript"
+    slug: fullscript
+    ats: lever
+    token: fullscript
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "24 open reqs at discovery"
   - name: "Gather AI"
     slug: gather-ai
     ats: greenhouse
@@ -476,6 +1384,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "12 open reqs at discovery"
+  - name: "Gauss Labs"
+    slug: gauss-labs
+    ats: lever
+    token: gausslabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Gemini"
     slug: gemini
     ats: greenhouse
@@ -485,6 +1402,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "33 open reqs at resolution"
+  - name: "Giga"
+    slug: giga
+    ats: ashby
+    token: gigaml
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
   - name: "GitLab"
     slug: gitlab
     ats: greenhouse
@@ -503,6 +1429,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "3 open reqs at resolution"
+  - name: "GovSignals"
+    slug: govsignals
+    ats: ashby
+    token: govsignals
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
   - name: "GR8 Tech"
     slug: gr8-tech
     ats: greenhouse
@@ -530,6 +1465,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "116 open reqs at resolution"
+  - name: "GrayMatter Robotics"
+    slug: graymatter-robotics
+    ats: ashby
+    token: graymatter-robotics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Griffin"
+    slug: griffin
+    ats: ashby
+    token: griffin
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Gusto"
     slug: gusto
     ats: greenhouse
@@ -538,6 +1491,7 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "95 open reqs at resolution"
   - name: "Headway"
     slug: headway
@@ -557,6 +1511,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "33 open reqs at resolution"
+  - name: "Higharc"
+    slug: higharc
+    ats: ashby
+    token: higharc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Hightouch"
+    slug: hightouch
+    ats: greenhouse
+    token: hightouch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "86 open reqs; token published by the company on HN"
+  - name: "Hike Medical"
+    slug: hike-medical
+    ats: ashby
+    token: hike-medical
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
   - name: "Hinge Health"
     slug: hinge-health
     ats: ashby
@@ -575,6 +1556,51 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "105 open reqs at discovery"
+  - name: "Hiya"
+    slug: hiya
+    ats: ashby
+    token: hiya
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
+  - name: "HomeVision"
+    slug: homevision
+    ats: ashby
+    token: homevision
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Hudl"
+    slug: hudl
+    ats: greenhouse
+    token: hudl
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "30 open reqs; token published by the company on HN"
+  - name: "HumanSignal"
+    slug: humansignal
+    ats: greenhouse
+    token: humansignal
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "52 open reqs; token published by the company on HN"
+  - name: "Hyperspell"
+    slug: hyperspell
+    ats: ashby
+    token: hyperspell
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
   - name: "Imagine Pediatrics"
     slug: imagine-pediatrics
     ats: greenhouse
@@ -629,6 +1655,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "board reports 'Fin' - confirmed correct, the company rebranded"
+  - name: "IonQ"
+    slug: ionq
+    ats: greenhouse
+    token: ionq
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "99 open reqs; token published by the company on HN"
   - name: "Iterable"
     slug: iterable
     ats: greenhouse
@@ -647,6 +1682,34 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "21 open reqs at discovery"
+  - name: "Justworks"
+    slug: justworks
+    ats: greenhouse
+    token: justworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "95 open reqs; token published by the company on HN"
+  - name: "Kalshi"
+    slug: kalshi
+    ats: greenhouse
+    token: kalshi
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "28 open reqs at resolution"
+  - name: "Kepler"
+    slug: kepler
+    ats: ashby
+    token: kepler-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Keyloop"
     slug: keyloop
     ats: lever
@@ -656,6 +1719,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "58 open reqs at discovery"
+  - name: "Kiloforge"
+    slug: kiloforge
+    ats: ashby
+    token: kiloforge
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Kinelo"
+    slug: kinelo
+    ats: greenhouse
+    token: kinelo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
   - name: "Klaviyo"
     slug: klaviyo
     ats: greenhouse
@@ -683,6 +1764,69 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "36 open reqs at discovery"
+  - name: "Kombo"
+    slug: kombo
+    ats: ashby
+    token: kombo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Kong"
+    slug: kong
+    ats: ashby
+    token: kong
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "67 open reqs; token published by the company on HN"
+  - name: "Konvu"
+    slug: konvu
+    ats: ashby
+    token: konvu
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Lago"
+    slug: lago
+    ats: ashby
+    token: lago
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Langdock"
+    slug: langdock
+    ats: ashby
+    token: langdock
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Langfuse"
+    slug: langfuse
+    ats: ashby
+    token: langfuse
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "LatchBio"
+    slug: latchbio
+    ats: ashby
+    token: latchbio
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
   - name: "LaunchDarkly"
     slug: launchdarkly
     ats: greenhouse
@@ -692,6 +1836,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "54 open reqs at resolution"
+  - name: "Legion Health"
+    slug: legion-health
+    ats: ashby
+    token: legionhealth
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "157 open reqs; token published by the company on HN"
   - name: "Life360"
     slug: life360
     ats: greenhouse
@@ -710,6 +1863,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "20 open reqs at discovery"
+  - name: "Lightning AI"
+    slug: lightning-ai
+    ats: greenhouse
+    token: lightningai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "54 open reqs; token published by the company on HN"
   - name: "Linear"
     slug: linear
     ats: ashby
@@ -737,6 +1899,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "10 open reqs at resolution"
+  - name: "LiveKit"
+    slug: livekit
+    ats: ashby
+    token: livekit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
+  - name: "Loadsmart"
+    slug: loadsmart
+    ats: lever
+    token: loadsmart
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "Loft Orbital Solutions"
+    slug: loft-orbital-solutions
+    ats: lever
+    token: loftorbital
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "56 open reqs; token published by the company on HN"
   - name: "Loyal"
     slug: loyal
     ats: greenhouse
@@ -746,6 +1935,69 @@ companies:
     added: 2026-09-12
     source: auto_rediscovered
     notes: "6 open reqs; found via careers-page fingerprint"
+  - name: "Luxor Technology Corporation"
+    slug: luxor-technology
+    ats: ashby
+    token: luxor
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Lyric, Inc."
+    slug: lyric
+    ats: ashby
+    token: lyric
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "15 open reqs at discovery"
+  - name: "Maincode"
+    slug: maincode
+    ats: ashby
+    token: maincode
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Mapbox"
+    slug: mapbox
+    ats: ashby
+    token: mapbox
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "50 open reqs; token published by the company on HN"
+  - name: "Mastra"
+    slug: mastra
+    ats: ashby
+    token: mastra
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Mattermost"
+    slug: mattermost
+    ats: greenhouse
+    token: mattermost
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Matterworks, Inc."
+    slug: matterworks
+    ats: ashby
+    token: matterworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Maven Clinic"
     slug: maven-clinic
     ats: greenhouse
@@ -755,6 +2007,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "35 open reqs at resolution"
+  - name: "Mechanize, Inc."
+    slug: mechanize
+    ats: ashby
+    token: mechanize
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Meilisearch"
+    slug: meilisearch
+    ats: lever
+    token: meili
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
   - name: "mercor"
     slug: mercor
     ats: ashby
@@ -772,7 +2042,26 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "61 open reqs at resolution"
+  - name: "Metabase"
+    slug: metabase
+    ats: lever
+    token: metabase
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Meticulous"
+    slug: meticulous
+    ats: ashby
+    token: meticulous
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Middesk"
     slug: middesk
     ats: ashby
@@ -791,6 +2080,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "39 open reqs at resolution"
+  - name: "Mithril"
+    slug: mithril
+    ats: greenhouse
+    token: mithril
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Mitratech"
     slug: mitratech
     ats: greenhouse
@@ -809,6 +2107,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "84 open reqs at resolution"
+  - name: "Modal"
+    slug: modal
+    ats: ashby
+    token: modal
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "31 open reqs; token published by the company on HN"
   - name: "Modern Treasury"
     slug: modern-treasury
     ats: ashby
@@ -827,6 +2134,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "209 open reqs at discovery"
+  - name: "Monzo"
+    slug: monzo
+    ats: greenhouse
+    token: monzo
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "65 open reqs at discovery"
+  - name: "Moonsong Labs"
+    slug: moonsong-labs
+    ats: lever
+    token: moonsong-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
   - name: "Motional"
     slug: motional
     ats: greenhouse
@@ -836,6 +2161,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "67 open reqs at discovery"
+  - name: "MSQ DX"
+    slug: msq-dx
+    ats: greenhouse
+    token: arke
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "12 open reqs; found via careers-page fingerprint"
+  - name: "Mubit"
+    slug: mubit
+    ats: ashby
+    token: mubit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Nango"
+    slug: nango
+    ats: ashby
+    token: nango
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
   - name: "Natera"
     slug: natera
     ats: greenhouse
@@ -845,6 +2197,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "220 open reqs at discovery"
+  - name: "Nectar Social"
+    slug: nectar-social
+    ats: ashby
+    token: nectar-social
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Neo.Tax"
+    slug: neo-tax
+    ats: ashby
+    token: neo-tax
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Neon"
     slug: neon
     ats: ashby
@@ -854,6 +2224,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "5 open reqs at discovery"
+  - name: "Neon Health"
+    slug: neon-health
+    ats: ashby
+    token: neon-health
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
   - name: "Netlify"
     slug: netlify
     ats: greenhouse
@@ -863,6 +2242,52 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "1 open reqs at resolution"
+  - name: "Netomi"
+    slug: netomi
+    ats: lever
+    token: netomi
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "23 open reqs at discovery"
+  - name: "Nium"
+    slug: nium
+    ats: lever
+    token: nium
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "28 open reqs at resolution"
+  - name: "Noise Labs"
+    slug: noise-labs
+    ats: ashby
+    token: noise-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Norm Ai"
+    slug: norm-ai
+    ats: ashby
+    token: norm-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Notable"
+    slug: notable
+    ats: ashby
+    token: notable
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
   - name: "Notion"
     slug: notion
     ats: ashby
@@ -872,6 +2297,51 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "127 open reqs at resolution"
+  - name: "Nova Credit"
+    slug: nova-credit
+    ats: greenhouse
+    token: novacredit
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Obsidian Security"
+    slug: obsidian-security
+    ats: greenhouse
+    token: obsidiansecurity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "22 open reqs; token published by the company on HN"
+  - name: "Odyssey"
+    slug: odyssey
+    ats: ashby
+    token: odyssey
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Office Hours"
+    slug: office-hours
+    ats: ashby
+    token: office-hours
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "Oklo"
+    slug: oklo
+    ats: greenhouse
+    token: oklo
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "72 open reqs; token published by the company on HN"
   - name: "Omada Health"
     slug: omada-health
     ats: greenhouse
@@ -881,6 +2351,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "17 open reqs at resolution"
+  - name: "OneCrew"
+    slug: onecrew
+    ats: ashby
+    token: onecrew
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Oneleet"
+    slug: oneleet
+    ats: ashby
+    token: oneleet
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "15 open reqs; token published by the company on HN"
+  - name: "Ontic"
+    slug: ontic
+    ats: ashby
+    token: ontic
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
   - name: "OpenAI"
     slug: openai
     ats: ashby
@@ -899,6 +2396,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "7 open reqs at discovery"
+  - name: "OpsMill"
+    slug: opsmill
+    ats: ashby
+    token: opsmill
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "OpusClip"
+    slug: opusclip
+    ats: ashby
+    token: opusclip
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Orkes"
+    slug: orkes
+    ats: greenhouse
+    token: orkes
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
   - name: "Oscar Health"
     slug: oscar-health
     ats: greenhouse
@@ -908,6 +2432,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "289 open reqs at resolution"
+  - name: "Oscilar"
+    slug: oscilar
+    ats: ashby
+    token: oscilar
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
   - name: "Outreach"
     slug: outreach
     ats: lever
@@ -917,6 +2450,52 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "30 open reqs at resolution"
+  - name: "Outschool"
+    slug: outschool
+    ats: greenhouse
+    token: outschool
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Parabola"
+    slug: parabola
+    ats: ashby
+    token: parabola-io
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Parafin"
+    slug: parafin
+    ats: ashby
+    token: parafin
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "22 open reqs at resolution"
+  - name: "Parallel Web Systems"
+    slug: parallel-web-systems
+    ats: ashby
+    token: parallel
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "21 open reqs; token published by the company on HN"
+  - name: "Pareto"
+    slug: pareto
+    ats: ashby
+    token: pareto-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
   - name: "PathAI"
     slug: pathai
     ats: greenhouse
@@ -926,6 +2505,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "8 open reqs at discovery"
+  - name: "PatientPoint"
+    slug: patientpoint
+    ats: greenhouse
+    token: patientpoint
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "33 open reqs at discovery"
+  - name: "Patrick J McGovern Foundation"
+    slug: patrick-j-mcgovern-foundation
+    ats: lever
+    token: mcgovern
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
   - name: "Payoneer"
     slug: payoneer
     ats: greenhouse
@@ -935,6 +2532,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "122 open reqs at resolution"
+  - name: "Pear VC"
+    slug: pear-vc
+    ats: ashby
+    token: pear-vc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "100 open reqs; token published by the company on HN"
   - name: "Peek"
     slug: peek
     ats: ashby
@@ -944,6 +2550,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "10 open reqs at discovery"
+  - name: "PermitFlow"
+    slug: permitflow
+    ats: ashby
+    token: permitflow
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "42 open reqs; token published by the company on HN"
   - name: "Persona"
     slug: persona
     ats: ashby
@@ -953,6 +2568,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "18 open reqs at resolution"
+  - name: "Phoebe"
+    slug: phoebe
+    ats: ashby
+    token: phoebe-work
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
+  - name: "Pickle Robot Company"
+    slug: pickle-robot-company
+    ats: lever
+    token: picklerobot
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
   - name: "Pie Insurance"
     slug: pie-insurance
     ats: greenhouse
@@ -971,6 +2604,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "184 open reqs at resolution"
+  - name: "Piramidal, Inc."
+    slug: piramidal
+    ats: greenhouse
+    token: piramidalinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
   - name: "Plaid"
     slug: plaid
     ats: ashby
@@ -979,7 +2621,17 @@ companies:
     verified_by: board_page
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "110 open reqs at resolution"
+  - name: "PlanetScale"
+    slug: planetscale
+    ats: greenhouse
+    token: planetscale
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
   - name: "Plooto"
     slug: plooto
     ats: greenhouse
@@ -989,6 +2641,24 @@ companies:
     added: 2026-09-12
     source: auto_rediscovered
     notes: "9 open reqs at rediscovery"
+  - name: "pod.network"
+    slug: pod-network
+    ats: ashby
+    token: pod-network
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
+  - name: "Poesis"
+    slug: poesis
+    ats: ashby
+    token: poesis
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Poshmark"
     slug: poshmark
     ats: ashby
@@ -998,6 +2668,123 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "32 open reqs at resolution"
+  - name: "Prelude"
+    slug: prelude
+    ats: ashby
+    token: prelude
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "Prior Labs"
+    slug: prior-labs
+    ats: ashby
+    token: prior-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Product Genius"
+    slug: product-genius
+    ats: ashby
+    token: productgenius
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Project Healthy Minds"
+    slug: project-healthy-minds
+    ats: lever
+    token: project-healthy-minds
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Prolific Machines"
+    slug: prolific-machines
+    ats: lever
+    token: prolific-machines
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Prompt"
+    slug: prompt
+    ats: ashby
+    token: prompt
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "44 open reqs; token published by the company on HN"
+  - name: "ProPublica"
+    slug: propublica
+    ats: greenhouse
+    token: propublica
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Prosper AI"
+    slug: prosper-ai
+    ats: ashby
+    token: prosper-ai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "11 open reqs; token published by the company on HN"
+  - name: "Protege"
+    slug: protege
+    ats: ashby
+    token: protege
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "25 open reqs; token published by the company on HN"
+  - name: "Proxima Fusion"
+    slug: proxima-fusion
+    ats: ashby
+    token: proxima-fusion
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "48 open reqs; token published by the company on HN"
+  - name: "Pylon"
+    slug: pylon
+    ats: ashby
+    token: pylon
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Radical Numerics"
+    slug: radical-numerics
+    ats: ashby
+    token: radical-numerics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Railway"
+    slug: railway
+    ats: ashby
+    token: railway
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Ramp"
     slug: ramp
     ats: ashby
@@ -1006,6 +2793,7 @@ companies:
     verified_by: board_page
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "145 open reqs at resolution"
   - name: "Reddit"
     slug: reddit
@@ -1016,6 +2804,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "148 open reqs at resolution"
+  - name: "Reframe Systems"
+    slug: reframe-systems
+    ats: ashby
+    token: reframesystems
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "41 open reqs; token published by the company on HN"
+  - name: "Relativity Space"
+    slug: relativity-space
+    ats: greenhouse
+    token: relativity
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "338 open reqs; token published by the company on HN"
   - name: "Remote.com"
     slug: remote-com
     ats: greenhouse
@@ -1025,6 +2831,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "board reports 'Remote' - confirmed correct; note token 'remote' is General Assembly's"
+  - name: "Resilinc"
+    slug: resilinc
+    ats: lever
+    token: resilinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Rho"
+    slug: rho
+    ats: ashby
+    token: rho
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "53 open reqs; token published by the company on HN"
+  - name: "River"
+    slug: river
+    ats: ashby
+    token: river
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Ro"
     slug: ro
     ats: lever
@@ -1043,6 +2876,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "125 open reqs at resolution"
+  - name: "Robotics and AI Institute"
+    slug: robotics-and-ai-institute
+    ats: lever
+    token: rai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
   - name: "Root, Inc."
     slug: root
     ats: ashby
@@ -1061,6 +2903,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "board reports 'Rover.com' - confirmed correct"
+  - name: "Runway"
+    slug: runway
+    ats: ashby
+    token: runway-ml
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "40 open reqs; token published by the company on HN"
+  - name: "Sage Bionetworks"
+    slug: sage-bionetworks
+    ats: greenhouse
+    token: sagebionetworks
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "SalesJack"
+    slug: salesjack
+    ats: ashby
+    token: salesjack
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "4 open reqs; token published by the company on HN"
   - name: "Samsara"
     slug: samsara
     ats: greenhouse
@@ -1078,6 +2947,7 @@ companies:
     verified_by: board_page
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "42 open reqs at resolution"
   - name: "Scale AI"
     slug: scale-ai
@@ -1088,6 +2958,51 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "223 open reqs at resolution"
+  - name: "Scribd, Inc."
+    slug: scribd
+    ats: ashby
+    token: scribdinc
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "14 open reqs; token published by the company on HN"
+  - name: "SentiLink"
+    slug: sentilink
+    ats: ashby
+    token: sentilink
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "55 open reqs; token published by the company on HN"
+  - name: "Sesame"
+    slug: sesame
+    ats: ashby
+    token: sesame
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Shepherd"
+    slug: shepherd
+    ats: ashby
+    token: shepherd
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "19 open reqs; token published by the company on HN"
+  - name: "Shield AI"
+    slug: shield-ai
+    ats: lever
+    token: shieldai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "473 open reqs; token published by the company on HN"
   - name: "ShiftKey"
     slug: shiftkey
     ats: ashby
@@ -1115,6 +3030,33 @@ companies:
     added: 2026-09-12
     source: auto_rediscovered
     notes: "13 open reqs; found via careers-page fingerprint"
+  - name: "SigNoz"
+    slug: signoz
+    ats: ashby
+    token: signoz
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
+  - name: "Skyways"
+    slug: skyways
+    ats: lever
+    token: skyways
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Smarkets"
+    slug: smarkets
+    ats: ashby
+    token: smarkets
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Snowflake"
     slug: snowflake
     ats: ashby
@@ -1124,6 +3066,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "368 open reqs at resolution"
+  - name: "Socket"
+    slug: socket
+    ats: ashby
+    token: socket
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "24 open reqs; token published by the company on HN"
+  - name: "Solace"
+    slug: solace
+    ats: ashby
+    token: solace
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "27 open reqs; token published by the company on HN"
   - name: "Sonatype"
     slug: sonatype
     ats: lever
@@ -1133,6 +3093,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "33 open reqs at discovery"
+  - name: "Sophos"
+    slug: sophos
+    ats: lever
+    token: sophos
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "113 open reqs at discovery"
   - name: "Soum"
     slug: soum
     ats: lever
@@ -1142,6 +3111,42 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "17 open reqs at discovery"
+  - name: "Sourcegraph"
+    slug: sourcegraph
+    ats: greenhouse
+    token: sourcegraph91
+    status: verified
+    verified_by: careers_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "8 open reqs; found via careers-page fingerprint"
+  - name: "SpaceX"
+    slug: spacex
+    ats: greenhouse
+    token: spacex
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2412 open reqs; token published by the company on HN"
+  - name: "SpaceXAI"
+    slug: spacexai
+    ats: greenhouse
+    token: xai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "255 open reqs; token published by the company on HN"
+  - name: "Speckle"
+    slug: speckle
+    ats: ashby
+    token: speckle
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
   - name: "Spotify"
     slug: spotify
     ats: lever
@@ -1151,6 +3156,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "72 open reqs at discovery"
+  - name: "Spruce Systems, Inc."
+    slug: spruce-systems
+    ats: ashby
+    token: spruceid
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
   - name: "SQUAD"
     slug: squad
     ats: greenhouse
@@ -1160,6 +3174,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "29 open reqs at discovery"
+  - name: "Steel"
+    slug: steel
+    ats: ashby
+    token: steel
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
   - name: "StockX"
     slug: stockx
     ats: greenhouse
@@ -1169,6 +3192,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "34 open reqs at resolution"
+  - name: "StraighterLine"
+    slug: straighterline
+    ats: lever
+    token: straighterline
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Stream"
+    slug: stream
+    ats: ashby
+    token: stream
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "8 open reqs; token published by the company on HN"
   - name: "Stripe"
     slug: stripe
     ats: greenhouse
@@ -1177,7 +3218,44 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "633 open reqs at resolution"
+  - name: "Stytch"
+    slug: stytch
+    ats: ashby
+    token: stytch
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Suno"
+    slug: suno
+    ats: ashby
+    token: suno
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "66 open reqs; token published by the company on HN"
+  - name: "Supabase"
+    slug: supabase
+    ats: ashby
+    token: supabase
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "60 open reqs; token published by the company on HN"
+  - name: "Tailscale"
+    slug: tailscale
+    ats: greenhouse
+    token: tailscale
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "55 open reqs; token published by the company on HN"
   - name: "TELUS Digital"
     slug: telus-digital
     ats: ashby
@@ -1187,6 +3265,60 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "80 open reqs at discovery"
+  - name: "Terra AI"
+    slug: terra-ai
+    ats: ashby
+    token: terraai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
+  - name: "Tetsuwan Scientific"
+    slug: tetsuwan-scientific
+    ats: ashby
+    token: tetsuwan
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
+  - name: "Thalo Labs"
+    slug: thalo-labs
+    ats: lever
+    token: thalolabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "The Allen Institute for Artificial Intelligence"
+    slug: the-allen-institute-for-artificial-intelligence
+    ats: greenhouse
+    token: thealleninstitute
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "22 open reqs; token published by the company on HN"
+  - name: "The New York Times"
+    slug: the-new-york-times
+    ats: greenhouse
+    token: thenewyorktimes
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "159 open reqs; token published by the company on HN"
+  - name: "The San Francisco Compute Company"
+    slug: the-san-francisco-compute-company
+    ats: ashby
+    token: sfcompute
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
   - name: "Thumbtack"
     slug: thumbtack
     ats: ashby
@@ -1196,6 +3328,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "40 open reqs at resolution"
+  - name: "Titan"
+    slug: titan
+    ats: ashby
+    token: titan
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "10 open reqs; token published by the company on HN"
   - name: "Toast"
     slug: toast
     ats: greenhouse
@@ -1204,7 +3345,26 @@ companies:
     verified_by: name_echo
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "330 open reqs at resolution"
+  - name: "Tonic AI"
+    slug: tonic-ai
+    ats: ashby
+    token: tonicai
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Trace"
+    slug: trace
+    ats: ashby
+    token: tracelabs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "2 open reqs; token published by the company on HN"
   - name: "TreviPay"
     slug: trevipay
     ats: lever
@@ -1214,6 +3374,52 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "11 open reqs at discovery"
+  - name: "Trigger.dev"
+    slug: trigger-dev
+    ats: ashby
+    token: triggerdev
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Trustly"
+    slug: trustly
+    ats: ashby
+    token: trustly
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "19 open reqs at resolution"
+  - name: "Turquoise"
+    slug: turquoise
+    ats: ashby
+    token: turquoise-health
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
+  - name: "Two Dots"
+    slug: two-dots
+    ats: ashby
+    token: two-dots
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Two Six Technologies"
+    slug: two-six-technologies
+    ats: greenhouse
+    token: twosixtechnologies
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "80 open reqs; token published by the company on HN"
   - name: "Typeform"
     slug: typeform
     ats: greenhouse
@@ -1232,6 +3438,33 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "3 open reqs at resolution"
+  - name: "Unto Labs"
+    slug: unto-labs
+    ats: ashby
+    token: unto-labs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "3 open reqs; token published by the company on HN"
+  - name: "Updater"
+    slug: updater
+    ats: greenhouse
+    token: updater
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Upvest"
+    slug: upvest
+    ats: ashby
+    token: upvest
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "16 open reqs; token published by the company on HN"
   - name: "Upwork"
     slug: upwork
     ats: greenhouse
@@ -1250,6 +3483,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "86 open reqs at resolution"
+  - name: "Verge Genomics"
+    slug: verge-genomics
+    ats: ashby
+    token: verge-genomics
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "1 open reqs; token published by the company on HN"
+  - name: "Verisign"
+    slug: verisign
+    ats: greenhouse
+    token: verisign
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "20 open reqs; token published by the company on HN"
   - name: "Verkada"
     slug: verkada
     ats: greenhouse
@@ -1259,6 +3510,60 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "293 open reqs at resolution"
+  - name: "Vestwell"
+    slug: vestwell
+    ats: greenhouse
+    token: vestwell
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
+  - name: "Via"
+    slug: via
+    ats: greenhouse
+    token: via
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "158 open reqs; token published by the company on HN"
+  - name: "Viseven"
+    slug: viseven
+    ats: lever
+    token: viseven
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "46 open reqs at discovery"
+  - name: "Vitalize"
+    slug: vitalize
+    ats: ashby
+    token: vitalize
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "Vivodyne"
+    slug: vivodyne
+    ats: greenhouse
+    token: vivodyne
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
+  - name: "Voyager Technologies, Inc."
+    slug: voyager-technologies
+    ats: greenhouse
+    token: voyagertechnologiesinc
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "154 open reqs at discovery"
   - name: "Wealthfront"
     slug: wealthfront
     ats: lever
@@ -1268,6 +3573,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "24 open reqs at resolution"
+  - name: "Weave"
+    slug: weave
+    ats: greenhouse
+    token: weave
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "7 open reqs; token published by the company on HN"
   - name: "Webflow"
     slug: webflow
     ats: greenhouse
@@ -1277,6 +3591,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "25 open reqs at resolution"
+  - name: "Wikimedia Foundation"
+    slug: wikimedia-foundation
+    ats: greenhouse
+    token: wikimedia
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "17 open reqs; token published by the company on HN"
+  - name: "WireScreen"
+    slug: wirescreen
+    ats: ashby
+    token: wirescreen
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "6 open reqs; token published by the company on HN"
   - name: "WorkWave"
     slug: workwave
     ats: lever
@@ -1286,6 +3618,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "13 open reqs at discovery"
+  - name: "WorkWhile"
+    slug: workwhile
+    ats: ashby
+    token: workwhilejobs
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "12 open reqs; token published by the company on HN"
+  - name: "XDOF"
+    slug: xdof
+    ats: ashby
+    token: xdof
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "18 open reqs; token published by the company on HN"
   - name: "Zapier"
     slug: zapier
     ats: ashby
@@ -1295,6 +3645,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "6 open reqs at resolution"
+  - name: "Zencastr"
+    slug: zencastr
+    ats: ashby
+    token: zencastr
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "5 open reqs; token published by the company on HN"
+  - name: "Zippy"
+    slug: zippy
+    ats: ashby
+    token: zippymh
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "13 open reqs; token published by the company on HN"
   - name: "Zocdoc"
     slug: zocdoc
     ats: greenhouse
@@ -1304,6 +3672,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "54 open reqs at resolution"
+  - name: "Zoox"
+    slug: zoox
+    ats: lever
+    token: zoox
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "245 open reqs; token published by the company on HN"
+  - name: "Z\u016bm"
+    slug: zum
+    ats: lever
+    token: ridezum
+    status: verified
+    verified_by: published_token
+    added: 2026-09-12
+    source: hn_whoishiring
+    notes: "32 open reqs; token published by the company on HN"
   - name: "Arch Global Services (Philippines) Inc."
     slug: arch-global-services-philippines
     ats: ashby
@@ -1367,6 +3753,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "board reports 'Doma Technology LLC', expected 'Doma' - confirm before collecting"
+  - name: "ExtraHop Networks"
+    slug: extrahop-networks
+    ats: greenhouse
+    token: extrahopnetworks
+    status: unverified
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "board reports 'ExtraHop', expected 'ExtraHop Networks' - confirm before collecting"
   - name: "General Dynamics Information Technology"
     slug: general-dynamics-information-technology
     ats: greenhouse
@@ -1385,6 +3780,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "board reports 'General Interest ', expected 'General Motors' - confirm before collecting"
+  - name: "Mutt Data"
+    slug: mutt-data
+    ats: lever
+    token: muttdata
+    status: unverified
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "board reports 'Muttdata jobs', expected 'Mutt Data' - confirm before collecting"
   - name: "Oura Health Ltd"
     slug: oura-health
     ats: greenhouse
@@ -1465,6 +3869,7 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: auto_rediscovered
+    target_list: true
     notes: "board reports 'Wise Worksite Field Sales ', expected 'Wise' - confirm before collecting"
   - name: "_nology"
     slug: nology
@@ -1475,6 +3880,51 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Academic Partnerships"
+    slug: academic-partnerships
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Accenture"
+    slug: accenture
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workday (token accenture) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Accesa & RaRo"
+    slug: accesa-raro
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Action1"
+    slug: action1
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Actionstep"
+    slug: actionstep
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workable (token actionstep) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Acxiom"
     slug: acxiom
     ats: unknown
@@ -1484,6 +3934,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Agilent Technologies"
+    slug: agilent-technologies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Aimpoint Digital"
     slug: aimpoint-digital
     ats: unknown
@@ -1529,6 +3988,24 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Alteryx"
+    slug: alteryx
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "AmerisourceBergen"
+    slug: amerisourcebergen
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Apollo"
     slug: apollo
     ats: unknown
@@ -1574,6 +4051,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "BCD Travel"
+    slug: bcd-travel
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "BetMGM"
+    slug: betmgm
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "BIC"
+    slug: bic
+    ats: successfactors
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on successfactors (token rmkcdn) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Bjak"
     slug: bjak
     ats: unknown
@@ -1610,6 +4114,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Boston Medical Center"
+    slug: boston-medical-center
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Bright Vision Technologies"
     slug: bright-vision-technologies
     ats: unknown
@@ -1655,6 +4168,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "CDW"
+    slug: cdw
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Census"
     slug: census
     ats: unknown
@@ -1691,6 +4213,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Circular Materials"
+    slug: circular-materials
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Cityblock Health"
+    slug: cityblock-health
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Clari"
     slug: clari
     ats: unknown
@@ -1700,6 +4240,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Cloudera"
+    slug: cloudera
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workday (token cloudera) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Colibri Digital"
     slug: colibri-digital
     ats: unknown
@@ -1727,6 +4276,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Compass Group USA"
+    slug: compass-group-usa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Corsearch"
+    slug: corsearch
+    ats: teamtailor
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on teamtailor (token www) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Cotiviti"
     slug: cotiviti
     ats: unknown
@@ -1754,6 +4321,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Creatio"
+    slug: creatio
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "CrowdStrike"
     slug: crowdstrike
     ats: unknown
@@ -1798,6 +4374,7 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Delan Associates"
     slug: delan-associates
@@ -1835,6 +4412,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "DoiT International"
+    slug: doit-international
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "DOTSOFT SA"
     slug: dotsoft
     ats: unknown
@@ -1844,6 +4430,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Duncan & Ross"
+    slug: duncan-ross
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Dura Digital"
     slug: dura-digital
     ats: unknown
@@ -1853,6 +4448,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Dutchie"
+    slug: dutchie
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Dynatron Software"
     slug: dynatron-software
     ats: unknown
@@ -1961,6 +4565,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "EWOR GmbH"
+    slug: ewor
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Experian"
     slug: experian
     ats: unknown
@@ -2006,6 +4619,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "First American"
+    slug: first-american
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Fiverr"
     slug: fiverr
     ats: unknown
@@ -2032,6 +4654,7 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Fortive"
     slug: fortive
@@ -2096,6 +4719,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Hand Talk"
+    slug: hand-talk
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "HashiCorp"
     slug: hashicorp
     ats: unknown
@@ -2114,6 +4746,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Henry Schein One"
+    slug: henry-schein-one
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Here Technologies"
     slug: here-technologies
     ats: unknown
@@ -2150,6 +4791,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "HR Ways"
+    slug: hr-ways
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Humana"
     slug: humana
     ats: unknown
@@ -2159,6 +4809,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "IFS"
+    slug: ifs
+    ats: smartrecruiters
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on smartrecruiters (token ifs1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Imnoo AG"
     slug: imnoo
     ats: unknown
@@ -2177,6 +4836,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "IntegriChain"
+    slug: integrichain
+    ats: smartrecruiters
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on smartrecruiters (token integrichain1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Intellectsoft"
     slug: intellectsoft
     ats: unknown
@@ -2186,6 +4854,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Intermedia Intelligent Communications"
+    slug: intermedia-intelligent-communications
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Intuition Machines"
     slug: intuition-machines
     ats: unknown
@@ -2195,6 +4872,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Irth"
+    slug: irth
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on workable (token irth-solutions) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "iwoca"
     slug: iwoca
     ats: unknown
@@ -2204,6 +4890,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "J.D. Power"
+    slug: j-d-power
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Jabil"
     slug: jabil
     ats: unknown
@@ -2213,6 +4908,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "JobGet"
+    slug: jobget
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Kainos"
     slug: kainos
     ats: unknown
@@ -2456,6 +5160,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Moderna"
+    slug: moderna
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Molina Healthcare"
     slug: molina-healthcare
     ats: unknown
@@ -2500,6 +5213,7 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Netrix Global"
     slug: netrix-global
@@ -2528,6 +5242,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Nexer Group"
+    slug: nexer-group
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Next Step Systems"
     slug: next-step-systems
     ats: unknown
@@ -2546,6 +5269,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "NightOwl Consulting"
+    slug: nightowl-consulting
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "NinjaHoldings"
+    slug: ninjaholdings
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Nova 401(k) Associates"
+    slug: nova-401-k-associates
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "NUVIEW"
     slug: nuview
     ats: unknown
@@ -2717,6 +5467,33 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Redcare Pharmacy"
+    slug: redcare-pharmacy
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "REDICA Systems"
+    slug: redica-systems
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Redpin"
+    slug: redpin
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Reface"
     slug: reface
     ats: unknown
@@ -2825,6 +5602,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "ServiceNow"
+    slug: servicenow
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Shaped"
     slug: shaped
     ats: unknown
@@ -2861,6 +5647,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Southern Illinois Healthcare"
+    slug: southern-illinois-healthcare
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Sparq"
     slug: sparq
     ats: unknown
@@ -2915,6 +5710,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Symetra"
+    slug: symetra
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Talan"
     slug: talan
     ats: unknown
@@ -2924,6 +5728,24 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "TaskUs"
+    slug: taskus
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Teaching Strategies, LLC"
+    slug: teaching-strategies
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "TechBiz Global"
     slug: techbiz-global
     ats: unknown
@@ -2951,6 +5773,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "The Honest Company"
+    slug: the-honest-company
+    ats: greenhouse
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "on greenhouse (token embed) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "The Kraft Heinz Company"
     slug: the-kraft-heinz-company
     ats: unknown
@@ -2969,6 +5800,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Trinetix"
+    slug: trinetix
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Turo"
     slug: turo
     ats: unknown
@@ -3041,6 +5881,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Very LLC"
+    slug: very
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Vinted"
     slug: vinted
     ats: unknown
@@ -3112,7 +5961,17 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: manual
+    target_list: true
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Working Solutions"
+    slug: working-solutions
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "World Business Lenders"
     slug: world-business-lenders
     ats: unknown
@@ -3149,6 +6008,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Zabota LLC"
+    slug: zabota
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-14
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
   - name: "Zantech"
     slug: zantech
     ats: unknown
@@ -3185,2787 +6053,6 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "SpaceX"
-    slug: spacex
-    ats: greenhouse
-    token: spacex
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2412 open reqs; token published by the company on HN"
-  - name: "Anduril Industries"
-    slug: anduril-industries
-    ats: greenhouse
-    token: andurilindustries
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2293 open reqs; token published by the company on HN"
-  - name: "Shield AI"
-    slug: shield-ai
-    ats: lever
-    token: shieldai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "473 open reqs; token published by the company on HN"
-  - name: "Relativity Space"
-    slug: relativity-space
-    ats: greenhouse
-    token: relativity
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "338 open reqs; token published by the company on HN"
-  - name: "SpaceXAI"
-    slug: spacexai
-    ats: greenhouse
-    token: xai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "255 open reqs; token published by the company on HN"
-  - name: "Zoox"
-    slug: zoox
-    ats: lever
-    token: zoox
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "245 open reqs; token published by the company on HN"
-  - name: "Adyen"
-    slug: adyen
-    ats: greenhouse
-    token: adyen
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "227 open reqs; token published by the company on HN"
-  - name: "The New York Times"
-    slug: the-new-york-times
-    ats: greenhouse
-    token: thenewyorktimes
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "159 open reqs; token published by the company on HN"
-  - name: "Via"
-    slug: via
-    ats: greenhouse
-    token: via
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "158 open reqs; token published by the company on HN"
-  - name: "Legion Health"
-    slug: legion-health
-    ats: ashby
-    token: legionhealth
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "157 open reqs; token published by the company on HN"
-  - name: "Archer"
-    slug: archer
-    ats: greenhouse
-    token: archer56
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "154 open reqs; token published by the company on HN"
-  - name: "Addepar"
-    slug: addepar
-    ats: greenhouse
-    token: addepar1
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "102 open reqs; token published by the company on HN"
-  - name: "Pear VC"
-    slug: pear-vc
-    ats: ashby
-    token: pear-vc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "100 open reqs; token published by the company on HN"
-  - name: "IonQ"
-    slug: ionq
-    ats: greenhouse
-    token: ionq
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "99 open reqs; token published by the company on HN"
-  - name: "Justworks"
-    slug: justworks
-    ats: greenhouse
-    token: justworks
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "95 open reqs; token published by the company on HN"
-  - name: "Baseten"
-    slug: baseten
-    ats: ashby
-    token: baseten
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "94 open reqs; token published by the company on HN"
-  - name: "Hightouch"
-    slug: hightouch
-    ats: greenhouse
-    token: hightouch
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "86 open reqs; token published by the company on HN"
-  - name: "Two Six Technologies"
-    slug: two-six-technologies
-    ats: greenhouse
-    token: twosixtechnologies
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "80 open reqs; token published by the company on HN"
-  - name: "Oklo"
-    slug: oklo
-    ats: greenhouse
-    token: oklo
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "72 open reqs; token published by the company on HN"
-  - name: "Kong"
-    slug: kong
-    ats: ashby
-    token: kong
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "67 open reqs; token published by the company on HN"
-  - name: "Suno"
-    slug: suno
-    ats: ashby
-    token: suno
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "66 open reqs; token published by the company on HN"
-  - name: "Black Canyon Consulting"
-    slug: black-canyon-consulting
-    ats: greenhouse
-    token: blackcanyonconsulting
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "66 open reqs; token published by the company on HN"
-  - name: "Avride"
-    slug: avride
-    ats: greenhouse
-    token: avride
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "64 open reqs; token published by the company on HN"
-  - name: "DeepL"
-    slug: deepl
-    ats: ashby
-    token: deepl
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "60 open reqs; token published by the company on HN"
-  - name: "Supabase"
-    slug: supabase
-    ats: ashby
-    token: supabase
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "60 open reqs; token published by the company on HN"
-  - name: "Loft Orbital Solutions"
-    slug: loft-orbital-solutions
-    ats: lever
-    token: loftorbital
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "56 open reqs; token published by the company on HN"
-  - name: "SentiLink"
-    slug: sentilink
-    ats: ashby
-    token: sentilink
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "55 open reqs; token published by the company on HN"
-  - name: "Tailscale"
-    slug: tailscale
-    ats: greenhouse
-    token: tailscale
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "55 open reqs; token published by the company on HN"
-  - name: "Lightning AI"
-    slug: lightning-ai
-    ats: greenhouse
-    token: lightningai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "54 open reqs; token published by the company on HN"
-  - name: "Rho"
-    slug: rho
-    ats: ashby
-    token: rho
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "53 open reqs; token published by the company on HN"
-  - name: "Forus"
-    slug: forus
-    ats: ashby
-    token: forus
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "52 open reqs; token published by the company on HN"
-  - name: "HumanSignal"
-    slug: humansignal
-    ats: greenhouse
-    token: humansignal
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "52 open reqs; token published by the company on HN"
-  - name: "Mapbox"
-    slug: mapbox
-    ats: ashby
-    token: mapbox
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "50 open reqs; token published by the company on HN"
-  - name: "Proxima Fusion"
-    slug: proxima-fusion
-    ats: ashby
-    token: proxima-fusion
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "48 open reqs; token published by the company on HN"
-  - name: "Coram AI"
-    slug: coram-ai
-    ats: ashby
-    token: coram-ai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "44 open reqs; token published by the company on HN"
-  - name: "Prompt"
-    slug: prompt
-    ats: ashby
-    token: prompt
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "44 open reqs; token published by the company on HN"
-  - name: "PermitFlow"
-    slug: permitflow
-    ats: ashby
-    token: permitflow
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "42 open reqs; token published by the company on HN"
-  - name: "Reframe Systems"
-    slug: reframe-systems
-    ats: ashby
-    token: reframesystems
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "41 open reqs; token published by the company on HN"
-  - name: "Runway"
-    slug: runway
-    ats: ashby
-    token: runway-ml
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "40 open reqs; token published by the company on HN"
-  - name: "Censys"
-    slug: censys
-    ats: greenhouse
-    token: censys
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "37 open reqs; token published by the company on HN"
-  - name: "Emergent Labs"
-    slug: emergent-labs
-    ats: greenhouse
-    token: emergentlabsinc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "34 open reqs; token published by the company on HN"
-  - name: "Confido"
-    slug: confido
-    ats: ashby
-    token: confido
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "33 open reqs; token published by the company on HN"
-  - name: "Giga"
-    slug: giga
-    ats: ashby
-    token: gigaml
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "32 open reqs; token published by the company on HN"
-  - name: "Algolia"
-    slug: algolia
-    ats: greenhouse
-    token: algolia
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "32 open reqs; token published by the company on HN"
-  - name: "Z\u016bm"
-    slug: zum
-    ats: lever
-    token: ridezum
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "32 open reqs; token published by the company on HN"
-  - name: "Antithesis"
-    slug: antithesis
-    ats: ashby
-    token: antithesis
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "31 open reqs; token published by the company on HN"
-  - name: "LiveKit"
-    slug: livekit
-    ats: ashby
-    token: livekit
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "31 open reqs; token published by the company on HN"
-  - name: "Modal"
-    slug: modal
-    ats: ashby
-    token: modal
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "31 open reqs; token published by the company on HN"
-  - name: "amo"
-    slug: amo
-    ats: ashby
-    token: amo
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "30 open reqs; token published by the company on HN"
-  - name: "commercetools"
-    slug: commercetools
-    ats: greenhouse
-    token: commercetools
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "30 open reqs; token published by the company on HN"
-  - name: "Hudl"
-    slug: hudl
-    ats: greenhouse
-    token: hudl
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "30 open reqs; token published by the company on HN"
-  - name: "Atom Computing"
-    slug: atom-computing
-    ats: lever
-    token: atomcomputing
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "28 open reqs; token published by the company on HN"
-  - name: "Solace"
-    slug: solace
-    ats: ashby
-    token: solace
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "27 open reqs; token published by the company on HN"
-  - name: "Atomic Machines"
-    slug: atomic-machines
-    ats: greenhouse
-    token: atomicmachines
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "27 open reqs; token published by the company on HN"
-  - name: "Protege"
-    slug: protege
-    ats: ashby
-    token: protege
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "25 open reqs; token published by the company on HN"
-  - name: "Nectar Social"
-    slug: nectar-social
-    ats: ashby
-    token: nectar-social
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "24 open reqs; token published by the company on HN"
-  - name: "Prior Labs"
-    slug: prior-labs
-    ats: ashby
-    token: prior-labs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "24 open reqs; token published by the company on HN"
-  - name: "Sesame"
-    slug: sesame
-    ats: ashby
-    token: sesame
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "24 open reqs; token published by the company on HN"
-  - name: "Socket"
-    slug: socket
-    ats: ashby
-    token: socket
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "24 open reqs; token published by the company on HN"
-  - name: "Obsidian Security"
-    slug: obsidian-security
-    ats: greenhouse
-    token: obsidiansecurity
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "22 open reqs; token published by the company on HN"
-  - name: "The Allen Institute for Artificial Intelligence"
-    slug: the-allen-institute-for-artificial-intelligence
-    ats: greenhouse
-    token: thealleninstitute
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "22 open reqs; token published by the company on HN"
-  - name: "Back Market"
-    slug: back-market
-    ats: ashby
-    token: backmarket
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "21 open reqs; token published by the company on HN"
-  - name: "Parallel Web Systems"
-    slug: parallel-web-systems
-    ats: ashby
-    token: parallel
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "21 open reqs; token published by the company on HN"
-  - name: "Orkes"
-    slug: orkes
-    ats: greenhouse
-    token: orkes
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "21 open reqs; token published by the company on HN"
-  - name: "Hiya"
-    slug: hiya
-    ats: ashby
-    token: hiya
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "20 open reqs; token published by the company on HN"
-  - name: "LatchBio"
-    slug: latchbio
-    ats: ashby
-    token: latchbio
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "20 open reqs; token published by the company on HN"
-  - name: "Oscilar"
-    slug: oscilar
-    ats: ashby
-    token: oscilar
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "20 open reqs; token published by the company on HN"
-  - name: "Verisign"
-    slug: verisign
-    ats: greenhouse
-    token: verisign
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "20 open reqs; token published by the company on HN"
-  - name: "Amperos"
-    slug: amperos
-    ats: ashby
-    token: amperos
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Artificial Analysis, Inc."
-    slug: artificial-analysis
-    ats: ashby
-    token: artificialanalysis
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Langdock"
-    slug: langdock
-    ats: ashby
-    token: langdock
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Radical Numerics"
-    slug: radical-numerics
-    ats: ashby
-    token: radical-numerics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Shepherd"
-    slug: shepherd
-    ats: ashby
-    token: shepherd
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Metabase"
-    slug: metabase
-    ats: lever
-    token: metabase
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "19 open reqs; token published by the company on HN"
-  - name: "Aptura"
-    slug: aptura
-    ats: ashby
-    token: aptura
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "Crux"
-    slug: crux
-    ats: ashby
-    token: cruxclimate
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "Norm Ai"
-    slug: norm-ai
-    ats: ashby
-    token: norm-ai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "XDOF"
-    slug: xdof
-    ats: ashby
-    token: xdof
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "Vestwell"
-    slug: vestwell
-    ats: greenhouse
-    token: vestwell
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "Skyways"
-    slug: skyways
-    ats: lever
-    token: skyways
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "18 open reqs; token published by the company on HN"
-  - name: "Aurelius Systems"
-    slug: aurelius-systems
-    ats: ashby
-    token: aureliussystems
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "17 open reqs; token published by the company on HN"
-  - name: "Ontic"
-    slug: ontic
-    ats: ashby
-    token: ontic
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "17 open reqs; token published by the company on HN"
-  - name: "Prelude"
-    slug: prelude
-    ats: ashby
-    token: prelude
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "17 open reqs; token published by the company on HN"
-  - name: "Wikimedia Foundation"
-    slug: wikimedia-foundation
-    ats: greenhouse
-    token: wikimedia
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "17 open reqs; token published by the company on HN"
-  - name: "AirOps"
-    slug: airops
-    ats: ashby
-    token: airops
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "GrayMatter Robotics"
-    slug: graymatter-robotics
-    ats: ashby
-    token: graymatter-robotics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "Higharc"
-    slug: higharc
-    ats: ashby
-    token: higharc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "SigNoz"
-    slug: signoz
-    ats: ashby
-    token: signoz
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "Upvest"
-    slug: upvest
-    ats: ashby
-    token: upvest
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "Brave"
-    slug: brave
-    ats: greenhouse
-    token: brave
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "Coast"
-    slug: coast
-    ats: greenhouse
-    token: coast
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "16 open reqs; token published by the company on HN"
-  - name: "Hike Medical"
-    slug: hike-medical
-    ats: ashby
-    token: hike-medical
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "15 open reqs; token published by the company on HN"
-  - name: "Kombo"
-    slug: kombo
-    ats: ashby
-    token: kombo
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "15 open reqs; token published by the company on HN"
-  - name: "Maincode"
-    slug: maincode
-    ats: ashby
-    token: maincode
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "15 open reqs; token published by the company on HN"
-  - name: "Oneleet"
-    slug: oneleet
-    ats: ashby
-    token: oneleet
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "15 open reqs; token published by the company on HN"
-  - name: "Charge Robotics"
-    slug: charge-robotics
-    ats: ashby
-    token: charge-robotics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "14 open reqs; token published by the company on HN"
-  - name: "Deeter Analytics"
-    slug: deeter-analytics
-    ats: ashby
-    token: deeter-analytics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "14 open reqs; token published by the company on HN"
-  - name: "Office Hours"
-    slug: office-hours
-    ats: ashby
-    token: office-hours
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "14 open reqs; token published by the company on HN"
-  - name: "Scribd, Inc."
-    slug: scribd
-    ats: ashby
-    token: scribdinc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "14 open reqs; token published by the company on HN"
-  - name: "Apollo Research"
-    slug: apollo-research
-    ats: lever
-    token: apolloresearch
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "14 open reqs; token published by the company on HN"
-  - name: "DuckDuckGo"
-    slug: duckduckgo
-    ats: ashby
-    token: duck-duck-go
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "Turquoise"
-    slug: turquoise
-    ats: ashby
-    token: turquoise-health
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "Zippy"
-    slug: zippy
-    ats: ashby
-    token: zippymh
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "Archera"
-    slug: archera
-    ats: greenhouse
-    token: archera
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "PlanetScale"
-    slug: planetscale
-    ats: greenhouse
-    token: planetscale
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "Pickle Robot Company"
-    slug: pickle-robot-company
-    ats: lever
-    token: picklerobot
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "13 open reqs; token published by the company on HN"
-  - name: "Artificial Intelligence Underwriting Company"
-    slug: artificial-intelligence-underwriting-company
-    ats: ashby
-    token: aiuc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Axle Energy"
-    slug: axle-energy
-    ats: ashby
-    token: axle-careers
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Credit Genie"
-    slug: credit-genie
-    ats: ashby
-    token: creditgenie
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Dimensional"
-    slug: dimensional
-    ats: ashby
-    token: dimensional
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Pylon"
-    slug: pylon
-    ats: ashby
-    token: pylon
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Vitalize"
-    slug: vitalize
-    ats: ashby
-    token: vitalize
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "WorkWhile"
-    slug: workwhile
-    ats: ashby
-    token: workwhilejobs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Brightcore Energy"
-    slug: brightcore-energy
-    ats: greenhouse
-    token: brightcoreenergy
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Canopy Works"
-    slug: canopy-works
-    ats: greenhouse
-    token: canopyworks
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Mattermost"
-    slug: mattermost
-    ats: greenhouse
-    token: mattermost
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "12 open reqs; token published by the company on HN"
-  - name: "Adaptive"
-    slug: adaptive
-    ats: ashby
-    token: adaptive
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "coreflow"
-    slug: coreflow
-    ats: ashby
-    token: coreflow
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Nango"
-    slug: nango
-    ats: ashby
-    token: nango
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Neon Health"
-    slug: neon-health
-    ats: ashby
-    token: neon-health
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Notable"
-    slug: notable
-    ats: ashby
-    token: notable
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Prosper AI"
-    slug: prosper-ai
-    ats: ashby
-    token: prosper-ai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Finch"
-    slug: finch
-    ats: lever
-    token: finch
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "11 open reqs; token published by the company on HN"
-  - name: "Alembic"
-    slug: alembic
-    ats: ashby
-    token: alembic
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Blueberry Pediatrics"
-    slug: blueberry-pediatrics
-    ats: ashby
-    token: blueberrypediatrics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Flux"
-    slug: flux
-    ats: ashby
-    token: flux
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Phoebe"
-    slug: phoebe
-    ats: ashby
-    token: phoebe-work
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Titan"
-    slug: titan
-    ats: ashby
-    token: titan
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Buildkite"
-    slug: buildkite
-    ats: greenhouse
-    token: buildkite
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "Nova Credit"
-    slug: nova-credit
-    ats: greenhouse
-    token: novacredit
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "10 open reqs; token published by the company on HN"
-  - name: "9 Mothers"
-    slug: 9-mothers
-    ats: ashby
-    token: 9-mothers
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Akur8"
-    slug: akur8
-    ats: ashby
-    token: akur8
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Ditto"
-    slug: ditto
-    ats: ashby
-    token: ditto
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Extend"
-    slug: extend
-    ats: ashby
-    token: extend
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Kepler"
-    slug: kepler
-    ats: ashby
-    token: kepler-ai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Meticulous"
-    slug: meticulous
-    ats: ashby
-    token: meticulous
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Railway"
-    slug: railway
-    ats: ashby
-    token: railway
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Smarkets"
-    slug: smarkets
-    ats: ashby
-    token: smarkets
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Stream"
-    slug: stream
-    ats: ashby
-    token: stream
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "Gauss Labs"
-    slug: gauss-labs
-    ats: lever
-    token: gausslabs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "8 open reqs; token published by the company on HN"
-  - name: "AllSpice"
-    slug: allspice
-    ats: ashby
-    token: allspice
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Close"
-    slug: close
-    ats: ashby
-    token: close
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Colonist"
-    slug: colonist
-    ats: ashby
-    token: colonist
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Langfuse"
-    slug: langfuse
-    ats: ashby
-    token: langfuse
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Parabola"
-    slug: parabola
-    ats: ashby
-    token: parabola-io
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "The San Francisco Compute Company"
-    slug: the-san-francisco-compute-company
-    ats: ashby
-    token: sfcompute
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Terra AI"
-    slug: terra-ai
-    ats: ashby
-    token: terraai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Baton (A Ryder Technology Lab)"
-    slug: baton-a-ryder-technology-lab
-    ats: greenhouse
-    token: baton
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Weave"
-    slug: weave
-    ats: greenhouse
-    token: weave
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "7 open reqs; token published by the company on HN"
-  - name: "Authorium"
-    slug: authorium
-    ats: ashby
-    token: authorium
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Bliro GmbH"
-    slug: bliro
-    ats: ashby
-    token: bliro
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Cradle"
-    slug: cradle
-    ats: ashby
-    token: cradlebio
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "HomeVision"
-    slug: homevision
-    ats: ashby
-    token: homevision
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Odyssey"
-    slug: odyssey
-    ats: ashby
-    token: odyssey
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "OpusClip"
-    slug: opusclip
-    ats: ashby
-    token: opusclip
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Two Dots"
-    slug: two-dots
-    ats: ashby
-    token: two-dots
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "WireScreen"
-    slug: wirescreen
-    ats: ashby
-    token: wirescreen
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Carefeed"
-    slug: carefeed
-    ats: greenhouse
-    token: carefeed
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Epic Kids Inc."
-    slug: epic-kids
-    ats: greenhouse
-    token: epickids
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Vivodyne"
-    slug: vivodyne
-    ats: greenhouse
-    token: vivodyne
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Resilinc"
-    slug: resilinc
-    ats: lever
-    token: resilinc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "6 open reqs; token published by the company on HN"
-  - name: "Anterior"
-    slug: anterior
-    ats: ashby
-    token: anterior
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Castleton Tower"
-    slug: castleton-tower
-    ats: ashby
-    token: castletontower
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Chariot Claims"
-    slug: chariot-claims
-    ats: ashby
-    token: chariotclaims
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Comity"
-    slug: comity
-    ats: ashby
-    token: comity
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "deepset"
-    slug: deepset
-    ats: ashby
-    token: deepsetai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Dryft"
-    slug: dryft
-    ats: ashby
-    token: dryft
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "GovSignals"
-    slug: govsignals
-    ats: ashby
-    token: govsignals
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "OpsMill"
-    slug: opsmill
-    ats: ashby
-    token: opsmill
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Spruce Systems, Inc."
-    slug: spruce-systems
-    ats: ashby
-    token: spruceid
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Stytch"
-    slug: stytch
-    ats: ashby
-    token: stytch
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Zencastr"
-    slug: zencastr
-    ats: ashby
-    token: zencastr
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Outschool"
-    slug: outschool
-    ats: greenhouse
-    token: outschool
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "DISQO"
-    slug: disqo
-    ats: lever
-    token: disqo
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Electric Twin"
-    slug: electric-twin
-    ats: lever
-    token: electric-twin
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Patrick J McGovern Foundation"
-    slug: patrick-j-mcgovern-foundation
-    ats: lever
-    token: mcgovern
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Project Healthy Minds"
-    slug: project-healthy-minds
-    ats: lever
-    token: project-healthy-minds
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Prolific Machines"
-    slug: prolific-machines
-    ats: lever
-    token: prolific-machines
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Robotics and AI Institute"
-    slug: robotics-and-ai-institute
-    ats: lever
-    token: rai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "5 open reqs; token published by the company on HN"
-  - name: "Category Labs"
-    slug: category-labs
-    ats: ashby
-    token: category-labs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Checkly"
-    slug: checkly
-    ats: ashby
-    token: checkly
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Chestnut"
-    slug: chestnut
-    ats: ashby
-    token: chestnut
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Dialogue AI"
-    slug: dialogue-ai
-    ats: ashby
-    token: dialogueai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Evervault"
-    slug: evervault
-    ats: ashby
-    token: evervault
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Firetiger"
-    slug: firetiger
-    ats: ashby
-    token: firetiger
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Griffin"
-    slug: griffin
-    ats: ashby
-    token: griffin
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Mechanize, Inc."
-    slug: mechanize
-    ats: ashby
-    token: mechanize
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "OneCrew"
-    slug: onecrew
-    ats: ashby
-    token: onecrew
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "pod.network"
-    slug: pod-network
-    ats: ashby
-    token: pod-network
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Poesis"
-    slug: poesis
-    ats: ashby
-    token: poesis
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "River"
-    slug: river
-    ats: ashby
-    token: river
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "SalesJack"
-    slug: salesjack
-    ats: ashby
-    token: salesjack
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Findigs"
-    slug: findigs
-    ats: lever
-    token: findigs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "4 open reqs; token published by the company on HN"
-  - name: "Atomic Fi"
-    slug: atomic-fi
-    ats: ashby
-    token: atomic-financial
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Compa"
-    slug: compa
-    ats: ashby
-    token: compa
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Konvu"
-    slug: konvu
-    ats: ashby
-    token: konvu
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Mastra"
-    slug: mastra
-    ats: ashby
-    token: mastra
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Matterworks, Inc."
-    slug: matterworks
-    ats: ashby
-    token: matterworks
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Neo.Tax"
-    slug: neo-tax
-    ats: ashby
-    token: neo-tax
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Speckle"
-    slug: speckle
-    ats: ashby
-    token: speckle
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Unto Labs"
-    slug: unto-labs
-    ats: ashby
-    token: unto-labs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "daydream"
-    slug: daydream
-    ats: ashby
-    token: withdaydream
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Airtame"
-    slug: airtame
-    ats: greenhouse
-    token: airtamejobs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Mithril"
-    slug: mithril
-    ats: greenhouse
-    token: mithril
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "ProPublica"
-    slug: propublica
-    ats: greenhouse
-    token: propublica
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Sage Bionetworks"
-    slug: sage-bionetworks
-    ats: greenhouse
-    token: sagebionetworks
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Adora Technologies Inc"
-    slug: adora-technologies
-    ats: lever
-    token: adora
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Aquabyte"
-    slug: aquabyte
-    ats: lever
-    token: aquabyte
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "3 open reqs; token published by the company on HN"
-  - name: "Airgoods"
-    slug: airgoods
-    ats: ashby
-    token: airgoods
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Eagle"
-    slug: eagle
-    ats: ashby
-    token: eagle
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Everis"
-    slug: everis
-    ats: ashby
-    token: everis
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Luxor Technology Corporation"
-    slug: luxor-technology
-    ats: ashby
-    token: luxor
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Noise Labs"
-    slug: noise-labs
-    ats: ashby
-    token: noise-labs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Pareto"
-    slug: pareto
-    ats: ashby
-    token: pareto-ai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Steel"
-    slug: steel
-    ats: ashby
-    token: steel
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Tetsuwan Scientific"
-    slug: tetsuwan-scientific
-    ats: ashby
-    token: tetsuwan
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Trace"
-    slug: trace
-    ats: ashby
-    token: tracelabs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Char Network"
-    slug: char-network
-    ats: greenhouse
-    token: charnetwork
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Piramidal, Inc."
-    slug: piramidal
-    ats: greenhouse
-    token: piramidalinc
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Distru"
-    slug: distru
-    ats: lever
-    token: distru
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Eleos Technologies"
-    slug: eleos-technologies
-    ats: lever
-    token: eleostech
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Duranta"
-    slug: duranta
-    ats: lever
-    token: getduranta
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "2 open reqs; token published by the company on HN"
-  - name: "Cleric"
-    slug: cleric
-    ats: ashby
-    token: cleric
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Complement"
-    slug: complement
-    ats: ashby
-    token: complement
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Hyperspell"
-    slug: hyperspell
-    ats: ashby
-    token: hyperspell
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Kiloforge"
-    slug: kiloforge
-    ats: ashby
-    token: kiloforge
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Lago"
-    slug: lago
-    ats: ashby
-    token: lago
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Mubit"
-    slug: mubit
-    ats: ashby
-    token: mubit
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Product Genius"
-    slug: product-genius
-    ats: ashby
-    token: productgenius
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Tonic AI"
-    slug: tonic-ai
-    ats: ashby
-    token: tonicai
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Trigger.dev"
-    slug: trigger-dev
-    ats: ashby
-    token: triggerdev
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Chroma"
-    slug: chroma
-    ats: ashby
-    token: trychroma
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Verge Genomics"
-    slug: verge-genomics
-    ats: ashby
-    token: verge-genomics
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Kinelo"
-    slug: kinelo
-    ats: greenhouse
-    token: kinelo
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Updater"
-    slug: updater
-    ats: greenhouse
-    token: updater
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Meilisearch"
-    slug: meilisearch
-    ats: lever
-    token: meili
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Moonsong Labs"
-    slug: moonsong-labs
-    ats: lever
-    token: moonsong-labs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "StraighterLine"
-    slug: straighterline
-    ats: lever
-    token: straighterline
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Thalo Labs"
-    slug: thalo-labs
-    ats: lever
-    token: thalolabs
-    status: verified
-    verified_by: published_token
-    added: 2026-09-12
-    source: hn_whoishiring
-    notes: "1 open reqs; token published by the company on HN"
-  - name: "Academic Partnerships"
-    slug: academic-partnerships
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Accenture"
-    slug: accenture
-    ats: workday
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on workday (token accenture) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Accesa & RaRo"
-    slug: accesa-raro
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Acquia"
-    slug: acquia
-    ats: greenhouse
-    token: acquia
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "11 open reqs at discovery"
-  - name: "Action1"
-    slug: action1
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Actionstep"
-    slug: actionstep
-    ats: workable
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on workable (token actionstep) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Agilent Technologies"
-    slug: agilent-technologies
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Alteryx"
-    slug: alteryx
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "AmerisourceBergen"
-    slug: amerisourcebergen
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "BCD Travel"
-    slug: bcd-travel
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "BetMGM"
-    slug: betmgm
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "BIC"
-    slug: bic
-    ats: successfactors
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on successfactors (token rmkcdn) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Boston Medical Center"
-    slug: boston-medical-center
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "CDW"
-    slug: cdw
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Chainguard"
-    slug: chainguard
-    ats: greenhouse
-    token: chainguard
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "81 open reqs at discovery"
-  - name: "Circular Materials"
-    slug: circular-materials
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Cityblock Health"
-    slug: cityblock-health
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Cloudera"
-    slug: cloudera
-    ats: workday
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on workday (token cloudera) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Compass Group USA"
-    slug: compass-group-usa
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Corsearch"
-    slug: corsearch
-    ats: teamtailor
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on teamtailor (token www) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Creatio"
-    slug: creatio
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "DoiT International"
-    slug: doit-international
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Duncan & Ross"
-    slug: duncan-ross
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Dutchie"
-    slug: dutchie
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "ecoATM Gazelle"
-    slug: ecoatm-gazelle
-    ats: greenhouse
-    token: ecoatmgazelle
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "11 open reqs at discovery"
-  - name: "EQT Corporation"
-    slug: eqt
-    ats: greenhouse
-    token: eqtcorporation
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "39 open reqs at discovery"
-  - name: "EWOR GmbH"
-    slug: ewor
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "ExtraHop Networks"
-    slug: extrahop-networks
-    ats: greenhouse
-    token: extrahopnetworks
-    status: unverified
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "board reports 'ExtraHop', expected 'ExtraHop Networks' - confirm before collecting"
-  - name: "First American"
-    slug: first-american
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Fleetio"
-    slug: fleetio
-    ats: greenhouse
-    token: fleetio
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "22 open reqs at discovery"
-  - name: "Foodsmart"
-    slug: foodsmart
-    ats: lever
-    token: foodsmart
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "17 open reqs at discovery"
-  - name: "Fullscript"
-    slug: fullscript
-    ats: lever
-    token: fullscript
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "24 open reqs at discovery"
-  - name: "Hand Talk"
-    slug: hand-talk
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Henry Schein One"
-    slug: henry-schein-one
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "HR Ways"
-    slug: hr-ways
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "IFS"
-    slug: ifs
-    ats: smartrecruiters
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on smartrecruiters (token ifs1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "IntegriChain"
-    slug: integrichain
-    ats: smartrecruiters
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on smartrecruiters (token integrichain1) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Intermedia Intelligent Communications"
-    slug: intermedia-intelligent-communications
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Irth"
-    slug: irth
-    ats: workable
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on workable (token irth-solutions) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "J.D. Power"
-    slug: j-d-power
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "JobGet"
-    slug: jobget
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Loadsmart"
-    slug: loadsmart
-    ats: lever
-    token: loadsmart
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "14 open reqs at discovery"
-  - name: "Lyric, Inc."
-    slug: lyric
-    ats: ashby
-    token: lyric
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "15 open reqs at discovery"
-  - name: "Moderna"
-    slug: moderna
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Monzo"
-    slug: monzo
-    ats: greenhouse
-    token: monzo
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "65 open reqs at discovery"
-  - name: "MSQ DX"
-    slug: msq-dx
-    ats: greenhouse
-    token: arke
-    status: verified
-    verified_by: careers_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "12 open reqs; found via careers-page fingerprint"
-  - name: "Mutt Data"
-    slug: mutt-data
-    ats: lever
-    token: muttdata
-    status: unverified
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "board reports 'Muttdata jobs', expected 'Mutt Data' - confirm before collecting"
-  - name: "Netomi"
-    slug: netomi
-    ats: lever
-    token: netomi
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "23 open reqs at discovery"
-  - name: "Nexer Group"
-    slug: nexer-group
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "NightOwl Consulting"
-    slug: nightowl-consulting
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "NinjaHoldings"
-    slug: ninjaholdings
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Nova 401(k) Associates"
-    slug: nova-401-k-associates
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "PatientPoint"
-    slug: patientpoint
-    ats: greenhouse
-    token: patientpoint
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "33 open reqs at discovery"
-  - name: "Redcare Pharmacy"
-    slug: redcare-pharmacy
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "REDICA Systems"
-    slug: redica-systems
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Redpin"
-    slug: redpin
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "ServiceNow"
-    slug: servicenow
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Sophos"
-    slug: sophos
-    ats: lever
-    token: sophos
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "113 open reqs at discovery"
-  - name: "Sourcegraph"
-    slug: sourcegraph
-    ats: greenhouse
-    token: sourcegraph91
-    status: verified
-    verified_by: careers_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "8 open reqs; found via careers-page fingerprint"
-  - name: "Southern Illinois Healthcare"
-    slug: southern-illinois-healthcare
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Symetra"
-    slug: symetra
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "TaskUs"
-    slug: taskus
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Teaching Strategies, LLC"
-    slug: teaching-strategies
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "The Honest Company"
-    slug: the-honest-company
-    ats: greenhouse
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "on greenhouse (token embed) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Trinetix"
-    slug: trinetix
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Very LLC"
-    slug: very
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Viseven"
-    slug: viseven
-    ats: lever
-    token: viseven
-    status: verified
-    verified_by: board_page
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "46 open reqs at discovery"
-  - name: "Voyager Technologies, Inc."
-    slug: voyager-technologies
-    ats: greenhouse
-    token: voyagertechnologiesinc
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "154 open reqs at discovery"
-  - name: "Working Solutions"
-    slug: working-solutions
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
-  - name: "Zabota LLC"
-    slug: zabota
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-14
-    source: auto_discovered
-    notes: "no board found by guessing, and no careers page could be read"
   - name: "\u00c4hdus Technology"
     slug: ahdus-technology
     ats: unknown

@@ -1295,3 +1295,42 @@ for the pending-miss queue — a wart worth knowing before re-running mid-day.
 **Also fixed:** a miss queued against a never-diffable scope is now dropped rather than
 left in `pending_misses` forever, where it could never mature and would grow the file
 without bound.
+
+### 2026-09-14 — Gabriel's target company list (30), checked against the panel
+
+Gabriel asked for an **unbiased** target list rather than trusting my original seeding, which
+was built from an inferred profile he had already corrected once. A clean-context agent —
+given his profile but **no knowledge of the existing 399 boards** — produced 30 companies
+from ~35 web searches. The full research, with reasoning and caveats per company, is
+`TARGET_COMPANIES.md` in the **private** repo (it is search targeting, not panel data).
+
+**Diff against the panel:**
+
+| | Count |
+|---|---|
+| Already collected | 12 |
+| On the watchlist but not collected | 5 |
+| Not in the panel at all | 13 |
+
+Of the 18 not being collected, **7 resolved and verified** and are now in: FanDuel (94 reqs),
+dLocal (56), Nium (28), Kalshi (28), Parafin (22), DailyPay (19), Trustly (19). Five of those
+came via the **careers-page board-title check**, which is the stage that did not exist when
+they last failed.
+
+**`target_list: true`** now tags 24 watchlist entries. These are the companies whose coverage
+actually matters, as against ~380 auto-discovered boards, and the tag is there so the report
+can prioritise them later.
+
+**Ten remain unreachable**, and this is now the strongest case yet for an adapter beyond the
+three we have: **Whatnot, Flywire, Checkout.com, Deel, Navan, Revolut, Bilt, Rippling,
+Hostaway, Mews**. Four of those are in the agent's top ten, and Whatnot was its pick for the
+clearest 12–18 month management path. None could be fingerprinted — their careers pages are
+JS-rendered, so the ATS link is not in the served HTML.
+
+**Also worth recording:** the agent independently chose 12 companies already in the panel,
+including ranking Airwallex #1 — some convergence with the original seeding. But it surfaced
+13 the panel had never heard of, which is the argument for having asked it at all.
+
+**Market checks it ran that change the target set:** Block cut 40% of staff, PayPal is cutting
+20%, BILL cut 30%, Etsy cut 12%, Brex reset from $12.3B to $5.2B. Several obvious payments
+targets are now bad targets. Re-verify in December — 9,700+ fintech cuts so far in 2026.
