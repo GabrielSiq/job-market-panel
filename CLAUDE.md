@@ -194,6 +194,14 @@ write, and the three resume corrections must happen before the bank is built fro
 - `uv` for everything: `uv run pytest`, `uv run python -m src.collect`. Python pinned to
   3.12 via `.python-version` so CI and local cannot drift.
 - Commit directly to `main`. Solo project; PRs are ceremony with no reviewer.
+- **`git pull` before doing anything local.** Both repos commit to themselves daily — this
+  one from the collector, the private one from the schedule canary — so a local clone goes
+  stale on its own, without anybody touching it. This is not housekeeping: pushing from a
+  stale clone while a run was in flight is exactly what surfaced the detached-HEAD bug in
+  the workflow's commit step (2026-09-13 below).
+- **Never re-run the collector mid-day without reason.** Re-runs are idempotent for
+  *events* — state replays from days before today — but not for the pending-miss queue. A
+  re-run forgets that a posting was already missed once, delaying its closure by a day.
 - Validation failures on individual records are **logged and skipped, never raised**. One
   malformed posting must not kill a day's collection.
 - `posted_at` (what the source claims, often wrong) and `first_seen` (our own observation)
