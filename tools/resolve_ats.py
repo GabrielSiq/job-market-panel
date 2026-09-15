@@ -270,6 +270,34 @@ async def _board_display_name(client: httpx.AsyncClient, vendor: Vendor, token: 
     return None
 
 
+async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int:
+    """Postings visible via Ashby's own board endpoint, or 0.
+
+    Ashby's documented posting API is **opt-in per organisation**: a board can render
+    publicly at jobs.ashbyhq.com/<token> while the documented API 404s. Reading that 404 as
+    "no board exists" is how Whatnot — 144 live postings — was recorded as unreachable.
+    """
+    try:
+        response = await client.post(
+            "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
+            json={
+                "operationName": "ApiJobBoardWithTeams",
+                "variables": {"organizationHostedJobsPageName": token},
+                "query": (
+                    "query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) "
+                    "{ jobBoard: jobBoardWithTeams(organizationHostedJobsPageName: "
+                    "$organizationHostedJobsPageName) { jobPostings { id } } }"
+                ),
+            },
+            headers={"Content-Type": "application/json"},
+        )
+        response.raise_for_status()
+        board = (response.json().get("data") or {}).get("jobBoard") or {}
+        return len(board.get("jobPostings") or [])
+    except (httpx.HTTPError, ValueError):
+        return 0
+
+
 async def _probe(
     client: httpx.AsyncClient, vendor: Vendor, token: str
 ) -> tuple[int, str | None] | None:
@@ -283,6 +311,12 @@ async def _probe(
     except httpx.HTTPError:
         return None
     if response.status_code != 200:
+        # Ashby's documented API is opt-in, so a 404 there does not mean the board is
+        # absent. Ask the endpoint its own public board page uses before giving up.
+        if vendor.name == "ashby" and response.status_code == 404:
+            count = await _ashby_board_endpoint(client, token)
+            if count:
+                return count, None
         return None
     try:
         payload = response.json()

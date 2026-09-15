@@ -79,6 +79,22 @@ class PerCompanyBoardSource:
     def _board_url(self, company: dict[str, Any]) -> str:
         return f"{self._base}{self._template.format(token=company['token'])}"
 
+    async def _fetch_payload(
+        self, client: httpx.AsyncClient, company: dict[str, Any]
+    ) -> tuple[int, Any]:
+        """Fetch one board, returning (status_code, parsed body).
+
+        A hook rather than inline code because a vendor may need more than one request —
+        Ashby's documented posting API is opt-in per organisation, so a board can exist
+        and render publicly while that API 404s. Overriding this lets a subclass try a
+        second endpoint **without reimplementing the failure-isolation rules**, which is
+        the whole reason this base class exists.
+        """
+        response = await client.get(self._board_url(company))
+        if response.status_code != 200:
+            return response.status_code, None
+        return 200, response.json()
+
     def _extract_jobs(self, payload: Any) -> list[Any] | None:
         """Find the postings in a vendor's response.
 
@@ -113,7 +129,6 @@ class PerCompanyBoardSource:
         Returning `status != ok` here removes only this company from diffing, leaving every
         other board to diff normally - which is the whole point of per-company isolation.
         """
-        url = self._board_url(company)
         started = time.monotonic()
         postings: list[JobPosting] = []
         status = RunStatus.OK
@@ -121,14 +136,15 @@ class PerCompanyBoardSource:
 
         try:
             async with sem:
-                response = await client.get(url)
-            if response.status_code == 404:
+                code, payload = await self._fetch_payload(client, company)
+            if code == 404:
                 # The board moved, was renamed, or the token is wrong. NOT evidence that
                 # the company closed every requisition.
                 status, error = RunStatus.ERROR, "404 - board not found"
+            elif code != 200:
+                status, error = RunStatus.ERROR, f"HTTP {code}"
             else:
-                response.raise_for_status()
-                jobs = self._extract_jobs(response.json())
+                jobs = self._extract_jobs(payload)
                 if jobs is None:
                     status, error = RunStatus.ERROR, "malformed response: no jobs array"
                 else:

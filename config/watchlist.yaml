@@ -3591,6 +3591,16 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "25 open reqs at resolution"
+  - name: "Whatnot"
+    slug: whatnot
+    ats: ashby
+    token: whatnot
+    status: verified
+    verified_by: board_page
+    added: 2026-09-14
+    source: gabriel_target_list
+    target_list: true
+    notes: "144 open reqs; documented Ashby API is not enabled for this org, collected via the board endpoint"
   - name: "Wikimedia Foundation"
     slug: wikimedia-foundation
     ats: greenhouse
@@ -5952,16 +5962,6 @@ companies:
     verified_by: null
     added: 2026-09-12
     source: auto_discovered
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
-  - name: "Whatnot"
-    slug: whatnot
-    ats: unknown
-    token: null
-    status: unresolved
-    verified_by: null
-    added: 2026-09-12
-    source: manual
-    target_list: true
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Working Solutions"
     slug: working-solutions

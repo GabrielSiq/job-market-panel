@@ -358,6 +358,10 @@ class TestGreenhouse:
 
 
 ASHBY_ANY = re.compile(r"^https://api\.ashbyhq\.com/")
+#: Ashby's documented posting API is opt-in per organisation, so the adapter falls back to
+#: the endpoint its own board page uses. Tests that 404 the documented API must therefore
+#: also answer the fallback, or the request goes unmocked.
+ASHBY_GRAPHQL = re.compile(r"^https://jobs\.ashbyhq\.com/api/non-user-graphql")
 LEVER_ANY = re.compile(r"^https://api\.lever\.co/")
 
 
@@ -609,6 +613,9 @@ class TestCrossVendorIsolation:
 
     def test_dead_board_in_one_vendor_does_not_affect_another(self, config, classifier, httpx_mock):
         httpx_mock.add_response(url=ASHBY_ANY, status_code=404)
+        httpx_mock.add_response(
+            url=ASHBY_GRAPHQL, json={"data": {"jobBoard": None}}, is_reusable=True
+        )
         httpx_mock.add_response(url=GH_ANY, json=fixture("greenhouse_board.json"))
 
         gh_watch = [
@@ -638,6 +645,10 @@ class TestCrossVendorIsolation:
         httpx_mock.add_response(
             url=re.compile(r"^https://api\.ashbyhq\.com/posting-api/job-board/deadco"),
             status_code=404,
+        )
+        # A genuinely dead board is dead on both routes.
+        httpx_mock.add_response(
+            url=ASHBY_GRAPHQL, json={"data": {"jobBoard": None}}, is_reusable=True
         )
         httpx_mock.add_response(url=ASHBY_ANY, json=fixture("ashby_board.json"))
         watchlist = [
@@ -705,3 +716,72 @@ class TestParsedSalaryNeverMasqueradesAsStructured:
         assert (posting.salary_min, posting.salary_max) == (112_000, 149_000)
         assert posting.salary_source is SalarySource.DESCRIPTION_PARSED
         assert posting.salary_is_estimated is False, "disclosed by the employer, not predicted"
+
+
+class TestAshbyBoardEndpointFallback:
+    """Ashby's documented posting API is **opt-in per organisation**.
+
+    A company can have a fully public board rendering at jobs.ashbyhq.com/<token> while the
+    documented API 404s. Whatnot is exactly that — 144 live postings the documented route
+    cannot see. Treating that 404 as "no board exists" is how it got recorded as unreachable.
+    """
+
+    def test_falls_back_when_the_documented_api_404s(self, config, classifier, httpx_mock):
+        httpx_mock.add_response(url=ASHBY_ANY, status_code=404)
+        httpx_mock.add_response(
+            url=ASHBY_GRAPHQL,
+            json={
+                "data": {
+                    "jobBoard": {
+                        "jobPostings": [
+                            {
+                                "id": "abc",
+                                "title": "Senior Data Scientist",
+                                "locationName": "Remote - US",
+                                "employmentType": "FullTime",
+                                "compensationTierSummary": "$200K - $260K",
+                                "secondaryLocations": [],
+                            }
+                        ]
+                    }
+                }
+            },
+        )
+        source = AshbySource(
+            config,
+            classifier,
+            [
+                {
+                    "name": "Whatnot",
+                    "slug": "whatnot",
+                    "ats": "ashby",
+                    "token": "whatnot",
+                    "status": "verified",
+                }
+            ],
+        )
+        result = run(_fetch(source, config))
+        assert len(result.postings) == 1
+        posting = result.postings[0]
+        assert posting.title == "Senior Data Scientist"
+        assert posting.apply_url == "https://jobs.ashbyhq.com/whatnot/abc"
+        assert (posting.salary_min, posting.salary_max) == (200_000, 260_000)
+        assert posting.salary_source is SalarySource.DESCRIPTION_PARSED, (
+            "a display string parsed by us is not a vendor-supplied field"
+        )
+
+    def test_documented_api_is_preferred_when_available(self, config, classifier, httpx_mock):
+        """The fallback is poorer — no descriptions, compensation as a string — so a board
+        with the API enabled must never touch it."""
+        httpx_mock.add_response(url=ASHBY_ANY, json=fixture("ashby_board.json"))
+        source = AshbySource(config, classifier, [_company()])
+        result = run(_fetch(source, config))
+        assert result.postings, "the documented API answered, so no fallback was needed"
+
+    def test_dead_on_both_routes_is_still_an_error(self, config, classifier, httpx_mock):
+        httpx_mock.add_response(url=ASHBY_ANY, status_code=404)
+        httpx_mock.add_response(url=ASHBY_GRAPHQL, json={"data": {"jobBoard": None}})
+        source = AshbySource(config, classifier, [_company("dead", "dead", "Dead Co")])
+        result = run(_fetch(source, config))
+        assert result.runs[0].status is RunStatus.ERROR
+        assert result.diffable_scopes == set()

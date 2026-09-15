@@ -1334,3 +1334,46 @@ including ranking Airwallex #1 — some convergence with the original seeding. B
 **Market checks it ran that change the target set:** Block cut 40% of staff, PayPal is cutting
 20%, BILL cut 30%, Etsy cut 12%, Brex reset from $12.3B to $5.2B. Several obvious payments
 targets are now bad targets. Re-verify in December — 9,700+ fintech cuts so far in 2026.
+
+### 2026-09-14 — Ashby's documented API is opt-in; I had been reading 404 as "no board"
+
+Gabriel pushed back on Whatnot being listed unreachable: *"whatnot uses ashby"*. He was
+right, and the reason I got it wrong matters more than the company.
+
+| Probe | Result |
+|---|---|
+| `jobs.ashbyhq.com/whatnot` (board page) | renders, title "Whatnot Jobs" |
+| `api.ashbyhq.com/posting-api/job-board/whatnot` | **404** |
+| same API for `plaid`, `ramp` | 200 |
+
+**Ashby's documented posting API is opt-in per organisation.** A company can run a fully
+public board while that API returns 404. `resolve_ats` only probed the documented route and
+reported "no board found" — a state indistinguishable, in the watchlist, from having no ATS
+at all. **144 live Whatnot postings were invisible.**
+
+Worse, I had explained the failure to Gabriel as "their careers page is JS-rendered so
+fingerprinting cannot see the ATS link". That explanation was **wrong**: the ATS was
+findable, the probe asked the wrong endpoint, and I took the 404 at face value rather than
+checking whether a board existed.
+
+**Two fixes:**
+
+1. **`AshbySource` falls back** to the endpoint the public board page itself calls, but only
+   on a 404, so boards with the API enabled keep the richer fields. `PerCompanyBoardSource`
+   grew a `_fetch_payload` hook so this needed **no duplication of the isolation rules**.
+2. **`resolve_ats` asks that endpoint** before concluding a board is absent.
+
+**The fallback's rows are poorer, and that is recorded rather than hidden:** no description
+(so remote inference loses its strongest fallback) and compensation as a display string
+rather than structured tiers — parsed, and therefore labelled `description_parsed`, never
+`posting_disclosed`. It is also undocumented, putting it in the same category as Workable's
+widget endpoint: public and working, liable to change without a changelog.
+
+**It unlocked exactly one of the ten**, though. Tested against all: Flywire, Checkout.com,
+Deel, Navan, Revolut, Bilt, Rippling, Hostaway and Mews are genuinely not on Ashby. So this
+fixes the case Gabriel caught and confirms the rest need a different vendor.
+
+**The transferable lesson:** "endpoint 404" and "thing does not exist" are different facts,
+and collapsing them is the same error as treating a failed fetch as a closed requisition.
+This project keeps rediscovering that absence of evidence is not evidence of absence — in
+the differ, in the healthcheck, and now in resolution.

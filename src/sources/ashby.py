@@ -17,6 +17,8 @@ import logging
 from datetime import date, datetime
 from typing import Any
 
+import httpx
+
 from src.location import parse_location
 from src.models import (
     TRACKED_FAMILIES,
@@ -34,6 +36,27 @@ from src.sources.greenhouse import _salary_fields
 
 logger = logging.getLogger(__name__)
 
+#: The endpoint Ashby's own public board page calls.
+#:
+#: Needed because **the documented posting API is opt-in per organisation**. A company can
+#: have a fully public Ashby board that renders at jobs.ashbyhq.com/<token> while
+#: api.ashbyhq.com/posting-api/job-board/<token> returns 404 — Whatnot is exactly this, with
+#: 144 live postings invisible to the documented route.
+#:
+#: Undocumented, and therefore in the same category as Workable's widget endpoint: public
+#: and working, but liable to change without a changelog. Used only as a FALLBACK, and the
+#: rows it returns are poorer — no description (so remote inference loses its strongest
+#: fallback) and compensation as a display string rather than structured tiers.
+_GRAPHQL_URL = "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams"
+_GRAPHQL_QUERY = """query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
+  jobBoard: jobBoardWithTeams(organizationHostedJobsPageName: $organizationHostedJobsPageName) {
+    jobPostings {
+      id title locationName employmentType compensationTierSummary
+      secondaryLocations { locationName }
+    }
+  }
+}"""
+
 #: Ashby states a pay interval as e.g. "1 YEAR". Matched by keyword so an unseen variant
 #: degrades to None rather than being silently mapped to the wrong period.
 _INTERVAL_KEYWORDS = (
@@ -48,6 +71,66 @@ _INTERVAL_KEYWORDS = (
 class AshbySource(PerCompanyBoardSource):
     name = "ashby"
     source = Source.ASHBY
+
+    async def _fetch_payload(self, client, company):
+        """Documented API first; fall back to the board page's own endpoint.
+
+        The fallback exists because the documented API is opt-in — see _GRAPHQL_URL. It is
+        tried ONLY on a 404, so a board that has the API enabled never touches it and keeps
+        the richer fields.
+        """
+        response = await client.get(self._board_url(company))
+        if response.status_code == 200:
+            return 200, response.json()
+        if response.status_code != 404:
+            return response.status_code, None
+
+        token = company["token"]
+        try:
+            fallback = await client.post(
+                _GRAPHQL_URL,
+                json={
+                    "operationName": "ApiJobBoardWithTeams",
+                    "variables": {"organizationHostedJobsPageName": token},
+                    "query": _GRAPHQL_QUERY,
+                },
+                headers={"Content-Type": "application/json"},
+            )
+            fallback.raise_for_status()
+            board = (fallback.json().get("data") or {}).get("jobBoard") or {}
+            postings = board.get("jobPostings") or []
+        except (httpx.HTTPError, ValueError):
+            return 404, None
+        if not postings:
+            return 404, None
+
+        logger.info(
+            "ashby[%s]: documented API unavailable, used the board endpoint "
+            "(%s postings, no descriptions)",
+            company["slug"],
+            len(postings),
+        )
+        # Normalized into the documented shape so _to_posting stays single-path. Missing
+        # fields stay absent rather than being faked, so their absence is visible in the
+        # data rather than hidden behind a default.
+        return 200, {
+            "jobs": [
+                {
+                    "id": jp.get("id"),
+                    "title": jp.get("title"),
+                    "location": jp.get("locationName"),
+                    "employmentType": jp.get("employmentType"),
+                    "secondaryLocations": [
+                        {"location": sl.get("locationName")}
+                        for sl in jp.get("secondaryLocations") or []
+                    ],
+                    "jobUrl": f"https://jobs.ashbyhq.com/{token}/{jp.get('id')}",
+                    "_compensationSummary": jp.get("compensationTierSummary"),
+                    "_via_board_endpoint": True,
+                }
+                for jp in postings
+            ]
+        }
 
     # ------------------------------------------------------------------ normalization
 
@@ -164,7 +247,14 @@ class AshbySource(PerCompanyBoardSource):
             department=clean_text(raw.get("department")) or clean_text(raw.get("team")),
             # Structured compensation always wins; prose is only a fallback for the ~40%
             # of Ashby postings that publish no tier.
-            **(self._salary(raw) or _salary_fields(parse_salary(description))),
+            **(
+                self._salary(raw)
+                or _salary_fields(parse_salary(description))
+                # The board endpoint gives a display string ("$150K - $190K, offers
+                # equity") instead of structured tiers. Parsed, so it is labelled
+                # DESCRIPTION_PARSED rather than posting_disclosed — extracted by us.
+                or _salary_fields(parse_salary(raw.get("_compensationSummary")))
+            ),
             salary_is_estimated=False,
             description_text=description if role_family in TRACKED_FAMILIES else None,
             apply_url=clean_text(raw.get("jobUrl")) or clean_text(raw.get("applyUrl")) or "",
