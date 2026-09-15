@@ -12,11 +12,12 @@ Maps to the Phase 1 acceptance criteria:
 
 from __future__ import annotations
 
+import warnings
 from datetime import UTC, date, datetime
 
 import pytest
 
-from src.collect import diff, replay_open_postings
+from src.collect import _enrich_disappearance_titles, diff, replay_open_postings
 from src.models import (
     EventType,
     JobPosting,
@@ -363,3 +364,79 @@ class TestOnlyACensusMayCloseAPosting:
             today=DAY2,
         )
         assert outcome.pending_misses == {}
+
+
+class TestDisappearanceBackfill:
+    """Disappearance rows are built empty and filled in from a previous day's raw JSON.
+
+    That is the one place in the collector where a model is mutated after construction,
+    and it silently produced rows whose enum fields held plain strings - equal to the
+    enum (these are StrEnums) but not identical, while this codebase compares enums
+    with `is`.
+    """
+
+    def _closed(self, store, prior: PostingEvent) -> PostingEvent:
+        store.write_events(DAY1, [prior])
+        event = PostingEvent(
+            date=DAY2,
+            event=EventType.DISAPPEARED,
+            job_id=prior.job_id,
+            source=prior.source,
+            company_slug=prior.company_slug,
+            company_name=prior.company_slug,
+            title="",
+            apply_url="",
+        )
+        _enrich_disappearance_titles([event], store, DAY2)
+        return event
+
+    def test_backfilled_enums_are_enums_not_strings(self, store):
+        event = self._closed(
+            store, PostingEvent.from_posting(posting("1"), EventType.APPEARED, DAY1)
+        )
+        assert event.role_family is RoleFamily.PRODUCT_DS
+        assert event.seniority is Seniority.SENIOR
+
+    def test_backfill_serializes_without_warnings(self, store):
+        """A pydantic serializer warning is only cosmetic until it hides a real one."""
+        event = self._closed(
+            store, PostingEvent.from_posting(posting("1"), EventType.APPEARED, DAY1)
+        )
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", UserWarning)
+            event.model_dump_json()
+
+    def test_remote_provenance_travels_with_the_verdict(self, store):
+        """Copying `is_remote` while leaving `remote_source` at its UNKNOWN default
+        publishes a confident remote status resting on no stated evidence."""
+        event = self._closed(
+            store, PostingEvent.from_posting(posting("1"), EventType.APPEARED, DAY1)
+        )
+        assert event.is_remote is True
+        assert event.remote_source is RemoteSource.LOCATION_STRING
+
+    def test_a_retired_taxonomy_value_does_not_kill_the_run(self, store):
+        """Renaming enum members is forbidden, so this should never fire - but one bad
+        historical row must not cost a whole day's collection, and the fields either
+        side of it must still fill in."""
+        prior = PostingEvent.from_posting(posting("1"), EventType.APPEARED, DAY1)
+        # A row as an earlier taxonomy might have written it. Storage serializes plain
+        # dicts as readily as models, which is what lets this be written at all.
+        raw = prior.model_dump(mode="json") | {"role_family": "a_family_we_retired"}
+        store.write_events(DAY1, [raw])
+
+        event = PostingEvent(
+            date=DAY2,
+            event=EventType.DISAPPEARED,
+            job_id=prior.job_id,
+            source=prior.source,
+            company_slug=prior.company_slug,
+            company_name=prior.company_slug,
+            title="",
+            apply_url="",
+        )
+        _enrich_disappearance_titles([event], store, DAY2)
+
+        assert event.role_family is None
+        assert event.seniority is Seniority.SENIOR
+        assert event.title == prior.title

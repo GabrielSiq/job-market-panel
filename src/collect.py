@@ -24,6 +24,7 @@ import asyncio
 import logging
 from dataclasses import dataclass, field
 from datetime import date
+from enum import StrEnum
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +36,9 @@ from src.models import (
     EventType,
     JobPosting,
     PostingEvent,
+    RemoteSource,
+    RoleFamily,
+    Seniority,
     SourceRun,
 )
 from src.sources.ashby import AshbySource
@@ -211,6 +215,24 @@ async def fetch_all(config: dict[str, Any], sources: list[Any]) -> FetchResult:
     return combined
 
 
+def _retired_to_none(value: Any, enum_cls: type[StrEnum]) -> Any:
+    """A logged enum value, or None if the taxonomy no longer has it.
+
+    Backfill reads raw JSON written on an earlier day, possibly by an earlier taxonomy.
+    The spec forbids renaming enum members, so this should never fire - but a day's
+    collection must not die because one historical row carries a value that was retired.
+    """
+    if value is None:
+        return None
+    try:
+        return enum_cls(value)
+    except ValueError:
+        logger.warning(
+            "dropping retired %s value %r from a backfilled event", enum_cls.__name__, value
+        )
+        return None
+
+
 def _enrich_disappearance_titles(events: list[PostingEvent], storage: Storage, today: date) -> None:
     """Backfill company_name/title on disappearance rows from the original appearance.
 
@@ -231,9 +253,15 @@ def _enrich_disappearance_titles(events: list[PostingEvent], storage: Storage, t
         if event.event is EventType.DISAPPEARED and (row := found.get(event.job_id)):
             event.company_name = row.get("company_name") or event.company_name
             event.title = row.get("title") or ""
-            event.role_family = row.get("role_family")
-            event.seniority = row.get("seniority")
+            event.role_family = _retired_to_none(row.get("role_family"), RoleFamily)
+            event.seniority = _retired_to_none(row.get("seniority"), Seniority)
             event.is_remote = row.get("is_remote")
+            # Provenance travels with the verdict. Leaving this at its UNKNOWN default
+            # while copying `is_remote` would publish a confident remote status that
+            # claims to rest on no evidence at all.
+            event.remote_source = (
+                _retired_to_none(row.get("remote_source"), RemoteSource) or RemoteSource.UNKNOWN
+            )
             event.location_raw = row.get("location_raw")
             event.apply_url = row.get("apply_url") or ""
 

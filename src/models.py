@@ -302,9 +302,15 @@ class PostingEvent(BaseModel):
     Slim by design: every posting from every source, so non-DS roles still contribute
     the denominators the growth signal needs, but without description text. Append-only
     and immutable; everything downstream reads this.
+
+    `validate_assignment` is on deliberately. Disappearance rows are built empty and then
+    backfilled field-by-field from a previous day's raw JSON (`_enrich_disappearance_titles`),
+    and pydantic does not validate assignment by default - so an enum-typed field would
+    quietly end up holding a plain `str`. It compares equal (these are `StrEnum`s) but is
+    not identical, and this codebase compares enums with `is`.
     """
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", validate_assignment=True)
 
     date: date
     event: EventType
