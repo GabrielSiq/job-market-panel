@@ -4153,13 +4153,13 @@ companies:
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Canva"
     slug: canva
-    ats: unknown
+    ats: smartrecruiters
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
     source: manual
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+    notes: "token canva, 251 postings; NO ADAPTER - see CLAUDE.md 2026-09-14"
   - name: "Capgemini Technology Services"
     slug: capgemini-technology-services
     ats: unknown
@@ -4378,14 +4378,14 @@ companies:
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Deel"
     slug: deel
-    ats: unknown
+    ats: ashby
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
     source: manual
     target_list: true
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+    notes: "on Ashby but inlined into deel.com's own page JSON; no reachable board token; NO ADAPTER - see CLAUDE.md 2026-09-14"
   - name: "Delan Associates"
     slug: delan-associates
     ats: unknown
@@ -4658,14 +4658,14 @@ companies:
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
   - name: "Flywire"
     slug: flywire
-    ats: unknown
+    ats: smartrecruiters
     token: null
     status: unresolved
     verified_by: null
     added: 2026-09-12
     source: manual
     target_list: true
-    notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+    notes: "token Flywire1, 60 postings - documented public API; NO ADAPTER - see CLAUDE.md 2026-09-14"
   - name: "Fortive"
     slug: fortive
     ats: unknown
