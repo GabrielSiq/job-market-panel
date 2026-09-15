@@ -166,7 +166,7 @@ def render(con: duckdb.DuckDBPyConnection) -> str:
     out.append("")
 
     # --- the part read daily -------------------------------------------------------
-    out.append(f"## New since {last_day}")
+    out.append(f"## New on {last_day}")
     out.append("")
     # Capped at a few per company. Sorting purely by pay lets one generous employer
     # flood the entire list - OpenAI alone filled 20 of the first 25 rows - which buries
