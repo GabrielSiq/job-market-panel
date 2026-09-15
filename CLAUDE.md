@@ -2,6 +2,10 @@
 
 **Read this file first. It is how context survives between sessions.**
 
+> **Ideas that are NOT the plan live in `IDEAS.md` in the private `job-search-assets`
+> repo** — deliberately one backlog for both repos, since a split backlog is a half-read
+> one. Check it before proposing something; it also records what was rejected and why.
+
 > **This file is the plan of record.** Everything decided, measured or ruled out lives
 > here or in the private repo's `CLAUDE.md` — not in a chat transcript, not in a scratch
 > plan file, not in anyone's head. It is committed and pushed, so it survives compaction,
