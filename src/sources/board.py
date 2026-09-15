@@ -40,17 +40,21 @@ logger = logging.getLogger(__name__)
 def select_companies(watchlist: list[dict[str, Any]], vendor: str) -> list[dict[str, Any]]:
     """Companies this vendor should collect from.
 
-    Excludes `status: unverified` deliberately. Ashby and Lever echo no company name — only
-    the token in a URL — so unlike Greenhouse there is no way to confirm that a *guessed*
-    token belongs to the company we meant. An unverified board is a real board belonging to
-    somebody; collecting it would attribute another company's hiring to this one for the
-    life of the panel. Such entries stay in the watchlist awaiting confirmation rather than
-    being silently collected or silently dropped.
+    Only `verified` boards, and that is an allowlist on purpose. Ashby and Lever echo no
+    company name — only the token in a URL — so unlike Greenhouse there is no way to
+    confirm that a *guessed* token belongs to the company we meant. An unverified board is
+    a real board belonging to somebody; collecting it would attribute another company's
+    hiring to this one for the life of the panel. Such entries stay in the watchlist
+    awaiting confirmation rather than being silently collected or silently dropped.
+
+    This used to read `status != "unverified"`, which meant any status added later was
+    collected by default. That is the wrong default for the one function standing between
+    a guessed token and the permanent record.
     """
     return [
         entry
         for entry in watchlist
-        if entry.get("ats") == vendor and entry.get("token") and entry.get("status") != "unverified"
+        if entry.get("ats") == vendor and entry.get("token") and entry.get("status") == "verified"
     ]
 
 

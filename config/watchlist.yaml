@@ -9,6 +9,9 @@
 #   unverified - a live board was found by guessing a token, but its reported name
 #                does not match. NOT collected. `notes` carries the name it reports
 #                so a human can confirm or correct it in one glance.
+#   deferred   - no verdict: a probe timed out, was rate-limited or 5xx'd. NOT
+#                collected, and NOT a finding. Re-probed by the next daily run,
+#                because `unresolved` is never re-probed and would be permanent.
 #   unresolved - no board found on Greenhouse, Ashby or Lever. Kept deliberately:
 #                many are on Workday or a custom site. Do not delete.
 #

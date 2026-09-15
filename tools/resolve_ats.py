@@ -22,6 +22,12 @@ skips it until a human confirms. This is deliberately strict - "Chime" vs "Chime
 Inc" is a legitimate legal name, and "Wise" vs "Wise Worksite Field Sales" is the wrong
 company, and the two are structurally identical to a fuzzy matcher.
 
+**A probe that never answered is not a verdict.** A 429, a 5xx or a timeout says nothing
+about whether a board exists, and recording it as `unresolved` would be permanent: the
+daily run does not re-probe unresolved names, by design. Those become `deferred` instead
+and are re-probed on the next run. This is correctness rule 1 - absence of evidence is not
+evidence of absence - applied to resolution rather than to the differ.
+
 Usage:
     uv run python tools/resolve_ats.py --names "Stripe" "Plaid"
     uv run python tools/resolve_ats.py --file companies.txt --out config/watchlist.yaml
@@ -190,7 +196,10 @@ class Resolution:
     ats: str = "unknown"
     token: str | None = None
     job_count: int = 0
-    status: str = "unresolved"  # verified | unverified | unresolved
+    status: str = "unresolved"  # verified | unverified | unresolved | deferred
+    #: Vendor probes that never answered. While this is non-zero, "no board" is not a
+    #: conclusion we are entitled to draw.
+    no_verdict: int = 0
     verified_by: str | None = None  # name_echo | board_page | careers_url
     board_name: str | None = None
     tried: list[str] = field(default_factory=list)
@@ -270,8 +279,8 @@ async def _board_display_name(client: httpx.AsyncClient, vendor: Vendor, token: 
     return None
 
 
-async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int:
-    """Postings visible via Ashby's own board endpoint, or 0.
+async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int | None:
+    """Postings visible via Ashby's own board endpoint, 0 for none, None if it never answered.
 
     Ashby's documented posting API is **opt-in per organisation**: a board can render
     publicly at jobs.ashbyhq.com/<token> while the documented API 404s. Reading that 404 as
@@ -291,41 +300,76 @@ async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int:
             },
             headers={"Content-Type": "application/json"},
         )
-        response.raise_for_status()
+    except httpx.HTTPError:
+        # Transport-level: we never got an answer.
+        return None
+    # A status response IS an answer. Routing it through raise_for_status would turn a
+    # plain "no such board" 404 into "we could not ask", which defers the company for
+    # ever on a question that was in fact answered.
+    if response.status_code != 200:
+        return None if not _answered(response.status_code) else 0
+    try:
         board = (response.json().get("data") or {}).get("jobBoard") or {}
-        return len(board.get("jobPostings") or [])
-    except (httpx.HTTPError, ValueError):
+    except ValueError:
         return 0
+    return len(board.get("jobPostings") or [])
 
 
-async def _probe(
-    client: httpx.AsyncClient, vendor: Vendor, token: str
-) -> tuple[int, str | None] | None:
-    """(job_count, api_echoed_name) if this board exists and has jobs, else None.
+#: Status codes that are the endpoint declining to answer rather than answering "no".
+#: 404 is deliberately absent - that is a real, informative answer.
+_NO_VERDICT = frozenset({401, 403, 408, 429})
 
-    An empty board counts as no match: it is indistinguishable from a slug collision, and
-    would otherwise park a wrong token in the config.
+
+def _answered(status: int) -> bool:
+    return status not in _NO_VERDICT and status < 500
+
+
+@dataclass(frozen=True)
+class Probe:
+    """The outcome of one board probe.
+
+    `board` is (job_count, api_echoed_name) where a board exists and has jobs.
+    `answered` is False when the endpoint gave us no verdict at all - a timeout, a 429,
+    a 5xx. "No board here" and "we could not ask" are different facts, and collapsing
+    them is what put 301 names in the watchlist as permanently unresolvable.
+    """
+
+    board: tuple[int, str | None] | None = None
+    answered: bool = True
+
+
+MISS = Probe()
+NO_VERDICT = Probe(answered=False)
+
+
+async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe:
+    """Whether this board exists and has jobs - or that we could not find out.
+
+    An empty board counts as a miss, not a find: it is indistinguishable from a slug
+    collision, and would otherwise park a wrong token in the config.
     """
     try:
         response = await client.get(vendor.api.format(token=token))
     except httpx.HTTPError:
-        return None
+        return NO_VERDICT
     if response.status_code != 200:
         # Ashby's documented API is opt-in, so a 404 there does not mean the board is
         # absent. Ask the endpoint its own public board page uses before giving up.
         if vendor.name == "ashby" and response.status_code == 404:
             count = await _ashby_board_endpoint(client, token)
+            if count is None:
+                return NO_VERDICT
             if count:
-                return count, None
-        return None
+                return Probe(board=(count, None))
+        return MISS if _answered(response.status_code) else NO_VERDICT
     try:
         payload = response.json()
     except ValueError:
-        return None
+        return MISS
     jobs = vendor.jobs(payload)
     if not jobs:
-        return None
-    return len(jobs), vendor.echoed_name(payload)
+        return MISS
+    return Probe(board=(len(jobs), vendor.echoed_name(payload)))
 
 
 async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semaphore) -> Resolution:
@@ -339,10 +383,11 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
             result.tried.append(f"{vendor.name}:{token}")
             async with sem:
                 probed = await _probe(client, vendor, token)
-            if not probed:
+            result.no_verdict += not probed.answered
+            if probed.board is None:
                 continue
 
-            count, echoed = probed
+            count, echoed = probed.board
             reported = echoed
             verified_by = "name_echo" if echoed else None
             if reported is None:
@@ -372,14 +417,15 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
     found = await fingerprint(client, name)
     if found is None:
         result.note = "no board found by guessing, and no careers page could be read"
-        return result
+        return _settle(result)
 
     vendor, token = found
     if vendor in READABLE and token:
         async with sem:
             probed = await _probe(client, VENDOR_BY_NAME[vendor], token)
-        if probed:
-            count, _ = probed
+        result.no_verdict += not probed.answered
+        if probed.board:
+            count, _ = probed.board
             result.ats, result.token, result.job_count = vendor, token, count
             # The company's own careers page points here. That is stronger evidence than
             # any name comparison, so no further verification is needed.
@@ -389,11 +435,35 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
 
     # Reachable in principle, but not by an adapter we have. Recording the vendor turns an
     # unexplained gap into a measured one.
+    if vendor in READABLE:
+        # We have an adapter and the careers page named the vendor, so we are only here
+        # because the probe failed or the page named no token. "No adapter" would be a
+        # flat lie, and recording either as unresolved would make it permanent.
+        result.ats = vendor
+        result.note = f"on {vendor}, but the careers page named no board token"
+        return _settle(result)
+
     result.ats = vendor
     result.note = (
         f"on {vendor}"
         + (f" (token {token})" if token else "")
         + " - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+    )
+    return result
+
+
+def _settle(result: Resolution) -> Resolution:
+    """Downgrade a bare "not found" to `deferred` when some probe never answered.
+
+    Only vendor API probes count toward this. Careers-page fingerprinting fetches guessed
+    domains, most of which are not supposed to exist, so its failures carry no signal.
+    """
+    if result.status != "unresolved" or not result.no_verdict:
+        return result
+    result.status = "deferred"
+    result.note = (
+        f"{result.no_verdict} of {len(result.tried)} probes did not answer "
+        "- no verdict yet; re-probed on the next run"
     )
     return result
 
@@ -439,6 +509,9 @@ def render_watchlist(results: list[Resolution], source: str = "manual") -> str:
         "#                so a human can confirm or correct it in one glance.",
         "#   unresolved - no board found on Greenhouse, Ashby or Lever. Kept deliberately:",
         "#                many are on Workday or a custom site. Do not delete.",
+        "#   deferred   - no verdict: a probe timed out, was rate-limited or 5xx'd. NOT",
+        "#                collected, and NOT a finding. Re-probed by the next daily run,",
+        "#                because `unresolved` is never re-probed and would be permanent.",
         "#",
         "# Verification is not paranoia. In Phase 1 it caught three wrong boards: 'carbon'",
         "# is Carbon Inc rather than Carbon Health, 'wise' an unrelated field-sales board,",
@@ -447,7 +520,7 @@ def render_watchlist(results: list[Resolution], source: str = "manual") -> str:
         "",
         "companies:",
     ]
-    order = {"verified": 0, "unverified": 1, "unresolved": 2}
+    order = {"verified": 0, "unverified": 1, "deferred": 2, "unresolved": 3}
     for r in sorted(deduped, key=lambda r: (order.get(r.status, 3), r.name.lower())):
         note = r.note or (f"{r.job_count} open reqs at resolution" if r.token else "")
         lines += [
@@ -496,7 +569,7 @@ def main() -> int:
     else:
         print(f"{'company':<28}{'ats':<12}{'token':<24}{'status':<12}{'reqs':>6}")
         print("-" * 84)
-        order = {"verified": 0, "unverified": 1, "unresolved": 2}
+        order = {"verified": 0, "unverified": 1, "deferred": 2, "unresolved": 3}
         for r in sorted(results, key=lambda r: (order.get(r.status, 3), r.name.lower())):
             print(
                 f"{r.name[:26]:<28}{r.ats:<12}{r.token or '-'!s:<24}"
@@ -507,6 +580,7 @@ def main() -> int:
         counts = {s: sum(1 for r in results if r.status == s) for s in order}
         print(
             f"\nverified {counts['verified']} | unverified {counts['unverified']} "
+            f"| deferred {counts.get('deferred', 0)} "
             f"| unresolved {counts['unresolved']} (of {len(results)})"
         )
 

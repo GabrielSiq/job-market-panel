@@ -104,24 +104,26 @@ silent. Never compute survival from Himalayas rows.
 
 ## Current status
 
-**Phases 1, 2 and 2.5 are built and collecting** (last updated 2026-09-13). Four sources,
-a census over **382 verified boards**, discovery that runs itself, and an analytics layer.
-**229 tests passing**, workflow green in CI.
+**Phases 1, 2 and 2.5 are built and collecting** (last updated 2026-09-15). Four sources,
+a census over **420 verified boards**, discovery that runs itself, and an analytics layer.
+**265 tests passing**, workflow green in CI.
 
 | | |
 |---|---|
-| Boards collected daily | **382** (148 Greenhouse, 189 Ashby, 45 Lever) |
-| Watchlist entries | 591 (382 verified, 18 quarantined, 191 no readable board) |
-| Open postings tracked | ~26,000, collected in **under a minute** |
-| In-band target roles open | ~400 |
-| Pay band known | 36.5% overall (57% on days collected since the parser shipped) |
-| Country known | 66.5% |
-| Remote, strong evidence | 58.6% (86% including `location_implied`) |
-| Days of history | **2** |
+| Boards collected daily | **420** (169 Greenhouse, 194 Ashby, 57 Lever) |
+| Watchlist entries | 749 (420 verified, 28 quarantined, 301 no readable board) |
+| Open postings tracked | ~28,600, collected in **under two minutes** |
+| In-band target roles open | **479** (594 in target families at any level) |
+| Pay band known | 37.1% overall (57% on days collected since the parser shipped) |
+| Country known | 67.4% |
+| Remote, strong evidence | 60.7% (87.8% including `location_implied`) |
+| Days of history | **4** (2026-09-12 → 2026-09-15) |
 
 **All Phase 1 and Phase 2 acceptance criteria are met** except one that can only pass with
-time: seven consecutive unattended daily commits. `job_id` stability was confirmed — at the
-61 companies tracked on two consecutive days, appearances went 9,261 → 7.
+time: seven consecutive unattended daily commits — **day 4 of 7**. `job_id` stability is
+confirmed and the panel has reached steady state: at the 399 companies tracked on both of
+the last two days, appearances went **1,046 → 251**, and 2026-09-15 produced the first
+honest closures (352, census sources only).
 
 > [!NOTE]
 > **Day one predates several features.** Salary parsing, location parsing and the
@@ -163,6 +165,13 @@ And one Phase 2.5 added:
   hand-maintained tenant list, so it works best when Gabriel names the companies.
 - **Re-run `tools/harvest_tokens.py` monthly** as new "Who is hiring" threads appear.
   Deliberately not in the daily workflow.
+- **Discovery's request volume is worth watching.** ~36 requests per unresolved candidate
+  × 80/day is **~2,880 requests**, against 421 for the whole census — 87% of our traffic to
+  Greenhouse/Ashby/Lever, nearly all of it guaranteed-miss token guessing. It has not been
+  throttled yet and failures now degrade safely (`deferred`, not `unresolved`), but
+  collection is the thing that cannot be recovered, and this is what would put it at risk.
+  Cheapest lever if it ever matters: stop probing all three vendors for all ~14 token
+  guesses and try the likeliest guesses across vendors first.
 - **Extract the healthcheck's ID-stability logic** out of `main()` if it is touched again;
   it is the project's main defence against silent failure and is currently untested.
 
@@ -1417,3 +1426,79 @@ lost and a future session does not re-derive it.
 **Where this leaves target coverage: 20 of 30 collected.** The ten absent are on six
 different vendors between them. There is no single adapter that unlocks the group — which
 is precisely why building them is not worth it, and worth knowing rather than re-testing.
+
+### 2026-09-15 — a probe that never answered was being recorded as "no board"
+
+Day four's run was green, and the panel reached the state it was built for: at the 399
+companies tracked on both days appearances went **1,046 → 251**, and the first honest
+closures arrived (**352**, all from census sources, 227 more held for a second miss).
+Reading the run turned up three defects, none of which had made anything look wrong.
+
+**1. Discovery is 87% of our traffic to the ATS vendors, and its failures were permanent.**
+The step took **8m33s** of a 10m38s run — collection itself was 90s. Measured rather than
+guessed: an unresolved name costs ~36 requests (up to 14 token guesses × 3 vendors, plus 6
+careers-page fetches), so a batch of 80 is **~2,880 requests** against 421 for the entire
+census.
+
+The damage was not the volume. `_probe` treated **any** non-200 as "no board exists" — 404,
+429, 500 and timeouts alike — and that verdict was written to the watchlist as `unresolved`,
+which the daily run **never re-probes by design**. A company we merely failed to *reach*
+became a company we had decided has no board, permanently, and 301 entries had accumulated
+under that rule.
+
+This is correctness rule 1 in a third disguise. The project has now learned it in the
+differ (a failed fetch is not a closed req), in the healthcheck ("what changed" logs cannot
+answer "what was observed"), in Ashby's opt-in 404, and here.
+
+**The fix: a fourth watchlist status, `deferred`.** A probe now reports whether it
+*answered* (404 yes, 429/401/403/5xx/timeout no). If nothing resolved and any probe went
+unanswered, the company is `deferred` rather than `unresolved`, and discovery re-probes a
+batch of them before spending the day's budget on new names. Only vendor API probes count —
+careers-page fingerprinting fetches guessed domains that are mostly not supposed to exist,
+so its failures carry no signal.
+
+Measured from a residential IP while investigating: 162 probes, all clean 404s, ~0.6s each,
+no throttling — but one Greenhouse 404 took **10.3s**, and that slow tail is what dominates
+when the runner has a bad day. So the 5x slowdown is most likely runner variance or soft
+throttling of a shared GitHub IP, not a change in what we asked for. The healthcheck now
+prints the deferred count and complains above 50, because a backlog that keeps growing is
+the signal that a vendor — not a company — is the problem.
+
+**2. `select_companies` was a denylist, and that is the wrong default.** It read
+`status != "unverified"`, so `deferred` would have been **collected**. Every status invented
+later was opt-out. Now `status == "verified"`, with a test asserting an invented status is
+not collected. A test that pinned the old behaviour ("no status = legacy") was updated
+rather than re-greened: all 749 live entries carry a status and every writer sets one, so
+the legacy allowance was dead weight over a real hole.
+
+**3. `update_watchlist` silently erased hand-applied fields.** It rewrote every entry from
+a fixed list of nine keys, so the `target_list: true` tag on 24 companies — applied by hand
+on 2026-09-14, recorded nowhere else — would have been **deleted by the next rewrite**.
+Verified against the real file: the old writer keeps **0 of 24**. It had never fired only
+because `update_watchlist` ran solely under `--retry-unresolved`; the daily deferred
+re-probe would have made it a certainty. Unknown keys are now preserved verbatim.
+
+### 2026-09-15 — backfilled disappearance rows held raw strings, not enums
+
+48 pydantic serializer warnings per run, present for days and ignorable-looking.
+`_enrich_disappearance_titles` is the one place the collector mutates a model after
+construction, and pydantic does not validate on assignment by default — so
+`event.role_family = row.get("role_family")` left a plain `str` in an enum-typed field.
+
+Output was correct, which is why it stayed. But the values compare **equal** to the enum
+(these are `StrEnum`s) and are **not identical**, and this codebase compares enums with
+`is` — three times in that same file. It also let a value outside the enum reach the
+append-only log unvalidated; a test proves the old path wrote `"a_family_we_retired"`
+straight through.
+
+`validate_assignment` is now on for `PostingEvent`, so coercion happens at the boundary and
+any future slip raises instead of warning. A retired taxonomy value degrades to None with a
+log line rather than costing a day's collection.
+
+**Found while fixing it: the backfill copied `is_remote` but left `remote_source` at its
+`UNKNOWN` default** — publishing a confident remote verdict claiming to rest on no evidence
+at all. Exactly the laundering the report's Remote column was doing on 2026-09-13, one
+layer down. Provenance now travels with the verdict.
+
+**The lesson that keeps recurring:** a warning nobody acts on is a place to hide a real one,
+and "cosmetic" is a hypothesis, not an observation.

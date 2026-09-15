@@ -65,6 +65,16 @@ def existing_slugs(path: Path = WATCHLIST) -> set[str]:
     return {c["slug"] for c in load_watchlist(path)}
 
 
+#: Sort order in the rendered file. `deferred` sits with the live entries rather than at
+#: the bottom, because it is a pending question rather than a closed one.
+STATUS_ORDER = {"verified": 0, "unverified": 1, "deferred": 2, "unresolved": 3}
+
+#: Fields this module writes itself. Everything else on an entry is preserved verbatim.
+_WRITTEN_FIELDS = frozenset(
+    {"name", "slug", "ats", "token", "status", "verified_by", "added", "source", "notes"}
+)
+
+
 def update_watchlist(results: list[Resolution], path: Path = WATCHLIST) -> dict[str, int]:
     """Rewrite entries in place for companies that now resolve.
 
@@ -81,13 +91,16 @@ def update_watchlist(results: list[Resolution], path: Path = WATCHLIST) -> dict[
         entry = by_slug.get(company_slug(r.name))
         if entry is None:
             continue
-        if r.status == "unresolved":
+        if r.status == "unresolved" and entry.get("status") != "deferred":
             # Fingerprinting may have identified a vendor we have no adapter for. Record
             # it: "on Workday" is far more actionable than "unresolved", and it is how we
             # size what building that adapter would actually buy.
             if r.ats not in ("unknown", None) and entry.get("ats") in ("unknown", None):
                 entry.update(ats=r.ats, notes=r.note or entry.get("notes", ""))
             continue
+        # A `deferred` entry that comes back `unresolved` DOES get written: the whole
+        # point of re-probing it was to turn "we could not ask" into a real verdict, and
+        # leaving it deferred would re-probe it forever.
         counts[r.status] = counts.get(r.status, 0) + 1
         entry.update(
             ats=r.ats,
@@ -98,8 +111,7 @@ def update_watchlist(results: list[Resolution], path: Path = WATCHLIST) -> dict[
             source="auto_rediscovered",
             notes=r.note or f"{r.job_count} open reqs at rediscovery",
         )
-    order = {"verified": 0, "unverified": 1, "unresolved": 2}
-    companies.sort(key=lambda c: (order.get(c["status"], 3), c["name"].lower()))
+    companies.sort(key=lambda c: (STATUS_ORDER.get(c["status"], 9), c["name"].lower()))
     header = path.read_text(encoding="utf-8").split("companies:")[0]
     lines = [header.rstrip("\n"), "companies:"]
     for c in companies:
@@ -113,6 +125,14 @@ def update_watchlist(results: list[Resolution], path: Path = WATCHLIST) -> dict[
             f"    added: {c['added']}",
             f"    source: {c['source']}",
             f"    notes: {json.dumps(c.get('notes') or '')}",
+        ]
+        # Anything this writer does not know about is Gabriel's, not ours to drop. The
+        # `target_list: true` tag on 24 entries is hand-applied and would otherwise be
+        # erased by the first rewrite - silently, and with nothing to restore it from.
+        lines += [
+            f"    {k}: {json.dumps(v) if isinstance(v, str) else v}"
+            for k, v in c.items()
+            if k not in _WRITTEN_FIELDS
         ]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return counts
@@ -213,6 +233,12 @@ def main() -> int:
     parser.add_argument("--days", type=int, default=7, help="event-log lookback")
     parser.add_argument("--muse-pages", type=int, default=6)
     parser.add_argument("--no-muse", action="store_true")
+    parser.add_argument(
+        "--deferred-limit",
+        type=int,
+        default=40,
+        help="max previously-deferred companies to re-probe before resolving new ones",
+    )
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
         "--retry-unresolved",
@@ -238,6 +264,17 @@ def main() -> int:
             print(f"\nupdated: {counts}")
         return 0
 
+    # Re-probe anything left without a verdict last time, before spending the day's
+    # budget on new names. These are cheap (there are normally none) and they are the
+    # only entries the daily run ever revisits.
+    deferred = [c["name"] for c in load_watchlist() if c.get("status") == "deferred"]
+    if deferred:
+        batch = sorted(deferred)[: args.deferred_limit]
+        print(f"re-probing {len(batch)} of {len(deferred)} deferred (no verdict last run)")
+        settled = asyncio.run(resolve_all(batch))
+        if not args.dry_run:
+            print(f"  settled: {update_watchlist(settled)}")
+
     known = existing_slugs()
     candidates = candidates_from_event_log(days=args.days)
     from_log = len(candidates)
@@ -262,19 +299,17 @@ def main() -> int:
 
     if args.dry_run:
         print("\ndry run: watchlist unchanged")
-        counts = {
-            s: sum(1 for r in results if r.status == s)
-            for s in ("verified", "unverified", "unresolved")
-        }
+        counts = {s: sum(1 for r in results if r.status == s) for s in STATUS_ORDER}
     else:
         counts = append_to_watchlist(results)
     print(
         f"\nverified {counts.get('verified', 0)} | unverified {counts.get('unverified', 0)} "
-        f"| unresolved {counts.get('unresolved', 0)}"
+        f"| deferred {counts.get('deferred', 0)} | unresolved {counts.get('unresolved', 0)}"
     )
     print(
-        "only `verified` boards are collected; the rest are recorded so they are not "
-        "re-probed daily"
+        "only `verified` boards are collected. `unverified` and `unresolved` are recorded "
+        "so the same names are not re-probed daily; `deferred` is the exception - no "
+        "verdict was reached, so it is asked again next run."
     )
     return 0
 

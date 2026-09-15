@@ -24,9 +24,25 @@ from src.storage import Storage
 
 GREEN, RED, YELLOW, DIM, RESET = "\033[32m", "\033[31m", "\033[33m", "\033[2m", "\033[0m"
 
+#: Above this many companies awaiting a verdict, something is wrong with a vendor rather
+#: than with those companies. Discovery re-probes a batch per run, so a healthy backlog
+#: drains within a day or two.
+DEFERRED_LIMIT = 50
+
 
 def _c(text: str, colour: str) -> str:
     return f"{colour}{text}{RESET}" if sys.stdout.isatty() else text
+
+
+def _deferred_companies() -> int:
+    """Watchlist entries we could not get an answer about last time we asked."""
+    path = Path(__file__).resolve().parent.parent / "config" / "watchlist.yaml"
+    if not path.exists():
+        return 0
+    import yaml
+
+    doc = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    return sum(1 for c in doc.get("companies") or [] if c.get("status") == "deferred")
 
 
 def main() -> int:
@@ -159,6 +175,17 @@ def main() -> int:
 
     pending = store.read_pending_misses()
     print(f"  postings pending a 2nd miss: {len(pending)}")
+
+    # Companies whose boards we could not get an answer about. Normally zero. A set that
+    # keeps growing means a vendor is throttling or down, which is exactly the condition
+    # that used to be written into the watchlist as "this company has no board".
+    if deferred := _deferred_companies():
+        print(f"  companies awaiting a verdict: {deferred}")
+        if deferred > DEFERRED_LIMIT:
+            problems.append(
+                f"{deferred} companies have gone unresolved-for-lack-of-answer - a vendor "
+                "is likely throttling or down; discovery re-probes only a batch per run"
+            )
 
     # The API changelog string is the cheapest available warning that a vendor changed
     # shape without telling anyone.

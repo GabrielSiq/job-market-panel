@@ -228,7 +228,13 @@ class TestGreenhouse:
 
     @staticmethod
     def _company(slug="airbnb", token="airbnb", name="Airbnb"):
-        return {"name": name, "slug": slug, "ats": "greenhouse", "token": token}
+        return {
+            "name": name,
+            "slug": slug,
+            "ats": "greenhouse",
+            "token": token,
+            "status": "verified",
+        }
 
     def test_uses_first_published_for_posted_at(self, config, classifier, httpx_mock):
         """`first_published` is absent from the spec's field list. `updated_at` merely
@@ -562,36 +568,37 @@ class TestLever:
         assert posting.salary_source is SalarySource.DESCRIPTION_PARSED
 
 
-class TestUnverifiedBoardsAreNotCollected:
+class TestOnlyVerifiedBoardsAreCollected:
     """Ashby and Lever echo no company name in their APIs, so a guessed token that happens
     to exist cannot be checked there. An unverified board is a real board belonging to
-    somebody; collecting it attributes their hiring to the wrong company permanently."""
+    somebody; collecting it attributes their hiring to the wrong company permanently.
 
-    def test_unverified_company_is_excluded(self, config, classifier):
+    Selection is an allowlist, not a denylist. It previously excluded `unverified` and
+    admitted everything else, so each new status was collected by default until somebody
+    remembered to exclude it - the wrong default for the one function standing between a
+    guessed token and the permanent record.
+    """
+
+    def _company(self, slug, **extra):
+        return {"name": slug.title(), "slug": slug, "ats": "ashby", "token": slug, **extra}
+
+    def test_only_verified_is_collected(self, config, classifier):
         watchlist = [
-            {
-                "name": "Good Co",
-                "slug": "good-co",
-                "ats": "ashby",
-                "token": "goodco",
-                "status": "verified",
-            },
-            {
-                "name": "Maybe Co",
-                "slug": "maybe-co",
-                "ats": "ashby",
-                "token": "maybeco",
-                "status": "unverified",
-            },
-            {
-                "name": "Old Co",
-                "slug": "old-co",
-                "ats": "ashby",
-                "token": "oldco",
-            },  # no status = legacy
+            self._company("good-co", status="verified"),
+            self._company("maybe-co", status="unverified"),
+            # No verdict yet - a probe timed out or was rate-limited. Not a finding, and
+            # certainly not a licence to collect.
+            self._company("slow-co", status="deferred"),
+            self._company("absent-co", status="unresolved"),
+            self._company("old-co"),  # no status at all
         ]
         source = AshbySource(config, classifier, watchlist)
-        assert {c["slug"] for c in source.companies} == {"good-co", "old-co"}
+        assert {c["slug"] for c in source.companies} == {"good-co"}
+
+    def test_a_status_invented_later_is_not_collected_by_default(self, config, classifier):
+        """The regression guard. Adding a status must never silently widen collection."""
+        watchlist = [self._company("new-co", status="some_status_added_in_2027")]
+        assert AshbySource(config, classifier, watchlist).companies == []
 
     def test_each_vendor_only_claims_its_own(self, config, classifier):
         watchlist = [
