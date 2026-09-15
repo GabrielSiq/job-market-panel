@@ -1377,3 +1377,39 @@ fixes the case Gabriel caught and confirms the rest need a different vendor.
 and collapsing them is the same error as treating a failed fetch as a closed requisition.
 This project keeps rediscovering that absence of evidence is not evidence of absence — in
 the differ, in the healthcheck, and now in resolution.
+
+### 2026-09-14 — the remaining targets are a long tail, one vendor each. Not building adapters.
+
+Gabriel supplied job URLs for four unreachable targets. Each turned out to be on a
+**different** ATS, which is the finding that settles the question:
+
+| Company | Vendor | Reachable? |
+|---|---|---|
+| Flywire | **SmartRecruiters** (`Flywire1`) | yes — documented public API, 60 postings |
+| Rippling | **Rippling ATS** (`rippling`) | yes — bare array, 642 postings |
+| Bilt | **Gem** | no public API found; the board page is a 4 KB JS shell |
+| Deel | **Ashby**, but embedded | their careers page fetches Ashby server-side and inlines the JSON; no reachable board token |
+
+Then measured how far each vendor would actually reach:
+
+- **SmartRecruiters across 9 remaining targets: 1.** Across 60 unresolved watchlist
+  companies: **2** (Canva 251 postings, Boston Medical Center 10).
+- **Rippling ATS: 1** (Rippling itself).
+
+**Gabriel's call, and it is right: no single-company trackers.** Each adapter here buys one
+or two companies, against ~100 lines plus a fixture, tests, and a permanent maintenance
+surface on an endpoint nobody documents.
+
+**One honest caveat on the SmartRecruiters number:** its tokens are case-sensitive and
+non-obvious — `Flywire1` was only found because Gabriel supplied the URL, and no
+name-derived guess produces it. So 2-in-60 **understates** real coverage; it measures my
+guessing, not the vendor's footprint. If SmartRecruiters companies start appearing in
+discovery with known tokens, revisit. It is a documented public API and would be the least
+objectionable fourth adapter.
+
+**Vendor identity is recorded on those watchlist entries anyway**, so the research is not
+lost and a future session does not re-derive it.
+
+**Where this leaves target coverage: 20 of 30 collected.** The ten absent are on six
+different vendors between them. There is no single adapter that unlocks the group — which
+is precisely why building them is not worth it, and worth knowing rather than re-testing.
