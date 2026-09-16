@@ -125,6 +125,19 @@ class TestResolutionStatus:
         assert result.no_verdict > 0
         assert "did not answer" in result.note
 
+    def test_the_note_says_which_vendor_and_why(self):
+        """A verdict without its evidence is how 22 companies were deferred on day one
+        with no way to tell throttling from an over-eager rule."""
+        result = self._resolve(lambda request: httpx.Response(429, json={}))
+        assert "greenhouse 429" in result.note
+        assert set(result.no_verdict_reasons) <= {"greenhouse 429", "ashby 429", "lever 429"}
+
+    def test_a_timeout_is_named_by_its_exception(self):
+        def handler(request):
+            raise httpx.ReadTimeout("slow", request=request)
+
+        assert "ReadTimeout" in self._resolve(handler).note
+
     def test_one_unanswered_probe_among_many_is_enough_to_defer(self):
         """The company might live behind exactly the probe that failed."""
         seen = {"n": 0}

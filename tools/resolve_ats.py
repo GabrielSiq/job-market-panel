@@ -40,6 +40,7 @@ import asyncio
 import json
 import re
 import sys
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -200,10 +201,21 @@ class Resolution:
     #: Vendor probes that never answered. While this is non-zero, "no board" is not a
     #: conclusion we are entitled to draw.
     no_verdict: int = 0
+    #: Why they did not answer, e.g. {"lever 429": 6}. Written into the watchlist note so
+    #: a vendor throttling us is legible without re-running anything.
+    no_verdict_reasons: Counter[str] = field(default_factory=Counter)
     verified_by: str | None = None  # name_echo | board_page | careers_url
     board_name: str | None = None
     tried: list[str] = field(default_factory=list)
     note: str = ""
+
+    def note_probe(self, probe: Probe) -> None:
+        """Record one probe's outcome, keeping why an unanswered one went unanswered."""
+        if probe.answered:
+            return
+        self.no_verdict += 1
+        if probe.reason:
+            self.no_verdict_reasons[probe.reason] += 1
 
 
 def token_candidates(name: str) -> list[tuple[str | None, str]]:
@@ -332,14 +344,23 @@ class Probe:
     `answered` is False when the endpoint gave us no verdict at all - a timeout, a 429,
     a 5xx. "No board here" and "we could not ask" are different facts, and collapsing
     them is what put 301 names in the watchlist as permanently unresolvable.
+
+    `reason` says *why* we got no answer - "lever 429", "ashby ReadTimeout". Correctness
+    rule 5 applied here: the first version of this recorded the verdict without its
+    evidence, and 22 companies were deferred on day one with no way to tell whether a
+    vendor was throttling us or the classification was simply too eager.
     """
 
     board: tuple[int, str | None] | None = None
     answered: bool = True
+    reason: str | None = None
 
 
 MISS = Probe()
-NO_VERDICT = Probe(answered=False)
+
+
+def _no_verdict(vendor: str, why: object) -> Probe:
+    return Probe(answered=False, reason=f"{vendor} {why}")
 
 
 async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe:
@@ -350,18 +371,20 @@ async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe
     """
     try:
         response = await client.get(vendor.api.format(token=token))
-    except httpx.HTTPError:
-        return NO_VERDICT
+    except httpx.HTTPError as exc:
+        return _no_verdict(vendor.name, type(exc).__name__)
     if response.status_code != 200:
         # Ashby's documented API is opt-in, so a 404 there does not mean the board is
         # absent. Ask the endpoint its own public board page uses before giving up.
         if vendor.name == "ashby" and response.status_code == 404:
             count = await _ashby_board_endpoint(client, token)
             if count is None:
-                return NO_VERDICT
+                return _no_verdict("ashby-board", "unreachable")
             if count:
                 return Probe(board=(count, None))
-        return MISS if _answered(response.status_code) else NO_VERDICT
+        if not _answered(response.status_code):
+            return _no_verdict(vendor.name, response.status_code)
+        return MISS
     try:
         payload = response.json()
     except ValueError:
@@ -383,7 +406,7 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
             result.tried.append(f"{vendor.name}:{token}")
             async with sem:
                 probed = await _probe(client, vendor, token)
-            result.no_verdict += not probed.answered
+            result.note_probe(probed)
             if probed.board is None:
                 continue
 
@@ -423,7 +446,7 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
     if vendor in READABLE and token:
         async with sem:
             probed = await _probe(client, VENDOR_BY_NAME[vendor], token)
-        result.no_verdict += not probed.answered
+        result.note_probe(probed)
         if probed.board:
             count, _ = probed.board
             result.ats, result.token, result.job_count = vendor, token, count
@@ -461,9 +484,11 @@ def _settle(result: Resolution) -> Resolution:
     if result.status != "unresolved" or not result.no_verdict:
         return result
     result.status = "deferred"
+    why = ", ".join(f"{r} x{n}" for r, n in result.no_verdict_reasons.most_common(3))
     result.note = (
-        f"{result.no_verdict} of {len(result.tried)} probes did not answer "
-        "- no verdict yet; re-probed on the next run"
+        f"{result.no_verdict} of {len(result.tried)} probes did not answer"
+        + (f" ({why})" if why else "")
+        + " - no verdict yet; re-probed on the next run"
     )
     return result
 
