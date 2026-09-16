@@ -6785,3 +6785,327 @@ companies:
     added: 2026-09-15
     source: auto_discovered
     notes: "no board found by guessing, and no careers page could be read"
+  - name: "AF Group"
+    slug: af-group
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "9 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "AHEAD"
+    slug: ahead
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "BDR Solutions, LLC"
+    slug: bdr-solutions
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "10 of 42 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Button"
+    slug: button
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "CareSource"
+    slug: caresource
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Datavail"
+    slug: datavail
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "dentsu international"
+    slug: dentsu-international
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "EXL"
+    slug: exl
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Fox Point Recruitment LLC"
+    slug: fox-point-recruitment
+    ats: greenhouse
+    token: fox
+    status: unverified
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "board reports 'Fox Creek Veterinary Hospital - Wildwood', expected 'Fox Point Recruitment LLC' - confirm before collecting"
+  - name: "goPro Consultancy Group ltd."
+    slug: gopro-consultancy-group
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "12 of 42 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "HiddenLayer"
+    slug: hiddenlayer
+    ats: greenhouse
+    token: hiddenlayer
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "14 open reqs at discovery"
+  - name: "JetBridge"
+    slug: jetbridge
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "KinderCare Education, LLC"
+    slug: kindercare-education
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "10 of 42 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Luma Financial Technologies"
+    slug: luma-financial-technologies
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Northbeam"
+    slug: northbeam
+    ats: greenhouse
+    token: northbeam
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "16 open reqs at discovery"
+  - name: "Rackner"
+    slug: rackner
+    ats: greenhouse
+    token: rackner
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "19 open reqs at discovery"
+  - name: "Raft"
+    slug: raft
+    ats: greenhouse
+    token: raft
+    status: unverified
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "board reports 'Raft Company Website', expected 'Raft' - confirm before collecting"
+  - name: "RWS Group"
+    slug: rws-group
+    ats: lever
+    token: rws
+    status: unverified
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "board reports 'RWS TrainAI jobs', expected 'RWS Group' - confirm before collecting"
+  - name: "Skylight"
+    slug: skylight
+    ats: greenhouse
+    token: skylighthq
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
+  - name: "Stanley Black & Decker"
+    slug: stanley-black-decker
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Starlims Corporation"
+    slug: starlims
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Stryker"
+    slug: stryker
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "on workday (token stryker) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Swoop"
+    slug: swoop
+    ats: ashby
+    token: swoop
+    status: unverified
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "board reports 'Swoop Technologies Jobs', expected 'Swoop' - confirm before collecting"
+  - name: "Syneos Health India Private Limited"
+    slug: syneos-health-india-private
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "11 of 42 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "talentpluto"
+    slug: talentpluto
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "9 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Tangible"
+    slug: tangible
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "7 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Technosylva"
+    slug: technosylva
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "6 of 30 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Trilon Group"
+    slug: trilon-group
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "TTEC Digital"
+    slug: ttec-digital
+    ats: lever
+    token: ttecdigital
+    status: verified
+    verified_by: board_page
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "70 open reqs at discovery"
+  - name: "University of Miami"
+    slug: university-of-miami
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "US LBM"
+    slug: us-lbm
+    ats: greenhouse
+    token: us
+    status: unverified
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "board reports 'itel - United States', expected 'US LBM' - confirm before collecting"
+  - name: "Vanderbilt University Medical Center"
+    slug: vanderbilt-university-medical-center
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Vida Health"
+    slug: vida-health
+    ats: lever
+    token: vida
+    status: verified
+    verified_by: board_page
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Viking Cruises US"
+    slug: viking-cruises-us
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer - no verdict yet; re-probed on the next run"
+  - name: "Yuno"
+    slug: yuno
+    ats: lever
+    token: yuno
+    status: verified
+    verified_by: board_page
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "33 open reqs at discovery"
+  - name: "Zuora"
+    slug: zuora
+    ats: greenhouse
+    token: zuora
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-16
+    source: auto_discovered
+    notes: "29 open reqs at discovery"
