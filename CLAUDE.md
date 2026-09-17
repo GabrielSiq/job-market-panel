@@ -747,6 +747,22 @@ that. **When building the brief, set its cron several hours earlier than the tim
 is actually wanted**, and treat any "runs at X" reasoning in the spec as a floor, not a
 schedule.
 
+**Updated 2026-09-17 with five scheduled runs — the delay is stable, not growing.** I
+described it in conversation on 2026-09-15 as "a growing trend (4h19m → 5h26m → 6h45m)".
+Three points were not enough to say that, and two more contradicted it:
+
+| Run | Fired (UTC) | Late by |
+|---|---|--:|
+| 2026-09-12 | 11:36 | 4h19m |
+| 2026-09-13 | 12:43 | 5h26m |
+| 2026-09-14 | 14:02 | **6h45m** |
+| 2026-09-15 | 12:40 | 5h23m |
+| 2026-09-16 | 12:36 | 5h19m |
+
+Variance around **~5h20m, worst case so far 6h45m**, no drift. That is a number Phase 5 can
+design against rather than an unbounded risk: **schedule the brief ~7 hours before it is
+wanted**, and have it state the time it actually ran.
+
 **Spec Section 9 Q4 is provisionally answered: `schedule` DOES fire on the private repo.**
 The canary fired on 2026-09-12 at 11:39 UTC (see `schedule_canary.log` in the private repo).
 One data point; it keeps accumulating until December. If it holds, no GitHub Pro is needed.
