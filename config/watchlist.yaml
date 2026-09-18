@@ -311,6 +311,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "14 open reqs; token published by the company on HN"
+  - name: "Apryse"
+    slug: apryse
+    ats: lever
+    token: apryse
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "19 open reqs at discovery"
   - name: "Aptura"
     slug: aptura
     ats: ashby
@@ -915,6 +924,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "21 open reqs at resolution"
+  - name: "CookUnity"
+    slug: cookunity
+    ats: greenhouse
+    token: cookunity
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "156 open reqs at discovery"
   - name: "Coram AI"
     slug: coram-ai
     ats: ashby
@@ -978,6 +996,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "27 open reqs at resolution"
+  - name: "D2L"
+    slug: d2l
+    ats: greenhouse
+    token: d2l
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "30 open reqs at discovery"
   - name: "DailyPay"
     slug: dailypay
     ats: ashby
@@ -1297,6 +1324,15 @@ companies:
     source: gabriel_target_list
     notes: "94 open reqs at resolution"
     target_list: True
+  - name: "Federato"
+    slug: federato
+    ats: greenhouse
+    token: federato
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
   - name: "Figma"
     slug: figma
     ats: greenhouse
@@ -1640,6 +1676,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "52 open reqs; token published by the company on HN"
+  - name: "Humble Robotics"
+    slug: humble-robotics
+    ats: lever
+    token: humble-robotics
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "22 open reqs at discovery"
   - name: "Hyperspell"
     slug: hyperspell
     ats: ashby
@@ -1649,6 +1694,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "1 open reqs; token published by the company on HN"
+  - name: "Ibility"
+    slug: ibility
+    ats: lever
+    token: ibility
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "22 open reqs at discovery"
   - name: "Imagine Pediatrics"
     slug: imagine-pediatrics
     ats: greenhouse
@@ -1730,6 +1784,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "17 open reqs at resolution"
+  - name: "Janea Systems"
+    slug: janea-systems
+    ats: greenhouse
+    token: janeasystems
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "10 open reqs at discovery"
   - name: "JumpCloud"
     slug: jumpcloud
     ats: lever
@@ -2001,6 +2064,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "2 open reqs; token published by the company on HN"
+  - name: "Lyra Health"
+    slug: lyra-health
+    ats: lever
+    token: lyrahealth
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "558 open reqs at discovery"
   - name: "Lyric, Inc."
     slug: lyric
     ats: ashby
@@ -2064,6 +2136,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "35 open reqs at resolution"
+  - name: "May Mobility"
+    slug: may-mobility
+    ats: greenhouse
+    token: maymobility
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "44 open reqs at discovery"
   - name: "Mechanize, Inc."
     slug: mechanize
     ats: ashby
@@ -2073,6 +2154,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "4 open reqs; token published by the company on HN"
+  - name: "Megaport"
+    slug: megaport
+    ats: lever
+    token: megaport
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "55 open reqs at discovery"
   - name: "Meilisearch"
     slug: meilisearch
     ats: lever
@@ -2281,6 +2371,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "220 open reqs at discovery"
+  - name: "Nebius"
+    slug: nebius
+    ats: greenhouse
+    token: nebius
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "376 open reqs at discovery"
   - name: "Nectar Social"
     slug: nectar-social
     ats: ashby
@@ -2408,6 +2507,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "10 open reqs; token published by the company on HN"
+  - name: "Oasis Health Partners"
+    slug: oasis-health-partners
+    ats: greenhouse
+    token: oasishealthpartners
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "3 open reqs at discovery"
   - name: "Obsidian Security"
     slug: obsidian-security
     ats: greenhouse
@@ -2779,6 +2887,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "4 open reqs; token published by the company on HN"
+  - name: "PointClickCare"
+    slug: pointclickcare
+    ats: lever
+    token: pointclickcare
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "80 open reqs at discovery"
   - name: "Poshmark"
     slug: poshmark
     ats: ashby
@@ -3421,6 +3538,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "80 open reqs at discovery"
+  - name: "Termgrid Inc."
+    slug: termgrid
+    ats: lever
+    token: termgrid
+    status: verified
+    verified_by: board_page
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "5 open reqs at discovery"
   - name: "Terra AI"
     slug: terra-ai
     ats: ashby
@@ -3567,6 +3693,15 @@ companies:
     added: 2026-09-12
     source: hn_whoishiring
     notes: "13 open reqs; token published by the company on HN"
+  - name: "Twin Health"
+    slug: twin-health
+    ats: greenhouse
+    token: twinhealth
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "35 open reqs at discovery"
   - name: "Two Dots"
     slug: two-dots
     ats: ashby
@@ -3639,6 +3774,15 @@ companies:
     added: 2026-09-12
     source: manual
     notes: "6 open reqs at resolution"
+  - name: "Verantos"
+    slug: verantos
+    ats: greenhouse
+    token: verantos
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
   - name: "Vercel"
     slug: vercel
     ats: greenhouse
@@ -4063,6 +4207,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "board reports '\u014cura', expected 'Oura Health Ltd' - confirm before collecting"
+  - name: "Overmind"
+    slug: overmind
+    ats: lever
+    token: overmind
+    status: unverified
+    verified_by: null
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "could not read a company name from the board - confirm before collecting"
   - name: "Pilot"
     slug: pilot
     ats: greenhouse
@@ -4196,16 +4349,25 @@ companies:
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
   - name: "AHEAD"
     slug: ahead
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
+  - name: "ALTEN"
+    slug: alten
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
   - name: "BDR Solutions, LLC"
@@ -4214,7 +4376,7 @@ companies:
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "10 of 42 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
   - name: "Button"
@@ -4223,43 +4385,79 @@ companies:
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
+  - name: "CACI International Inc"
+    slug: caci-international
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "7 of 39 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
   - name: "CareSource"
     slug: caresource
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
+  - name: "Catholic Relief Services"
+    slug: catholic-relief-services
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "6 of 36 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
   - name: "Datavail"
     slug: datavail
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
   - name: "dentsu international"
     slug: dentsu-international
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+  - name: "dexter health"
+    slug: dexter-health
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "10 of 36 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
+  - name: "Direct Supply, Inc."
+    slug: direct-supply
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "10 of 39 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
   - name: "EXL"
     slug: exl
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
   - name: "goPro Consultancy Group ltd."
@@ -4268,61 +4466,97 @@ companies:
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "9 of 42 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+    notes: "12 of 42 probes did not answer (ashby-board unreachable x12) - no verdict yet; re-probed on the next run"
+  - name: "HR Connect Ltd"
+    slug: hr-connect
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "10 of 42 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
   - name: "JetBridge"
     slug: jetbridge
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
+  - name: "Karriere bei European Homecare GmbH"
+    slug: karriere-bei-european-homecare
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "9 of 42 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
   - name: "KinderCare Education, LLC"
     slug: kindercare-education
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "10 of 42 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
+    notes: "8 of 42 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
   - name: "Luma Financial Technologies"
     slug: luma-financial-technologies
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "McKesson"
+    slug: mckesson
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
+  - name: "Outforce"
+    slug: outforce
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "7 of 30 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
   - name: "Stanley Black & Decker"
     slug: stanley-black-decker
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
   - name: "Starlims Corporation"
     slug: starlims
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
   - name: "Syneos Health India Private Limited"
     slug: syneos-health-india-private
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "9 of 42 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
   - name: "talentpluto"
@@ -4331,63 +4565,81 @@ companies:
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
   - name: "Tangible"
     slug: tangible
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
     notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
-  - name: "Technosylva"
-    slug: technosylva
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_rediscovered
-    notes: "5 of 30 probes did not answer (ashby-board unreachable x5) - no verdict yet; re-probed on the next run"
   - name: "Trilon Group"
     slug: trilon-group
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+    notes: "6 of 36 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
   - name: "University of Miami"
     slug: university-of-miami
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
   - name: "Vanderbilt University Medical Center"
     slug: vanderbilt-university-medical-center
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "9 of 36 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
   - name: "Viking Cruises US"
     slug: viking-cruises-us
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_rediscovered
-    notes: "7 of 36 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+    notes: "9 of 36 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Visuary"
+    slug: visuary
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "9 of 30 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Wellhub"
+    slug: wellhub
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "6 of 30 probes did not answer (ashby-board unreachable x6) - no verdict yet; re-probed on the next run"
+  - name: "XTB"
+    slug: xtb
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "8 of 30 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
   - name: "_nology"
     slug: nology
     ats: unknown
@@ -5749,6 +6001,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Kemper"
+    slug: kemper
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-17
+    source: auto_discovered
+    notes: "on workday (token kemper) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "Key Cyber Solutions"
     slug: key-cyber-solutions
     ats: unknown
@@ -6812,6 +7073,15 @@ companies:
     added: 2026-09-12
     source: auto_discovered
     notes: "no board found on greenhouse/ashby/lever; may be on Workday or a custom site"
+  - name: "Technosylva"
+    slug: technosylva
+    ats: bamboohr
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_rediscovered
+    notes: "on bamboohr (token technosylva) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
   - name: "TELUS International AI Inc"
     slug: telus-international-ai
     ats: unknown
@@ -7109,273 +7379,516 @@ companies:
     added: 2026-09-14
     source: auto_discovered
     notes: "no board found by guessing, and no careers page could be read"
-  - name: "ALTEN"
-    slug: alten
+  - name: "AAA Life Insurance Company"
+    slug: aaa-life-insurance-company
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "8 of 30 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
-  - name: "Apryse"
-    slug: apryse
-    ats: lever
-    token: apryse
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "19 open reqs at discovery"
-  - name: "CACI International Inc"
-    slug: caci-international
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "11 of 39 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
-  - name: "Catholic Relief Services"
-    slug: catholic-relief-services
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "10 of 36 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
-  - name: "CookUnity"
-    slug: cookunity
-    ats: greenhouse
-    token: cookunity
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "156 open reqs at discovery"
-  - name: "D2L"
-    slug: d2l
-    ats: greenhouse
-    token: d2l
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "30 open reqs at discovery"
-  - name: "dexter health"
-    slug: dexter-health
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "12 of 36 probes did not answer (ashby-board unreachable x12) - no verdict yet; re-probed on the next run"
-  - name: "Direct Supply, Inc."
-    slug: direct-supply
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "10 of 39 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
-  - name: "Federato"
-    slug: federato
-    ats: greenhouse
-    token: federato
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "9 open reqs at discovery"
-  - name: "HR Connect Ltd"
-    slug: hr-connect
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "11 of 42 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
-  - name: "Humble Robotics"
-    slug: humble-robotics
-    ats: lever
-    token: humble-robotics
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "22 open reqs at discovery"
-  - name: "Ibility"
-    slug: ibility
-    ats: lever
-    token: ibility
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "22 open reqs at discovery"
-  - name: "Janea Systems"
-    slug: janea-systems
-    ats: greenhouse
-    token: janeasystems
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "10 open reqs at discovery"
-  - name: "Karriere bei European Homecare GmbH"
-    slug: karriere-bei-european-homecare
-    ats: unknown
-    token: null
-    status: deferred
-    verified_by: null
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "12 of 42 probes did not answer (ashby-board unreachable x12) - no verdict yet; re-probed on the next run"
-  - name: "Kemper"
-    slug: kemper
+    notes: "9 of 36 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Ameresco"
+    slug: ameresco
     ats: workday
     token: null
     status: unresolved
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "on workday (token kemper) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
-  - name: "Lyra Health"
-    slug: lyra-health
-    ats: lever
-    token: lyrahealth
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "558 open reqs at discovery"
-  - name: "May Mobility"
-    slug: may-mobility
-    ats: greenhouse
-    token: maymobility
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "44 open reqs at discovery"
-  - name: "McKesson"
-    slug: mckesson
+    notes: "on workday (token ameresco) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Aptive"
+    slug: aptive
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "10 of 30 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
-  - name: "Megaport"
-    slug: megaport
-    ats: lever
-    token: megaport
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "55 open reqs at discovery"
-  - name: "Nebius"
-    slug: nebius
-    ats: greenhouse
-    token: nebius
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "376 open reqs at discovery"
-  - name: "Oasis Health Partners"
-    slug: oasis-health-partners
-    ats: greenhouse
-    token: oasishealthpartners
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "3 open reqs at discovery"
-  - name: "Outforce"
-    slug: outforce
+    notes: "7 of 30 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+  - name: "BMO"
+    slug: bmo
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "10 of 30 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
-  - name: "Overmind"
-    slug: overmind
-    ats: lever
-    token: overmind
-    status: unverified
+    notes: "7 of 30 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+  - name: "Central Health"
+    slug: central-health
+    ats: unknown
+    token: null
+    status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "could not read a company name from the board - confirm before collecting"
-  - name: "PointClickCare"
-    slug: pointclickcare
-    ats: lever
-    token: pointclickcare
+    notes: "9 of 36 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Conetic Group"
+    slug: conetic-group
+    ats: ashby
+    token: conetic-group
     status: verified
     verified_by: board_page
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "80 open reqs at discovery"
-  - name: "Termgrid Inc."
-    slug: termgrid
-    ats: lever
-    token: termgrid
-    status: verified
-    verified_by: board_page
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
     notes: "5 open reqs at discovery"
-  - name: "Twin Health"
-    slug: twin-health
-    ats: greenhouse
-    token: twinhealth
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
+  - name: "Credit Acceptance"
+    slug: credit-acceptance
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
     source: auto_discovered
-    notes: "35 open reqs at discovery"
-  - name: "Verantos"
-    slug: verantos
-    ats: greenhouse
-    token: verantos
-    status: verified
-    verified_by: name_echo
-    added: 2026-09-17
-    source: auto_discovered
-    notes: "8 open reqs at discovery"
-  - name: "Visuary"
-    slug: visuary
+    notes: "on workday (token creditacceptance) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "D-ploy"
+    slug: d-ploy
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Darkroom"
+    slug: darkroom
+    ats: ashby
+    token: darkroom
+    status: verified
+    verified_by: board_page
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
+  - name: "Deciphex"
+    slug: deciphex
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "7 of 30 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+  - name: "Empower"
+    slug: empower
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on workday (token empower) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Envitia"
+    slug: envitia
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
     source: auto_discovered
     notes: "8 of 30 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
-  - name: "Wellhub"
-    slug: wellhub
+  - name: "EUROPEAN DYNAMICS"
+    slug: european-dynamics
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "10 of 30 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
-  - name: "XTB"
-    slug: xtb
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Factored"
+    slug: factored
+    ats: greenhouse
+    token: factored
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "13 open reqs at discovery"
+  - name: "FINN"
+    slug: finn
+    ats: lever
+    token: finn
+    status: verified
+    verified_by: board_page
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "27 open reqs at discovery"
+  - name: "Flosum"
+    slug: flosum
     ats: unknown
     token: null
     status: deferred
     verified_by: null
-    added: 2026-09-17
+    added: 2026-09-18
     source: auto_discovered
-    notes: "10 of 30 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
+    notes: "8 of 30 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "Focal Systems"
+    slug: focal-systems
+    ats: greenhouse
+    token: focalsystems
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "48 open reqs at discovery"
+  - name: "Gartner"
+    slug: gartner
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "7 of 30 probes did not answer (ashby-board unreachable x7) - no verdict yet; re-probed on the next run"
+  - name: "Globaldev Group"
+    slug: globaldev-group
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Goods & Services"
+    slug: goods-services
+    ats: greenhouse
+    token: goodsservices
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
+  - name: "HealthEdge"
+    slug: healthedge
+    ats: icims
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on icims (token careers-healthedge) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Hey Support"
+    slug: hey-support
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "i2G Systems"
+    slug: i2g-systems
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "10 of 36 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
+  - name: "Improvado"
+    slug: improvado
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "8 of 30 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "Keypath Education"
+    slug: keypath-education
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Kognitiv Inc."
+    slug: kognitiv
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 of 33 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Logistics Management Institute"
+    slug: logistics-management-institute
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "10 of 36 probes did not answer (ashby-board unreachable x10) - no verdict yet; re-probed on the next run"
+  - name: "MKS Instruments"
+    slug: mks-instruments
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Montage Health"
+    slug: montage-health
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "National Debt Relief, LLC."
+    slug: national-debt-relief
+    ats: greenhouse
+    token: national
+    status: unverified
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "board reports 'NATIONAL', expected 'National Debt Relief, LLC.' - confirm before collecting"
+  - name: "Navitus Health Solutions"
+    slug: navitus-health-solutions
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "8 of 36 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "Novartis"
+    slug: novartis
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 of 30 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Octave"
+    slug: octave
+    ats: greenhouse
+    token: octave
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "36 open reqs at discovery"
+  - name: "Oregon Health & Science University"
+    slug: oregon-health-science-university
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Oteemo, Inc"
+    slug: oteemo
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "8 of 33 probes did not answer (ashby-board unreachable x8) - no verdict yet; re-probed on the next run"
+  - name: "Otter Products"
+    slug: otter-products
+    ats: greenhouse
+    token: otter
+    status: unverified
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "board reports 'Otter', expected 'Otter Products' - confirm before collecting"
+  - name: "Piedmont Healthcare"
+    slug: piedmont-healthcare
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on workday (token icon) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Plain Concepts"
+    slug: plain-concepts
+    ats: ashby
+    token: plain
+    status: unverified
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "board reports 'Plain Jobs', expected 'Plain Concepts' - confirm before collecting"
+  - name: "ProArch"
+    slug: proarch
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on workable (token proarch-3) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "QuinStreet"
+    slug: quinstreet
+    ats: greenhouse
+    token: quinstreet
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "30 open reqs at discovery"
+  - name: "RPM Living"
+    slug: rpm-living
+    ats: icims
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on icims (token careershub-rpmliving) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "SFORS"
+    slug: sfors
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 of 30 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Spoiler Alert"
+    slug: spoiler-alert
+    ats: greenhouse
+    token: spoileralert
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "3 open reqs at discovery"
+  - name: "SummitStone Health Partners"
+    slug: summitstone-health-partners
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Talent Inc."
+    slug: talent
+    ats: greenhouse
+    token: talent
+    status: unverified
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "board reports 'Slice Talent Community', expected 'Talent Inc.' - confirm before collecting"
+  - name: "Team Up Services"
+    slug: team-up-services
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Telephone and Data Systems"
+    slug: telephone-and-data-systems
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "The ACI Group, Inc."
+    slug: the-aci-group
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 39 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "The Campbell's Company"
+    slug: the-campbell-s-company
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on workday (token campbellsoup) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "The Global Talent Co."
+    slug: the-global-talent
+    ats: ashby
+    token: the-global-talent-co
+    status: verified
+    verified_by: board_page
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "80 open reqs at discovery"
+  - name: "Therapy Brands"
+    slug: therapy-brands
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 36 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "Torc Robotics"
+    slug: torc-robotics
+    ats: greenhouse
+    token: torcrobotics
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "53 open reqs at discovery"
+  - name: "Underwriters Laboratories Inc."
+    slug: underwriters-laboratories
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "12 of 39 probes did not answer (ashby-board unreachable x12) - no verdict yet; re-probed on the next run"
+  - name: "Vaya Health"
+    slug: vaya-health
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 of 36 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "WCM White Cap Management LLC"
+    slug: wcm-white-cap-management
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "11 of 42 probes did not answer (ashby-board unreachable x11) - no verdict yet; re-probed on the next run"
+  - name: "wex"
+    slug: wex
+    ats: unknown
+    token: null
+    status: deferred
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "9 of 30 probes did not answer (ashby-board unreachable x9) - no verdict yet; re-probed on the next run"
+  - name: "Zicasso"
+    slug: zicasso
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-18
+    source: auto_discovered
+    notes: "on workable (token j) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
