@@ -110,20 +110,21 @@ a census over **420 verified boards**, discovery that runs itself, and an analyt
 
 | | |
 |---|---|
-| Boards collected daily | **420** (169 Greenhouse, 194 Ashby, 57 Lever) |
-| Watchlist entries | 749 (420 verified, 28 quarantined, 301 no readable board) |
-| Open postings tracked | ~28,600, collected in **under two minutes** |
-| In-band target roles open | **479** (594 in target families at any level) |
-| Pay band known | 37.1% overall (57% on days collected since the parser shipped) |
-| Country known | 67.4% |
-| Remote, strong evidence | 60.7% (87.8% including `location_implied`) |
-| Days of history | **4** (2026-09-12 → 2026-09-15) |
+| Boards collected daily | **455** (190 Greenhouse, 197 Ashby, 68 Lever) |
+| Watchlist entries | 872 (455 verified, 38 quarantined, 66 awaiting a verdict, 313 no readable board) |
+| Open postings tracked | **31,464** across 1,285 companies, collected in ~95s |
+| In-band target roles open | **518** (652 in target families at any level) |
+| Pay band known | 37.3% overall (57% on days collected since the parser shipped) |
+| Country known | 68.0% |
+| Remote, strong evidence | 61.9% (88.8% including `location_implied`) |
+| Days of history | **7** (2026-09-12 → 2026-09-18) |
 
-**All Phase 1 and Phase 2 acceptance criteria are met** except one that can only pass with
-time: seven consecutive unattended daily commits — **day 4 of 7**. `job_id` stability is
-confirmed and the panel has reached steady state: at the 399 companies tracked on both of
-the last two days, appearances went **1,046 → 251**, and 2026-09-15 produced the first
-honest closures (352, census sources only).
+**All Phase 1 and Phase 2 acceptance criteria are met**, including the last one that could
+only pass with time: **seven consecutive unattended daily commits, 2026-09-12 to 2026-09-18**.
+`job_id` stability is confirmed and the panel reached steady state on 2026-09-15, when
+appearances at established boards decayed to 248 and the first honest closures appeared
+(352, census sources only). Daily appearances at boards tracked the day before now run in
+the 250–620 range; **seven days is not yet enough to call that a baseline.**
 
 > [!NOTE]
 > **Day one predates several features.** Salary parsing, location parsing and the
@@ -1518,3 +1519,60 @@ layer down. Provenance now travels with the verdict.
 
 **The lesson that keeps recurring:** a warning nobody acts on is a place to hide a real one,
 and "cosmetic" is a hypothesis, not an observation.
+
+### 2026-09-18 — Phase 1 complete, and the Ashby fallback was being used as a bulk probe
+
+**Seven consecutive unattended daily commits, 2026-09-12 through 2026-09-18.** That was the
+last Phase 1 acceptance criterion and the only one that could not be rushed. Phase 1 and
+Phase 2 are now fully met.
+
+The same run went red on the healthcheck — **after** the commit, by design, so the data
+landed. The alarm added on 2026-09-16 fired correctly: **66 companies awaiting a verdict**,
+past the limit of 50.
+
+**The diagnostics added on 2026-09-17 answered it in one query.** All 66, without exception,
+came from a single cause: **565 failed probes to `ashby-board`**, Ashby's undocumented
+GraphQL board endpoint. Nothing from Greenhouse or Lever.
+
+**What made the diagnosis: collection was fine.** Whatnot collected 146 postings through
+that *same endpoint*, from that *same runner*, minutes after discovery's 565 calls to it all
+failed. So it was never an IP block or an outage — and probing it from a laptop returned
+clean `200 {"jobBoard": null}` for nonexistent orgs throughout.
+
+The difference is how each side uses it:
+
+| | Calls per run | Result |
+|---|--:|---|
+| Collection — one known board | **1** | served normally |
+| Discovery — every guessed token whose Ashby API 404s | **565** | throttled, all of them |
+
+**The endpoint answers fine when used as intended. It refuses bulk probing** — which is a
+reasonable thing for an undocumented internal API to do, and exactly what the request-volume
+note above warned about, arriving sooner than expected.
+
+**The trade, measured:** the fallback finds **1 of 197** Ashby boards (Whatnot). Discovery
+was spending 565 speculative POSTs per run to catch that 0.5% case, and the cost was 66
+companies stuck with no verdict.
+
+**The rule now: the fallback confirms a board we have reason to believe exists; it is never
+a discovery probe.** `_probe(..., deep=)` gates it, and the three callers split cleanly:
+
+- **Blind token guessing** (the daily sweep, `--retry-unresolved`, the deferred re-probe) —
+  off. An Ashby 404 is a plain miss.
+- **After a careers-page fingerprint** — on. The company's own page named that board, so it
+  is no longer a guess.
+- **`resolve_ats.py` CLI** — on by default (`--no-deep` to disable). Human-driven and
+  low-volume: Gabriel naming or pasting a board he knows is real.
+
+**Cost accepted:** the daily sweep can no longer discover an opt-out Ashby board by guessing
+its token. That is how Whatnot was invisible before 2026-09-14 — but Whatnot was found
+because Gabriel named it, not by guessing, and the CLI path that found it still works.
+
+Verified against four of the deferred companies: three now return a clean `unresolved`, and
+the fourth deferred on a genuine `greenhouse ReadTimeout` — the mechanism working, with the
+cause named.
+
+**The lesson worth keeping:** a fallback built for one case became a default for thousands
+without anyone deciding it should. It was correct where it was written (`AshbySource`, one
+known board) and wrong where it was reused (`resolve_ats`, every guess). **Reuse changed the
+volume by three orders of magnitude, and volume was the thing the endpoint cared about.**

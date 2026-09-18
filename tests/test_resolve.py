@@ -71,17 +71,33 @@ class TestAshbyFallbackAnswers:
     and we ask the endpoint its own board page uses. That fallback must itself keep "no
     such board" apart from "no answer" - it used to run every response through
     raise_for_status, which made a plain 404 look like a transport failure and would have
-    deferred the company on a question that was in fact answered."""
+    deferred the company on a question that was in fact answered.
 
-    def _ashby(self, handler):
+    It is gated behind `deep`, because it is an undocumented internal API and blind token
+    guessing fired 565 speculative POSTs at it in a single run.
+    """
+
+    def _ashby(self, handler, deep=True):
         vendor = next(v for v in ALL_VENDORS if v.name == "ashby")
 
         async def go():
             transport = httpx.MockTransport(handler)
             async with httpx.AsyncClient(transport=transport) as client:
-                return await _probe(client, vendor, "sometoken")
+                return await _probe(client, vendor, "sometoken", deep=deep)
 
         return run(go())
+
+    def test_blind_guessing_never_touches_the_board_endpoint(self):
+        """The whole point of the gate. A guessed token gets the documented API only."""
+        calls = []
+
+        def handler(request):
+            calls.append(request.method)
+            return httpx.Response(404)
+
+        probe = self._ashby(handler, deep=False)
+        assert calls == ["GET"], calls
+        assert probe.answered is True  # a 404 from the documented API is a real answer
 
     def test_a_404_from_both_endpoints_is_a_miss(self):
         assert self._ashby(lambda request: httpx.Response(404)).answered is True

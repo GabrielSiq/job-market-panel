@@ -291,8 +291,19 @@ async def _board_display_name(client: httpx.AsyncClient, vendor: Vendor, token: 
     return None
 
 
-async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int | None:
-    """Postings visible via Ashby's own board endpoint, 0 for none, None if it never answered.
+async def _ashby_board_endpoint(
+    client: httpx.AsyncClient, token: str
+) -> tuple[int | None, str]:
+    """Postings visible via Ashby's own board endpoint: (count, why-not).
+
+    `count` is 0 for no board and None if the endpoint never answered, in which case the
+    second element says what happened.
+
+    **Never call this for a guessed token.** It is an undocumented internal GraphQL API,
+    and on 2026-09-18 discovery fired 565 speculative POSTs at it in one run and was
+    throttled for all of them - deferring 66 companies - while collection called it once,
+    from the same runner, minutes later, and was served normally. It answers fine when
+    used as intended; it is bulk probing that it refuses.
 
     Ashby's documented posting API is **opt-in per organisation**: a board can render
     publicly at jobs.ashbyhq.com/<token> while the documented API 404s. Reading that 404 as
@@ -312,19 +323,21 @@ async def _ashby_board_endpoint(client: httpx.AsyncClient, token: str) -> int | 
             },
             headers={"Content-Type": "application/json"},
         )
-    except httpx.HTTPError:
+    except httpx.HTTPError as exc:
         # Transport-level: we never got an answer.
-        return None
+        return None, type(exc).__name__
     # A status response IS an answer. Routing it through raise_for_status would turn a
     # plain "no such board" 404 into "we could not ask", which defers the company for
     # ever on a question that was in fact answered.
     if response.status_code != 200:
-        return None if not _answered(response.status_code) else 0
+        if _answered(response.status_code):
+            return 0, ""
+        return None, str(response.status_code)
     try:
         board = (response.json().get("data") or {}).get("jobBoard") or {}
     except ValueError:
-        return 0
-    return len(board.get("jobPostings") or [])
+        return 0, ""
+    return len(board.get("jobPostings") or []), ""
 
 
 #: Status codes that are the endpoint declining to answer rather than answering "no".
@@ -363,11 +376,16 @@ def _no_verdict(vendor: str, why: object) -> Probe:
     return Probe(answered=False, reason=f"{vendor} {why}")
 
 
-async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe:
+async def _probe(
+    client: httpx.AsyncClient, vendor: Vendor, token: str, *, deep: bool = False
+) -> Probe:
     """Whether this board exists and has jobs - or that we could not find out.
 
     An empty board counts as a miss, not a find: it is indistinguishable from a slug
     collision, and would otherwise park a wrong token in the config.
+
+    `deep` permits Ashby's undocumented board endpoint. It is **off** for blind token
+    guessing: see `_ashby_board_endpoint` for why that distinction is load-bearing.
     """
     try:
         response = await client.get(vendor.api.format(token=token))
@@ -376,10 +394,10 @@ async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe
     if response.status_code != 200:
         # Ashby's documented API is opt-in, so a 404 there does not mean the board is
         # absent. Ask the endpoint its own public board page uses before giving up.
-        if vendor.name == "ashby" and response.status_code == 404:
-            count = await _ashby_board_endpoint(client, token)
+        if deep and vendor.name == "ashby" and response.status_code == 404:
+            count, why = await _ashby_board_endpoint(client, token)
             if count is None:
-                return _no_verdict("ashby-board", "unreachable")
+                return _no_verdict("ashby-board", why)
             if count:
                 return Probe(board=(count, None))
         if not _answered(response.status_code):
@@ -395,7 +413,9 @@ async def _probe(client: httpx.AsyncClient, vendor: Vendor, token: str) -> Probe
     return Probe(board=(len(jobs), vendor.echoed_name(payload)))
 
 
-async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semaphore) -> Resolution:
+async def resolve_one(
+    client: httpx.AsyncClient, name: str, sem: asyncio.Semaphore, *, deep: bool = False
+) -> Resolution:
     result = Resolution(name=name)
     from_url = bool(_URL_TOKEN_PATTERNS) and any(p.search(name) for _, p in _URL_TOKEN_PATTERNS)
 
@@ -405,7 +425,7 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
                 continue
             result.tried.append(f"{vendor.name}:{token}")
             async with sem:
-                probed = await _probe(client, vendor, token)
+                probed = await _probe(client, vendor, token, deep=deep)
             result.note_probe(probed)
             if probed.board is None:
                 continue
@@ -445,7 +465,9 @@ async def resolve_one(client: httpx.AsyncClient, name: str, sem: asyncio.Semapho
     vendor, token = found
     if vendor in READABLE and token:
         async with sem:
-            probed = await _probe(client, VENDOR_BY_NAME[vendor], token)
+            # The company's own careers page named this board, so this is no longer a
+            # guess and Ashby's board endpoint is fair to ask.
+            probed = await _probe(client, VENDOR_BY_NAME[vendor], token, deep=True)
         result.note_probe(probed)
         if probed.board:
             count, _ = probed.board
@@ -493,12 +515,20 @@ def _settle(result: Resolution) -> Resolution:
     return result
 
 
-async def resolve_all(names: list[str], concurrency: int = 8) -> list[Resolution]:
+async def resolve_all(
+    names: list[str], concurrency: int = 8, *, deep: bool = False
+) -> list[Resolution]:
+    """Resolve many names.
+
+    `deep` is for small, human-initiated batches - Gabriel naming a company he knows is
+    real. The daily sweep leaves it off, because at its volume the extra probe is bulk
+    traffic against an undocumented endpoint rather than a considered question.
+    """
     sem = asyncio.Semaphore(concurrency)
     async with httpx.AsyncClient(
         timeout=25, headers={"User-Agent": USER_AGENT}, follow_redirects=True
     ) as client:
-        return await asyncio.gather(*(resolve_one(client, n, sem) for n in names))
+        return await asyncio.gather(*(resolve_one(client, n, sem, deep=deep) for n in names))
 
 
 def render_watchlist(results: list[Resolution], source: str = "manual") -> str:
@@ -565,6 +595,14 @@ def render_watchlist(results: list[Resolution], source: str = "manual") -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--names", nargs="*", default=[])
+    parser.add_argument(
+        "--deep",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="ask Ashby's undocumented board endpoint when its documented API 404s. "
+        "On by default here because this path is human-driven and low-volume; "
+        "--no-deep for a large batch.",
+    )
     parser.add_argument("--file", type=Path, help="one company name or careers URL per line")
     parser.add_argument("--out", type=Path, help="write watchlist YAML here")
     parser.add_argument("--source", default="manual")
@@ -587,7 +625,9 @@ def main() -> int:
         seen.setdefault(company_slug(name), name)
     names = list(seen.values())
 
-    results = asyncio.run(resolve_all(names, concurrency=args.concurrency))
+    # This entry point is human-driven - Gabriel naming or pasting boards he knows exist -
+    # so it may ask Ashby's undocumented board endpoint. The daily sweep may not.
+    results = asyncio.run(resolve_all(names, concurrency=args.concurrency, deep=args.deep))
 
     if args.json:
         print(json.dumps([r.__dict__ for r in results], indent=2))
