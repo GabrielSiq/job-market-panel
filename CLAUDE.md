@@ -53,7 +53,7 @@ how that is trending.
    (both grow config/watchlist.yaml)     data/events/*.jsonl.gz     ← append-only truth
                                          data/postings/*.jsonl.gz   ← full records
                                          data/runs/*.jsonl          ← health; gates diffing
-                                         data/latest/new_postings.jsonl ← Phase 5 reads this
+                                      data/latest/new_postings.jsonl.gz ← Phase 5 reads this
                                               │
                      build.py ────────────────┘   reclassifies + reparses from raw
                         │
@@ -71,7 +71,7 @@ Two repos, by design:
 | `job-search-assets` | Private | Spec, criteria, accomplishment bank, resume pipeline. |
 
 Cross-repo interface is one file over plain HTTPS: the private repo fetches this repo's
-`data/latest/new_postings.jsonl` via `raw.githubusercontent.com`. No auth, no submodules,
+`data/latest/new_postings.jsonl.gz` via `raw.githubusercontent.com`. No auth, no submodules,
 no cross-repo tokens.
 
 ### The three principles that must not be violated
@@ -776,7 +776,7 @@ near 12%. Spec Section 3.2's first rationale for the public/private split does n
 this scale.
 
 **What DOES still argue for the current split:** going private breaks the cross-repo
-interface. The Phase 5 brief fetches `data/latest/new_postings.jsonl` from
+interface. The Phase 5 brief fetches `data/latest/new_postings.jsonl.gz` from
 `raw.githubusercontent.com` with no authentication (spec 3.2 chose it precisely to avoid
 tokens). Making the panel private 404s that URL, so it is a design change — add a
 cross-repo PAT, or collapse into one private repo — not a visibility toggle.
@@ -1576,3 +1576,41 @@ cause named.
 without anyone deciding it should. It was correct where it was written (`AshbySource`, one
 known board) and wrong where it was reused (`resolve_ats`, every guess). **Reuse changed the
 volume by three orders of magnitude, and volume was the thing the endpoint cared about.**
+
+### 2026-09-20 — the cross-repo interface is gzipped; the storage question is answered
+
+The 2026-09-12 entry above left an open question: *"measure the steady-state daily growth
+once a few days exist, and if the trajectory is bad, stop committing the uncompressed
+`new_postings.jsonl` or prune its history."* Eight days in, measured.
+
+**The event and posting logs are fine** — ~340 KB/day combined, close to the original
+estimate. **One file was not:**
+
+| Path | Blob content across all history |
+|---|--:|
+| **`data/latest/new_postings.jsonl`** | **105.7 MB** in 22 versions |
+| `data/postings/2026-09-13.jsonl.gz` | 11.5 MB |
+| everything else | under 7 MB each |
+
+**And it was pure duplication.** Today's interface file held 223 rows in 1,444 KB;
+`data/postings/2026-09-19.jsonl.gz` held *the same 223 job_ids* in 398 KB. Compared
+field by field: **0 records differed**, same 33 fields. We were committing the same
+content twice a day, once compressed and once not, and nothing reads the uncompressed
+copy — Phase 5 does not exist yet.
+
+**Now `data/latest/new_postings.jsonl.gz`.** The path stays fixed, which was the point of
+spec 3.2: a consumer that always fetches the same URL survives a late or missed run, where
+`data/postings/<today>.jsonl.gz` would 404. Only the encoding changed, and the consumer
+pays one `gzip.decompress()`.
+
+**Verified against the real 223-row file, because "no data loss" was the condition:**
+reconstructing the postings and writing them through the new writer produces bytes that,
+decompressed, are **identical to the previous file byte for byte** — not merely equivalent
+records. All 33 fields, all 1,203,045 characters of description text. 1,444 KB → 399 KB,
+72% smaller. Three tests pin it, including the byte-equality one.
+
+**Still open, and deliberately not done:** the 105.7 MB already in history. Purging it
+rewrites every commit SHA, which is destructive and needs Gabriel's say-so — and it may be
+moot depending on the December repo-visibility decision, since going private or starting a
+fresh repo resolves it anyway. At 35 MB today against GitHub's ~5 GB comfort zone there is
+no urgency; what mattered was stopping the daily ~1.4 MB from accruing forever.

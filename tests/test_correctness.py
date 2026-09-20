@@ -12,6 +12,8 @@ Maps to the Phase 1 acceptance criteria:
 
 from __future__ import annotations
 
+import gzip
+import json
 import warnings
 from datetime import UTC, date, datetime
 
@@ -440,3 +442,43 @@ class TestDisappearanceBackfill:
         assert event.role_family is None
         assert event.seniority is Seniority.SENIOR
         assert event.title == prior.title
+
+
+class TestCrossRepoInterface:
+    """`data/latest/new_postings.jsonl.gz` is the one file another repo reads (spec 3.2).
+
+    Compressed since 2026-09-20: it is rewritten wholesale every run, so git stored a new
+    blob of the whole thing daily and had accumulated 105.7 MB across 22 versions - all of
+    it duplicating `data/postings/<date>.jsonl.gz` uncompressed. Compression must not cost
+    a single field, and description text is the part that would hurt to lose, so both are
+    asserted rather than assumed.
+    """
+
+    def _posting_with_description(self, job_id: str) -> JobPosting:
+        p = posting(job_id)
+        return p.model_copy(update={"description_text": "Lead experimentation. " * 200})
+
+    def test_the_interface_is_gzipped(self, store):
+        path = store.write_latest([self._posting_with_description("1")])
+        assert path.name == "new_postings.jsonl.gz"
+        assert gzip.decompress(path.read_bytes())
+
+    def test_compression_loses_no_field_and_no_description(self, store):
+        original = [self._posting_with_description(str(i)) for i in range(5)]
+        path = store.write_latest(original)
+
+        rows = list(store.read_jsonl_gz(path))
+        assert len(rows) == len(original)
+        assert [r["job_id"] for r in rows] == [p.job_id for p in original]
+        # Every serialized field survives, computed ones included.
+        assert set(rows[0]) == set(json.loads(original[0].model_dump_json()))
+        assert all(r["description_text"] == original[0].description_text for r in rows)
+
+    def test_bytes_match_what_an_uncompressed_write_would_have_produced(self, store):
+        """The guarantee that makes this safe: decompressing returns the previous format
+        exactly, so a consumer written against either sees identical content."""
+        original = [self._posting_with_description(str(i)) for i in range(3)]
+        expected = "".join(p.model_dump_json() + "\n" for p in original).encode()
+
+        path = store.write_latest(original)
+        assert gzip.decompress(path.read_bytes()) == expected

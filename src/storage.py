@@ -6,7 +6,7 @@ blob of the whole thing on every commit):
     data/events/YYYY-MM-DD.jsonl.gz     appeared/disappeared, slim, every posting
     data/postings/YYYY-MM-DD.jsonl.gz   full records incl. description, tracked families
     data/runs/YYYY-MM-DD.jsonl          per-source (per-company for ATS) health log
-    data/latest/new_postings.jsonl      stable path for downstream consumers
+    data/latest/new_postings.jsonl.gz   stable path for downstream consumers
     data/state/pending_misses.json      in-flight disappearance candidates (see below)
 
 **Raw capture is immutable.** Files for past days are never rewritten. Today's files are
@@ -84,9 +84,17 @@ class Storage:
     def write_latest(self, postings: list[JobPosting]) -> Path:
         """The cross-repo interface (spec 3.2): the private brief fetches exactly this
         path over plain HTTPS. Stable from Phase 1 even though nothing reads it until
-        Phase 5, so that phase is purely additive."""
-        path = self.latest / "new_postings.jsonl"
-        self._write_jsonl(path, postings, compress=False)
+        Phase 5, so that phase is purely additive.
+
+        **Gzipped since 2026-09-20.** This file is rewritten wholesale every run, so git
+        stores a new blob of the whole thing daily and never reclaims the old one. At
+        1.4 MB uncompressed that had reached 105.7 MB of history across 22 versions -
+        the largest thing in the repo by a wide margin, and all of it duplicating
+        `data/postings/<date>.jsonl.gz`, which carries the identical records compressed.
+        Same rows, same 33 fields, same description text; ~72% smaller.
+        """
+        path = self.latest / "new_postings.jsonl.gz"
+        self._write_jsonl(path, postings, compress=True)
         return path
 
     # ---------------------------------------------------------------------------- read

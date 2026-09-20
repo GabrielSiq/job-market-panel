@@ -87,7 +87,7 @@ data/
   events/         YYYY-MM-DD.jsonl.gz   appeared/disappeared, slim rows, every posting
   postings/       YYYY-MM-DD.jsonl.gz   full records incl. description, data-family roles
   runs/           YYYY-MM-DD.jsonl      per-source health log; the diff step reads this
-  latest/         new_postings.jsonl    stable path for downstream consumers
+  latest/         new_postings.jsonl.gz stable path for downstream consumers
   state/          pending_misses.json   in-flight disappearance candidates
 reports/
   latest.md       the current state of the panel, regenerated every run
