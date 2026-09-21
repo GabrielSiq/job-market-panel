@@ -1,54 +1,44 @@
 # Job market panel
 
-**33,063** open postings across **1,613** companies · **756** in target families · 9 days of history (2026-09-12 → 2026-09-20) · generated 2026-09-20
+**34,639** open postings across **1,728** companies · **791** in target families · 10 days of history (2026-09-12 → 2026-09-21) · generated 2026-09-21
 
 > [!NOTE]
-> **How to read this.** Only 9 days of history, so there are no trends here yet — time-to-close, org growth and hiring-rate baselines need weeks and arrive in a later phase.
+> **How to read this.** Only 10 days of history, so there are no trends here yet — time-to-close, org growth and hiring-rate baselines need weeks and arrive in a later phase.
 > Pay and remote coverage vary a lot **by vendor**: Greenhouse boards publish no salary field at all, so a shift in which companies are tracked can look exactly like a shift in the market. See *Data quality* below before drawing conclusions.
 > The panel skews toward startups and tech, so it is **not** a market denominator.
 
-## New on 2026-09-20
+## New on 2026-09-21
 
 | Company | Role | Level | Pay | Where | Remote |
 |---|---|---|---|:--:|:--:|
-| argenx | [Head of Commercial Analytics & Insights](https://himalayas.app/companies/argenx/jobs/head-of-commercial-analytics-insights) | manager | $236k–$324k | US | yes |
-| CharterUP | [Staff Data Scientist](https://job-boards.greenhouse.io/charterup/jobs/5263464008) | staff | $220k–$250k | US | yes |
-| Alignment Health | [Data Scientist, Pharmacy (Part D Stars)](https://himalayas.app/companies/alignment-health/jobs/data-scientist-pharmacy-part-d-stars) | mid | $150k–$225k | US | yes |
-| OneSix | [Lead Data Scientist, Predictive Modeling & Causal Inferenc](https://job-boards.greenhouse.io/onesixsolutions27/jobs/4706504006) | senior | $180k–$210k | Remote/US & Canada | yes |
-| OneSix | [Lead Data Scientist](https://job-boards.greenhouse.io/onesixsolutions27/jobs/4690000006) | senior | $160k–$200k | Remote/US & Canada | yes |
-| Bright Vision Technolo | [Senior Data Scientist](https://himalayas.app/companies/bright-vision-technologies/jobs/senior-data-scientist-1594701564) | senior | $160k–$180k | US | yes |
-| OneSix | [Senior Data Scientist](https://job-boards.greenhouse.io/onesixsolutions27/jobs/4690010006) | senior | $140k–$180k | Remote/US & Canada | yes |
-| LexisNexis | [Senior Data Scientist II](https://himalayas.app/companies/lexisnexis/jobs/senior-data-scientist-ii) | senior | $105k–$175k | US | yes |
-| Wikimedia Foundation | [Senior Data Scientist, Safety & Security](https://himalayas.app/companies/wikimedia-foundation/jobs/senior-data-scientist-safety-security) | senior | $110k–$173k | US | yes |
-| Nex | [Senior Data Scientist](https://job-boards.greenhouse.io/nex/jobs/5385458008) | senior | $140k–$165k | Remote US | yes |
-| Credible | [Data Scientist](https://himalayas.app/companies/credible/jobs/data-scientist) | mid | $89k–$136k | US | yes |
-| Blue Cross and Blue Sh | [Business Intelligence Data Scientist](https://himalayas.app/companies/blue-cross-and-blue-shield-of-kansas/jobs/business-intelligence-data-scientist) | mid | $109k–$136k | US | yes |
-| eHealth, Inc. | [Sr. Analytics & Insights Analyst](https://himalayas.app/companies/ehealth-inc/jobs/sr-analytics-insights-analyst-1941612510) | senior | $96k–$120k | US | yes |
-| Blue Water Thinking | [Proposal Pricing Analyst](https://job-boards.greenhouse.io/bluewaterthinking/jobs/4700760006) | mid | $100k–$120k | Fully Remote - Bas | yes |
-| The CE Shop | [Revenue & Marketing Analytics Manager](https://himalayas.app/companies/the-ce-shop/jobs/revenue-marketing-analytics-manager) | manager | $105k–$110k | US | yes |
-| CentralReach | [Technical Product Analyst](https://himalayas.app/companies/centralreach/jobs/technical-product-analyst) | mid | $85k–$105k | US | yes |
-| Automatiq | [Pricing Analyst](https://himalayas.app/companies/automatiq/jobs/pricing-analyst) | mid | $75k–$85k | US | yes |
-| Very LLC | [Lead Data Scientist - Canada - Contract](https://himalayas.app/companies/very-llc/jobs/lead-data-scientist-canada-contract) | senior | $0k–$0k | CA | yes |
-| Bring IT | [Product Analyst](https://himalayas.app/companies/bring-it/jobs/product-analyst) | mid | — | BR | yes |
-| CI&T | [[Job 31517] Data Scientist SR](https://himalayas.app/companies/ci-t/jobs/job-31517-data-scientist-sr) | senior | — | BR | yes |
-| Canonical | [Manager, People Analytics](https://job-boards.greenhouse.io/canonical/jobs/7836561) | manager | — | Home Based - Ameri | yes |
-| CharterUP | [Senior Data Scientist (Brazil)](https://job-boards.greenhouse.io/charterup/jobs/5399987008) | senior | — | BR | yes |
-| Dhaka Technologies Lim | [Data Scientist](https://himalayas.app/companies/dhaka-technologies-limited-company/jobs/data-scientist) | mid | — | US | yes |
-| DoiT International | [Product Analyst-Romania](https://himalayas.app/companies/doit-international/jobs/product-analyst-romania) | mid | — | RO | yes |
-| Entefy | [Senior Data Scientist (Remote Position)](https://jobs.lever.co/entefy/18c31988-29bd-4290-a752-91fda3096d05) | senior | — | Remote | yes |
-| Entefy | [Data Scientist (Remote)](https://jobs.lever.co/entefy/f4710c1b-fc48-4b51-bc80-557285b35385) | mid | — | Remote | yes |
-| HighLevel | [Staff Data Scientist - Core Revenue Retention](https://jobs.lever.co/gohighlevel/77236e82-22cc-4e1b-9ed9-438a3b988d05) | staff | — | US | yes |
-| HighLevel | [Staff Data Scientist - Growth & Expansion](https://jobs.lever.co/gohighlevel/b10b07d9-7155-4afe-ba6d-48c32ce04be2) | staff | — | US | yes |
-| Merkle Science | [Data Scientist — Blockchain Intelligence](https://jobs.lever.co/merklescience/443acdb5-b96e-40ff-b3da-e49533651e29) | mid | — | BE | yes |
-| Merkle Science | [Data Scientist — Blockchain Intelligence](https://jobs.lever.co/merklescience/99cdfcc1-5d70-4635-a353-6816313b0701) | mid | — | US | yes |
-| Mutt Data | [Data Scientist](https://himalayas.app/companies/mutt-data/jobs/data-scientist) | mid | — | AR | yes |
-| Particle41 | [Data Science & Engineering Lead](https://job-boards.greenhouse.io/particle41llc/jobs/4252207008) | manager | — | IN | yes |
-| PortPro | [Data Scientist](https://jobs.lever.co/portpro/0efe220d-2b02-4eee-a7e3-9a3ff5cf97f3) | mid | — | US | yes |
-| Readdle | [Senior Growth Analyst - Calendars](https://himalayas.app/companies/readdle/jobs/senior-growth-analyst-calendars) | senior | — | Albania, Andorra,  | yes |
-| Reddit | [Staff Data Scientist, Ads](https://himalayas.app/companies/reddit/jobs/staff-data-scientist-ads) | staff | — | CA | yes |
-| Reliance Health | [Data Scientist](https://himalayas.app/companies/reliance-health/jobs/data-scientist) | mid | — | NG | yes |
-| uvation | [Ecommerce Product Catalog & Research Analyst](https://himalayas.app/companies/uvation/jobs/ecommerce-product-catalog-research-analyst-5738404898) | mid | — | PL | yes |
-| uvation | [Ecommerce Product Catalog & Research Analyst](https://himalayas.app/companies/uvation/jobs/ecommerce-product-catalog-research-analyst-8376346626) | mid | — | IN | yes |
+| Netflix | [Data Scientist 5, Messaging](https://himalayas.app/companies/netflix/jobs/data-scientist-5-messaging) | mid | $372k–$600k | US | yes |
+| Alignment Health | [Data Scientist – CAHPS Analytic](https://himalayas.app/companies/alignment-health/jobs/data-scientist-cahps-analytic) | mid | $150k–$225k | US | yes |
+| Syndio | [Staff Data Scientist, Data Products](https://synd.io/careers/?gh_jid=6196698004) | staff | $180k–$205k | US | yes |
+| Centene Corporation | [Data Scientist III](https://himalayas.app/companies/centene-corporation/jobs/data-scientist-iii) | senior | $108k–$199k | Macao | yes |
+| Gannett | [Data Science Manager](https://himalayas.app/companies/gannett/jobs/data-science-manager) | manager | $189k–$195k | US | yes |
+| Twilio | [Sr. Marketing Strategy and Analytics Manager](https://job-boards.greenhouse.io/twilio/jobs/8189769) | manager | $129k–$189k | US | yes |
+| Verana Health | [Senior Quantitative Scientist, Implementation](https://himalayas.app/companies/verana-health/jobs/senior-quantitative-scientist-implementation) | senior | $141k–$177k | US | yes |
+| Twilio | [Senior People Technology Analyst - Talent Acquisition](https://job-boards.greenhouse.io/twilio/jobs/8202189) | senior | $117k–$172k | US | yes |
+| Roofr | [Staff Data Scientist](https://job-boards.greenhouse.io/roofr/jobs/4734539005) | staff | $140k–$160k | CA | yes |
+| Reveleer | [Data Scientist](https://himalayas.app/companies/reveleer/jobs/data-scientist) | mid | $120k–$140k | US | yes |
+| Credible | [Data Scientist](https://job-boards.greenhouse.io/credible/jobs/8195867) | mid | $89k–$136k | US | yes |
+| Mission Lane | [Senior Data Scientist, Credit](https://himalayas.app/companies/mission-lane/jobs/senior-data-scientist-credit-6535749737) | senior | $120k–$134k | US | yes |
+| Logistics Management I | [Applied Statistician, Forecasting & Simulation](https://himalayas.app/companies/logistics-management-institute/jobs/applied-statistician-forecasting-simulation) | mid | $90k–$130k | US | yes |
+| OpenTable | [Manager, Marketing Analytics](https://job-boards.greenhouse.io/opentable/jobs/8817821002) | manager | $115k–$126k | CA | no |
+| CentralReach | [Technical Product Analyst](https://job-boards.greenhouse.io/centralreach/jobs/4411261009) | mid | $85k–$105k | US | yes |
+| Martin & Company | [Product Development Senior Analyst](https://himalayas.app/companies/martin-company/jobs/product-development-senior-analyst) | senior | $72k–$99k | US | yes |
+| Accesa & RaRo | [Senior Data Scientist – Search & Recommendations](https://himalayas.app/companies/accesa-raro/jobs/senior-data-scientist-search-recommendations) | senior | — | CA | yes |
+| Arcadia | [Senior / Lead Analyst, Customer Insights](https://jobs.lever.co/arcadia/371d9d87-3684-4acb-b73c-202855b329a6) | senior | — | Remote (USA) | yes |
+| Automatiq | [Pricing Analyst](https://jobs.lever.co/automatiq/1b1c5252-9c59-4581-88d0-134d36dbf6e3) | mid | — | Remote | yes |
+| Jampp | [Senior Data Scientist](https://himalayas.app/companies/jampp/jobs/senior-data-scientist) | senior | — | ES | yes |
+| Maker Lab | [Data Scientist](https://himalayas.app/companies/maker-lab/jobs/data-scientist) | mid | — | IN | yes |
+| Mutt Data | [Data Scientist Lead](https://himalayas.app/companies/mutt-data/jobs/data-scientist-lead) | senior | — | AR | yes |
+| Ollang | [Data Scientist](https://himalayas.app/companies/ollang/jobs/data-scientist) | mid | — | TR | yes |
+| Orcrist Technologies | [Geospatial Data Scientist](https://job-boards.eu.greenhouse.io/orcristtechnologies/jobs/4976566101) | mid | — | Remote | yes |
+| Twilio | [Marketing Strategy and Analytics Manager](https://job-boards.greenhouse.io/twilio/jobs/8104438) | manager | — | IN | yes |
+| VRChat | [Senior Data Scientist](https://jobs.lever.co/vrchat/f6d04b6b-8d9f-4261-9d1c-4fbf867d636c) | senior | — | Anywhere | yes |
+| uvation | [Ecommerce Product Catalog & Research Analyst](https://himalayas.app/companies/uvation/jobs/ecommerce-product-catalog-research-analyst-8540241897) | mid | — | RO | yes |
+| uvation | [Ecommerce Product Catalog & Research Analyst](https://himalayas.app/companies/uvation/jobs/ecommerce-product-catalog-research-analyst-7715058416) | mid | — | RS | yes |
 
 _`likely no` means the location names a specific workplace and nothing anywhere said remote or hybrid — about 95% accurate, and the weakest inference here. `yes` and `no` rest on a vendor field, the location text, or an explicit statement in the job description._
 
@@ -58,9 +48,9 @@ Levels **in bold** are the ones in band. The rest are shown for context only —
 
 | Family | junior | **mid** | **senior** | **staff** | senior staff | principal | **manager** | senior manager | director | In band |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| `product_ds` | 34 | 171 | 193 | 69 | 10 | 8 | 5 | 3 | 0 | **438** |
-| `ds_manager` | 0 | 0 | 0 | 0 | 0 | 0 | 70 | 26 | 56 | **70** |
-| `product_analyst` | 9 | 50 | 39 | 8 | 0 | 4 | 1 | 0 | 0 | **98** |
+| `product_ds` | 36 | 179 | 200 | 71 | 10 | 8 | 5 | 3 | 0 | **455** |
+| `ds_manager` | 0 | 0 | 0 | 0 | 0 | 0 | 74 | 26 | 60 | **74** |
+| `product_analyst` | 10 | 54 | 42 | 8 | 0 | 4 | 1 | 0 | 0 | **105** |
 
 <details>
 <summary><b>Companies hiring in target families</b></summary>
@@ -78,6 +68,7 @@ Levels **in bold** are the ones in band. The rest are shown for context only —
 | Moniepoint | 9 | 0 | 9 |
 | Stripe | 9 | 3 | 2 |
 | mercor | 9 | 1 | 7 |
+| uvation | 8 | 0 | 8 |
 | DoorDash | 7 | 3 | 0 |
 | Monzo | 7 | 4 | 6 |
 | Mozilla | 7 | 3 | 7 |
@@ -87,7 +78,6 @@ Levels **in bold** are the ones in band. The rest are shown for context only —
 | Grafana Labs | 6 | 0 | 6 |
 | Instacart | 6 | 0 | 6 |
 | Spotify | 6 | 0 | 4 |
-| uvation | 6 | 0 | 6 |
 | CookUnity | 5 | 1 | 4 |
 | Duolingo | 5 | 1 | 0 |
 | HighLevel | 5 | 0 | 5 |
@@ -111,18 +101,18 @@ Employer-published either way, but kept apart on purpose: one came from a struct
 
 | Source | Postings | Median low | Median high | p90 high |
 |---|--:|--:|--:|--:|
-| `posting_disclosed` | 165 | $140,000 | $200,000 | $385,000 |
-| `description_parsed` | 73 | $139,000 | $190,000 | $260,000 |
+| `posting_disclosed` | 174 | $140,000 | $200,000 | $385,000 |
+| `description_parsed` | 80 | $135,500 | $187,000 | $260,000 |
 
 Top of the advertised band:
 
 | Band | | Postings |
 |---|---|--:|
-| under $150k | `██░░░░░░░░` | 45 |
-| $150k–200k | `███░░░░░░░` | 72 |
-| $200k–250k | `██░░░░░░░░` | 55 |
+| under $150k | `██░░░░░░░░` | 52 |
+| $150k–200k | `███░░░░░░░` | 78 |
+| $200k–250k | `██░░░░░░░░` | 57 |
 | $250k–300k | `█░░░░░░░░░` | 35 |
-| $300k+ | `█░░░░░░░░░` | 31 |
+| $300k+ | `█░░░░░░░░░` | 32 |
 
 </details>
 
@@ -131,19 +121,19 @@ Top of the advertised band:
 
 | Country | | Postings |
 |---|---|--:|
-| US | `█████░░░░░` | 16,909 |
-| unknown | `███░░░░░░░` | 10,499 |
-| GB | `░░░░░░░░░░` | 870 |
-| IN | `░░░░░░░░░░` | 649 |
-| CA | `░░░░░░░░░░` | 523 |
-| SG | `░░░░░░░░░░` | 437 |
-| AU | `░░░░░░░░░░` | 237 |
-| DE | `░░░░░░░░░░` | 224 |
+| US | `█████░░░░░` | 17,414 |
+| unknown | `███░░░░░░░` | 10,874 |
+| GB | `░░░░░░░░░░` | 927 |
+| IN | `░░░░░░░░░░` | 696 |
+| CA | `░░░░░░░░░░` | 637 |
+| SG | `░░░░░░░░░░` | 453 |
+| AU | `░░░░░░░░░░` | 247 |
+| DE | `░░░░░░░░░░` | 238 |
 
 **Remote share, reported two ways.**
 
-- On strong evidence only (vendor flag, location text, or an explicit statement in the job text): **10,702 of 21,042** (`█████░░░░░` 51%).
-- A further **8,550** postings are inferred onsite purely because the location names a specific workplace, with nothing anywhere saying remote or hybrid. That inference measures around 95% accurate, but it is the weakest one here. **3,471** remain genuinely undetermined.
+- On strong evidence only (vendor flag, location text, or an explicit statement in the job text): **11,513 of 22,143** (`█████░░░░░` 52%).
+- A further **8,781** postings are inferred onsite purely because the location names a specific workplace, with nothing anywhere saying remote or hybrid. That inference measures around 95% accurate, but it is the weakest one here. **3,715** remain genuinely undetermined.
 
 </details>
 
@@ -154,12 +144,12 @@ Coverage differs sharply by vendor, so read any rate above with this in mind. A 
 
 | Source | Open | Pay known | Country known | Remote known |
 |---|--:|--:|--:|--:|
-| `greenhouse` | 21,222 | `███░░░░░░░` 34% | `████████░░` 76% | `████████░░` 84% |
-| `ashby` | 5,790 | `██████░░░░` 63% | `███░░░░░░░` 33% | `██████████` 99% |
-| `lever` | 3,615 | `█░░░░░░░░░` 5% | `██████░░░░` 63% | `██████████` 100% |
-| `himalayas` | 2,436 | `█████░░░░░` 47% | `█████████░` 94% | `██████████` 100% |
+| `greenhouse` | 22,310 | `███░░░░░░░` 34% | `████████░░` 76% | `████████░░` 84% |
+| `ashby` | 5,876 | `██████░░░░` 62% | `███░░░░░░░` 32% | `██████████` 99% |
+| `lever` | 3,694 | `░░░░░░░░░░` 5% | `██████░░░░` 62% | `██████████` 100% |
+| `himalayas` | 2,759 | `█████░░░░░` 47% | `█████████░` 94% | `██████████` 100% |
 
-Last collection run: `ok` 475, `empty` 4, `error` 3.
+Last collection run: `ok` 498, `empty` 4, `error` 3.
 
 </details>
 
@@ -170,13 +160,13 @@ Excluded from every figure above. Still collected, still in `panel.duckdb` — t
 
 | Level | Open | With pay | Median top of band |
 |---|--:|--:|--:|
-| director | 56 | 35 | $250,400 |
-| junior | 43 | 12 | $30,025 |
+| director | 60 | 36 | $250,200 |
+| junior | 46 | 12 | $30,025 |
 | senior manager | 29 | 16 | $248,975 |
 | principal | 12 | 6 | $204,500 |
 | senior staff | 10 | 4 | $320,000 |
 
-For comparison, the median top-of-band **in** band is **$195,000**. That gap is why these are excluded rather than merely flagged — pooled in, they describe a market other than this one.
+For comparison, the median top-of-band **in** band is **$193,650**. That gap is why these are excluded rather than merely flagged — pooled in, they describe a market other than this one.
 
 </details>
 
@@ -187,10 +177,10 @@ Context rather than targets — these supply the denominators that make the targ
 
 | Family | Open | Senior+ | Remote |
 |---|--:|--:|--:|
-| `ml_eng` | 1,361 | 669 | 664 |
-| `analyst` | 1,020 | 422 | 547 |
-| `data_eng` | 303 | 160 | 184 |
-| `analytics_eng` | 74 | 33 | 50 |
+| `ml_eng` | 1,443 | 701 | 734 |
+| `analyst` | 1,075 | 436 | 592 |
+| `data_eng` | 327 | 165 | 206 |
+| `analytics_eng` | 81 | 37 | 57 |
 
 </details>
 
