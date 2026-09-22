@@ -110,14 +110,14 @@ a census over **420 verified boards**, discovery that runs itself, and an analyt
 
 | | |
 |---|---|
-| Boards collected daily | **455** (190 Greenhouse, 197 Ashby, 68 Lever) |
-| Watchlist entries | 872 (455 verified, 38 quarantined, 66 awaiting a verdict, 313 no readable board) |
-| Open postings tracked | **31,464** across 1,285 companies, collected in ~95s |
-| In-band target roles open | **518** (652 in target families at any level) |
-| Pay band known | 37.3% overall (57% on days collected since the parser shipped) |
-| Country known | 68.0% |
-| Remote, strong evidence | 61.9% (88.8% including `location_implied`) |
-| Days of history | **7** (2026-09-12 → 2026-09-18) |
+| Boards collected daily | **518** (226 Greenhouse, 199 Ashby, 93 Lever) |
+| Watchlist entries | 1,097 (518 verified, 50 quarantined, 529 no readable board, **0 awaiting a verdict**) |
+| Open postings tracked | **35,689** across 1,792 companies, collected in ~140s |
+| In-band target roles open | **665** (824 in target families at any level) |
+| Pay band known | 36.6% overall (57% on days collected since the parser shipped) |
+| Country known | 68.2% |
+| Remote, strong evidence | 64.4% (89.6% including `location_implied`) |
+| Days of history | **11** (2026-09-12 → 2026-09-22) |
 
 **All Phase 1 and Phase 2 acceptance criteria are met**, including the last one that could
 only pass with time: **seven consecutive unattended daily commits, 2026-09-12 to 2026-09-18**.
@@ -1614,3 +1614,42 @@ rewrites every commit SHA, which is destructive and needs Gabriel's say-so — a
 moot depending on the December repo-visibility decision, since going private or starting a
 fresh repo resolves it anyway. At 35 MB today against GitHub's ~5 GB comfort zone there is
 no urgency; what mattered was stopping the daily ~1.4 MB from accruing forever.
+
+### 2026-09-22 — the aggregator's inflow is variable, and I called it settled too early
+
+Three clean runs since the Ashby gate (2026-09-18). **Deferred is back to zero** — the 66
+stuck companies all settled to real verdicts once the cause was removed, and no new ones
+have appeared in four days. The mechanism did what it was for: it held 66 companies back
+from a permanently wrong "no board here", surfaced the cause, and emptied itself.
+
+**Two things confirmed in production:**
+
+- The gzipped interface file is live and complete — 198 rows, all 33 fields, 990k
+  characters of description text, 279 KB. `data/latest/new_postings.jsonl` is frozen in
+  history at 22 blobs and no longer grows.
+- **Discovery recovered: 62 names in 73 seconds**, against 6.4s per name on 2026-09-15.
+  Removing the Ashby fallback from blind guessing cut roughly a third of all probes, and
+  the ones left answer fast. Collection (139s) is the larger half of the run again.
+
+**The correction: I said on 2026-09-15 that discovery would shrink to ~20 new names a day
+and become negligible. That was one day's number, and it was a low outlier.** Measured
+across eleven days, companies appearing in the aggregator with a tracked role that we have
+never seen before:
+
+| Day | New companies | | Day | New companies |
+|---|--:|---|---|--:|
+| 09-15 | 19 | | 09-19 | **115** |
+| 09-16 | 33 | | 09-20 | 65 |
+| 09-17 | 57 | | 09-21 | 51 |
+| 09-18 | **3** | | 09-22 | 25 |
+
+**Mean ~46/day, range 3 to 115.** The watchlist has grown 669 → 1,097 in eight days (~53/day)
+and is not saturating. The Himalayas fetch itself is healthy and steady throughout — 571-701
+records, 42-51 requests, `status: ok` every day — so this is genuine churn in what the feed
+surfaces, not a collection problem. Sep 18 fetched 571 records of which only 16 were new;
+Sep 19 fetched 648 of which 439 were.
+
+**What that means practically:** discovery stays a real daily cost rather than fading out,
+and the `--limit 80` cap is doing real work on busy days. The request-volume note above still
+stands as the thing to watch. **And one day of data is not a trend** — the same mistake as
+the cron-delay "growing trend" on the same date.
