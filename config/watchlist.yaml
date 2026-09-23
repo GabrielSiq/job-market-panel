@@ -9917,3 +9917,228 @@ companies:
     added: 2026-09-22
     source: auto_discovered
     notes: "23 open reqs at discovery"
+  - name: "AB InBev"
+    slug: ab-inbev
+    ats: greenhouse
+    token: abinbev
+    status: unverified
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "board reports 'AB InBev  | Growth Group', expected 'AB InBev' - confirm before collecting"
+  - name: "AmeriLife"
+    slug: amerilife
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "on workday (token amerilife) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Anteriad"
+    slug: anteriad
+    ats: greenhouse
+    token: anteriad
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "8 open reqs at discovery"
+  - name: "Artemis Connection"
+    slug: artemis-connection
+    ats: ashby
+    token: artemis
+    status: unverified
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "board reports 'Artemis Jobs', expected 'Artemis Connection' - confirm before collecting"
+  - name: "Assurant"
+    slug: assurant
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Bertelsmann SE & Co. KGaA"
+    slug: bertelsmann-se-co-kgaa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Blackbaud"
+    slug: blackbaud
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Careerswift"
+    slug: careerswift
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Chip"
+    slug: chip
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "CoVet"
+    slug: covet
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "DysrupIT"
+    slug: dysrupit
+    ats: bamboohr
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "on bamboohr (token dysrupit) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "Edwards Lifesciences"
+    slug: edwards-lifesciences
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Ex Parte"
+    slug: ex-parte
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "gravity9"
+    slug: gravity9
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Great American Insurance Group"
+    slug: great-american-insurance-group
+    ats: workday
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "on workday (token gaig) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "GrowthPair"
+    slug: growthpair
+    ats: workable
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "on workable (token growthpair) - no adapter for this vendor; see CLAUDE.md on vendor coverage"
+  - name: "HAUSGOLD - talocasa GmbH"
+    slug: hausgold-talocasa
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Holos Media"
+    slug: holos-media
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "HumanI"
+    slug: humani
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Joyful Craftsmen AG"
+    slug: joyful-craftsmen
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Red Sky"
+    slug: red-sky
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Smart Apartment Data"
+    slug: smart-apartment-data
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "StackBlitz"
+    slug: stackblitz
+    ats: greenhouse
+    token: stackblitz
+    status: unverified
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "board reports 'Bolt.new', expected 'StackBlitz' - confirm before collecting"
+  - name: "The Toro Company"
+    slug: the-toro-company
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Wesper"
+    slug: wesper
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-23
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
