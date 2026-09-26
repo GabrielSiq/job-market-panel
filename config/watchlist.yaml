@@ -10619,3 +10619,66 @@ companies:
     added: 2026-09-25
     source: auto_discovered
     notes: "no board found by guessing, and no careers page could be read"
+  - name: "Clera"
+    slug: clera
+    ats: ashby
+    token: clera
+    status: verified
+    verified_by: board_page
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "278 open reqs at discovery"
+  - name: "Dropbox"
+    slug: dropbox
+    ats: greenhouse
+    token: dropbox
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "44 open reqs at discovery"
+  - name: "Eleven"
+    slug: eleven
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "Numa"
+    slug: numa
+    ats: greenhouse
+    token: numa
+    status: verified
+    verified_by: name_echo
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "9 open reqs at discovery"
+  - name: "Runware"
+    slug: runware
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "SPD Technology"
+    slug: spd-technology
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
+  - name: "TeamWorx Security"
+    slug: teamworx-security
+    ats: unknown
+    token: null
+    status: unresolved
+    verified_by: null
+    added: 2026-09-26
+    source: auto_discovered
+    notes: "no board found by guessing, and no careers page could be read"
